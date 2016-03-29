@@ -1,3 +1,39 @@
 .socials-holder
 	li
 		display: inline-block
+
+.main-navigation
+	background: #fff
+	left: 0
+	position: fixed
+	top: 0
+	width: 100%
+	z-index: 11
+
+.main-slider
+	overflow: hidden
+	.slider-viewport
+		overflow: visible
+		margin: 0 auto
+		width: calc(100% - 200px)
+	.slide
+		position: relative
+		img
+			// max-height: 400px
+			transition: max-height .3s
+		.description-holder
+			background: #fff
+			left: 35%
+			padding: 15px 30px
+			pointer-events: none
+			position: absolute
+			top: 58%
+			color: #35363c;
+			font-family: 'Futura New'
+			font-size: 30px
+			font-weight: 500
+			letter-spacing: 1.5px
+			line-height: 38px
+		&.active
+			img
+				// max-height: 800px

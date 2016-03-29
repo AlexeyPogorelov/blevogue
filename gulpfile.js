@@ -15,7 +15,7 @@ var path = {
 	},
 	src: {
 		html: 'src/*.jade',
-		js: 'src/js/main.js',
+		js: 'src/js/*.js',
 		style: 'src/css/*.sass',
 		img: 'src/img/**/*.*',
 		fonts: 'src/fonts/**/*.*'

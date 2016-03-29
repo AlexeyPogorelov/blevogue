@@ -1,86 +1,92 @@
 
 var animationPrefix = (function () {
-			var t,
-			el = document.createElement("fakeelement");
-			var transitions = {
-				"transition": "animationend",
-				"OTransition": "oAnimationEnd",
-				"MozTransition": "animationend",
-				"WebkitTransition": "webkitAnimationEnd"
-			};
-			for (t in transitions) {
+		var t,
+		el = document.createElement("fakeelement");
+		var transitions = {
+			"transition": "animationend",
+			"OTransition": "oAnimationEnd",
+			"MozTransition": "animationend",
+			"WebkitTransition": "webkitAnimationEnd"
+		};
+		for (t in transitions) {
 
-				if (el.style[t] !== undefined) {
+			if (el.style[t] !== undefined) {
 
-					return transitions[t];
-
-				}
+				return transitions[t];
 
 			}
-		})(),
-		transitionPrefix = (function () {
-			var t,
-			el = document.createElement("fakeelement");
-			var transitions = {
-				"transition": "transitionend",
-				"OTransition": "oTransitionEnd",
-				"MozTransition": "transitionend",
-				"WebkitTransition": "webkitTransitionEnd"
-			};
-			for (t in transitions) {
 
-				if (el.style[t] !== undefined) {
+		}
+	})(),
+	transitionPrefix = (function () {
+		var t,
+		el = document.createElement("fakeelement");
+		var transitions = {
+			"transition": "transitionend",
+			"OTransition": "oTransitionEnd",
+			"MozTransition": "transitionend",
+			"WebkitTransition": "webkitTransitionEnd"
+		};
+		for (t in transitions) {
 
-					return transitions[t];
+			if (el.style[t] !== undefined) {
 
-				}
-
-			}
-		})(),
-		loading = {
-			avgTime: 3000,
-			trg: 1,
-			state: 0,
-			preloader: $('body > .preloader'),
-			loaded: function () {
-
-				if(++loading.state == loading.trg) {
-
-					loading.status(1);
-					setTimeout(loading.done, 500);
-
-				} else {
-
-					loading.status(loading.state / loading.trg / 1.1);
-
-				}
-			},
-			status: function (mult) {
-
-				loading.preloader.find('> .after').css({
-					'width': mult * 100 + '%'
-				});
-
-			},
-			done: function () {
-
-				if (loading.finished) {
-
-					return;
-				}
-
-				// hide preloader
-				loading.preloader.animate({}).delay(100).animate({
-					'opacity': 0
-				}, 600, function () {
-
-					loading.status(0);
-					$(this).detach();
-					loading.finished = true;
-
-				});
+				return transitions[t];
 
 			}
+
+		}
+	})(),
+	loading = {
+		avgTime: 3000,
+		trg: 1,
+		state: 0,
+		preloader: $('body > .preloader'),
+		loaded: function () {
+
+			if(++loading.state == loading.trg) {
+
+				loading.status(1);
+				setTimeout(loading.done, 500);
+
+			} else {
+
+				loading.status(loading.state / loading.trg / 1.1);
+
+			}
+		},
+		status: function (mult) {
+
+			loading.preloader.find('> .after').css({
+				'width': mult * 100 + '%'
+			});
+
+		},
+		done: function () {
+
+			if (loading.finished) {
+
+				return;
+			}
+
+			// initialize plugins
+
+			$('#main-slider').simpleSlider({
+				'autoHeight': true
+			});
+
+			// hide preloader
+			loading.preloader.animate({}).delay(100).animate({
+				'opacity': 0
+			}, 600, function () {
+
+				loading.status(0);
+				$(this).detach();
+				loading.finished = true;
+
+			});
+
+		}
 	};
 
 	// TODO test it
