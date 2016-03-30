@@ -71,9 +71,7 @@ var animationPrefix = (function () {
 
 			// initialize plugins
 
-			$('#main-slider').simpleSlider({
-				'autoHeight': true
-			});
+			$('#main-slider').simpleSlider();
 
 			// hide preloader
 			loading.preloader.animate({}).delay(100).animate({

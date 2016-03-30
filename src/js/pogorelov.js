@@ -31,6 +31,7 @@
 				'startSlide': 0,
 				'autoHeight': false,
 				'mouseWheel': false,
+				'mouseDrug': false,
 				'touch': true,
 				'slidesOnPage': 1
 			}, opt);
@@ -316,57 +317,56 @@
 			}
 			// DOM.$slides.on('ondragstart', function (e) {
 			// });
-			DOM.$section.on('mousedown', function (e) {
-				DOM.$sliderHolder.addClass('touched');
-				state.touchStart.xPos = e.pageX;
-				state.touchStart.yPos = e.pageY;
-				try {
+			if (opt.mouseDrug) {
 
-					state.touchStart.trfX = -parseInt( DOM.$sliderHolder.css('transform').split(',')[4] );
+				DOM.$section.on('mousedown', function (e) {
+					DOM.$sliderHolder.addClass('touched');
+					state.touchStart.xPos = e.pageX;
+					state.touchStart.yPos = e.pageY;
+					try {
 
-				} catch (error) {
+						state.touchStart.trfX = -parseInt( DOM.$sliderHolder.css('transform').split(',')[4] );
 
-					console.warn('transform is undefined');
-					console.log(error);
+					} catch (error) {
 
-				}
-					// console.log( state.touchStart.trfX );
+						console.warn('transform is undefined');
+						console.log(error);
 
-			});
-
-			DOM.$section.on('mousemove', function (e) {
-				if (e.buttons < 1) {
-					touchendCleaner ();
-				} else if (state.touchStart.xPos) {
-
-					state.shiftD = state.touchStart.xPos - e.pageX;
-					state.shiftX = state.touchStart.trfX + state.shiftD;
-
-					// console.log( state.shiftX );
-					// console.log( state.touchStart.trfX );
-					// console.log( state.touchStart.xPos - e.pageX );
-
-					DOM.$sliderHolder.css({
-						'-webkit-transform': 'translateX( ' + -state.shiftX + 'px) translateZ(0)',
-						'transform': 'translateX( ' + -state.shiftX + 'px) translateZ(0)'
-					});
-
-				}
-			});
-
-			DOM.$section.on('mouseup mouseleave', function (e) {
-				// console.log(state.shiftD);
-				if ( Math.abs(state.shiftD) > 40 ) {
-					if (state.shiftD > 0) {
-						plg.nextSlide();
-					} else {
-						plg.prevSlide();
 					}
-				} else {
-					plg.toSlide(state.cur);
-				}
-				touchendCleaner ();
-			});
+						// console.log( state.touchStart.trfX );
+
+				}).on('mousemove', function (e) {
+					if (e.buttons < 1) {
+						touchendCleaner ();
+					} else if (state.touchStart.xPos) {
+
+						state.shiftD = state.touchStart.xPos - e.pageX;
+						state.shiftX = state.touchStart.trfX + state.shiftD;
+
+						// console.log( state.shiftX );
+						// console.log( state.touchStart.trfX );
+						// console.log( state.touchStart.xPos - e.pageX );
+
+						DOM.$sliderHolder.css({
+							'-webkit-transform': 'translateX( ' + -state.shiftX + 'px) translateZ(0)',
+							'transform': 'translateX( ' + -state.shiftX + 'px) translateZ(0)'
+						});
+
+					}
+				}).on('mouseup mouseleave', function (e) {
+					// console.log(state.shiftD);
+					if ( Math.abs(state.shiftD) > 40 ) {
+						if (state.shiftD > 0) {
+							plg.nextSlide();
+						} else {
+							plg.prevSlide();
+						}
+					} else {
+						plg.toSlide(state.cur);
+					}
+					touchendCleaner ();
+				});
+			}
 
 			function touchendCleaner () {
 				DOM.$sliderHolder.removeClass('touched');

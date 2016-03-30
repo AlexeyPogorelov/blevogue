@@ -4,21 +4,35 @@
 div#to-top
 	img(src="img/icons/up_button.svg" alt="toTop")
 
-//- h1 test
+//- background pattern
+svg.svg-defs
+	defs
+		pattern#pattern(patternunits="userSpaceOnUse", width="200", height="300", viewbox="0 0 200 300")
+			image(xlink:href="https://unsplash.it/200/300?image=17", width="200", height="300")
+
 .main-navigation
 	.container
 		.logotype-holder
 			img(src="img/icons/main-logo.svg", alt="BLEVOGUE")
 		ul.navigation-pannel
-			li 
+			li.active
 				a(href="home.html") Хоум
-			li 
+					svg
+						text(x="0" y="1em") Хоум
+			li
 				a(href="privat.html") Особисте
-			li 
+			li
 				a(href="advice.html") Поради
-			li 
+			li
 				a(href="fashion.html") Мода
-			li 
+			li
 				a(href="interviews.html") Iнтерв'ю
-			li 
+			li
 				a(href="videos.html") Вiдео
+		.controls-holder
+			.search-button
+				i.search-icon-1
+				span Пошук
+			.login-button
+				i.login-icon-1
+				span Логін

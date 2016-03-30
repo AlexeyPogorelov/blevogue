@@ -9,20 +9,52 @@
 	.container
 		position: relative
 		.logotype-holder
-			position: absolute
 			left: 0
+			position: absolute
+			top: 20px
 		.navigation-pannel
+			padding: 20px 0 28px
 			text-align: center
 			li
 				display: inline-block
 				margin-left: 50px
+				position: relative
+				&.active
+					a
+						font-weight: 600
+						color: transparent
+				&.active:after
+					// background: #000
+					background: url('http://img-fotki.yandex.ru/get/5607/5091629.6b/0_612e6_b9039c0d_M.jpg')
+					background-position: 50%;
+					border-radius: 50%
+					bottom: -12px
+					content: ''
+					height: 6px
+					left: 50%
+					// margin-left: -3px
+					position: absolute
+					width: 6px
 				a
 					padding: 4px 10px
+					color: #35363c
+					font-family: 'Futura New'
+					font-size: 22px
+					font-weight: 500
+					line-height: 27px
+					svg
+						position: absolute
+						pointer-events: none
+						left: 15px
+						top: 0
+						text
+							fill: url(#pattern)
 
 .articles-gallery-1
 	.article-holder-1
 		.image-holder
-			width: 50%
+			height: 400px
+			width: 600px
 		.description
 			background: #fff
 			position: relative

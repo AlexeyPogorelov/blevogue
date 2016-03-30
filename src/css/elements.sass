@@ -1,6 +1,36 @@
 .socials-holder
 	li
 		display: inline-block
+		position: relative
+
+.controls-holder
+	position: absolute
+	top: 20px
+	right: 0
+	& > *
+		display: inline-block
+		& > *
+			display: inline-block
+	i
+		background-position: 50% 50%
+		height: 20px
+		width: 20px
+	.search-button
+		.search-icon-1
+			background: url(../img/icons/search-icon-1.svg) no-repeat
+		// span
+	.login-button
+		.login-icon-1
+			background: url(../img/icons/login-icon-1.svg) no-repeat
+
+// main-navigation
+.item--svg-fill text
+	fill: url(#pattern)
+
+.svg-defs
+	position: absolute
+	width: 0
+	height: 0
 
 .main-navigation
 	background: #fff
@@ -10,30 +40,67 @@
 	width: 100%
 	z-index: 11
 
+$main-slider-height: 600px
+$main-slider-deactive-padding: 126px 70px 0
 .main-slider
+	position: relative
 	overflow: hidden
+	margin-top: 126px
+	margin-bottom: 120px
+	.slider-holder
+		transition: transform .8s cubic-bezier(0.4, 0.0, 0.2, 1)
 	.slider-viewport
 		overflow: visible
 		margin: 0 auto
-		width: calc(100% - 200px)
+		width: calc(100% - 400px)
+	.paginator-holder
+		.prev-slide, .next-slide
+			position: absolute
+			height: 100%
+			top: 0
+			width: 150px
+		.prev-slide
+			left: 0
+		.next-slide
+			right: 0
 	.slide
 		position: relative
+		height: $main-slider-height
+		.slide-content
+			padding: $main-slider-deactive-padding
+			transition: padding .6s
+			height: 100%
 		img
-			// max-height: 400px
-			transition: max-height .3s
+			transition: max-height .9s
+		.image-holder
+			height: 100%
+			perspective: 400px
+			.img
+				max-height: $main-slider-height
 		.description-holder
 			background: #fff
 			left: 35%
+			opacity: 0
 			padding: 15px 30px
 			pointer-events: none
 			position: absolute
 			top: 58%
-			color: #35363c;
+			color: #35363c
 			font-family: 'Futura New'
 			font-size: 30px
 			font-weight: 500
 			letter-spacing: 1.5px
 			line-height: 38px
+			transform: translate(0, 20px) rotateX(80deg)
+			transform-origin: 50% 100%
+			transition: opacity .9s, transform .6s
 		&.active
-			img
-				// max-height: 800px
+			.slide-content
+				padding: 0
+				transition: padding .6s
+			.description-holder
+				opacity: 1
+				transform: translate(0, 0) rotateX(0)
+				transform-origin: 50% 100%
+				transition: opacity .9s, transform .6s
+				transition-delay: .6s
