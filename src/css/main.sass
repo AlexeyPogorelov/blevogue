@@ -5,8 +5,24 @@
 .preloader
 	display: none
 
+// main-navigation
+.item--svg-fill text
+	fill: url(/#pattern)
+
+.svg-defs
+	position: absolute
+	width: 0
+	height: 0
+
 .main-navigation
-	.container
+	background: #fff
+	left: 0
+	padding: 0 40px
+	position: fixed
+	top: 0
+	width: 100%
+	z-index: 11
+	.block-holder
 		position: relative
 		.logotype-holder
 			left: 0
@@ -41,14 +57,15 @@
 					font-family: 'Futura New'
 					font-size: 22px
 					font-weight: 500
-					line-height: 27px
+					// line-height: 27px
+					line-height: 1em
 					svg
 						position: absolute
 						pointer-events: none
 						left: 15px
 						top: 0
 						text
-							fill: url(#pattern)
+							fill: url(/#pattern)
 
 .articles-gallery-1
 	.article-holder-1

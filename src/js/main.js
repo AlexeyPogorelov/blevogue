@@ -157,6 +157,11 @@ $(document).on('ready', function () {
 
 						paused = false;
 
+					}).one('touchstart mousewheel DOMMouseScroll wheel', function () {
+
+						$(this).stop(false, false).off('touchstart mousewheel DOMMouseScroll wheel');
+						paused = false;
+
 					});
 
 					plg.hide();
