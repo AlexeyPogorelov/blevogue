@@ -5,16 +5,21 @@
 
 .controls-holder
 	position: absolute
-	top: 20px
+	top: 25px
 	right: 0
+	a
+		font-weight: 600
 	& > *
 		display: inline-block
 		& > *
 			display: inline-block
-			margin-left: 20px
 			vertical-align: middle;
+			margin-left: 21px
+		& > span
+			margin-left: 7px
 	i
 		background-position: 50% 50%
+		// margin-right: 0px
 		height: 20px
 		width: 20px
 	.search-button
@@ -25,19 +30,24 @@
 		.login-icon-1
 			background: url(../img/icons/login-icon-1.svg) no-repeat
 
+// --------------------------------------------------
+// ARTICLES
+// --------------------------------------------------
+
 $main-slider-height: 600px
-$main-slider-deactive-padding: 126px 70px 0
+$main-slider-deactive-padding-1: 126px 70px 0
+$main-slider-deactive-padding-2: 87px 70px 0
 .main-slider
 	position: relative
 	overflow: hidden
 	margin-top: 126px
-	margin-bottom: 120px
+	// margin-bottom: 114px
 	.slider-holder
 		transition: transform .8s cubic-bezier(0.4, 0.0, 0.2, 1)
 	.slider-viewport
 		overflow: visible
 		margin: 0 auto
-		width: calc(100% - 400px)
+		width: calc(100% - 420px)
 	.paginator-holder
 		.prev-slide, .next-slide
 			position: absolute
@@ -52,7 +62,7 @@ $main-slider-deactive-padding: 126px 70px 0
 		position: relative
 		height: $main-slider-height
 		.slide-content
-			padding: $main-slider-deactive-padding
+			padding: $main-slider-deactive-padding-1
 			transition: padding .6s
 			height: 100%
 		img
@@ -64,12 +74,13 @@ $main-slider-deactive-padding: 126px 70px 0
 				max-height: $main-slider-height
 		.description-holder
 			background: #fff
-			left: 35%
+			left: 31%
 			opacity: 0
 			padding: 15px 30px
 			pointer-events: none
 			position: absolute
-			top: 58%
+			top: 57%
+			max-width: 67%
 			color: #35363c
 			font-family: 'Futura New'
 			font-size: 30px
@@ -89,3 +100,6 @@ $main-slider-deactive-padding: 126px 70px 0
 				transform-origin: 50% 100%
 				transition: opacity .9s, transform .6s
 				transition-delay: .6s
+			& ~ .slide
+					.slide-content
+						padding: $main-slider-deactive-padding-2

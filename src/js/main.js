@@ -395,6 +395,18 @@ $(document).on('ready', function () {
 
 		});
 
+		// articles hover
+		(function () {
+
+			var $gallery = $('.articles-gallery-1');
+				$gallery.find('article > .image-holder, .description').hover(function () {
+					$(this).closest('article').addClass('hover');
+				}, function () {
+					$(this).closest('article').removeClass('hover');
+				});
+
+		})();
+
 		//scroll
 		$(document).on('scroll', function () {
 

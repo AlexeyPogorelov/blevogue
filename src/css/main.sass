@@ -1,11 +1,21 @@
 // $font-stack:
 // $main-color:
 // $dark-color:
+#__bs_notify__ 
+	display: none !important
+	opacity: 0 !important
+
+body::-webkit-scrollbar
+	height: 0
+	width: 0
 
 .preloader
 	display: none
 
-// main-navigation
+// --------------------------------------------------
+// MAIN-NAVIGATION
+// --------------------------------------------------
+
 .item--svg-fill text
 	fill: url(/#pattern)
 
@@ -29,14 +39,16 @@
 			position: absolute
 			top: 20px
 		.navigation-pannel
-			padding: 20px 0 28px
+			padding: 28px 0 28px
 			text-align: center
 			li
 				display: inline-block
-				margin-left: 50px
+				margin: 0 20px
 				position: relative
 				&.active
 					a
+						cursor: auto
+						pointer-events: none
 						font-weight: 600
 						color: transparent
 				&.active:after
@@ -59,63 +71,327 @@
 					font-weight: 500
 					// line-height: 27px
 					line-height: 1em
+					span
+						display: inline-block
 					svg
 						position: absolute
 						pointer-events: none
-						left: 15px
-						top: 0
+						left: 10px
+						top: -4px
 						text
 							fill: url(/#pattern)
+					span
+						transition: transform .3s
+					&:hover
+						span
+							transform: translate(0, -4px)
+							transition: transform .3s
+
+// --------------------------------------------------
+// ARTICLES
+// --------------------------------------------------
 
 .articles-gallery-1
+	margin: 0 -24px
+	h3
+		color: #35363c
+		font-size: 34px
+		letter-spacing: -1px
+		line-height: 1em
+		margin-bottom: 8px
+	p
+		color: #636671
+		font-size: 17px
+		font-weight: 400
+		letter-spacing: 0.4px
+		line-height: 24px
+	article
+		display: inline-block
+		position: relative
+		font-size: 0
+		transition: opacity .3s
+		vertical-align: top
+		// a.image-holder
+		// 	display: block
+	.img
+		opacity: 1
+		transition: opacity .3s
+	article.hover
+		.img
+			opacity: 0
+			transition: opacity .3s
+	.description
+		background: #fff
+		padding: 30px 40px
+		position: relative
+	.date-holder
+		position: absolute
+		text-align: right
+		top: 30px
+		right: 30px
+		color: white
+		font-family: 'Futura New'
+		font-size: 16px
+		font-weight: 500
+		line-height: 19px
+		transform: translateX(200%)
+		transition: transform .3s
+	article.hover
+		.date-holder
+			transform: translateY(0)
+			transition: transform .3s
+	.socials-holder
+		top: 30px
+		left: 30px
+		position: absolute
+		transform: translateY(-200%)
+		transition: transform .3s
+		z-index: 1
+		li
+			display: block
+			a
+				color: #fff
+	article.hover
+		.socials-holder
+			transform: translateY(0)
+			transition: transform .3s
+
 	.article-holder-1
-		.image-holder
-			height: 400px
-			width: 600px
-		.description
-			background: #fff
-			position: relative
-			left: 38%
-			top: -100px
-			padding: 20px
-			width: 30%
-	.article-holder-2
-		margin-left: 20%
-		.image-holder
-			width: 50%
-		.description
-			background: #fff
-			position: relative
-			left: 38%
-			top: -100px
-			padding: 20px
-			width: 30%
-	.article-holder-3
+		margin-top: 114px
 		article
-			float: left
+			.image-holder
+				height: 400px
+				width: 600px
+			.description
+				left: 490px
+				top: -112px
+				width: 390px
+
+	.article-holder-2
+		margin-top: 4px
+		margin-left: 390px
+		article
+			.image-holder
+				height: 464px
+				width: 320px
+			.description
+				left: 240px
+				top: -110px
+				width: 390px
+
+	.article-holder-3
+		margin-top: 30px
 		article:nth-child(1)
-			width: 56%
+			width: 500px
 			.image-holder
-				width: 72%
+				height: 464px;
+				width: 320px;
 			.description
-				background: #fff
-				position: relative
-				left: 12%
-				top: -100px
-				padding: 20px
-				width: 55%
+				left: 210px
+				top: -108px
+				width: 390px
 		article:nth-child(2)
-			margin-top: 40px
-			width: 43%
+			margin-top: 100px
+			margin-left: 196px
+			overflow: hidden
+			width: 320px
 			.image-holder
-				width: 42%
+				height: 464px
+				width: 320px
 			.description
-				background: #fff
+				background: transparent
+				padding-left: 0
+				padding-right: 0
+				left: 0
+				top: 0
+				width: 320px
+
+	.article-holder-4
+		margin-top: 0
+		article:nth-child(1)
+			margin-top: 82px
+			width: 500px
+			.image-holder
+				height: 464px
+				width: 320px
+			.description
+				left: 210px
+				top: -108px
+				width: 390px
+		article:nth-child(2)
+			margin-top: 2px
+			margin-left: 167px
+			overflow: hidden
+			width: 320px
+			.image-holder
+				height: 254px
+				width: 350px
+			.description
+				background: transparent
+				padding-left: 0
+				padding-right: 0
+				left: 0
+				top: 0
+				width: 320px
+
+	.article-holder-5
+		margin-top: 0
+		article:nth-child(1)
+			margin-top: 105px
+			margin-left: 140px
+			width: 350px
+			.image-holder
+				height: 254px
+				width: 350px
+			.description
+				background: transparent
+				padding-left: 0
+				padding-right: 0
+				left: 0
+				top: 0
+				width: 350px
+		article:nth-child(2)
+			margin-top: 46px
+			margin-left: 206px
+			overflow: hidden
+			width: 320px
+			.image-holder
+				height: 464px
+				width: 350px
+			.description
+				background: transparent
+				padding-left: 0
+				padding-right: 0
+				left: 0
+				top: 0
+				width: 320px
+
+	.article-holder-6
+		margin-top: 0
+		article:nth-child(1)
+			margin-top: 87px
+			margin-left: 0
+			width: 350px
+			.image-holder
+				height: 254px
+				width: 350px
+			.description
+				background: transparent
+				padding-left: 0
+				padding-right: 0
+				left: 0
+				top: 0
+				width: 350px
+		article:nth-child(2)
+			margin-top: 186px
+			margin-left: 316px
+			overflow: hidden
+			width: 350px
+			.image-holder
+				height: 254px
+				width: 350px
+			.description
+				background: transparent
+				padding-left: 0
+				padding-right: 0
+				padding-bottom: 0
+				left: 0
+				top: 0
+				width: 320px
+
+	.article-holder-7
+		margin-top: 87px
+		text-align: right
+		article
+			width: 600px
+			.image-holder
+				width: 600px
+				height: 400px
+			.description
+				text-align: left
+				left: 106px
+				top: -119px
+				width: 390px
+
+	.article-holder-8
+		margin-top: 10px
+		text-align: right
+		article
+			width: 600px
+			.image-holder
+				width: 600px
+				height: 400px
+			.description
+				text-align: left
+				left: 106px
+				top: -119px
+				width: 390px
+
+	.last
+		margin-top: 0
+		margin-bottom: 44px
+
+	.load-more-holder
+		text-align: center
+		margin-bottom: 85px
+		.btn.load-more
+			outline: 2px solid #35363c
+			outline-offset: -2px
+			display: inline-block
+			height: 46px
+			padding: 0 30px
+			position: relative
+			span
+				color: #35363c
+				font-size: 20px
+				font-weight: 300
+				height: 24px
+				line-height: 46px
+				width: 61px
+				transition: color .3s
+			&.hover span
+				color: white
 				position: relative
-				left: 10%
-				top: -100px
-				padding: 20px
-				width: 61%
+				transition: color .1s
+			&:before
+				content: ''
+				background: url('https://unsplash.it/600/400?image=17') no-repeat
+				display: block
+				opacity: 0
+				position: absolute
+				left: 0
+				top: 0
+				height: 100%
+				width: 100%
+				transition: opacity .3s
+			&.hover:before
+				opacity: 1
+				transition: opacity .1s
+			&:after
+				background: url('../img/icons/arrow-down-1.svg') no-repeat
+				content: ''
+				display: inline-block
+				height: 16px
+				line-height: 46px
+				margin-left: 4px
+				margin-bottom: -2px
+				width: 12px
+
+.msie
+	.articles-gallery-1
+		.article-holder-3
+			article:nth-child(2)
+				margin-left: 194px
+		.article-holder-4
+			article:nth-child(2)
+				margin-left: 165px
+		.article-holder-5
+			article:nth-child(2)
+				margin-left: 204px
+		.article-holder-6
+			article:nth-child(2)
+				margin-left: 314px
+
 
 .footer
 	background: #eee
