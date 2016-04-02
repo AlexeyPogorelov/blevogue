@@ -1,24 +1,29 @@
 .footer
-	.footer-logo
-		img(src="img/icons/main-logo.svg", alt="BLEVOGUE")
-	.search-bar
-		form(action="#")
-			.form-group
-				label(for="subscriber")
-				input(type="text" placeholder="Your email adress")
-				input(type="button", name="Subscribe", value="Subscribe")
-	.socials-holder
-		.label Соц мережi
-		ul
-			li
-				a(href="#", target="_blank")
-					i.fa.fa-facebook
-			li
-				a(href="#", target="_blank")
-					i.fa.fa-pinterest
-			li
-				a(href="#", target="_blank")
-					i.fa.fa-twitter
-			li
-				a(href="#", target="_blank")
-					i.fa.fa-tumblr
+	.container
+		.footer-logo
+			img(src="img/icons/main-logo.svg", alt="BLEVOGUE")
+		.search-bar
+			form(action="#")
+				.form-group
+					.label Подпишитесь на важные новости
+					.input-group
+						input(type="text" placeholder="Your email adress")
+						input(type="button", name="Subscribe", value="Subscribe")
+			.copyright 2016 BLEVOGUE. Всі права захищені. Використання матеріалу з блогу можливе тільки за згодою автора.
+		.socials-holder
+			.label Соц мережi
+			ul
+				li
+					a(href="#", target="_blank")
+						i.fa.fa-facebook-official
+				li
+					a(href="#", target="_blank")
+						i.fa.fa-pinterest
+				li
+					a(href="#", target="_blank")
+						i.fa.fa-twitter
+				li
+					a(href="#", target="_blank")
+						i.fa.fa-tumblr
+			.email-holder
+				a(href="mailto:blevogue@gmail.com") blevogue@gmail.com

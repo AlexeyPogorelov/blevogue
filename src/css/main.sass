@@ -348,12 +348,14 @@ body::-webkit-scrollbar
 				font-weight: 300
 				height: 24px
 				line-height: 46px
+				margin: 0 8px
 				width: 61px
-				transition: color .3s
-			&.hover span
+				transition: color .3s, margin .3s
+			&:hover span
 				color: white
+				margin: 0 16px 0 0
 				position: relative
-				transition: color .1s
+				transition: color .1s, margin .1s
 			&:before
 				content: ''
 				background: url('https://unsplash.it/600/400?image=17') no-repeat
@@ -365,18 +367,27 @@ body::-webkit-scrollbar
 				height: 100%
 				width: 100%
 				transition: opacity .3s
-			&.hover:before
+			&:hover:before
 				opacity: 1
 				transition: opacity .1s
 			&:after
 				background: url('../img/icons/arrow-down-1.svg') no-repeat
 				content: ''
-				display: inline-block
+				display: block
+				top: 17px
+				right: 18px
+				position: absolute
 				height: 16px
 				line-height: 46px
-				margin-left: 4px
-				margin-bottom: -2px
 				width: 12px
+				opacity: 0
+				// transform: translateX()
+				transition: opacity .3s, right .3s
+			&:hover:after
+				right: 26px
+				opacity: 1
+				// transform: translateX()
+				transition: opacity .1s, right .1s
 
 .msie
 	.articles-gallery-1
@@ -396,5 +407,85 @@ body::-webkit-scrollbar
 
 .footer
 	background: #eee
-	& > *
-		display: inline-block
+	.container
+		padding: 32px 0 29px
+		position: relative
+		width: 1220px
+		&:before
+			content: ''
+			display: block
+			background: url('../img/bg/bg-line-1.jpg')
+			background-size: cover
+			position: absolute
+			left: 0
+			top: -4px
+			height: 4px
+			width: 100%
+		.label
+			display: block
+			margin-bottom: 11px
+			color: #636671
+			font-family: 'Futura New'
+			font-size: 16px
+			font-weight: 300
+			line-height: 19px
+		& > *
+			display: inline-block
+			vertical-align: top
+		.footer-logo
+			margin-top: 36px
+			width: 207px
+		.search-bar
+			margin-left: 70px
+			max-width: 450px
+			.input-group
+				position: relative
+			input
+				height: 46px
+				color: #b2b6c2
+				font-family: 'Futura New'
+				font-size: 18px
+				font-weight: 300
+				// line-height: 22px
+				&::-moz-placeholder, &::-webkit-input-placeholder, &:-ms-input-placeholder , 
+					color: #35363c
+					font-family: 'Futura New'
+					font-size: 18px
+					font-weight: 300
+					line-height: 22px
+			input[type="text"]
+				width: 100%
+			input[type="button"]
+				background: url('../img/bg/bg-line-1.jpg')
+				color: white
+				font-family: 'Futura New'
+				font-size: 20px
+				font-weight: 700
+				line-height: 25px
+				padding: 0 23px
+				position: absolute
+				right: 0
+				top: 0
+			.copyright
+				color: #636671
+				font-family: 'Futura New'
+				font-size: 14px
+				font-weight: 300
+				line-height: 18px
+				margin-top: 14px
+		.socials-holder
+			margin-left: 76px
+			.email-holder
+				a
+					color: #636671
+					font-family: 'Futura New'
+					font-size: 19px
+					font-weight: 300
+					line-height: 23px
+			ul
+				margin-top: 23px
+				margin-bottom: 17px
+				a
+					font-size: 22px
+					line-height: 1em
+					margin-right: 25px

@@ -457,8 +457,8 @@ input
 #to-top
 	cursor: pointer
 	position: fixed
-	right: 6px
-	bottom: 36px
+	right: 81px
+	bottom: 49px
 	opacity: 0
 	height: 60px
 	width: 60px
@@ -466,9 +466,11 @@ input
 	transform: translateY(60px)
 	transition: transform .3s, opacity .3s, bottom .3s
 	&.opened
-		opacity: 1
+		opacity: 0.8
 		transition: transform .3s, opacity .3s, bottom .3s
 		transform: translateY(0)
+	&:hover
+		opacity: 1
 
 //	GRID
 
