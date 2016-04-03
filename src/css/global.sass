@@ -32,7 +32,7 @@ body
 	background-color: $main-color
 	border: 1px solid #e5e5e5
 // end webkit scroll
-button, input, optgroup, select, textarea
+button, input, optgroup, select, textarea, input[type="button"]
 	font: $font-stack
 
 section
@@ -564,7 +564,7 @@ input
 		display: table
 		clear: both
 
-button, .btn
+button, .btn, input[type="button"]
 	border: none
 	cursor: pointer
 	display: inline-block
@@ -573,7 +573,7 @@ button, .btn
 		text-decoration: none
 		//transition: all .1s ease
 
-button.invert, .btn.invert
+button.invert, .btn.invert, input[type="button"].invert
 	&.focus, &:focus, &:hover
 		text-decoration: none
 		//transition: all .5s ease

@@ -114,6 +114,7 @@ body::-webkit-scrollbar
 		// a.image-holder
 		// 	display: block
 	.img
+		display: block
 		opacity: 1
 		transition: opacity .3s
 	article.hover
@@ -122,8 +123,13 @@ body::-webkit-scrollbar
 			transition: opacity .3s
 	.description
 		background: #fff
+		display: block
 		padding: 30px 40px
 		position: relative
+	.article-link
+		display: block
+		height: 100%
+		width: 100%
 	.date-holder
 		position: absolute
 		text-align: right
@@ -342,6 +348,7 @@ body::-webkit-scrollbar
 			height: 46px
 			padding: 0 30px
 			position: relative
+			transition: outline .3s
 			span
 				color: #35363c
 				font-size: 20px
@@ -351,6 +358,9 @@ body::-webkit-scrollbar
 				margin: 0 8px
 				width: 61px
 				transition: color .3s, margin .3s
+			&:hover
+				outline-color: transparent
+				transition: outline .1s
 			&:hover span
 				color: white
 				margin: 0 16px 0 0
@@ -381,13 +391,12 @@ body::-webkit-scrollbar
 				line-height: 46px
 				width: 12px
 				opacity: 0
-				// transform: translateX()
-				transition: opacity .3s, right .3s
+				transform: translateX(0)
+				transition: opacity .3s, transform .3s
 			&:hover:after
-				right: 26px
 				opacity: 1
-				// transform: translateX()
-				transition: opacity .1s, right .1s
+				transform: translateX(-8px)
+				transition: opacity .1s, transform .1s
 
 .msie
 	.articles-gallery-1
@@ -456,7 +465,9 @@ body::-webkit-scrollbar
 			input[type="text"]
 				width: 100%
 			input[type="button"]
-				background: url('../img/bg/bg-line-1.jpg')
+				background: url('https://unsplash.it/600/400?image=33')
+				background-size: cover
+				background-position: 50% 100%
 				color: white
 				font-family: 'Futura New'
 				font-size: 20px
@@ -489,3 +500,8 @@ body::-webkit-scrollbar
 					font-size: 22px
 					line-height: 1em
 					margin-right: 25px
+					opacity: 0.8
+					transition: opacity .3s
+					&:hover
+						opacity: 1
+						transition: opacity .1s
