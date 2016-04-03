@@ -17,7 +17,8 @@ body::-webkit-scrollbar
 // --------------------------------------------------
 
 .item--svg-fill text
-	fill: url(/#pattern)
+	fill: url(/#pattern) // firefox fallback
+	fill: url(#pattern)
 
 .svg-defs
 	position: absolute
