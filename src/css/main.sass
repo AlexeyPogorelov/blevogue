@@ -1,5 +1,6 @@
 $large: 1300px
 $medium: 1260px
+$tablet: 1000px
 // $font-stack:
 // $main-color:
 // $dark-color:
@@ -61,6 +62,7 @@ body::-webkit-scrollbar
 	width: 0
 	height: 0
 
+.mobile-navigation,
 .main-navigation
 	background: #fff
 	left: 0
@@ -125,6 +127,13 @@ body::-webkit-scrollbar
 							transform: translate(0, -4px)
 							transition: transform .3s
 
+.mobile-navigation
+	padding: 0 30px
+	.gamburger
+		margin-top: 14px
+	.logotype-holder
+		position: absolute
+
 .controls-holder
 	position: absolute
 	top: 25px
@@ -168,7 +177,23 @@ body::-webkit-scrollbar
 	.controls-holder
 		a
 			font-size: 15px
+@media screen and (max-width: $tablet)
+	.main-navigation
+		display: none
 
+// --------------------------------------------------
+// MOBILE-NAVIGATION
+// --------------------------------------------------
+
+.mobile-navigation
+	display: none
+	.logotype-holder
+		text-align: center
+		position: absolute
+		width: 100%
+@media screen and (max-width: $tablet)
+	.mobile-navigation
+		display: block
 
 // --------------------------------------------------
 // MAIN SLIDER
@@ -212,6 +237,7 @@ $main-slider-deactive-padding-2-medium: 54px 70px 0
 		img
 			transition: max-height .9s
 		.image-holder
+			display: block
 			height: 100%
 			perspective: 400px
 			.img
@@ -605,7 +631,6 @@ $main-slider-deactive-padding-2-medium: 54px 70px 0
 				margin-left: 314px
 
 @media screen and (max-width: $medium)
-
 	.articles-gallery-1
 		h3
 			font-size: 28px
@@ -766,6 +791,8 @@ $main-slider-deactive-padding-2-medium: 54px 70px 0
 					width: 280px
 		.load-more-holder
 			margin-bottom: 65px
+// @media screen and (max-width: $tablet)
+	// .articles-gallery-1
 
 // --------------------------------------------------
 // FOOTER
@@ -863,6 +890,14 @@ $main-slider-deactive-padding-2-medium: 54px 70px 0
 	.footer
 		.container
 			width: 880px
+			.footer-logo
+				display: none
+			.search-bar
+				margin-left: 0
+@media screen and (max-width: $tablet)
+	.footer
+		.container
+			width: calc(100% - 60px)
 			.footer-logo
 				display: none
 			.search-bar
