@@ -8,8 +8,12 @@
 	top: 25px
 	right: 0
 	a
-		font-weight: 600
 		margin-left: 21px
+		color: #35363c
+		font-family: 'Futura New'
+		font-size: 18px
+		font-weight: 500
+		line-height: 22px
 	& > *
 		display: inline-block
 		& > *
@@ -54,6 +58,7 @@ $main-slider-deactive-padding-2: 87px 70px 0
 			height: 100%
 			top: 0
 			width: 150px
+			// width: calc(100vw - 1300px)
 		.prev-slide
 			left: 0
 		.next-slide
@@ -103,3 +108,55 @@ $main-slider-deactive-padding-2: 87px 70px 0
 			& ~ .slide
 					.slide-content
 						padding: $main-slider-deactive-padding-2
+
+.parallax-element
+	position: absolute
+	// position: fixed
+	// display: none
+	pointer-events: none
+	transform: translateZ(-1px) scale(2)
+	z-index: 0
+	&.type-1
+		background-image: url('../img/bg/abstract-icon-1.svg')
+		height: 209px
+		width: 195px
+	&.type-2
+		background-image: url('../img/bg/abstract-icon-2.svg')
+		height: 151px
+		width: 138px
+	&.type-3
+		background-image: url('../img/bg/abstract-icon-3.svg')
+		height: 99px
+		width: 109px
+	&.type-4
+		background-image: url('../img/bg/abstract-icon-4.svg')
+		height: 256px
+		width: 179px
+	&.type-5
+		background-image: url('../img/bg/abstract-icon-5.svg')
+		height: 268px
+		width: 179px
+	&.type-6
+		background-image: url('../img/bg/abstract-icon-6.svg')
+		height: 169px
+		width: 172px
+	&.type-7
+		background-image: url('../img/bg/abstract-icon-7.svg')
+		height: 154px
+		width: 179px
+	&.type-8
+		background-image: url('../img/bg/abstract-icon-8.svg')
+		height: 209px
+		width: 192px
+	&.type-9
+		background-image: url('../img/bg/abstract-icon-9.svg')
+		height: 155px
+		width: 199px
+	&.type-10
+		background-image: url('../img/bg/abstract-icon-10.svg')
+		height: 195px
+		width: 130px
+	&.type-11
+		background-image: url('../img/bg/abstract-icon-11.svg')
+		height: 186px
+		width: 200px

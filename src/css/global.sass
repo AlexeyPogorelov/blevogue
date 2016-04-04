@@ -34,6 +34,7 @@ body
 // end webkit scroll
 button, input, optgroup, select, textarea, input[type="button"]
 	font: $font-stack
+	line-height: 1em
 
 section
 	display: block
@@ -454,17 +455,26 @@ input
 		left: 50%
 		z-index: 1
 
+#to-top-container
+	bottom: 49px
+	height: 0
+	pointer-events: none
+	position: fixed
+	width: 100%
+	z-index: 2
+	.container
+		position: relative
+		width: 1220px
 #to-top
 	cursor: pointer
-	position: fixed
-	right: 81px
-	bottom: 49px
 	opacity: 0
-	height: 60px
-	width: 60px
-	z-index: 2
+	pointer-events: all
+	position: absolute
+	right: 2px
 	transform: translateY(60px)
 	transition: transform .3s, opacity .3s, bottom .3s
+	height: 30px
+	width: 32px
 	&.opened
 		opacity: 0.8
 		transition: transform .3s, opacity .3s, bottom .3s
