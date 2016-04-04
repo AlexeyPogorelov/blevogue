@@ -7,9 +7,9 @@ $medium: 1000px
 	display: none !important
 	opacity: 0 !important
 
-body::-webkit-scrollbar
+/* body::-webkit-scrollbar
 	height: 0
-	width: 0
+	width: 0 */
 
 .preloader
 	display: none
@@ -95,9 +95,10 @@ body::-webkit-scrollbar
 // --------------------------------------------------
 
 .articles-gallery-1
+	overflow: hidden
 	.container
 	// margin: 0 -24px
-		perspective: 1px
+		// perspective: 1px
 	h3
 		color: #35363c
 		font-size: 34px
@@ -117,7 +118,7 @@ body::-webkit-scrollbar
 		transition: opacity .3s
 		vertical-align: top
 		z-index: 1
-		transform: translateZ(0)
+		// transform: translateZ(0)
 		// a.image-holder
 		// 	display: block
 	.img
@@ -170,10 +171,11 @@ body::-webkit-scrollbar
 			transform: translateY(0)
 			transition: transform .3s
 
-	.article-holder-1, .article-holder-2, .article-holder-3, .article-holder-4, .article-holder-5, .article-holder-6, .article-holder-6, .article-holder-8
+	.article-holder-1, .article-holder-2, .article-holder-3, .article-holder-4, .article-holder-5, .article-holder-6, .article-holder-7, .article-holder-8
 		position: relative
-		transform: translateZ(0)
-		perspective: 1px
+		// overflow: hidden
+		// transform: translateZ(0)
+		// perspective: 1px
 	.article-holder-1
 		margin-top: 114px
 		article
@@ -187,8 +189,8 @@ body::-webkit-scrollbar
 
 	.article-holder-2
 		margin-top: 4px
-		margin-left: 390px
 		article
+			margin-left: 390px
 			.image-holder
 				height: 464px
 				width: 320px
