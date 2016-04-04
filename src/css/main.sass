@@ -1,5 +1,5 @@
 $large: 1300px
-$medium: 1000px
+$medium: 1260px
 // $font-stack:
 // $main-color:
 // $dark-color:
@@ -7,12 +7,47 @@ $medium: 1000px
 	display: none !important
 	opacity: 0 !important
 
-/* body::-webkit-scrollbar
+body::-webkit-scrollbar
 	height: 0
-	width: 0 */
+	width: 0
 
 .preloader
 	display: none
+
+// --------------------------------------------------
+// TO-TOP
+// --------------------------------------------------
+
+#to-top-container
+	bottom: 108px
+	height: 0
+	pointer-events: none
+	position: fixed
+	width: 100%
+	z-index: 2
+	.container
+		position: relative
+		width: 1220px
+#to-top
+	cursor: pointer
+	opacity: 0
+	pointer-events: all
+	position: absolute
+	right: 2px
+	transform: translateY(60px)
+	transition: transform .3s, opacity .3s, bottom .3s
+	height: 30px
+	width: 32px
+	&.opened
+		opacity: 0.8
+		transition: transform .3s, opacity .3s, bottom .3s
+		transform: translateY(0)
+	&:hover
+		opacity: 1
+@media screen and (max-width: $medium)
+	#to-top-container
+		.container
+			width: 880px
 
 // --------------------------------------------------
 // MAIN-NAVIGATION
@@ -90,6 +125,148 @@ $medium: 1000px
 							transform: translate(0, -4px)
 							transition: transform .3s
 
+.controls-holder
+	position: absolute
+	top: 25px
+	right: 0
+	a
+		margin-left: 21px
+		color: #35363c
+		font-family: 'Futura New'
+		font-size: 18px
+		font-weight: 500
+		line-height: 22px
+	& > *
+		display: inline-block
+		& > *
+			display: inline-block
+			vertical-align: middle;
+		& > span
+			margin-left: 7px
+	i
+		background-position: 50% 50%
+		// margin-right: 0px
+		height: 20px
+		width: 20px
+	.search-button
+		.search-icon-1
+			background: url(../img/icons/search-icon-1.svg) no-repeat
+		// span
+	.login-button
+		.login-icon-1
+			background: url(../img/icons/login-icon-1.svg) no-repeat
+
+@media screen and (max-width: $medium)
+	.main-navigation
+		.block-holder
+			.navigation-pannel
+				padding: 23px 0 28px
+				li
+					margin: 0 10px
+					a
+						font-size: 18px
+	.controls-holder
+		a
+			font-size: 15px
+
+
+// --------------------------------------------------
+// MAIN SLIDER
+// --------------------------------------------------
+
+$main-slider-height: 600px
+$main-slider-height-medium: 354px
+$main-slider-deactive-padding-1: 126px 70px 0
+$main-slider-deactive-padding-2: 87px 70px 0
+$main-slider-deactive-padding-1-medium: 77px 70px 0
+$main-slider-deactive-padding-2-medium: 54px 70px 0
+.main-slider
+	position: relative
+	overflow: hidden
+	margin-top: 126px
+	// margin-bottom: 114px
+	.slider-holder
+		transition: transform .8s cubic-bezier(0.4, 0.0, 0.2, 1)
+	.slider-viewport
+		overflow: visible
+		// margin: 0 auto
+		// width: calc(100% - 420px)
+	.paginator-holder
+		.prev-slide, .next-slide
+			position: absolute
+			height: 100%
+			top: 0
+			width: 150px
+			// width: calc(100vw - 1300px)
+		.prev-slide
+			left: 0
+		.next-slide
+			right: 0
+	.slide
+		position: relative
+		height: $main-slider-height
+		.slide-content
+			padding: $main-slider-deactive-padding-1
+			transition: padding .6s
+			height: 100%
+		img
+			transition: max-height .9s
+		.image-holder
+			height: 100%
+			perspective: 400px
+			.img
+				max-height: $main-slider-height
+		.description-holder
+			background: #fff
+			color: #35363c
+			font-family: 'Futura New'
+			font-size: 30px
+			font-weight: 500
+			left: 31%
+			letter-spacing: 1.5px
+			line-height: 38px
+			max-width: 67%
+			opacity: 0
+			padding: 15px 30px
+			pointer-events: none
+			position: absolute
+			top: 57%
+			transform-origin: 50% 100%
+			transform: translate(0, 20px) rotateX(80deg)
+			transition: opacity .9s, transform .6s
+		&.active
+			.slide-content
+				padding: 0
+				transition: padding .6s
+			.description-holder
+				opacity: 1
+				transform: translate(0, 0) rotateX(0)
+				transform-origin: 50% 100%
+				transition: opacity .9s, transform .6s
+				transition-delay: .6s
+			& ~ .slide
+					.slide-content
+						padding: $main-slider-deactive-padding-2
+@media screen and (max-width: $medium)
+	.main-slider
+		margin-top: 106px
+		.slide
+			height: $main-slider-height-medium
+			.description-holder
+				font-size: 24px
+				font-weight: 500
+				letter-spacing: 1px
+				line-height: 26px
+				max-width: 60%
+				padding: 13px 21px
+			.slide-content
+				padding: $main-slider-deactive-padding-1-medium
+			&.active
+				& ~ .slide
+						.slide-content
+							padding: $main-slider-deactive-padding-2-medium
+
+
 // --------------------------------------------------
 // ARTICLES
 // --------------------------------------------------
@@ -105,6 +282,7 @@ $medium: 1000px
 		letter-spacing: -1px
 		line-height: 1em
 		margin-bottom: 8px
+		font-weight: 500
 	p
 		color: #636671
 		font-size: 17px
@@ -426,6 +604,172 @@ $medium: 1000px
 			article:nth-child(2)
 				margin-left: 314px
 
+@media screen and (max-width: $medium)
+
+	.articles-gallery-1
+		h3
+			font-size: 28px
+			line-height: 26px
+			margin-bottom: 3px
+			letter-spacing: 0
+		p
+			font-size: 14px
+			font-weight: 400
+			letter-spacing: 0.3px
+			line-height: 19px
+		.description
+			padding: 22px 24px
+		.article-holder-1
+			margin-top: 80px
+			article
+				.image-holder
+					height: 214px
+					width: 320px
+				.description
+					left: 250px
+					top: -70px
+					width: 280px
+		.article-holder-2
+			margin-top: 16px
+			article
+				margin-left: 180px
+				.image-holder
+					height: 260px
+					width: 180px
+				.description
+					left: 140px
+					top: -68px
+					width: 280px
+		.article-holder-3
+			margin-top: 19px
+			article:nth-child(1)
+				width: 350px
+				.image-holder
+					height: 260px
+					width: 180px
+				.description
+					left: 70px
+					top: -38px
+					width: 280px
+			article:nth-child(2)
+				margin-top: 60px
+				margin-left: 66px
+				width: 180px
+				.image-holder
+					height: 260px
+					width: 180px
+				.description
+					padding-top: 13px
+					padding-bottom: 13px
+					width: 180px
+
+		.article-holder-4
+			margin-top: 0
+			article:nth-child(1)
+				margin-top: 78px
+				width: 350px
+				.image-holder
+					height: 260px
+					width: 180px
+				.description
+					left: 70px
+					top: -39px
+					width: 280px
+			article:nth-child(2)
+				margin-top: 18px
+				margin-left: 36px
+				overflow: hidden
+				width: 210px
+				.image-holder
+					height: 152px
+					width: 210px
+				.description
+					padding-top: 13px
+					padding-bottom: 13px
+					width: 210px
+
+		.article-holder-5
+			margin-top: 0
+			article:nth-child(1)
+				margin-top: 107px
+				margin-left: 70px
+				width: 210px
+				.image-holder
+					height: 152px
+					width: 210px
+				.description
+					padding-top: 13px
+					padding-bottom: 13px
+					left: 0
+					top: 0
+					width: 210px
+			article:nth-child(2)
+				margin-top: 46px
+				margin-left: 136px
+				width: 180px
+				.image-holder
+					height: 260px
+					width: 180px
+				.description
+					padding-top: 13px
+					padding-bottom: 13px
+					width: 180px
+
+		.article-holder-6
+			margin-top: 0
+			article:nth-child(1)
+				margin-top: 69px
+				margin-left: 0
+				width: 210px
+				.image-holder
+					height: 152px
+					width: 210px
+				.description
+					padding-top: 13px
+					padding-bottom: 13px
+					width: 210px
+			article:nth-child(2)
+				margin-top: 139px
+				margin-left: 176px
+				overflow: hidden
+				width: 210px
+				.image-holder
+					height: 152px
+					width: 210px
+				.description
+					padding-top: 13px
+					padding-bottom: 0
+					width: 210px
+
+		.article-holder-7
+			margin-top: 68px
+			article
+				width: 320px
+				.image-holder
+					width: 320px
+					height: 214px
+				.description
+					left: 20px
+					top: -70px
+					width: 280px
+
+		.article-holder-8
+			margin-top: 20px
+			article
+				width: 320px
+				.image-holder
+					width: 320px
+					height: 214px
+				.description
+					left: 20px
+					top: -71px
+					width: 280px
+		.load-more-holder
+			margin-bottom: 65px
+
+// --------------------------------------------------
+// FOOTER
+// --------------------------------------------------
 
 .footer
 	.container
@@ -515,3 +859,43 @@ $medium: 1000px
 					&:hover
 						opacity: 1
 						transition: opacity .1s
+@media screen and (max-width: $medium)
+	.footer
+		.container
+			width: 880px
+			.footer-logo
+				display: none
+			.search-bar
+				margin-left: 0
+
+.controls-holder
+	position: absolute
+	top: 25px
+	right: 0
+	a
+		margin-left: 21px
+		color: #35363c
+		font-family: 'Futura New'
+		font-size: 18px
+		font-weight: 500
+		line-height: 22px
+	& > *
+		display: inline-block
+		& > *
+			display: inline-block
+			vertical-align: middle;
+		& > span
+			margin-left: 7px
+	i
+		background-position: 50% 50%
+		// margin-right: 0px
+		height: 20px
+		width: 20px
+	.search-button
+		.search-icon-1
+			background: url(../img/icons/search-icon-1.svg) no-repeat
+		// span
+	.login-button
+		.login-icon-1
+			background: url(../img/icons/login-icon-1.svg) no-repeat
+

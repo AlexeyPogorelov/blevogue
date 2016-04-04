@@ -114,8 +114,9 @@ $(window).on('load', function () {
 });
 
 $(document).on('ready', function () {
-	var winWidth = $(window).width(),
-		winHeight = $(window).height(),
+	var $window = $(window),
+		winWidth = $window.width(),
+		winHeight = $window.height(),
 		dom = {
 			$body: $('body')
 		},
@@ -199,6 +200,25 @@ $(document).on('ready', function () {
 			});
 
 			return plg;
+
+		})();
+
+		// parallax
+
+		(function () {
+
+			var $parallaxElemens = $('.parallax-element');
+
+			$window.on('scroll', function () {
+
+				var offset = $(this).scrollTop() / 4 - ( $window.height() / 2 );
+
+				$parallaxElemens.css({
+					'-webkit-transform': 'translateY(' + offset + 'px)',
+					'transform': 'translateY(' + offset + 'px)'
+				});
+
+			});
 
 		})();
 
@@ -325,7 +345,7 @@ $(document).on('ready', function () {
 
 		});
 
-		$(window).on('keyup', function (e) {
+		$window.on('keyup', function (e) {
 
 			// esc pressed
 			if (e.keyCode == '27') {
@@ -425,10 +445,10 @@ $(document).on('ready', function () {
 		});
 
 		// resize
-		$(window).on('resize', function () {
+		$window.on('resize', function () {
 
-			winWidth = $(window).width();
-			winHeight = $(window).height();
+			winWidth = $window.width();
+			winHeight = $window.height();
 
 		});
 

@@ -1,117 +1,20 @@
+$large: 1300px
+$medium: 1260px
+
 .socials-holder
 	li
 		display: inline-block
 		position: relative
 
-.controls-holder
-	position: absolute
-	top: 25px
-	right: 0
-	a
-		margin-left: 21px
-		color: #35363c
-		font-family: 'Futura New'
-		font-size: 18px
-		font-weight: 500
-		line-height: 22px
-	& > *
-		display: inline-block
-		& > *
-			display: inline-block
-			vertical-align: middle;
-		& > span
-			margin-left: 7px
-	i
-		background-position: 50% 50%
-		// margin-right: 0px
-		height: 20px
-		width: 20px
-	.search-button
-		.search-icon-1
-			background: url(../img/icons/search-icon-1.svg) no-repeat
-		// span
-	.login-button
-		.login-icon-1
-			background: url(../img/icons/login-icon-1.svg) no-repeat
 
 // --------------------------------------------------
-// ARTICLES
+// PARALLAX-ELEMENT
 // --------------------------------------------------
-
-$main-slider-height: 600px
-$main-slider-deactive-padding-1: 126px 70px 0
-$main-slider-deactive-padding-2: 87px 70px 0
-.main-slider
-	position: relative
-	overflow: hidden
-	margin-top: 126px
-	// margin-bottom: 114px
-	.slider-holder
-		transition: transform .8s cubic-bezier(0.4, 0.0, 0.2, 1)
-	.slider-viewport
-		overflow: visible
-		// margin: 0 auto
-		// width: calc(100% - 420px)
-	.paginator-holder
-		.prev-slide, .next-slide
-			position: absolute
-			height: 100%
-			top: 0
-			width: 150px
-			// width: calc(100vw - 1300px)
-		.prev-slide
-			left: 0
-		.next-slide
-			right: 0
-	.slide
-		position: relative
-		height: $main-slider-height
-		.slide-content
-			padding: $main-slider-deactive-padding-1
-			transition: padding .6s
-			height: 100%
-		img
-			transition: max-height .9s
-		.image-holder
-			height: 100%
-			perspective: 400px
-			.img
-				max-height: $main-slider-height
-		.description-holder
-			background: #fff
-			left: 31%
-			opacity: 0
-			padding: 15px 30px
-			pointer-events: none
-			position: absolute
-			top: 57%
-			max-width: 67%
-			color: #35363c
-			font-family: 'Futura New'
-			font-size: 30px
-			font-weight: 500
-			letter-spacing: 1.5px
-			line-height: 38px
-			transform: translate(0, 20px) rotateX(80deg)
-			transform-origin: 50% 100%
-			transition: opacity .9s, transform .6s
-		&.active
-			.slide-content
-				padding: 0
-				transition: padding .6s
-			.description-holder
-				opacity: 1
-				transform: translate(0, 0) rotateX(0)
-				transform-origin: 50% 100%
-				transition: opacity .9s, transform .6s
-				transition-delay: .6s
-			& ~ .slide
-					.slide-content
-						padding: $main-slider-deactive-padding-2
 
 .parallax-element
 	position: absolute
 	background-position: 50% 50%
+	background-size: contain
 	background-repeat: no-repeat
 	// position: fixed
 	// display: none
@@ -184,3 +87,52 @@ $main-slider-deactive-padding-2: 87px 70px 0
 		top: 624px
 		height: 255px
 		width: 200px
+
+@media screen and (max-width: $medium)
+	.parallax-element
+		&.type-1
+			right: -147px
+			top: -16px
+			width: 153px
+		&.type-2
+			top: 27px
+			left: -146px
+			width: 104px
+		&.type-3
+			left: -4px
+			top: 184px
+			width: 78px
+		&.type-4
+			right: -165px
+			top: 36px
+			width: 124px
+		&.type-5
+			top: -199px
+			left: -165px
+			width: 143px
+		&.type-6
+			top: -135px
+			right: -199px
+			transform: rotateZ(56deg) rotateY(180deg)
+			width: 126px
+		&.type-7
+			left: -174px
+			top: -44px
+			width: 119px
+		&.type-8
+			right: -160px
+			top: -78px
+			transform: rotateZ(56deg)
+			width: 146px
+		&.type-9
+			top: -177px
+			left: -143px
+			width: 110px
+		&.type-10
+			top: -116px
+			right: -179px
+			width: 108px
+		&.type-11
+			left: -176px
+			top: 317px
+			width: 200px
