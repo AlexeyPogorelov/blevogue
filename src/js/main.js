@@ -69,6 +69,15 @@ var animationPrefix = (function () {
 				return;
 			}
 
+			// TODO temp for develop
+			$('article').find('h3, p').attr('contenteditable', true).on('click', function (e) {
+				e.preventDefault();
+			});
+			$('a').on('click', function (e) {
+				e.preventDefault();
+			});
+			// end todo
+
 			// initialize plugins
 
 			$('#main-slider').simpleSlider();
