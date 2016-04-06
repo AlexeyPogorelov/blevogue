@@ -1,0 +1,19 @@
+doctype html
+html(lang='en')
+	head
+		title BLEVOGUE
+
+		include ./partials/head.jade
+
+	body
+
+		.absolute-holder.error-404
+			.content-holder
+				.logo-holder
+					img(src="../img/icons/blevogue-logo-white.png")
+				.error-holder
+					span 404
+				.button-holder
+					a(href="index.html").btn GO TO MAIN PAGE
+
+	include ./partials/scripts.jade

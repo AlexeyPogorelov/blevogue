@@ -596,11 +596,11 @@ button:active, .btn:active, button:focus, .btn:focus
 	right: 0
 	bottom: 0
 	width: 35px
-	transition: opacity .1s
+	transition: opacity .1s, background .1s
 	&:after
 		display: none
 	&:hover
-		transition: opacity .3s
+		transition: opacity .3s, background .3s
 		opacity: 1
 
 .modal-holder
@@ -620,6 +620,7 @@ button:active, .btn:active, button:focus, .btn:focus
 	overflow-y: scroll
 	transition: opacity .3s ease-out, transform .2s, visibility .4s
 	.close-modal
+		z-index: 3
 		&:after
 			display: none
 		&:hover

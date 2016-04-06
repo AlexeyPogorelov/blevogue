@@ -39,7 +39,7 @@
 	.modal-content
 		.modal-container
 			form(action="#").input-group
-				i.search-icon-1
+				button(type="submit").search-icon-1
 				input(type="text" placeholder="Search")
 			.result-group
 				.articles-gallery-1
@@ -153,11 +153,12 @@
 
 								a(href="article.html").description
 									h3 Поради: що почитати, щоб мозку прибавилося? почитати, щоб
-				.close-modal(data-close)
+				.close-modal(data-close="#search-modal")
 
-.modal-holder#login-modal
+.modal-holder#login-modal.cross-top
 	.modal-content
 		.modal-container
+			.close-modal(data-close="#login-modal")
 			a(href="https://www.facebook.com/").socials-login-container Login with
 				b  facebook
 			form(action="#")
@@ -168,12 +169,12 @@
 				.form-group
 					.input-group
 						label(for="popup-login-password") Password
-						input(type="text" placeholder="Password")#popup-login-password
+						input(type="password" placeholder="Password")#popup-login-password
 						a(href="password-recovery.html" data-modal="#password-recovery").forgot-password Forgot?
 				.button-group
 					button(type="submit") Log In
 				.button-group
-					a(href="signup.html" data-modal="#signup") Log In
+					a(href="signup.html" data-modal="#signup") Sign Up
 
 //- .modal-holder
 	//- .modal-content

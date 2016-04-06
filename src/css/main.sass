@@ -1073,6 +1073,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 					width: 186px
 			article:nth-child(2)
 				margin-top: 40px
+				margin-bottom: 40px
 				margin-left: calc(100% - 186px)
 				.image-holder
 					height: 134px
@@ -1173,7 +1174,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 			input
 				height: 46px
 				line-height: 46px
-			input[type="text"]
+			input[type="text"], input[type="password"]
 				color: #35363c
 				font-size: 18px
 				font-family: 'Futura New'
@@ -1411,7 +1412,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 		.input-group
 			position: relative
 			padding-top: 64px
-			i.search-icon-1
+			.search-icon-1
 				background-position: 50% 50%
 				background: url(../img/icons/search-icon-1.svg) no-repeat
 				background-size: contain
@@ -1421,7 +1422,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 				top: 80px
 				width: 52px
 				float: left
-			input[type="text"]
+			input[type="text"], input[type="password"]
 				border: none
 				outline: none
 				padding-left: 90px
@@ -1445,13 +1446,60 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 				width: 100%
 		.result-group
 			padding-top: 200px
+@media screen and (max-width: $tablet)
+	#search-modal
+		.modal-container
+			.input-group
+				padding-top: 76px
+				.search-icon-1
+					display: block
+					top: 97px
+					left: 17px
+					height: 38px
+					width: 38px
+				input[type="text"], input[type="password"]
+					// line-height: 10px
+					height: 68px
+					padding-left: 62px
+					font-size: 46px
+					font-weight: 500
+					// line-height: 55px
+					&::-moz-placeholder, &::-webkit-input-placeholder, &:-ms-input-placeholder
+						font-size: 46px
+						font-weight: 500
+			.result-group
+				padding-top: 60px
+@media screen and (max-width: $mobile-medium)
+	#search-modal
+		.modal-container
+			.input-group
+				padding-top: 0
+				.search-icon-1
+					display: block
+					left: 9px
+					top: 26px
+					height: 20px
+					width: 20px
+				input[type="text"], input[type="password"]
+					padding-left: 39px
+					font-size: 46px
+					font-weight: 500
+					height: 59px
+					line-height: 71px
+					font-size: 22px
+					font-weight: 500
+					&::-moz-placeholder, &::-webkit-input-placeholder, &:-ms-input-placeholder
+						font-size: 22px
+						font-weight: 500
+						// line-height: 27px
+				&:after
+					bottom: -2px
+					height: 2px
+			.result-group
+				padding-top: 32px
 
 #login-modal
 	background: rgba(255, 255, 255, .95)
-	top: 0
-	left: 0
-	right: 0
-	bottom: 0
 	label
 		display: block
 		color: #35363c
@@ -1460,20 +1508,26 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 		font-weight: 300
 		line-height: 19px
 		margin-bottom: 10px
-	input[type="text"]
-		width: 320px
-		height: 46px
+	input[type="text"], input[type="password"]
 		background-color: white
 		border: 2px solid #35363c
+		height: 46px
+		width: 320px
+		color: #35363c
+		font-family: 'Futura New'
+		font-size: 18px
+		font-weight: 300
+		line-height: 22px
+		&::-moz-placeholder, &::-webkit-input-placeholder, &:-ms-input-placeholder
 	button
 		background: url('https://unsplash.it/600/400?image=33')
-		line-height: 46px
-		padding: 0 40px
 		color: white
 		font-family: 'Futura New'
 		font-size: 20px
 		font-weight: 700
+		line-height: 46px
 		margin-bottom: 20px
+		padding: 0 40px
 	.button-group
 		text-align: center
 		a
@@ -1490,35 +1544,139 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 		margin-bottom: 30px
 	.input-group
 		position: relative
+	.close-modal
+		display: none
+		margin-top: 8px
+		margin-right: 8px
 	.forgot-password
-		position: absolute
-		right: 20px
-		line-height: 44px
 		color: #a6abbb
 		font-family: 'Futura New'
 		font-size: 16px
 		font-weight: 500
+		line-height: 1em
+		position: absolute
+		right: 20px
+		bottom: 14px
 	.modal-content
+		background: #fff
 		bottom: auto
 		left: 50%
 		right: auto
 		top: 50%
-		transform: translate(-50%, -50%)
+		transform: translate(-50%, -50%) scale(2)
 		width: 560px
 		.socials-login-container
 			background-color: #39579a
-			display: block
 			color: #fff
-			text-align: center
-			height: 54px
-			line-height: 53px
-			width: 100%
 			color: white
+			display: block
 			font-family: 'Futura New'
 			font-size: 18px
 			font-weight: 300
+			height: 54px
+			line-height: 53px
+			text-align: center
+			width: 100%
 			b
 				font-weight: 700
 				line-height: 53px
 		form
 			padding: 50px 120px 40px
+	&.opened
+		.modal-content
+			transform: translate(-50%, -50%) scale(1)
+
+@media screen and (max-width: 600px)
+	#login-modal
+		background: #fff
+		.close-modal
+			display: block
+			bottom: auto
+		input[type="text"], input[type="password"]
+			width: 100%
+		.modal-content
+			position: static
+			transform: scale(2)
+			height: 100%
+			width: 100%
+			.socials-login-container
+				margin-left: 32px
+				margin-right: 32px
+				position: relative
+				bottom: -92px
+				width: 100%
+				width: calc(100% - 64px)
+				font-size: 18px
+				font-weight: 300
+				font-weight: 100
+				b
+					font-weight: 700
+			form
+				padding: 120px 32px 40px
+		&.opened
+			.modal-content
+				transform: scale(1)
+
+// --------------------------------------------------
+// MOBILE MENU
+// --------------------------------------------------
+.error-404
+	background: url('http://manrepeller.wpengine.netdna-cdn.com/wp-content/uploads/2015/01/shoe-lifts-man-repeller-3.jpg') no-repeat
+	background-size: cover
+	bottom: 0
+	left: 0
+	right: 0
+	top: 0
+	position: absolute
+	text-align: center
+	.content-holder
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		.logo-holder
+			img
+				width: 280px
+		.error-holder
+			color: white
+			font-family: 'Futura New'
+			font-size: 260px
+			font-weight: 500
+			letter-spacing: -4.98px
+			line-height: 270px
+			span
+				margin-right: 20px
+		.button-holder
+			a
+				background: #fff
+				color: black
+				font-family: 'Futura New'
+				font-size: 18px
+				font-weight: 700
+				line-height: 1em
+				letter-spacing: 1px
+				padding: 23px 37px
+				margin-top: 11px
+@media screen and (max-width: 500px), screen and (max-height: 430px)
+	.error-404
+		.content-holder
+			.logo-holder
+				img
+					margin-bottom: 14px
+					width: 165px
+			.error-holder
+				font-size: 144px
+				font-weight: 500
+				letter-spacing: -5.01px
+				line-height: 124px
+				span
+					margin-right: 10px
+			.button-holder
+				a
+					margin-top: 18px
+					padding: 14px 23px
+					font-size: 15px
+					font-weight: 700
+					line-height: 19px
+					letter-spacing: 1px
+

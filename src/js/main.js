@@ -436,9 +436,10 @@ $(document).on('ready', function () {
 
 		})();
 
-		// 
+		// cross overflow fix
 
 		(function () {
+
 			$('.modal-holder.cross-bottom').each(function () {
 
 				var $self = $(this);
@@ -451,6 +452,20 @@ $(document).on('ready', function () {
 				});
 
 			});
+
+			$('.modal-holder.cross-top').each(function () {
+
+				var $self = $(this);
+				$self.on('scroll', function () {
+
+					$(this).find('.close-modal').css({
+						'top': $self.scrollTop()
+					});
+
+				});
+
+			});
+
 		})();
 
 		// svg width autoresize
