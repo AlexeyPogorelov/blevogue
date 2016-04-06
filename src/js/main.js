@@ -70,7 +70,7 @@ var animationPrefix = (function () {
 			}
 
 			// TODO temp for develop
-			$('article').find('h3, p').attr('contenteditable', true).on('click', function (e) {
+			$('section.articles-gallery-1 > article, .article-content').find('h3, p, h1, h2, h4, h5, h6, blockquote').attr('contenteditable', true).on('click', function (e) {
 				e.preventDefault();
 			});
 			$('a').on('click', function (e) {
@@ -224,7 +224,6 @@ $(document).on('ready', function () {
 		})();
 
 		// parallax
-
 		(function () {
 
 			var $parallaxElemens = $('.parallax-element');
@@ -450,7 +449,6 @@ $(document).on('ready', function () {
 		})();
 
 		// cross overflow fix
-
 		(function () {
 
 			$('.modal-holder.cross-bottom').each(function () {
