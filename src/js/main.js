@@ -237,6 +237,9 @@ $(document).on('ready', function () {
 			opened: [],
 			openModal: function ($modal) {
 
+				if ($modal.data('modal-unique')) {
+					modals.closeModal();
+				}
 				this.opened.push($modal);
 				$modal.addClass('opened');
 				// $modal.parent().addClass('opened');

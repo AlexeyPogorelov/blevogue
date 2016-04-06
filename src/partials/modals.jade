@@ -174,7 +174,41 @@
 				.button-group
 					button(type="submit") Log In
 				.button-group
-					a(href="signup.html" data-modal="#signup") Sign Up
+					a(href="signup.html" data-modal="#signup-modal") Sign Up
+
+.modal-holder#signup-modal.cross-top
+	.modal-content
+		.modal-container
+			.close-modal(data-close="#signup-modal")
+			a(href="https://www.facebook.com/").socials-login-container Login with
+				b  facebook
+			form(action="#")
+				.form-group
+					.input-group
+						label(for="popup-login-name") Name
+						input(type="text" placeholder="Name")#popup-login-name
+				.form-group
+					.input-group
+						label(for="popup-login-email") Email
+						input(type="text" placeholder="Login")#popup-login-email
+				.form-group
+					.input-group
+						label(for="popup-login-password") Password
+						input(type="password" placeholder="Password")#popup-login-password
+				.button-group
+					button(type="submit") Sign Up
+
+.modal-holder#password-recovery.cross-top(data-modal-unique="true")
+	.modal-content
+		.modal-container
+			.close-modal(data-close="#password-recovery")
+			form(action="#")
+				.form-group
+					.input-group
+						label(for="popup-forgot-email") Email
+						input(type="text" placeholder="Name")#popup-forgot-email
+				.button-group
+					button(type="submit") Reset
 
 //- .modal-holder
 	//- .modal-content

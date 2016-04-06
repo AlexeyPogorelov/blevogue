@@ -1498,6 +1498,8 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 			.result-group
 				padding-top: 32px
 
+#signup-modal,
+#password-recovery,
 #login-modal
 	background: rgba(255, 255, 255, .95)
 	label
@@ -1586,7 +1588,9 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 		.modal-content
 			transform: translate(-50%, -50%) scale(1)
 
-@media screen and (max-width: 600px)
+@media screen and (max-width: 600px), screen and (max-height: 450px)
+	#signup-modal,
+	#password-recovery,
 	#login-modal
 		background: #fff
 		.close-modal
@@ -1617,8 +1621,31 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 			.modal-content
 				transform: scale(1)
 
+#signup-modal
+	input[type="text"], input[type="password"]
+		border: 1px solid #35363c
+	button
+		background: url('https://unsplash.it/600/400?image=40')
+		padding-left: 68px
+		padding-right: 68px
+#password-recovery
+	// background: #fff
+	// .modal-content
+		// height: 100%
+	.close-modal
+		bottom: auto
+		top: 0
+		display: block
+
+@media screen and (max-width: 600px), screen and (max-height: 450px)
+	#signup-modal
+		button
+			width: 100%
+	#password-recovery
+		background: #fff
+
 // --------------------------------------------------
-// MOBILE MENU
+// 404
 // --------------------------------------------------
 .error-404
 	background: url('http://manrepeller.wpengine.netdna-cdn.com/wp-content/uploads/2015/01/shoe-lifts-man-repeller-3.jpg') no-repeat
