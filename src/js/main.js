@@ -436,6 +436,23 @@ $(document).on('ready', function () {
 
 		})();
 
+		// 
+
+		(function () {
+			$('.modal-holder.cross-bottom').each(function () {
+
+				var $self = $(this);
+				$self.on('scroll', function () {
+
+					$(this).find('.close-modal').css({
+						'bottom': -$self.scrollTop()
+					});
+
+				});
+
+			});
+		})();
+
 		// svg width autoresize
 		(function () {
 
