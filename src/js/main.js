@@ -436,6 +436,28 @@ $(document).on('ready', function () {
 
 		})();
 
+		// svg width autoresize
+		(function () {
+
+			var $svgs = $('.navigation-pannel'),
+				resize = function () {
+
+						$svgs.find('.active').each(function () {
+
+							var $self = $(this),
+								elWidth = $self.find('span').width();
+
+							$self.find('svg').width( elWidth + 2 );
+
+						});
+
+					};
+
+			resize();
+			$window.on('resize', resize);
+
+		})();
+
 		//scroll
 		$(document).on('scroll', function () {
 

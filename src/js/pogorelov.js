@@ -85,7 +85,7 @@
 
 					state.slideWidth = DOM.$slides.eq(0).outerWidth();
 					DOM.$sliderHolder.width(state.slideWidth * state.slides);
-					plg.toSlide(opt.startSlide);
+					plg.toSlide(state.cur);
 				},
 				prevSlide: function () {
 

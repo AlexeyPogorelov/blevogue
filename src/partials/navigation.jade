@@ -25,36 +25,46 @@ svg.svg-defs
 			li
 				a(href="privat.html")
 					span Особисте
+					svg
+						text(x="0" y="1em") Особисте
 			li
 				a(href="advices.html")
 					span Поради
+					svg
+						text(x="0" y="1em") Поради
 			li
 				a(href="fashion.html")
 					span Мода
+					svg
+						text(x="0" y="1em") Мода
 			li
 				a(href="interviews.html")
 					span Iнтерв'ю
+					svg
+						text(x="0" y="1em") Iнтерв'ю
 			li
 				a(href="videos.html")
 					span Вiдео
+					svg
+						text(x="0" y="1em") Вiдео
 		.controls-holder
-			a(href="search.html").search-button
+			a(href="search.html" data-modal="#search-modal").search-button
 				i.search-icon-1
 				span Пошук
-			a(href="login.html").login-button
+			a(href="login.html" data-modal="#login-modal").login-button
 				i.login-icon-1
 				span Логін
 
 .mobile-navigation
 	.block-holder
-		.gamburger
+		.gamburger(data-modal="#mobile-menu")
 			a(href="mobile-navigation.html")
 				img(src="img/icons/gamburger.svg")
 		.logotype-holder
 			a(href="index.html")
 				img(src="img/icons/blevogue.png", alt="BLEVOGUE")
 		.controls-holder
-			a(href="search.html").search-button
+			a(href="search.html" data-modal="#search-modal").search-button
 				i.search-icon-1
-			a(href="login.html").login-button
+			a(href="login.html" data-modal="#login-modal").login-button
 				i.login-icon-1

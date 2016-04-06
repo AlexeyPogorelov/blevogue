@@ -101,11 +101,16 @@ body::-webkit-scrollbar
 				margin: 0 20px
 				position: relative
 				&.active
+					span
+						font-weight: 600
+						font-size: 22px
 					a
 						cursor: auto
 						pointer-events: none
 						font-weight: 600
 						color: transparent
+						svg
+							display: block
 				&.active:after
 					// background: #000
 					background: url('http://img-fotki.yandex.ru/get/5607/5091629.6b/0_612e6_b9039c0d_M.jpg')
@@ -115,7 +120,7 @@ body::-webkit-scrollbar
 					content: ''
 					height: 6px
 					left: 50%
-					// margin-left: -3px
+					margin-left: -3px
 					position: absolute
 					width: 6px
 				a
@@ -129,12 +134,12 @@ body::-webkit-scrollbar
 					span
 						display: inline-block
 					svg
+						display: none
 						position: absolute
 						pointer-events: none
 						left: 10px
 						top: -4px
 						text
-							// fill: url(/#pattern)
 							fill: url(#pattern)
 					span
 						transition: transform .3s
@@ -733,6 +738,12 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 			line-height: 19px
 		.description
 			padding: 22px 24px
+		.date-holder
+			top: 10px
+			right: 10px
+		.socials-holder
+			top: 10px
+			left: 10px
 		.article-holder-1
 			margin-top: 80px
 			article
@@ -974,7 +985,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 		.description
 			padding: 15px 15px
 		.article-holder-1
-			margin-top: 0
+			// margin-top: 0
 			article
 				.image-holder
 					height: 172px
@@ -1112,10 +1123,14 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 					width: 160px
 				.description
 					width: 160px
-		.articles-gallery-1.last
-			// margin-bottom: 112px
 		.last
 			margin-bottom: 41px
+			.load-more-holder
+				margin-bottom: 54px
+@media screen and (max-width: $mobile-small)
+	.articles-gallery-1
+		.article-holder-1
+			margin-top: 0
 
 // --------------------------------------------------
 // FOOTER
@@ -1157,6 +1172,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 				position: relative
 			input
 				height: 46px
+				line-height: 46px
 			input[type="text"]
 				color: #35363c
 				font-size: 18px
@@ -1222,6 +1238,10 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 						font-size: 18px
 						font-weight: 500
 						line-height: 22px
+			&:first-of-type
+				margin-left: 0
+			&:last-of-type
+				margin-right: 0
 
 @media screen and (max-width: $medium)
 	.footer
@@ -1254,6 +1274,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 				max-width: 100%
 				input
 					height: 54px
+					line-height: 54px
 				input[type="button"]
 					background-image: url('../img/icons/subscribe-mobile.png')
 					background-size: 91px
@@ -1274,6 +1295,12 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 	.footer
 		.container
 			width: calc(100% - 64px)
+			.search-bar
+				margin-top: 0
+				input[type="button"]
+					position: static
+			.about-bar
+				margin-top: 34px
 
 .controls-holder
 	position: absolute
@@ -1306,3 +1333,195 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 		.login-icon-1
 			background: url(../img/icons/login-icon-1.svg) no-repeat
 
+// --------------------------------------------------
+// MOBILE MENU
+// --------------------------------------------------
+
+#mobile-menu
+	.modal-content
+		border: 1px solid #cdd1dc
+		text-align: center
+		.popup-navigation
+			ul
+				position: absolute
+				top: 50%
+				left: 50%
+				transform: translate(-50%, -50%)
+				li
+					margin: 0 20px
+					position: relative
+					&.active
+						a
+							cursor: auto
+							pointer-events: none
+							font-weight: 600
+							color: transparent
+							svg
+								display: block
+					&.active:after
+						background: url('http://img-fotki.yandex.ru/get/5607/5091629.6b/0_612e6_b9039c0d_M.jpg')
+						background-position: 50%;
+						border-radius: 50%
+						bottom: 7px
+						content: ''
+						height: 6px
+						left: 50%
+						margin-left: -3px
+						position: absolute
+						width: 6px
+					a
+						// padding: 4px 10px
+						color: #35363c
+						font-family: 'Futura New'
+						line-height: 1em
+						// Text style for "Особисте"
+						width: 73px
+						height: 22px
+						color: #35363c
+						font-size: 18px
+						font-weight: 500
+						line-height: 68px
+						span
+							display: inline-block
+						svg
+							display: none
+							left: 50%
+							pointer-events: none
+							position: absolute
+							top: 22px
+							transform: translateX(-50%)
+							width: 52px
+							text
+								fill: url(#pattern)
+@media screen and (max-height: 500px)
+	#mobile-menu
+		.modal-content
+			border: none
+			.popup-navigation
+				ul
+					position: static
+					transform: none
+		.close-modal
+			position: static
+			float: right
+
+// --------------------------------------------------
+// MODALS
+// --------------------------------------------------
+
+#search-modal
+	.modal-container
+		.input-group
+			position: relative
+			padding-top: 64px
+			i.search-icon-1
+				background-position: 50% 50%
+				background: url(../img/icons/search-icon-1.svg) no-repeat
+				background-size: contain
+				display: block
+				height: 52px
+				position: absolute
+				top: 80px
+				width: 52px
+				float: left
+			input[type="text"]
+				border: none
+				outline: none
+				padding-left: 90px
+				padding-right: 90px
+				height: 80px
+				width: 100%
+				color: #35363c
+				font-family: 'Futura New'
+				font-size: 66px
+				font-weight: 500
+				line-height: 80px
+			&:after
+				content: ''
+				display: block
+				background: url('../img/bg/bg-line-1.jpg')
+				background-size: cover
+				position: absolute
+				left: 0
+				bottom: -19px
+				height: 3px
+				width: 100%
+		.result-group
+			padding-top: 200px
+
+#login-modal
+	background: rgba(255, 255, 255, .95)
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	label
+		display: block
+		color: #35363c
+		font-family: 'Futura New'
+		font-size: 16px
+		font-weight: 300
+		line-height: 19px
+		margin-bottom: 10px
+	input[type="text"]
+		width: 320px
+		height: 46px
+		background-color: white
+		border: 2px solid #35363c
+	button
+		background: url('https://unsplash.it/600/400?image=33')
+		line-height: 46px
+		padding: 0 40px
+		color: white
+		font-family: 'Futura New'
+		font-size: 20px
+		font-weight: 700
+		margin-bottom: 20px
+	.button-group
+		text-align: center
+		a
+			color: #636671
+			font-family: 'Futura New'
+			font-size: 16px
+			font-weight: 700
+			line-height: 1em
+			transition: color .3s
+			&:hover
+				color: #35363c
+				transition: color .1s
+	.form-group
+		margin-bottom: 30px
+	.input-group
+		position: relative
+	.forgot-password
+		position: absolute
+		right: 20px
+		line-height: 44px
+		color: #a6abbb
+		font-family: 'Futura New'
+		font-size: 16px
+		font-weight: 500
+	.modal-content
+		bottom: auto
+		left: 50%
+		right: auto
+		top: 50%
+		transform: translate(-50%, -50%)
+		width: 560px
+		.socials-login-container
+			background-color: #39579a
+			display: block
+			color: #fff
+			text-align: center
+			height: 54px
+			line-height: 53px
+			width: 100%
+			color: white
+			font-family: 'Futura New'
+			font-size: 18px
+			font-weight: 300
+			b
+				font-weight: 700
+				line-height: 53px
+		form
+			padding: 50px 120px 40px
