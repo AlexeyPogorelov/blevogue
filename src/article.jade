@@ -9,30 +9,29 @@ html(lang='en')
 
 		include ./partials/navigation.jade
 
-		section.main-slider#main-slider
-			.slider-viewport.container
-				.slider-holder
-
-					.slide
-						.slide-content
-							a.image-holder(href="article.html")
-								img.fake-img(src="https://unsplash.it/1200/800?image=2")
-								.img(style="background-image:url(https://unsplash.it/1200/800?image=2)")
-							.description-holder Що почитати, щоб мозку прибавилося?
-
-					.slide
-						.slide-content
-							a.image-holder(href="article.html")
-								img.fake-img(src="https://unsplash.it/1400/600?image=175")
-								.img(style="background-image:url(https://unsplash.it/1400/600?image=175)")
-							.description-holder Lorem ipsum dolor sit.
-
-					.slide
-						.slide-content
-							a.image-holder(href="article.html")
-								img.fake-img(src="https://unsplash.it/600/800?image=180")
-								.img(style="background-image:url(https://unsplash.it/600/800?image=180)")
-							.description-holder Lorem ipsum dolor sit.
+		section.article-header
+			.container
+				.image-holder(style="background-color:#5c45c4")
+					img.fake-img(src="https://unsplash.it/600/400?image=192", alt="article")
+					.img(style="background-image:url(https://unsplash.it/600/400?image=192)")
+		section.article-page
+			.container
+				ul#fixed-socials.socials
+					li
+						a(href='https://www.facebook.com/sharer.php?src=sp&u=http://makemeat.com/works/lounge_fm&app_id=966242223397117&display=popup&title=Lounge FM&description=Design for iOS Application&picture=http://makemeat.com', target='_blank')
+							i.fa.fa-facebook
+					li
+						a(href='https://twitter.com/intent/tweet?text=Perfect project "Lounge FM" by Meat Agency http://makemeat.com/works/lounge_fm', target='_blank')
+							i.fa.fa-twitter
+					li
+						a(href='https://www.tumblr.com/widgets/share/tool?shareSource=legacy&canonicalUrl=&url=http://makemeat.com/works/lounge_fm&title=Lounge FM&content=http://makemeat.com&caption=Design for iOS Application&posttype=link', target='_blank')
+							i.fa.fa-tumblr
+					li
+						a(data-pin-do='buttonBookmark', data-pin-title='Lounge FM', data-pin-media='http://makemeat.com', data-pin-custom='true', target='_blank', data-pin-log='button_pinit_bookmarklet', data-pin-href='https://www.pinterest.com/pin/create/button/')
+							i.fa.fa-pinterest
+					li
+						a(href='https://www.linkedin.com/shareArticle?mini=true&url=http://makemeat.com/works/lounge_fm&title=Lounge FM&summary=Design for iOS Application', target='_blank')
+							i.fa.fa-linkedin
 
 		section.articles-gallery-1
 			.container

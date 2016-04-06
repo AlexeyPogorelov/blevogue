@@ -79,8 +79,19 @@ var animationPrefix = (function () {
 			// end todo
 
 			// initialize plugins
-
 			$('#main-slider').simpleSlider();
+
+			// WOW init
+			if ($.browser.desktop) {
+
+				$('.fadeInUp').addClass('wow fadeInUp');
+				$('.fadeInRight').addClass('wow fadeInRight');
+
+				$('article').addClass('wow fadeInUp');
+
+				new WOW().init();
+
+			}
 
 			// hide preloader
 			loading.preloader.animate({}).delay(100).animate({
@@ -237,12 +248,11 @@ $(document).on('ready', function () {
 			opened: [],
 			openModal: function ($modal) {
 
-				if ($modal.data('modal-unique')) {
+				if (!$modal.data('modal-ununique')) {
 					modals.closeModal();
 				}
 				this.opened.push($modal);
 				$modal.addClass('opened');
-				// $modal.parent().addClass('opened');
 
 				bodyOverflow.fixBody();
 
