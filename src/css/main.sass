@@ -23,6 +23,33 @@ body::-webkit-scrollbar
 	display: none
 
 // --------------------------------------------------
+// INPUT
+// --------------------------------------------------
+.input-group-1
+	margin-bottom: 30px
+	label, .label
+		color: #35363c
+		display: block
+		font-family: 'Futura New'
+		font-size: 16px
+		font-weight: 300
+		line-height: 19px
+		margin-bottom: 12px
+	input[type="text"], input[type="password"]
+		border: 1px solid #636671
+		display: block
+		height: 46px
+		width: 320px
+		color: #35363c
+		font-family: 'Futura New'
+		font-size: 18px
+		font-weight: 300
+		line-height: 22px
+		padding-left: 19px
+		padding-right: 19px
+		&::-moz-placeholder, &::-webkit-input-placeholder, &:-ms-input-placeholder
+
+// --------------------------------------------------
 // TO-TOP
 // --------------------------------------------------
 
@@ -1503,6 +1530,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 
 #signup-modal,
 #password-recovery,
+#password-change,
 #login-modal
 	background: rgba(255, 255, 255, .95)
 	label
@@ -1594,6 +1622,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 @media screen and (max-width: 600px), screen and (max-height: 450px)
 	#signup-modal,
 	#password-recovery,
+	#password-change,
 	#login-modal
 		background: #fff
 		.close-modal
@@ -1631,6 +1660,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 		background: url('https://unsplash.it/600/400?image=40')
 		padding-left: 68px
 		padding-right: 68px
+#password-change,
 #password-recovery
 	// background: #fff
 	// .modal-content
@@ -1644,6 +1674,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 	#signup-modal
 		button
 			width: 100%
+	#password-change,
 	#password-recovery
 		background: #fff
 
@@ -1921,3 +1952,67 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 						margin-top: 20px
 						max-height: 357px
 						max-width: 100%
+
+// --------------------------------------------------
+// PROFILE
+// --------------------------------------------------
+.profile-holder
+	background: url('../img/bg/profile-bg.jpg')
+	background-size: cover
+	min-height: calc(100vh - 187px)
+	text-align: center
+	.profile-content
+		border: 1px solid #cdd1dc
+		text-align: left
+		background: #fff
+		display: inline-block
+		margin-top: 179px
+		// margin-top: calc(50vh - 200px)
+		margin-bottom: 100px
+		padding: 50px 140px 30px
+		button[type="submit"]
+			color: white
+			background: url('https://unsplash.it/600/400?image=40')
+			font-family: 'Futura New'
+			font-size: 20px
+			font-weight: 700
+			line-height: 1em
+			margin-top: 26px
+			padding: 14px 44px
+		.forgot-password
+			color: #636671
+			font-family: 'Futura New'
+			font-size: 16px
+			font-weight: 500
+			line-height: 19px
+			margin-top: 24px
+		.input-group-1
+			margin-top: 30px
+			margin-bottom: 0
+		.input-file
+			text-align: center
+			color: #a6abbb
+			font-family: 'Futura New'
+			font-size: 16px
+			font-weight: 500
+			line-height: 19px
+			margin-top: 21px
+		.avatar-holder
+			text-align: center
+			.image-holder
+				display: block
+				margin: 0 auto
+				height: 100px
+				width: 100px
+		a
+			display: block
+			color: #636671
+			font-family: 'Futura New'
+			font-size: 16px
+			font-weight: 700
+			line-height: 20px
+			margin-top: 18px
+		// form
+		// 	.input-group-1:last-of-type
+		// 		margin-bottom: 0
+				// display: none !important

@@ -209,6 +209,21 @@
 				.button-group
 					button(type="submit") Reset
 
+.modal-holder#password-change.cross-top
+	.modal-content
+		.modal-container
+			.close-modal(data-close="#password-change")
+			form(action="#")
+				.form-group
+					.input-group.input-group-1
+						label(for="popup-forgot-new-password-1") New password
+						input(type="text" placeholder="Name")#popup-forgot-new-password-1
+					.input-group.input-group-1
+						label(for="popup-forgot-new-password-2") New password (replay)
+						input(type="text" placeholder="Name")#popup-forgot-new-password-2
+				.button-group
+					button(type="submit") Change
+
 //- .modal-holder(data-modal-ununique="true")
 	//- .modal-content
 		//- .close-modal(data-close)
