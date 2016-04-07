@@ -111,7 +111,6 @@ hr
 
 
 //	SELECT
-
 select
 	background-position: right center
 	background-position-x: calc(100% - 20px)
@@ -145,11 +144,9 @@ textarea
 	&::-webkit-input-placeholder, &:-moz-placeholder
 		color: #A9A9A9
 		font-size: 18px
-
 //	END SELECT
 
 // INPUT
-
 input
 	outline-width: 5px
 	outline-color: transparent
@@ -160,11 +157,9 @@ input
 	&:focus
 		outline: none
 	&::-webkit-input-placeholder, &:-moz-placeholder, &::-moz-placeholder, &:-ms-input-placeholder
-
 //	END INPUT
 
 // CHECKBOX
-
 .checkbox input[type="checkbox"]
 	&:not(:checked), &:checked
 		left: -9999px
@@ -217,11 +212,9 @@ input
 			color: #aaa
 	&:checked:focus + label:before, &:not(:checked):focus + label:before
 		border: 1px solid #777
-
 // END CHECKBOX
 
 // RADIO
-
 .radio input[type="radio"]
 	&:not(:checked), &:checked
 		left: -9999px
@@ -273,11 +266,9 @@ input
 	&:checked:focus + label:before, &:not(:checked):focus + label:before
 		//border: 2px solid #777
 	&:checked:focus + label:after, &:not(:checked):focus + label:after
-
 // END RADIO
 
 //	INPUT FILE
-
 .input-file
 	cursor: pointer
 	position: relative
@@ -286,25 +277,23 @@ input
 		display: block
 		transition: all .4s
 	input
-		position: absolute
-		pointer-events: none
+		cursor: pointer
 		display: inline-block
 		left: 0
-		top: 0
 		opacity: 0.01
-		cursor: pointer
+		padding: 0
+		pointer-events: none
+		position: absolute
+		top: 0
 		&:hover + label, &:focus + label
-
 //	END INPUT FILE
 
 //	INPUT NUMBER
-
 input
 	&::-webkit-outer-spin-button, &::-webkit-inner-spin-button
 		-webkit-appearance: none
 	&[type='number']
 		-moz-appearance: textfield
-
 //	END INPUT NUMBER
 
 .input-holder
@@ -377,7 +366,6 @@ input
 		display: table
 
 //	LIGHTBOX
-
 .lightbox-holder
 	&::-webkit-scrollbar
 		width: 0
@@ -456,7 +444,6 @@ input
 		z-index: 1
 
 //	GRID
-
 .container
 	margin: 0 auto
 
@@ -476,7 +463,6 @@ input
 	white-space: nowrap
 
 //	TABLE
-
 .table
 	display: table
 	.cell
@@ -491,7 +477,6 @@ input
 		vertical-align: bottom
 
 //	vertical
-
 .full-height
 	height: 100vh
 	min-height: 480px
@@ -519,7 +504,6 @@ input
 		transform: translateY(-50%)
 
 //	NAVIIGATION
-
 .navbar-toggle, .dropdown-holder
 	display: none
 
@@ -647,41 +631,3 @@ button:active, .btn:active, button:focus, .btn:focus
 		height: 0
 		width: 0
 
-// .gamburger
-// 	cursor: pointer
-// 	padding: 20px
-// 	position: fixed
-// 	right: 6px
-// 	top: 28px
-// 	z-index: 2
-// 	.line
-// 		background: #000
-// 		display: block
-// 		margin-bottom: 4px
-// 		height: 4px
-// 		width: 30px
-// 		transition: transform .3s ease-out
-// 	&:hover
-// 		.line:first-child
-// 			transform: translateY(-3px)
-// 			transition: transform .3s ease-out
-// 		.line:last-child
-// 			transform: translateY(3px)
-// 			transition: transform .3s ease-out
-
-// #to-top
-// 	cursor: pointer
-// 	position: fixed
-// 	right: 30px
-// 	bottom: 49px
-// 	bottom: 30px
-// 	opacity: 0
-// 	height: 60px
-// 	width: 60px
-// 	z-index: 3
-// 	transform: translateY(60px)
-// 	transition: transform .3s, opacity .3s, bottom .3s
-// 	&.opened
-// 		opacity: 1
-// 		transition: transform .3s, opacity .3s, bottom .3s
-// 		transform: translateY(0)

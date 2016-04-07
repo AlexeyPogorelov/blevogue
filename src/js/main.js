@@ -70,10 +70,10 @@ var animationPrefix = (function () {
 			}
 
 			// TODO temp for develop
-			$('section.articles-gallery-1 > article, .article-content').find('h3, p, h1, h2, h4, h5, h6, blockquote').attr('contenteditable', true).on('click', function (e) {
+			$('section.articles-gallery-1 > article, .article-content, .article-name, .article-date').find('p, h1, h2, h3, h4, h5, h6, blockquote, span').attr('contenteditable', true).on('click', function (e) {
 				e.preventDefault();
 			});
-			$('a').on('click', function (e) {
+			$('.article-holder-1 a').on('click', function (e) {
 				e.preventDefault();
 			});
 			// end todo
@@ -87,11 +87,25 @@ var animationPrefix = (function () {
 				$('.fadeInUp').addClass('wow fadeInUp');
 				$('.fadeInRight').addClass('wow fadeInRight');
 
-				$('article').addClass('wow fadeInUp');
+				$('section.articles-gallery-1 > article').addClass('wow fadeInUp');
 
 				new WOW().init();
 
 			}
+
+			// blockquote
+			(function () {
+				var $blockquote = $('blockquote');
+				if ($blockquote.length) {
+					$blockquote.each(function () {
+						var $self = $(this),
+							letter = $self.text().substring(0,1).toUpperCase(),
+							text = $self.text().substring(1);
+						$self.text( text );
+						$self.prepend('<span class="capital"><span>' + letter + '</span><svg><text x="0" y="1em">' + letter + '</text></svg></span>');
+					});
+				}
+			})();
 
 			// hide preloader
 			loading.preloader.animate({}).delay(100).animate({
@@ -242,7 +256,6 @@ $(document).on('ready', function () {
 		})();
 
 		// modals
-
 		var modals = {
 			opened: [],
 			openModal: function ($modal) {

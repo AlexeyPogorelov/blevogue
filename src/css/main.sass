@@ -8,6 +8,9 @@ $mobile-x-small: 320px
 // $font-stack:
 // $main-color:
 // $dark-color:
+.chromeperfectpixel-initial-block iframe,
+#chromeperfectpixel-supported-by
+	display: none !important
 #__bs_notify__ 
 	display: none !important
 	opacity: 0 !important
@@ -1712,14 +1715,209 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 // ARTICLE
 // --------------------------------------------------
 .article-header
-	margin-top: 80px
+	// margin-top: 80px
+	margin-top: 126px
+	.image-holder
+		img
+			// TODO remove it
+			max-height: 600px
 .article-page
 	background: #fff
 	margin: -104px auto 0
+	min-height: 104px
 	position: relative
+	padding: 0 50px
 	width: 800px
 	z-index: 1
 	#fixed-socials
 		background: #fff
 		position: absolute
 		left: -60px
+	.vertical
+		margin-top: 200px
+		float: left
+		width: 492px
+.article-name
+	text-align: center
+	h1, h2, h3, h4, h5, h6
+		margin-top: 24px
+		margin-bottom: 33px
+		color: #35363c
+		font-family: 'Futura New'
+		font-size: 44px
+		font-weight: 500
+		letter-spacing: 1.5px
+		line-height: 48px
+.article-date
+	text-align: center
+	color: #a2a3aa
+	font-family: Effra
+	font-size: 16px
+	font-weight: 500
+	line-height: 19px
+	margin-bottom: 20px
+.article-content
+	.article-wysiwyg
+		*, img
+			display: block
+			margin: 0 auto
+			// padding: 0 70px
+			width: 660px
+		img.full
+			width: 100%
+		h1, h2, h3, h4, h5, h6
+			margin-bottom: 20px
+			color: #35363c
+			font-family: FuturaMediumC
+			font-weight: 400
+		h3
+			font-size: 28px
+			line-height: 36px
+		p
+			margin-bottom: 60px
+			color: #35363c
+			font-family: Effra
+			font-size: 20px
+			font-weight: 400
+			line-height: 30px
+			letter-spacing: 0.1px;
+		img
+			margin-bottom: 60px
+		blockquote
+			color: #35363c
+			font-family: Effra
+			font-size: 26px
+			font-weight: 600
+			font-style: italic
+			line-height: 36px
+			margin-bottom: 60px
+			padding-left: 104px
+			padding-top: 4px
+			position: relative
+			.capital
+				color: transparent
+				top: 40px
+				left: -4px
+				position: absolute
+				font-size: 146px
+				font-weight: 500
+				span
+					display: inline-block
+					width: auto
+				svg
+					height: 146px
+					left: 0
+					top: -78px
+					line-height: 1em
+					position: absolute
+					text
+						fill: url(#pattern)
+			&:after
+				content: ''
+				position: absolute
+				right: 0
+				top: 0
+	.article-description, .comments-holder
+		margin: 0 auto
+		padding: 0 70px
+		width: 800px
+	.article-description
+		margin-top: 70px
+		*
+			font-family: Effra
+			font-size: 16px
+			line-height: 28px
+		.label
+			color: #636671
+			font-weight: 600
+		a
+			color: #e81657
+			display: block
+			font-weight: 500
+	.comments-holder
+		.label
+			color: #636671
+			font-family: 'Futura New'
+			font-size: 22px
+			font-weight: 500
+			line-height: 27px
+			margin-top: 60px
+		.comment
+			border: 1px solid #f1f1f1
+			display: block
+			margin: 15px 0 29px
+			position: relative
+			min-height: 110px
+			padding: 40px 30px 42px
+			.comment-image
+				position: absolute
+				left: 26px
+				top: 26px
+				height: 54px
+				width: 54px
+				.image-holder
+					height: 56px
+					width: 56px
+				.img
+					border-radius: 50%
+					height: 55px
+					width: 55px
+			.comment-container
+				padding-left: 65px
+			.comment-remove
+				background: url('../img/icons/remove-icon-1.svg') no-repeat
+				background-size: contain
+				cursor: pointer
+				display: block
+				opacity: 0
+				position: absolute
+				top: 14px
+				right: 15px
+				height: 18px
+				width: 18px
+				transition: opacity .3s
+			&:hover .comment-remove
+				opacity: 1
+				transition: opacity .1s
+			.comment-name
+				color: #636671
+				font-family: 'Futura New'
+				font-size: 18px
+				font-weight: 500
+				line-height: 22px
+			.comment-wysiwyg
+				color: #35363c
+				font-family: Effra
+				font-size: 20px
+				font-weight: 400
+				line-height: 30px
+				margin: 25px 0 0
+			.comment-addons
+				margin-top: 40px
+				text-align: right
+				vertical-align: middle
+				> *
+					display: inline-block
+					vertical-align: middle
+				.input-file
+					top: -6px
+					height: 17px
+					margin-right: 21px
+					width: 26px
+				button[type="submit"]
+					color: white
+					background: url('https://unsplash.it/600/400?image=40')
+					font-family: 'Futura New'
+					font-size: 20px
+					font-weight: 700
+					line-height: 1em
+					padding: 14px 31px
+				.images-holder
+					margin-top: -20px
+					text-align: left
+					width: 100%
+					img
+						display: block
+						margin-top: 20px
+						max-height: 357px
+						max-width: 100%

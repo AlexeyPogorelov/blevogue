@@ -8,12 +8,6 @@ html(lang='en')
 	body
 
 		include ./partials/navigation.jade
-
-		section.article-header
-			.container
-				.image-holder
-					img.fake-img(src="http://41.media.tumblr.com/27d5b62368cf54d79a9446f2bbb33bc7/tumblr_o44rnyAM7l1slisbmo4_1280.jpg", alt="article")
-					.img(style="background-image:url(http://41.media.tumblr.com/27d5b62368cf54d79a9446f2bbb33bc7/tumblr_o44rnyAM7l1slisbmo4_1280.jpg)")
 			ul#fixed-socials.socials.hidden
 				li
 					a(href='https://www.facebook.com/sharer.php?src=sp&u=http://makemeat.com/works/lounge_fm&app_id=966242223397117&display=popup&title=Lounge FM&description=Design for iOS Application&picture=http://makemeat.com', target='_blank')
@@ -31,6 +25,11 @@ html(lang='en')
 					a(href='https://www.linkedin.com/shareArticle?mini=true&url=http://makemeat.com/works/lounge_fm&title=Lounge FM&summary=Design for iOS Application', target='_blank')
 						i.fa.fa-linkedin
 		section.article-page
+
+			.article-header.vertical
+				.image-holder
+					img.fake-img(src="http://41.media.tumblr.com/27d5b62368cf54d79a9446f2bbb33bc7/tumblr_o44rnyAM7l1slisbmo4_1280.jpg", alt="article")
+					.img(style="background-image:url(http://41.media.tumblr.com/27d5b62368cf54d79a9446f2bbb33bc7/tumblr_o44rnyAM7l1slisbmo4_1280.jpg)")
 			.article-name
 				h1 Що почитати, щоб мозку прибавилося?
 			.article-date
