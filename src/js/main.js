@@ -70,7 +70,7 @@ var animationPrefix = (function () {
 			}
 
 			// TODO temp for develop
-			$('section.articles-gallery-1 > article, .article-content, .article-name, .article-date').find('p, h1, h2, h3, h4, h5, h6, blockquote, span').attr('contenteditable', true).on('click', function (e) {
+			$('section.articles-gallery-1 > article, .article-content, .article-name, .article-date, .video').find('p, h1, h2, h3, h4, h5, h6, blockquote, span').attr('contenteditable', true).on('click', function (e) {
 				e.preventDefault();
 			});
 			$('.article-holder-1 a').on('click', function (e) {
@@ -449,7 +449,7 @@ $(document).on('ready', function () {
 
 		});
 
-		// articles hover
+		// articles and videos hover
 		(function () {
 
 			var $gallery = $('.articles-gallery-1');
@@ -457,6 +457,13 @@ $(document).on('ready', function () {
 					$(this).closest('article').addClass('hover');
 				}, function () {
 					$(this).closest('article').removeClass('hover');
+				});
+
+			var $videos = $('.video-gallery');
+				$videos.find('.image-container > .image-holder, .description-container').hover(function () {
+					$(this).closest('.video').addClass('hover');
+				}, function () {
+					$(this).closest('.video').removeClass('hover');
 				});
 
 		})();
