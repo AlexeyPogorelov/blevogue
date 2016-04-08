@@ -2,7 +2,7 @@ $large: 1300px
 $medium: 1260px
 $tablet: 1000px
 $mobile-large: 760px
-$mobile-medium: 640px
+$mobile-medium: 630px
 $mobile-small: 480px
 $mobile-x-small: 320px
 // $font-stack:
@@ -213,7 +213,8 @@ body::-webkit-scrollbar
 	.main-navigation
 		.block-holder
 			.navigation-pannel
-				padding: 23px 0 28px
+				// padding: 23px 0 28px
+				padding: 23px 0 19px
 				li
 					margin: 0 10px
 					a
@@ -1575,6 +1576,13 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 				transition: color .1s
 	.form-group
 		margin-bottom: 30px
+		.additional
+			color: #636671
+			font-family: 'Futura New'
+			font-size: 12px
+			font-weight: 300
+			line-height: 14px
+			margin-top: 4px
 	.input-group
 		position: relative
 	.close-modal
@@ -1752,6 +1760,23 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 		img
 			// TODO remove it
 			max-height: 600px
+@media screen and (max-width: $medium)
+	.article-header
+		margin-top: 66px
+		.container
+			width: 100%
+@media screen and (max-width: $tablet)
+	.article-header
+		margin-top: 54px
+@media screen and (max-width: $mobile-large)
+	.article-header
+		margin-top: 56px
+		.image-holder img
+			max-height: 374px
+// @media screen and (max-width: $mobile-medium)
+// 	.article-header
+// 		.image-holder img
+// 			max-height: 187px
 .article-page
 	background: #fff
 	margin: -104px auto 0
@@ -1768,6 +1793,18 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 		margin-top: 200px
 		float: left
 		width: 492px
+@media screen and (max-width: $tablet)
+	.article-page
+		margin: 0 auto
+		width: 700px
+@media screen and (max-width: $mobile-large)
+	.article-page
+		width: 520px
+		padding: 0
+@media screen and (max-width: $mobile-medium)
+	.article-page
+		width: calc(100% - 64px)
+
 .article-name
 	text-align: center
 	h1, h2, h3, h4, h5, h6
@@ -1779,6 +1816,38 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 		font-weight: 500
 		letter-spacing: 1.5px
 		line-height: 48px
+@media screen and (max-width: $medium)
+	.article-name
+		h1, h2, h3, h4, h5, h6
+			font-size: 40px
+			font-weight: 500
+			letter-spacing: 1.36px
+			line-height: 44px
+			margin-bottom: 37px
+// TODO fix it
+@media screen and (max-width: $mobile-large)
+	.article-name
+		h1, h2, h3, h4, h5, h6
+			font-size: 38px
+			font-weight: 500
+			letter-spacing: 1.3px
+			line-height: 42px
+			margin-top: 21px
+			margin-bottom: 33px
+@media screen and (max-width: $mobile-medium)
+	.article-name
+		h1, h2, h3, h4, h5, h6
+			font-size: 28px
+			font-weight: 500
+			letter-spacing: 0.95px
+			line-height: 32px
+@media screen and (max-width: $mobile-medium)
+	.article-name
+		margin-top: 16px
+		margin-bottom: 0
+		h1, h2, h3, h4, h5, h6
+			margin-top: 0
+			margin-bottom: 24px
 .article-date
 	text-align: center
 	color: #a2a3aa
@@ -1787,6 +1856,17 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 	font-weight: 500
 	line-height: 19px
 	margin-bottom: 20px
+@media screen and (max-width: $mobile-large)
+	.article-date
+		font-size: 14px
+		font-weight: 500
+		line-height: 17px
+@media screen and (max-width: $mobile-medium)
+	.article-date
+		margin-bottom: 15px
+		font-size: 12px
+		font-weight: 500
+		line-height: 14px
 .article-content
 	.article-wysiwyg
 		*, img
@@ -1811,7 +1891,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 			font-size: 20px
 			font-weight: 400
 			line-height: 30px
-			letter-spacing: 0.1px;
+			letter-spacing: 0.1px
 		img
 			margin-bottom: 60px
 		blockquote
@@ -1952,6 +2032,118 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 						margin-top: 20px
 						max-height: 357px
 						max-width: 100%
+@media screen and (max-width: $medium)
+	.article-content
+		.article-wysiwyg
+			*, img
+				width: 520px
+			p
+				font-family: Effra
+				font-size: 18px
+				font-weight: 400
+				line-height: 28px
+				margin-bottom: 50px
+			img
+				margin-bottom: 50px
+			blockquote
+				font-size: 22px
+				line-height: 32px
+				margin-bottom: 50px
+				padding-left: 93px
+				.capital
+					font-size: 132px
+					// font-size: 22px
+					// font-weight: 500
+					// line-height: 32px
+		.article-description, .comments-holder
+			padding: 0
+			width: 520px
+// @media screen and (max-width: $tablet)
+@media screen and (max-width: $mobile-large)
+	.article-content
+		.article-description
+			padding-left: 10px
+			*
+				font-size: 16px
+				line-height: 28px
+@media screen and (max-width: $mobile-medium)
+	.article-content
+		.article-wysiwyg
+			*
+				width: 100%
+				// width: calc(100% - 64px)
+				padding-left: 32px
+				padding-right: 32px
+			p
+				font-size: 16px
+				font-weight: 400
+				line-height: 26px
+				margin-bottom: 30px
+			img
+				margin-bottom: 30px
+				width: 100%
+				padding-left: 0
+				padding-right: 0
+			blockquote
+				margin-bottom: 30px
+				padding-left: 70px
+				padding-top: 0
+				font-size: 20px
+				font-weight: 500
+				line-height: 30px
+				.capital
+					left: -8px
+					top: 61px
+					font-size: 58px
+					font-weight: 600
+		.article-description, .comments-holder
+			width: 100%
+			// width: calc(100% - 64px)
+			padding-left: 32px
+			padding-right: 32px
+		.article-description
+			margin-top: 0
+		.article-description *
+			font-size: 12px
+			line-height: 24px
+		.comments-holder
+			overflow: hidden
+			padding-left: 0
+			padding-right: 0
+			.label
+				margin-top: 27px
+				font-size: 18px
+				font-weight: 500
+				line-height: 24px
+				padding-left: 0
+				padding-right: 0
+				padding-left: 32px
+				padding-right: 32px
+			.comment
+				border: none
+				border-bottom: 1px solid #f1f1f1
+				&:nth-child(1)
+					// .comment:first-of-type
+					// &:first-child
+					border-top: 1px solid #f1f1f1
+				.comment-container
+					padding-left: 0
+					.comment-name
+						padding-left: 65px
+						min-height: 22px
+				.comment-image
+					position: absolute
+					left: 26px
+					top: 26px
+					height: 43px
+					width: 43px
+					.image-holder
+						height: 45px
+						width: 45px
+					.img
+						border-radius: 50%
+						height: 44px
+						width: 44px
 
 // --------------------------------------------------
 // PROFILE
@@ -2016,3 +2208,39 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 		// 	.input-group-1:last-of-type
 		// 		margin-bottom: 0
 				// display: none !important
+
+// --------------------------------------------------
+// VIDEO-GALlERY
+// --------------------------------------------------
+.video-gallery
+	// .container
+	margin-top: 126px
+	.video:first-of-type, .video.first
+		.image-container
+			padding-right: 0
+			&:after
+				margin-left: -50px
+	.video
+		margin-bottom: 60px
+		position: relative
+		.image-container
+			padding-right: 280px
+			&:after
+				content: ''
+				position: absolute
+				background: url('../img/icons/play-button-1.svg') no-repeat
+				left: 50%
+				top: 50%
+				margin-left: -190px
+				margin-top: -50px
+				height: 100px
+				width: 100px
+		.description-container
+			background: #fff
+			display: block
+			padding: 30px 40px
+			position: absolute
+			right: 0
+			top: 60px
+			width: 390px
+

@@ -93,7 +93,7 @@ var animationPrefix = (function () {
 
 			}
 
-			// blockquote
+			// blockquote capital letter
 			(function () {
 				var $blockquote = $('blockquote');
 				if ($blockquote.length) {

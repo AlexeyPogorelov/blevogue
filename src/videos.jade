@@ -1,0 +1,39 @@
+doctype html
+html(lang='en')
+	head
+		title BLEVOGUE
+
+		include ./partials/head.jade
+
+	body
+
+		include ./partials/navigation.jade
+
+		.video-gallery
+			.container
+				.video.first
+					.image-container
+						.image-holder(style="background-color:#ff6ebf")
+							a(href="video.html").article-link
+								img.fake-img(src="https://unsplash.it/600/400?image=190", alt="article")
+							.img(style="background-image:url(https://unsplash.it/600/400?image=190)")
+					.description-container
+						a(href="video.html").description
+							h3 Поради: що
+							p «Мої плаття – ефемерні предмети архітектури, призначені для того, щоб прославляти пропорції жіночого тіла,» – одного разу поспіхом прокоментував Крістіан Діор. Так
+				.video
+					.image-container
+						.image-holder(style="background-color:#ff6ebf")
+							a(href="video.html").article-link
+								img.fake-img(src="https://unsplash.it/600/400?image=190", alt="article")
+							.img(style="background-image:url(https://unsplash.it/600/400?image=190)")
+					.description-container
+						a(href="video.html").description
+							h3 Поради: що
+							p «Мої плаття – ефемерні предмети архітектури, призначені для того, щоб прославляти пропорції жіночого тіла,» – одного разу поспіхом прокоментував Крістіан Діор. Так
+
+		include ./partials/footer.jade
+
+		include ./partials/modals.jade
+
+	include ./partials/scripts.jade
