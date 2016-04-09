@@ -87,7 +87,7 @@ var animationPrefix = (function () {
 				$('.fadeInUp').addClass('wow fadeInUp');
 				$('.fadeInRight').addClass('wow fadeInRight');
 
-				$('section.articles-gallery-1 > article').addClass('wow fadeInUp');
+				$('section.articles-gallery-1 article').addClass('wow fadeInUp');
 
 				new WOW().init();
 
