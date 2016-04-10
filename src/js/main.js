@@ -100,9 +100,44 @@ var animationPrefix = (function () {
 					$blockquote.each(function () {
 						var $self = $(this),
 							letter = $self.text().substring(0,1).toUpperCase(),
-							text = $self.text().substring(1);
-						$self.text( text );
-						$self.prepend('<span class="capital"><span>' + letter + '</span><svg><text x="0" y="1em">' + letter + '</text></svg></span>');
+							text = $self.text().substring(1),
+							$capital = $('<span>').addClass('capital'),
+							$original = $('<span>').addClass('original').text( letter ),
+							$fake = $('<svg><text x="0" y="1em">' + letter + '</text></svg>'),
+							$content = $('<span>').addClass('content').text( text ),
+							timeout;
+						$self.text('');
+						$self.prepend([
+
+							$capital.prepend([
+
+								$original,
+								$fake
+
+							])
+
+						]).append( $content );
+						
+						timeout = setTimeout(function () {
+
+							$self.css({
+								'padding-left': $original.innerWidth()
+							});
+
+						}, 300);
+
+						$(window).on('resize', function () {
+
+							clearTimeout( timeout );
+							timeout = setTimeout(function () {
+
+								$self.css({
+									'padding-left': $original.innerWidth()
+								});
+
+							}, 300);
+
+						});
 					});
 				}
 			})();
@@ -151,9 +186,7 @@ $(document).on('ready', function () {
 	var $window = $(window),
 		winWidth = $window.width(),
 		winHeight = $window.height(),
-		dom = {
-			$body: $('body')
-		},
+		bodyHeight = $('body').height(),
 		bodyOverflow = {
 			fixBody: function () {
 
@@ -526,7 +559,7 @@ $(document).on('ready', function () {
 
 			var top = $(this).scrollTop();
 
-			if (top > winHeight / 2) {
+			if (top > bodyHeight - winHeight) {
 
 				goUp.show();
 
@@ -543,6 +576,7 @@ $(document).on('ready', function () {
 
 			winWidth = $window.width();
 			winHeight = $window.height();
+			bodyHeight = $('body').height();
 
 		});
 

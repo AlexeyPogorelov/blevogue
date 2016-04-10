@@ -195,6 +195,7 @@ body::-webkit-scrollbar
 			display: inline-block
 			vertical-align: middle;
 		& > span
+			display: none
 			margin-left: 7px
 	i
 		background-position: 50% 50%
@@ -219,6 +220,9 @@ body::-webkit-scrollbar
 					margin: 0 10px
 					a
 						font-size: 18px
+						svg
+							left: 15px
+
 	.controls-holder
 		a
 			font-size: 15px
@@ -1904,9 +1908,14 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 			font-style: italic
 			line-height: 36px
 			margin-bottom: 60px
+			min-height: 106px
 			padding-left: 104px
 			padding-top: 4px
 			position: relative
+			.content
+				// margin-left: -14px
+				padding-left: 0
+				width: auto
 			.capital
 				color: transparent
 				top: 40px
@@ -1923,13 +1932,18 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 					top: -78px
 					line-height: 1em
 					position: absolute
+					z-index: -1
 					text
 						fill: url(#pattern)
 			&:after
 				content: ''
+				background: url('../img/icons/quotes-1.png')
 				position: absolute
-				right: 0
-				top: 0
+				right: -4px
+				top: 8px
+				height: 31px
+				width: 54px
+				z-index: -1
 	.article-description, .comments-holder
 		margin: 0 auto
 		padding: 0 70px
@@ -2052,6 +2066,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 				line-height: 32px
 				margin-bottom: 50px
 				padding-left: 93px
+				min-height: 94px
 				.capital
 					font-size: 132px
 					// font-size: 22px
@@ -2093,11 +2108,23 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 				font-size: 20px
 				font-weight: 500
 				line-height: 30px
+				min-height: 40px
+				.content
+					padding-right: 0
+					padding-left: 26px
+					width: auto
+				.original
+					padding-right: 0
+					padding-left: 0
 				.capital
 					left: -8px
 					top: 61px
 					font-size: 58px
 					font-weight: 600
+					// svg
+						// left: 30px
+				&:after
+					display: none
 		.article-description, .comments-holder
 			width: 100%
 			// width: calc(100% - 64px)
