@@ -110,6 +110,7 @@ body::-webkit-scrollbar
 	position: fixed
 	top: 0
 	width: 100%
+	transform: translateZ(0)
 	z-index: 11
 	.block-holder
 		max-width: 1440px
@@ -270,28 +271,40 @@ $main-slider-height: 600px
 $main-slider-height-medium: 354px
 $main-slider-height-mobile-large: 274px
 $main-slider-height-mobile-small: 247px
-$main-slider-deactive-padding-1: 126px 70px 0
-$main-slider-deactive-padding-2: 87px 70px 0
-$main-slider-deactive-padding-1-medium: 77px 70px 0
-$main-slider-deactive-padding-2-medium: 54px 70px 0
-$main-slider-deactive-padding-1-tablet: 77px 30px 0
-$main-slider-deactive-padding-2-tablet: 54px 30px 0
-$main-slider-deactive-padding-1-mobile-large: 60px 30px 0
-$main-slider-deactive-padding-2-mobile-large: 43px 30px 0
-$main-slider-deactive-padding-1-mobile-small: 33px 16px 0
-$main-slider-deactive-padding-2-mobile-small: 24px 16px 0
+// $main-slider-deactive-padding-1: 126px 70px 0
+// $main-slider-deactive-padding-2: 87px 70px 0
+// $main-slider-deactive-padding-1-medium: 77px 70px 0
+// $main-slider-deactive-padding-2-medium: 54px 70px 0
+// $main-slider-deactive-padding-1-tablet: 77px 30px 0
+// $main-slider-deactive-padding-2-tablet: 54px 30px 0
+// $main-slider-deactive-padding-1-mobile-large: 60px 30px 0
+// $main-slider-deactive-padding-2-mobile-large: 43px 30px 0
+// $main-slider-deactive-padding-1-mobile-small: 33px 16px 0
+// $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
+$main-slider-deactive-padding-1: 0
+$main-slider-deactive-padding-2: 0
+$main-slider-deactive-padding-1-medium: 0
+$main-slider-deactive-padding-2-medium: 0
+$main-slider-deactive-padding-1-tablet: 0
+$main-slider-deactive-padding-2-tablet: 0
+$main-slider-deactive-padding-1-mobile-large: 0
+$main-slider-deactive-padding-2-mobile-large: 0
+$main-slider-deactive-padding-1-mobile-small: 0
+$main-slider-deactive-padding-2-mobile-small: 0
 .main-slider
 	position: relative
 	overflow: hidden
 	margin-top: 126px
 	// margin-bottom: 114px
 	.slider-holder
-		transition: transform .8s cubic-bezier(0.4, 0.0, 0.2, 1)
+		position: relative
+		transition: transform .8s cubic-bezier(0.4, 0.0, 0.2, 1), left .8s cubic-bezier(0.4, 0.0, 0.2, 1)
 	.slider-viewport
 		overflow: visible
 		// margin: 0 auto
 		// width: calc(100% - 420px)
 	.paginator-holder
+		display: none
 		.prev-slide, .next-slide
 			position: absolute
 			height: 100%
@@ -314,7 +327,10 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 		.image-holder
 			display: block
 			height: 100%
-			perspective: 400px
+			transition: opacity .5s
+			transform-origin: 0 100%
+			transform: scale(0.85)
+			transition: transform .5s
 			.img
 				max-height: $main-slider-height
 		.description-holder
@@ -335,8 +351,10 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 			transform-origin: 50% 100%
 			transform: translate(0, 20px) rotateX(80deg)
 			transition: opacity .9s, transform .6s
-			opacity: 1
 			transform: none
+		.image-holder:hover
+				opacity: .4
+				transition: opacity .1s
 		&.active
 			.slide-content
 				padding: 0
@@ -347,9 +365,29 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 				transform-origin: 50% 100%
 				transition: opacity .9s, transform .6s
 				// transition-delay: .6s
+			.image-holder
+				// opacity: 1 !important
+				transform: scale(1)
+				transform-origin: 50% 100%
+				opacity: 1
+				transition: transform .5s
 			& ~ .slide
 					.slide-content
 						padding: $main-slider-deactive-padding-2
+						.image-holder
+							transform-origin: 100% 100%
+							transform: scale(0.9)
+			&:hover
+				opacity: 1
+		&.wow
+			.img
+				opacity: 0
+				transition: opacity 0
+		&.animated
+			.img
+				opacity: 1
+				transition: opacity 1.4s 0.3s
+
 @media screen and (max-width: $medium)
 	.main-slider
 		margin-top: 106px
@@ -461,7 +499,7 @@ section.articles-gallery-1
 			transform: translateY(40px)
 			opacity: 0
 			.image-holder
-				transform: scale(0)
+				transform: scale(1)
 				transform-origin: 0 0
 			.img
 				opacity: 0
@@ -522,18 +560,18 @@ section.articles-gallery-1
 		font-size: 16px
 		font-weight: 500
 		line-height: 19px
-		transform: translateX(200%)
-		transition: transform .3s
+		opacity: 0
+		transition: opacity .3s
 	article.hover
 		.date-holder
-			transform: translateY(0)
-			transition: transform .3s
+			opacity: 1
+			transition: opacity .3s .3s
 	.socials-holder
 		top: 30px
 		left: 30px
 		position: absolute
-		transform: translateY(-200%)
-		transition: transform .3s
+		opacity: 0
+		transition: opacity .3s
 		z-index: 1
 		li
 			display: block
@@ -544,8 +582,8 @@ section.articles-gallery-1
 				font-size: 18px
 	article.hover
 		.socials-holder
-			transform: translateY(0)
-			transition: transform .3s
+			opacity: 1
+			transition: opacity .3s .3s
 
 	.article-holder-1, .article-holder-2, .article-holder-3, .article-holder-4, .article-holder-5, .article-holder-6, .article-holder-7, .article-holder-8
 		position: relative
@@ -742,29 +780,34 @@ section.articles-gallery-1
 			outline-offset: -2px
 			display: inline-block
 			height: 46px
-			padding: 0 30px
+			padding: 0 26px
 			position: relative
-			transition: outline .3s
+			transition: outline .3s, background .3s
 			span
+				font-family: 'Futura New'
 				color: #35363c
 				font-size: 20px
-				font-weight: 300
+				font-weight: 400
 				height: 24px
 				line-height: 46px
+				letter-spacing: 0.2px
 				margin: 0 8px
+				position: relative
+				vertical-align: middle
 				width: 61px
 				transition: color .3s, margin .3s
 			&:hover
+				background: #000
 				outline-color: transparent
-				transition: outline .1s
+				transition: outline .1s, background .1s
 			&:hover span
 				color: white
-				margin: 0 16px 0 0
-				position: relative
+				// margin: 0 16px 0 0
+				// position: relative
 				transition: color .1s, margin .1s
 			&:before
 				content: ''
-				background: url('https://unsplash.it/600/400?image=17') no-repeat
+				background: url('https://unsplash.it/600/400?image=18') no-repeat
 				display: block
 				opacity: 0
 				position: absolute
@@ -772,27 +815,30 @@ section.articles-gallery-1
 				top: 0
 				height: 100%
 				width: 100%
+				z-index: 0
 				transition: opacity .3s
 			&:hover:before
-				opacity: 1
+				opacity: .5
 				transition: opacity .1s
-			&:after
-				background: url('../img/icons/arrow-down-1.svg') no-repeat
-				content: ''
-				display: block
-				top: 17px
-				right: 18px
-				position: absolute
+			& svg
+				// background: url('../img/icons/arrow-down-1.svg') no-repeat
+				// content: ''
+				display: inline-block
+				// top: 17px
+				// right: 18px
+				bottom: -2px
+				position: relative
 				height: 16px
 				line-height: 46px
 				width: 12px
-				opacity: 0
-				transform: translateX(0)
-				transition: opacity .3s, transform .3s
-			&:hover:after
-				opacity: 1
-				transform: translateX(-8px)
-				transition: opacity .1s, transform .1s
+				vertical-align: middle
+				path
+					fill: #000000
+					transition: fill .3s
+			&:hover svg
+				path
+					fill: #ffffff
+					transition: fill .1s
 
 .msie
 	.articles-gallery-1
@@ -1835,6 +1881,7 @@ section.articles-gallery-1
 // 	.article-header
 // 		.image-holder img
 // 			max-height: 187px
+.article-video-page,
 .article-page
 	background: #fff
 	margin: -104px auto 0
@@ -1851,17 +1898,52 @@ section.articles-gallery-1
 		margin-top: 200px
 		float: left
 		width: 492px
+.article-video-page
+	margin-top: 0
+	.article-name
+		h1, h2, h3, h4, h5, h6
+			margin-top: 18px
 @media screen and (max-width: $tablet)
+	.article-video-page,
 	.article-page
 		margin: 0 auto
 		width: 700px
+		.article-name
+			h1, h2, h3, h4, h5, h6
+				margin-top: 14px
+	.article-video-page
+		.article-name
+			h1, h2, h3, h4, h5, h6
+				margin-bottom: 31px
+		.article-date
+			font-size: 14px
+			font-weight: 600
+			line-height: 17px
 @media screen and (max-width: $mobile-large)
+	.article-video-page,
 	.article-page
 		width: 520px
 		padding: 0
+	.article-video-page
+		.article-name
+			h1, h2, h3, h4, h5, h6
+				letter-spacing: 2.3px
+				margin-bottom: 35px
 @media screen and (max-width: $mobile-medium)
+	.article-video-page,
 	.article-page
 		width: calc(100% - 64px)
+	.article-video-page
+		.article-name
+			margin-top: 9px
+			h1, h2, h3, h4, h5, h6
+				margin-top: 2px
+				letter-spacing: 0.9px
+				margin-bottom: 24px
+		.article-date
+			// margin-top: 2px
+			font-size: 12px
+			line-height: 14px
 
 .article-name
 	text-align: center
@@ -2101,6 +2183,12 @@ section.articles-gallery-1
 						margin-top: 20px
 						max-height: 357px
 						max-width: 100%
+	&.video
+		.comments-holder
+			.label
+				margin-top: 64px
+			.comment .comment-addons
+				margin-top: 36px
 @media screen and (max-width: $medium)
 	.article-content
 		.article-wysiwyg
@@ -2130,6 +2218,10 @@ section.articles-gallery-1
 		.article-description, .comments-holder
 			padding: 0
 			width: 520px
+		&.video
+			.comments-holder
+				.label
+					margin-top: 54px
 // @media screen and (max-width: $tablet)
 @media screen and (max-width: $mobile-large)
 	.article-content
@@ -2233,6 +2325,12 @@ section.articles-gallery-1
 						border-radius: 50%
 						height: 44px
 						width: 44px
+		&.video
+			.comments-holder
+				.label
+					margin-top: 0px
+			.comment .comment-addons
+				margin-top: 52px
 
 // --------------------------------------------------
 // PROFILE
@@ -2318,7 +2416,7 @@ section.articles-gallery-1
 	// .container
 	margin-top: 126px
 	margin-top: 161px
-	.video:first-of-type, .video.first
+	.video.first
 		margin-bottom: 60px
 		.image-container
 			height: 100%
@@ -2341,7 +2439,7 @@ section.articles-gallery-1
 			padding-right: 280px
 			&:before, &:after
 				background-size: contain
-				// border-radius: 50%
+				border-radius: 50%
 				content: ''
 				position: absolute
 				pointer-events: none
@@ -2353,7 +2451,7 @@ section.articles-gallery-1
 				width: 100px
 				z-index: 1
 			&:before
-				background: url('../img/icons/play-button-3.svg') no-repeat
+				background: url('../img/icons/play-button-1.svg') no-repeat
 				background-size: contain
 				transition: opacity 0.2s linear
 			&:after
@@ -2461,6 +2559,8 @@ section.articles-gallery-1
 				path
 					fill: #ffffff
 					transition: fill .1s
+	&.module
+		margin-top: 80px
 
 @media screen and (max-width: $medium)
 	.video-gallery
@@ -2501,7 +2601,7 @@ section.articles-gallery-1
 				p
 					font-size: 14px
 					line-height: 24px
-		.video:first-of-type, .video.first
+		.video.first
 			margin-bottom: 0
 			height: auto
 			.image-container
@@ -2516,6 +2616,10 @@ section.articles-gallery-1
 				left: 70px
 				width: 460px
 				transform: none
+		&.module
+			margin-top: 60px
+			.video
+				margin-bottom: 42px
 
 @media screen and (max-width: $mobile-large)
 	.video-gallery
@@ -2553,7 +2657,7 @@ section.articles-gallery-1
 					font-size: 14px
 					letter-spacing: 0.3px
 					line-height: 19px
-		.video:first-of-type, .video.first
+		.video.first
 			margin-bottom: -32px
 			.image-container
 				height: auto
@@ -2568,3 +2672,31 @@ section.articles-gallery-1
 				left: 70px
 				width: 320px
 				transform: none
+
+.article-video-header
+	margin-top: 126px
+	iframe
+		height: 572px
+		width: 100%
+@media screen and (max-width: $medium)
+	.article-video-header
+		margin-top: 66px
+		.container
+			width: 100%
+		iframe
+			height: 574px
+@media screen and (max-width: $tablet)
+	.article-video-header
+		margin-top: 56px
+		iframe
+			height: 448px
+@media screen and (max-width: $mobile-large)
+	.article-video-header
+		// margin-top: 56px
+		iframe
+			height: 358px
+@media screen and (max-width: $mobile-medium)
+	.article-video-header
+		// margin-top: 56px
+		iframe
+			height: 179px

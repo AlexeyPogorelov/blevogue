@@ -48,10 +48,27 @@
 					DOM.$slides.eq(0).addClass('active');
 				},
 				init: function () {
+					this.addHandlersToSlides();
 					state.cur = state.cur || 0;
 					state.slides = DOM.$slides.length;
 					state.pages = Math.ceil(DOM.$slides.length / opt.slidesOnPage);
 					DOM.$preloader.fadeOut(150);
+				},
+				addHandlersToSlides: function () {
+					DOM.$slides.each(function (i) {
+						var $self = $(this);
+						$self.attr('data-id', i);
+						$self.find('a').on('click', function (e) {
+							if (!$self.hasClass('active')) {
+								e.preventDefault();
+								if (i > state.cur) {
+									plg.nextSlide();
+								} else {
+									plg.prevSlide();
+								}
+							}
+						});
+					});
 				},
 				resize: function () {
 
@@ -129,6 +146,9 @@
 						'-webkit-transform': 'translateX( -' + (state.sliderWidth * id) + 'px) translateZ(0)',
 						'transform': 'translateX( -' + (state.sliderWidth * id) + 'px) translateZ(0)'
 					});
+					// DOM.$sliderHolder.css({
+					// 	'left': -(state.sliderWidth * id) + 'px'
+					// });
 					DOM.$slides.eq(id).addClass('active').siblings().removeClass('active');
 					DOM.$pagination.find('.page').eq(id).addClass('active').siblings().removeClass('active');
 					state.cur = id;

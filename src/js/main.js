@@ -89,6 +89,7 @@ var animationPrefix = (function () {
 				$('.fadeInRight').addClass('wow fadeInRight');
 
 				// $('section.articles-gallery-1 article').addClass('wow').find('> .image-holder, > .description').addClass('wow-disabled');
+				$('#main-slider').find('.slide').addClass('wow');
 				$('section.articles-gallery-1 article').addClass('wow');
 
 				new WOW().init();
@@ -274,6 +275,8 @@ $(document).on('ready', function () {
 
 		// parallax
 		(function () {
+
+			if ($.browser.mobile) return;
 
 			var $parallaxElemens = $('.parallax-element'),
 				$parallaxArticle = $('.article-holder-3 > article:nth-child(2)'),
@@ -523,10 +526,12 @@ $(document).on('ready', function () {
 
 			$('.modal-holder.cross-bottom').each(function () {
 
-				var $self = $(this);
-				$self.on('scroll', function () {
+				var $self = $(this),
+					$cross = $self.find('.close-modal');
+				$self.on('scroll', function (e) {
+					e.stopPropagation();
 
-					$(this).find('.close-modal').css({
+					$cross.css({
 						'bottom': -$self.scrollTop()
 					});
 
@@ -536,10 +541,12 @@ $(document).on('ready', function () {
 
 			$('.modal-holder.cross-top').each(function () {
 
-				var $self = $(this);
-				$self.on('scroll', function () {
+				var $self = $(this),
+					$cross = $self.find('.close-modal');
+				$self.on('scroll', function (e) {
+					e.stopPropagation();
 
-					$(this).find('.close-modal').css({
+					$cross.css({
 						'top': $self.scrollTop()
 					});
 
