@@ -19,9 +19,6 @@ body::-webkit-scrollbar
 	height: 0
 	width: 0
 
-.preloader
-	display: none
-
 // --------------------------------------------------
 // INPUT
 // --------------------------------------------------
@@ -144,7 +141,7 @@ body::-webkit-scrollbar
 				&.active:after
 					// background: #000
 					background: url('http://img-fotki.yandex.ru/get/5607/5091629.6b/0_612e6_b9039c0d_M.jpg')
-					background-position: 50%;
+					background-position: 50%
 					border-radius: 50%
 					bottom: -12px
 					content: ''
@@ -193,7 +190,7 @@ body::-webkit-scrollbar
 		display: inline-block
 		& > *
 			display: inline-block
-			vertical-align: middle;
+			vertical-align: middle
 		& > span
 			display: none
 			margin-left: 7px
@@ -338,16 +335,18 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 			transform-origin: 50% 100%
 			transform: translate(0, 20px) rotateX(80deg)
 			transition: opacity .9s, transform .6s
+			opacity: 1
+			transform: none
 		&.active
 			.slide-content
 				padding: 0
 				transition: padding .6s
 			.description-holder
 				opacity: 1
-				transform: translate(0, 0) rotateX(0)
+				// transform: translate(0, 0) rotateX(0)
 				transform-origin: 50% 100%
 				transition: opacity .9s, transform .6s
-				transition-delay: .6s
+				// transition-delay: .6s
 			& ~ .slide
 					.slide-content
 						padding: $main-slider-deactive-padding-2
@@ -426,6 +425,10 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 // ARTICLES
 // --------------------------------------------------
 
+section.articles-gallery-1
+	article
+		visibility: visible !important
+
 .articles-gallery-1
 	overflow: hidden
 	.container
@@ -454,6 +457,44 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 		// transform: translateZ(0)
 		// a.image-holder
 		// 	display: block
+		&.wow
+			transform: translateY(40px)
+			opacity: 0
+			.image-holder
+				transform: scale(0)
+				transform-origin: 0 0
+			.img
+				opacity: 0
+				// transform: translateY(20px)
+			.description
+				opacity: 0
+				transform: translateY(40px)
+		&.animated
+			transform: translateY(40px)
+			opacity: 1
+			transition-property: transform, opacity
+			transition-delay: 0s, 0s
+			transition-duration: 0.8s, 0.8s
+			transform: translateY(0)
+			.image-holder
+				transition-property: transform, opacity
+				transition-delay: 0s, 0.5s
+				transition-timing-function: ease-out, linear
+				transition-duration: 0.5s, 0.5s
+				transform: scale(1)
+			.img
+				opacity: 1
+				// transition: opacity 0.5s 0.5s
+				transition-property: transform, opacity
+				transition-delay: 0s, 0.5s
+				transition-duration: 0.5s, 0.5s
+				transform: scale(1)
+			.description
+				opacity: 1
+				transition-property: transform, opacity
+				transition-delay: 0.4s, 0.4s
+				transition-duration: 0.8s, 0.8s
+				transform: translateY(0)
 	.img
 		display: block
 		opacity: 1
@@ -529,6 +570,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 			.image-holder
 				height: 464px
 				width: 320px
+				transform-origin: 100% 0
 			.description
 				left: 240px
 				top: -110px
@@ -539,8 +581,8 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 		article:nth-child(1)
 			width: 500px
 			.image-holder
-				height: 464px;
-				width: 320px;
+				height: 464px
+				width: 320px
 			.description
 				left: 210px
 				top: -108px
@@ -553,6 +595,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 			.image-holder
 				height: 464px
 				width: 320px
+				transform-origin: 100% 0
 			.description
 				background: transparent
 				padding-left: 0
@@ -581,6 +624,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 			.image-holder
 				height: 254px
 				width: 350px
+				transform-origin: 100% 0
 			.description
 				background: transparent
 				padding-left: 0
@@ -613,6 +657,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 			.image-holder
 				height: 464px
 				width: 350px
+				transform-origin: 100% 0
 			.description
 				background: transparent
 				padding-left: 0
@@ -645,6 +690,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 			.image-holder
 				height: 254px
 				width: 350px
+				transform-origin: 100% 0
 			.description
 				background: transparent
 				padding-left: 0
@@ -662,6 +708,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 			.image-holder
 				width: 600px
 				height: 400px
+				transform-origin: 100% 0
 			.description
 				text-align: left
 				left: 106px
@@ -676,6 +723,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 			.image-holder
 				width: 600px
 				height: 400px
+				transform-origin: 100% 0
 			.description
 				text-align: left
 				left: 106px
@@ -1355,7 +1403,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 		display: inline-block
 		& > *
 			display: inline-block
-			vertical-align: middle;
+			vertical-align: middle
 		& > span
 			margin-left: 7px
 	i
@@ -1398,7 +1446,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 								display: block
 					&.active:after
 						background: url('http://img-fotki.yandex.ru/get/5607/5091629.6b/0_612e6_b9039c0d_M.jpg')
-						background-position: 50%;
+						background-position: 50%
 						border-radius: 50%
 						bottom: 7px
 						content: ''
@@ -1607,6 +1655,9 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 	.modal-content
 		background: #fff
 		bottom: auto
+		// border: 1px solid #cdd1dc
+		outline: 1px solid #cdd1dc
+		outline-offset: -1px
 		left: 50%
 		right: auto
 		top: 50%
@@ -1623,6 +1674,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 			height: 54px
 			line-height: 53px
 			text-align: center
+			position: relative
 			width: 100%
 			b
 				font-weight: 700
@@ -1885,8 +1937,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 		h1, h2, h3, h4, h5, h6
 			margin-bottom: 20px
 			color: #35363c
-			font-family: FuturaMediumC
-			font-weight: 400
+			font-weight: 600
 		h3
 			font-size: 28px
 			line-height: 36px
@@ -1935,6 +1986,8 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 					z-index: -1
 					text
 						fill: url(#pattern)
+			img
+				margin-top: 60px
 			&:after
 				content: ''
 				background: url('../img/icons/quotes-1.png')
@@ -2067,6 +2120,8 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 				margin-bottom: 50px
 				padding-left: 93px
 				min-height: 94px
+				img
+					margin-top: 50px
 				.capital
 					font-size: 132px
 					// font-size: 22px
@@ -2109,6 +2164,10 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 				font-weight: 500
 				line-height: 30px
 				min-height: 40px
+				img
+					margin-top: 30px
+					margin-left: -17px
+					width: 100vw
 				.content
 					padding-right: 0
 					padding-left: 26px
@@ -2121,8 +2180,9 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 					top: 61px
 					font-size: 58px
 					font-weight: 600
-					// svg
-						// left: 30px
+					svg
+						left: 34px
+						padding: 0
 				&:after
 					display: none
 		.article-description, .comments-holder
@@ -2275,9 +2335,13 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 			display: block
 		.image-holder
 			height: 100%
+		.article-link
+			height: 100%
 		.image-container
 			padding-right: 280px
 			&:before, &:after
+				background-size: contain
+				// border-radius: 50%
 				content: ''
 				position: absolute
 				pointer-events: none
@@ -2289,16 +2353,18 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 				width: 100px
 				z-index: 1
 			&:before
-				background: url('../img/icons/play-button-1.svg') no-repeat
+				background: url('../img/icons/play-button-3.svg') no-repeat
+				background-size: contain
 				transition: opacity 0.2s linear
 			&:after
 				background: url('../img/icons/play-button-2.svg') no-repeat
+				background-size: contain
 				opacity: 0
 				transition: opacity 0.2s linear
 			img
 				height: 464px
 		&.hover .image-container:before
-			opacity: 0
+			// opacity: 0
 			transition: opacity 0.2s linear
 		&.hover .image-container:after
 			opacity: 1
@@ -2338,7 +2404,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 			height: 46px
 			padding: 0 26px
 			position: relative
-			transition: outline .3s
+			transition: outline .3s, background .3s
 			span
 				font-family: 'Futura New'
 				color: #35363c
@@ -2353,8 +2419,9 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 				width: 61px
 				transition: color .3s, margin .3s
 			&:hover
+				background: #000
 				outline-color: transparent
-				transition: outline .1s
+				transition: outline .1s, background .1s
 			&:hover span
 				color: white
 				// margin: 0 16px 0 0
@@ -2373,7 +2440,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 				z-index: 0
 				transition: opacity .3s
 			&:hover:before
-				opacity: 1
+				opacity: .5
 				transition: opacity .1s
 			& svg
 				// background: url('../img/icons/arrow-down-1.svg') no-repeat
@@ -2406,6 +2473,7 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 				// .image-holder img
 				// 	width: 460px
 				// 	height: 287px
+				height: 244px
 				position: relative
 				padding-right: 140px
 				&:before, &:after
@@ -2417,19 +2485,28 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 					width: 46px
 			.description-container
 				min-height: 140px
-				// position: relative
-				top: -269px
-				top: 50%
+				overflow: hidden
+				position: absolute
+				// top: -214px
+				top: 30px
 				right: 0
+				// left: 280px
 				left: auto
 				width: 320px
-				transform: translateY(-50%)
-				// max-height: 200px
+				max-height: 210px
+				h1, h2, h3, h4, h5, h6
+					font-size: 28px
+					line-height: 26px
+					margin-bottom: 6px
+				p
+					font-size: 14px
+					line-height: 24px
 		.video:first-of-type, .video.first
 			margin-bottom: 0
 			height: auto
 			.image-container
 				position: relative
+				height: 376px
 				&:after, &:before
 					margin-top: -23px
 					margin-left: -23px
@@ -2462,10 +2539,10 @@ $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
 					height: 46px
 					width: 46px
 			.description-container
-				position: relative
+				// position: relative
 				top: 67px
-				left: 400px
-				left: 220px
+				// left: 400px
+				// left: 220px
 				width: 220px
 				h1, h2, h3, h4, h5, h6
 					font-size: 26px

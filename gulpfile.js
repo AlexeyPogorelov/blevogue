@@ -88,6 +88,7 @@ gulp.task('watch', function(){
 	gulp.watch(path.watch.html, ['jade']);
 	gulp.watch(path.watch.style, ['sass']);
 	gulp.watch(path.watch.js, ['scripts']);
+	gulp.watch(path.watch.img, ['images']);
 });
 
 gulp.task('default', ['sass', 'jade', 'scripts', 'images', 'fonts', 'browser-sync', 'watch']);

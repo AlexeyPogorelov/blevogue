@@ -80,6 +80,7 @@ var animationPrefix = (function () {
 
 			// initialize plugins
 			$('#main-slider').simpleSlider();
+			$('body').trigger('scroll');
 
 			// WOW init
 			if ($.browser.desktop) {
@@ -87,7 +88,8 @@ var animationPrefix = (function () {
 				$('.fadeInUp').addClass('wow fadeInUp');
 				$('.fadeInRight').addClass('wow fadeInRight');
 
-				$('section.articles-gallery-1 article').addClass('wow fadeInUp');
+				// $('section.articles-gallery-1 article').addClass('wow').find('> .image-holder, > .description').addClass('wow-disabled');
+				$('section.articles-gallery-1 article').addClass('wow');
 
 				new WOW().init();
 
@@ -117,7 +119,7 @@ var animationPrefix = (function () {
 							])
 
 						]).append( $content );
-						
+
 						timeout = setTimeout(function () {
 
 							$self.css({
@@ -273,18 +275,33 @@ $(document).on('ready', function () {
 		// parallax
 		(function () {
 
-			var $parallaxElemens = $('.parallax-element');
+			var $parallaxElemens = $('.parallax-element'),
+				$parallaxArticle = $('.article-holder-3 > article:nth-child(2)'),
+				currentDoc = (document.documentElement || document.body.parentNode || document.body),
+				currentParent = (window.pageYOffset !== undefined) ? window : currentDoc,
+				currentOffset = (window.pageYOffset !== undefined) ? 'pageYOffset' : 'scrollTop',
+				resizeFunction = function () {
+
+					// $parallaxElemens.each(function () {
+					// });
+
+				};
+				resizeFunction();
 
 			$window.on('scroll', function () {
 
-				var offset = $(this).scrollTop() / 4 - ( $window.height() / 2 );
+				var top = currentParent[currentOffset];
 
-				$parallaxElemens.css({
-					'-webkit-transform': 'translateY(' + offset + 'px)',
-					'transform': 'translateY(' + offset + 'px)'
-				});
+				// console.time('timerName');
+				for (var i = $parallaxElemens.length - 1; i >= 0; i--) {
+					$parallaxElemens[i].style.transform = 'translateY(' + top / 2 + 'px)';
+				}
+				// for (var i = 0; i < $parallaxArticle.length; i++) {
+					// $parallaxArticle[i].style.transform = 'translateY(' + top / -20 + 'px)';
+				// }
+				// console.timeEnd('timerName');
 
-			});
+			}).on('resize', resizeFunction);
 
 		})();
 
