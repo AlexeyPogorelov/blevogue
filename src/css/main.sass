@@ -298,7 +298,10 @@ $main-slider-deactive-padding-2-mobile-small: 0
 	// margin-bottom: 114px
 	.slider-holder
 		position: relative
+		float: left
 		transition: transform .8s cubic-bezier(0.4, 0.0, 0.2, 1), left .8s cubic-bezier(0.4, 0.0, 0.2, 1)
+		&.touched
+			transition: none
 	.slider-viewport
 		overflow: visible
 		// margin: 0 auto
@@ -315,6 +318,13 @@ $main-slider-deactive-padding-2-mobile-small: 0
 			left: 0
 		.next-slide
 			right: 0
+	.fakeHolderBefore, .fakeHolderAfter
+		position: absolute
+		top: 0
+	.fakeHolderAfter
+		.slide
+			.image-holder
+				transform-origin: 100% 100%
 	.slide
 		position: relative
 		height: $main-slider-height
@@ -330,7 +340,7 @@ $main-slider-deactive-padding-2-mobile-small: 0
 			transition: opacity .5s
 			transform-origin: 0 100%
 			transform: scale(0.85)
-			transition: transform .5s
+			transition: transform .5s, transform-origin .5s
 			.img
 				max-height: $main-slider-height
 		.description-holder
@@ -370,7 +380,7 @@ $main-slider-deactive-padding-2-mobile-small: 0
 				transform: scale(1)
 				transform-origin: 50% 100%
 				opacity: 1
-				transition: transform .5s
+				transition: transform .5s, transform-origin .5s
 			& ~ .slide
 					.slide-content
 						padding: $main-slider-deactive-padding-2

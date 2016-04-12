@@ -1,43 +1,5 @@
 
-var animationPrefix = (function () {
-		var t,
-		el = document.createElement("fakeelement");
-		var transitions = {
-			"transition": "animationend",
-			"OTransition": "oAnimationEnd",
-			"MozTransition": "animationend",
-			"WebkitTransition": "webkitAnimationEnd"
-		};
-		for (t in transitions) {
-
-			if (el.style[t] !== undefined) {
-
-				return transitions[t];
-
-			}
-
-		}
-	})(),
-	transitionPrefix = (function () {
-		var t,
-		el = document.createElement("fakeelement");
-		var transitions = {
-			"transition": "transitionend",
-			"OTransition": "oTransitionEnd",
-			"MozTransition": "transitionend",
-			"WebkitTransition": "webkitTransitionEnd"
-		};
-		for (t in transitions) {
-
-			if (el.style[t] !== undefined) {
-
-				return transitions[t];
-
-			}
-
-		}
-	})(),
-	loading = {
+var loading = {
 		avgTime: 3000,
 		trg: 1,
 		state: 0,

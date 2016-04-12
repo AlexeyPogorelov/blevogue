@@ -1,3 +1,41 @@
+var animationPrefix = (function () {
+		var t,
+		el = document.createElement("fakeelement");
+		var transitions = {
+			"transition": "animationend",
+			"OTransition": "oAnimationEnd",
+			"MozTransition": "animationend",
+			"WebkitTransition": "webkitAnimationEnd"
+		};
+		for (t in transitions) {
+
+			if (el.style[t] !== undefined) {
+
+				return transitions[t];
+
+			}
+
+		}
+	})(),
+	transitionPrefix = (function () {
+		var t,
+		el = document.createElement("fakeelement");
+		var transitions = {
+			"transition": "transitionend",
+			"OTransition": "oTransitionEnd",
+			"MozTransition": "transitionend",
+			"WebkitTransition": "webkitTransitionEnd"
+		};
+		for (t in transitions) {
+
+			if (el.style[t] !== undefined) {
+
+				return transitions[t];
+
+			}
+
+		}
+	})();
 (function ($) {
 
 	$.fn.simpleSlider = function (opt) {
@@ -48,11 +86,49 @@
 					DOM.$slides.eq(0).addClass('active');
 				},
 				init: function () {
-					this.addHandlersToSlides();
 					state.cur = state.cur || 0;
 					state.slides = DOM.$slides.length;
 					state.pages = Math.ceil(DOM.$slides.length / opt.slidesOnPage);
+
+					if (this.initialized) return false;
+
+					this.addHandlersToSlides();
+
+					if (opt.loop) {
+
+						DOM.$fakeHolderBefore = DOM.$sliderHolder.clone();
+						DOM.$fakeHolderAfter = DOM.$sliderHolder.clone();
+
+						DOM.$fakeHolderBefore
+							.addClass('fakeHolderBefore')
+							.find('.active')
+							.removeClass('active');
+						DOM.$fakeHolderBefore
+							.find('.slide a')
+							.on('click', function (e) {
+								e.preventDefault();
+								plg.loopBack();
+							});
+
+						DOM.$fakeHolderAfter
+							.addClass('fakeHolderAfter')
+							.find('.active')
+							.removeClass('active');
+						DOM.$fakeHolderAfter
+							.find('.slide a')
+							.on('click', function (e) {
+								e.preventDefault();
+								plg.loopForward();
+							});
+
+						DOM.$sliderHolders = DOM.$sliderHolder.add(DOM.$fakeHolderBefore.insertBefore(DOM.$sliderHolder)).add(DOM.$fakeHolderAfter.appendTo(DOM.$viewport));
+						// DOM.$slides = DOM.$sliderHolder.find('.slide');
+						DOM.$slidesAll = DOM.$sliderHolders.find('.slide');
+
+					}
+
 					DOM.$preloader.fadeOut(150);
+					this.initialized = true;
 				},
 				addHandlersToSlides: function () {
 					DOM.$slides.each(function (i) {
@@ -81,7 +157,24 @@
 
 					}
 
-					DOM.$slides.width( DOM.$viewport.width() / opt.slidesOnPage);
+					state.itemWidth = DOM.$viewport.width() / opt.slidesOnPage;
+
+					if (opt.loop) {
+
+						DOM.$slidesAll.width( state.itemWidth );
+
+					} else {
+
+						DOM.$slides.width( state.itemWidth );
+
+					}
+					// DOM.$fakeFirst.css({
+					// 	'left': -DOM.$fakeFirst.width()
+					// });
+					// DOM.$fakeLast.css({
+					// 	'right': -DOM.$fakeLast.width()
+					// });
+
 
 					if (opt.autoHeight) {
 
@@ -101,7 +194,18 @@
 					}
 
 					state.slideWidth = DOM.$slides.eq(0).outerWidth();
-					DOM.$sliderHolder.width(state.slideWidth * state.slides);
+					state.holderWidth = state.slideWidth * state.slides;
+
+					if (opt.loop) {
+
+						DOM.$sliderHolders.width( state.holderWidth );
+
+					} else {
+
+						DOM.$sliderHolder.width( state.holderWidth );
+
+					}
+
 					plg.toSlide(state.cur);
 				},
 				prevSlide: function () {
@@ -110,7 +214,8 @@
 					if (id < 0) {
 
 						// this.toSlide(state.pages - 1);
-						this.toSlide(0);
+						// this.toSlide(0);
+						this.loopBack();
 
 						// horizontalSlider.prevPage();
 
@@ -126,7 +231,8 @@
 					var id = state.cur + 1;
 					if (id >= state.pages) {
 						// this.toSlide(0);
-						this.toSlide(state.pages - 1);
+						// this.toSlide(state.pages - 1);
+						this.loopForward();
 
 						// TODO test it
 						// horizontalSlider.nextPage();
@@ -137,21 +243,93 @@
 					this.toSlide(id);
 
 				},
+				loopBack: function (e) {
+					plg.fakeAnimation(true);
+				},
+				loopForward: function (e) {
+					plg.fakeAnimation();
+				},
+				fakeAnimation: function (direction) {
+					var id;
+					if (direction) {
+						id = -1;
+						DOM.$slidesAll.removeClass('active');
+						DOM.$fakeHolderBefore.find('.slide:last-child').addClass('active');
+						DOM.$sliderHolder.find('.slide:last-child').addClass('active');
+					} else {
+						id = state.slides;
+						DOM.$slidesAll.removeClass('active');
+						DOM.$fakeHolderAfter.find('.slide:first-child').addClass('active');
+						DOM.$sliderHolder.find('.slide:first-child').addClass('active');
+					}
+					DOM.$sliderHolder.css({
+						'transform': 'translateX(' + -(state.sliderWidth * id) + 'px) translateZ(0)'
+					});
+
+					DOM.$fakeHolderBefore.css({
+						'transform': 'translateX( ' + -(state.sliderWidth * id + state.holderWidth) + 'px) translateZ(0)'
+					});
+
+					DOM.$fakeHolderAfter.css({
+						'transform': 'translateX( ' + ( -(state.sliderWidth * id) + state.holderWidth) + 'px) translateZ(0)'
+					});
+
+					DOM.$sliderHolder.one(transitionPrefix, function invisibleSlide (callback) {
+						if ( !$(this).hasClass('slider-holder') ) {
+							DOM.$sliderHolder.one(transitionPrefix, invisibleSlide);
+							return false;
+						}
+						setTimeout(function () {
+							DOM.$sliderHolder.addClass('touched');
+							DOM.$fakeHolderBefore.addClass('touched');
+							DOM.$fakeHolderAfter.addClass('touched');
+							if (direction) {
+								plg.toSlide(state.pages - 1);
+							} else {
+								plg.toSlide(0);
+							}
+							setTimeout(function () {
+								DOM.$sliderHolder.removeClass('touched');
+								DOM.$fakeHolderBefore.removeClass('touched');
+								DOM.$fakeHolderAfter.removeClass('touched');
+							}, 10);
+						}, 400);
+					});
+				},
 				toSlide: function (id) {
 
 					if ( id < 0 || id >= state.pages ) {
+						console.error('id is ' + id);
 						return;
 					}
-					DOM.$sliderHolder.css({
-						'-webkit-transform': 'translateX( -' + (state.sliderWidth * id) + 'px) translateZ(0)',
-						'transform': 'translateX( -' + (state.sliderWidth * id) + 'px) translateZ(0)'
-					});
+					state.cur = id;
 					// DOM.$sliderHolder.css({
 					// 	'left': -(state.sliderWidth * id) + 'px'
 					// });
-					DOM.$slides.eq(id).addClass('active').siblings().removeClass('active');
+					DOM.$slides.removeClass('active').eq(id).addClass('active');
 					DOM.$pagination.find('.page').eq(id).addClass('active').siblings().removeClass('active');
-					state.cur = id;
+
+					if (opt.loop) {
+
+						DOM.$sliderHolder.css({
+							'transform': 'translateX( ' + -(state.sliderWidth * id) + 'px) translateZ(0)'
+						});
+
+						DOM.$fakeHolderBefore.css({
+							'transform': 'translateX( ' + -(state.sliderWidth * id + state.holderWidth) + 'px) translateZ(0)'
+						});
+
+						DOM.$fakeHolderAfter.css({
+							'transform': 'translateX( ' + ( -(state.sliderWidth * id) + state.holderWidth) + 'px) translateZ(0)'
+						});
+
+					} else {
+
+						DOM.$sliderHolder.css({
+							'transform': 'translateX( ' + -(state.sliderWidth * id) + 'px) translateZ(0)'
+						});
+
+					}
 
 				},
 				createPagination: function () {
