@@ -275,25 +275,34 @@ var animationPrefix = (function () {
 					});
 
 					DOM.$sliderHolder.one(transitionPrefix, function invisibleSlide (callback) {
+
 						if ( !$(this).hasClass('slider-holder') ) {
 							DOM.$sliderHolder.one(transitionPrefix, invisibleSlide);
 							return false;
 						}
+
+						DOM.$sliderHolders.find('.active').removeClass('active');
+						DOM.$sliderHolder.addClass('touched');
+						DOM.$fakeHolderBefore.addClass('touched');
+						DOM.$fakeHolderAfter.addClass('touched');
+
+						if (direction) {
+
+							plg.toSlide(state.pages - 1);
+
+						} else {
+
+							plg.toSlide(0);
+						}
+
 						setTimeout(function () {
-							DOM.$sliderHolder.addClass('touched');
-							DOM.$fakeHolderBefore.addClass('touched');
-							DOM.$fakeHolderAfter.addClass('touched');
-							if (direction) {
-								plg.toSlide(state.pages - 1);
-							} else {
-								plg.toSlide(0);
-							}
-							setTimeout(function () {
-								DOM.$sliderHolder.removeClass('touched');
-								DOM.$fakeHolderBefore.removeClass('touched');
-								DOM.$fakeHolderAfter.removeClass('touched');
-							}, 10);
-						}, 400);
+
+							DOM.$sliderHolder.removeClass('touched');
+							DOM.$fakeHolderBefore.removeClass('touched');
+							DOM.$fakeHolderAfter.removeClass('touched');
+
+						}, 1);
+
 					});
 				},
 				toSlide: function (id) {
@@ -306,7 +315,12 @@ var animationPrefix = (function () {
 					// DOM.$sliderHolder.css({
 					// 	'left': -(state.sliderWidth * id) + 'px'
 					// });
-					DOM.$slides.removeClass('active').eq(id).addClass('active');
+					if (opt.loop) {
+						DOM.$slidesAll.removeClass('active');
+						DOM.$slides.eq(id).addClass('active');
+					} else {
+						DOM.$slides.removeClass('active').eq(id).addClass('active');
+					}
 					DOM.$pagination.find('.page').eq(id).addClass('active').siblings().removeClass('active');
 
 					if (opt.loop) {
