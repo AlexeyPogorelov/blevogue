@@ -5,7 +5,9 @@ function parallaxSocials () {
 	if ($.browser.mobile) return;
 
 	var windowHeight,
+		// parallaxElemens = document.querySelectorAll('.parallax-element'),
 		$parallaxElemens = $('.parallax-element'),
+		parallaxElemens = [],
 		$parallaxArticle = $('.article-holder-3 > article:nth-child(2)'),
 		$socialsElement = $('#fixed-socials'),
 		$articleHeader = $('.article-header'),
@@ -17,9 +19,11 @@ function parallaxSocials () {
 		currentOffset = (window.pageYOffset !== undefined) ? 'pageYOffset' : 'scrollTop',
 		resizeFunction = function () {
 
+			windowHeight = $(window).height();
+
 			if (socialsElement) {
 
-				windowHeight = $(window).height();
+
 				socialsStatus.start = $articleHeader.height() + parseInt( $articleHeader.css('margin-top') );
 				socialsStatus.end = $articleComments.offset().top - $socialsElement.height() - 100;
 				socialsStatus.left = $articleHeader.find('.container').offset().left;
@@ -36,6 +40,90 @@ function parallaxSocials () {
 
 			}
 
+			parallaxElemens = [];
+			$parallaxElemens.each(function (i) {
+
+				var $self = $(this),
+					offset,
+					transformBackup = $self.css('transform');
+
+				if (transformBackup !== 'none') {
+
+					transformBackup = transformBackup.split('(')[1];
+					transformBackup = transformBackup.split(')')[0];
+					transformBackup = transformBackup.split(',');
+					transformBackup = transformBackup[5];
+					transformBackup = parseFloat( transformBackup );
+
+				} else {
+
+					transformBackup = 0;
+
+				}
+				// this.style.transform = 'translateY(0px) translateZ(0)';
+				switch (i) {
+					case 0: {
+						mult = -0.2;
+						break;
+					}
+					case 1: {
+						mult = -0.4;
+						break;
+					}
+					case 2: {
+						mult = 0.3;
+						break;
+					}
+					case 3: {
+						mult = 0.1;
+						break;
+					}
+					case 4: {
+						mult = 0.2;
+						break;
+					}
+					case 5: {
+						mult = 0.7;
+						break;
+					}
+					case 6: {
+						mult = -0.5;
+						break;
+					}
+					case 7: {
+						mult = 0.7;
+						break;
+					}
+					case 8: {
+						mult = 0.3;
+						break;
+					}
+					case 9: {
+						mult = 0.8;
+						break;
+					}
+					case 10: {
+						mult = 0.1;
+						break;
+					}
+					case 11: {
+						mult = 0.9;
+						break;
+					}
+					default: {
+						mult = -0.4;
+						break;
+					}
+				}
+
+				parallaxElemens.push({
+					el: this,
+					mult: mult,
+					offset: $self.offset().top - transformBackup
+				});
+
+			});
+
 		};
 
 		if (!$articleHeader.length) {
@@ -48,12 +136,34 @@ function parallaxSocials () {
 
 		$(window).on('scroll', function () {
 
-			var top = currentParent[currentOffset];
+			var top = currentParent[currentOffset],
+				viewArea = windowHeight + top;
 
 			// console.time('timerName');
-			for (var i = $parallaxElemens.length - 1; i >= 0; i--) {
-				$parallaxElemens[i].style.transform = 'translateY(' + top / 2 + 'px) translateZ(0)';
+
+			for (var i = parallaxElemens.length - 1; i >= 0; i--) {
+
+				// console.log( windowHeight );
+				if ( parallaxElemens[i].offset > top - windowHeight && parallaxElemens[i].offset < viewArea + windowHeight ) {
+
+					if (i == 2) {
+
+						// console.log( parallaxElemens[i].offset - top );
+						// console.log( -( ( viewArea - parallaxElemens[1].offset - windowHeight / 2 ) * 0.1 ) );
+						// console.log( parallaxElemens[i].el.getBoundingClientRect().top );
+
+					}
+					// console.log(i)
+					// console.log( -( ( viewArea - parallaxElemens[i].offset - windowHeight / 2 ) * parallaxElemens[i].mult ) )
+
+					// parallaxElemens[i].mult
+					parallaxElemens[i].el.style.transform = 'translateY(' + -( ( parallaxElemens[i].el.getBoundingClientRect().top - windowHeight / 2 ) * parallaxElemens[i].mult ) + 'px) translateZ(0)';
+
+				}
+
 			}
+
+			// console.timeEnd('timerName');
 
 			if (socialsElement) {
 

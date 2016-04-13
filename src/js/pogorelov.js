@@ -221,46 +221,37 @@ var animationPrefix = (function () {
 					this.toSlide(id);
 
 				},
-				loopBack: function (e) {
-					plg.fakeAnimation(true);
-				},
-				loopForward: function (e) {
-					plg.fakeAnimation();
-				},
 				fakeAnimation: function (id) {
 
 					var direction = state.cur > id ? true : false;
 
+					DOM.$sliderHolder.addClass('touched');
+
 					if (direction) {
 
-						DOM.$slidesAll.removeClass('active fake-active').filter('[data-id="' + id + '"]').addClass('fake-active');
+						DOM.$slides.eq(id).addClass('unpressed');
 						DOM.$sliderHolder.css({
-							'transform': 'translateX( ' + -( state.sliderWidth * (id + state.slides + state.slides) ) + 'px) translateZ(0)'
+							'transform': 'translateX( ' + -( state.sliderWidth * (id + state.slides - 1) ) + 'px) translateZ(0)'
 						});
 
 					} else {
 
-						DOM.$slidesAll.removeClass('active fake-active').filter('[data-id="' + id + '"]').addClass('fake-active');
+						DOM.$slides.eq(id).addClass('pressed');
 						DOM.$sliderHolder.css({
-							'transform': 'translateX( ' + -( state.sliderWidth * (state.slides - 1) ) + 'px) translateZ(0)'
+							'transform': 'translateX( ' + -( state.sliderWidth * (id + state.slides + state.cur + 1) ) + 'px) translateZ(0)'
 						});
 
 					}
 
-					DOM.$sliderHolder.one(transitionPrefix, function invisibleSlide (callback) {
+					setTimeout(function () {
 
-						DOM.$sliderHolder.find('.active').removeClass('active');
-						DOM.$sliderHolder.addClass('touched');
+						DOM.$sliderHolder.removeClass('touched');
+						DOM.$slides.eq(id).removeClass('pressed unpressed');
 
 						plg.toSlide(id);
 
-						setTimeout(function () {
+					}, 1);
 
-							DOM.$sliderHolder.removeClass('touched');
-
-						}, 1);
-
-					});
 				},
 				toSlide: function (id) {
 
@@ -271,6 +262,7 @@ var animationPrefix = (function () {
 
 					state.cur = id;
 					if (opt.loop) {
+
 						DOM.$slidesAll.removeClass('active fake-active');
 						DOM.$slidesAll.filter('[data-id="' + id + '"]').each(function () {
 							$self = $(this);
@@ -280,9 +272,13 @@ var animationPrefix = (function () {
 								$self.addClass('active');
 							}
 						});
+
 					} else {
+
 						DOM.$slides.removeClass('active').eq(id).addClass('active');
+
 					}
+
 					DOM.$pagination.find('.page').eq(id).addClass('active').siblings().removeClass('active');
 
 					if (opt.loop) {
