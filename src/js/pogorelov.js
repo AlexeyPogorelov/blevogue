@@ -92,49 +92,37 @@ var animationPrefix = (function () {
 
 					if (this.initialized) return false;
 
-					this.addHandlersToSlides();
+					this.addIdsToSlides();
 
 					if (opt.loop) {
 
-						DOM.$fakeHolderBefore = DOM.$sliderHolder.clone();
-						DOM.$fakeHolderAfter = DOM.$sliderHolder.clone();
+						DOM.$slides.each(function (i) {
+							$(this)
+								.clone()
+								.addClass('cloned')
+								.insertBefore( DOM.$slides.eq(0) )
+								.clone()
+								.appendTo( DOM.$sliderHolder );
+						});
 
-						DOM.$fakeHolderBefore
-							.addClass('fakeHolderBefore')
-							.find('.active')
-							.removeClass('active');
-						DOM.$fakeHolderBefore
-							.find('.slide a')
-							.on('click', function (e) {
-								e.preventDefault();
-								plg.loopBack();
-							});
-
-						DOM.$fakeHolderAfter
-							.addClass('fakeHolderAfter')
-							.find('.active')
-							.removeClass('active');
-						DOM.$fakeHolderAfter
-							.find('.slide a')
-							.on('click', function (e) {
-								e.preventDefault();
-								plg.loopForward();
-							});
-
-						DOM.$sliderHolders = DOM.$sliderHolder.add(DOM.$fakeHolderBefore.insertBefore(DOM.$sliderHolder)).add(DOM.$fakeHolderAfter.appendTo(DOM.$viewport));
 						// DOM.$slides = DOM.$sliderHolder.find('.slide');
-						DOM.$slidesAll = DOM.$sliderHolders.find('.slide');
+						DOM.$slidesAll = DOM.$sliderHolder.find('.slide');
 
 					}
+					this.addHandlersToSlides();
 
 					DOM.$preloader.fadeOut(150);
 					this.initialized = true;
 				},
+				addIdsToSlides: function () {
+					DOM.$slides.not('.cloned').each(function (i) {
+						$(this).attr('data-id', i);
+					});
+				},
 				addHandlersToSlides: function () {
-					DOM.$slides.each(function (i) {
+					DOM.$slides.not('.cloned').each(function (i) {
 						var $self = $(this);
-						$self.attr('data-id', i);
-						$self.find('a').on('click', function (e) {
+						$self.on('click', function (e) {
 							if (!$self.hasClass('active')) {
 								e.preventDefault();
 								if (i > state.cur) {
@@ -144,6 +132,10 @@ var animationPrefix = (function () {
 								}
 							}
 						});
+					});
+					DOM.$slidesAll.filter('.cloned').on('click', function (e) {
+						e.preventDefault();
+						plg.fakeAnimation( $(this).data('id') );
 					});
 				},
 				resize: function () {
@@ -168,13 +160,6 @@ var animationPrefix = (function () {
 						DOM.$slides.width( state.itemWidth );
 
 					}
-					// DOM.$fakeFirst.css({
-					// 	'left': -DOM.$fakeFirst.width()
-					// });
-					// DOM.$fakeLast.css({
-					// 	'right': -DOM.$fakeLast.width()
-					// });
-
 
 					if (opt.autoHeight) {
 
@@ -194,17 +179,17 @@ var animationPrefix = (function () {
 					}
 
 					state.slideWidth = DOM.$slides.eq(0).outerWidth();
-					state.holderWidth = state.slideWidth * state.slides;
-
 					if (opt.loop) {
 
-						DOM.$sliderHolders.width( state.holderWidth );
+						state.holderWidth = 3 * state.slides * state.slideWidth;
 
 					} else {
 
-						DOM.$sliderHolder.width( state.holderWidth );
+						state.holderWidth = state.slideWidth * state.slides;
 
 					}
+
+					DOM.$sliderHolder.width( state.holderWidth );
 
 					plg.toSlide(state.cur);
 				},
@@ -213,11 +198,7 @@ var animationPrefix = (function () {
 					var id = state.cur - 1;
 					if (id < 0) {
 
-						// this.toSlide(state.pages - 1);
-						// this.toSlide(0);
 						this.loopBack();
-
-						// horizontalSlider.prevPage();
 
 						return;
 
@@ -230,14 +211,11 @@ var animationPrefix = (function () {
 
 					var id = state.cur + 1;
 					if (id >= state.pages) {
-						// this.toSlide(0);
-						// this.toSlide(state.pages - 1);
+
 						this.loopForward();
 
-						// TODO test it
-						// horizontalSlider.nextPage();
-
 						return;
+
 					}
 
 					this.toSlide(id);
@@ -249,57 +227,36 @@ var animationPrefix = (function () {
 				loopForward: function (e) {
 					plg.fakeAnimation();
 				},
-				fakeAnimation: function (direction) {
-					var id;
+				fakeAnimation: function (id) {
+
+					var direction = state.cur > id ? true : false;
+
 					if (direction) {
-						id = -1;
-						DOM.$slidesAll.removeClass('active');
-						DOM.$fakeHolderBefore.find('.slide:last-child').addClass('active');
-						DOM.$sliderHolder.find('.slide:last-child').addClass('active');
+
+						DOM.$slidesAll.removeClass('active fake-active').filter('[data-id="' + id + '"]').addClass('fake-active');
+						DOM.$sliderHolder.css({
+							'transform': 'translateX( ' + -( state.sliderWidth * (id + state.slides + state.slides) ) + 'px) translateZ(0)'
+						});
+
 					} else {
-						id = state.slides;
-						DOM.$slidesAll.removeClass('active');
-						DOM.$fakeHolderAfter.find('.slide:first-child').addClass('active');
-						DOM.$sliderHolder.find('.slide:first-child').addClass('active');
+
+						DOM.$slidesAll.removeClass('active fake-active').filter('[data-id="' + id + '"]').addClass('fake-active');
+						DOM.$sliderHolder.css({
+							'transform': 'translateX( ' + -( state.sliderWidth * (state.slides - 1) ) + 'px) translateZ(0)'
+						});
+
 					}
-					DOM.$sliderHolder.css({
-						'transform': 'translateX(' + -(state.sliderWidth * id) + 'px) translateZ(0)'
-					});
-
-					DOM.$fakeHolderBefore.css({
-						'transform': 'translateX( ' + -(state.sliderWidth * id + state.holderWidth) + 'px) translateZ(0)'
-					});
-
-					DOM.$fakeHolderAfter.css({
-						'transform': 'translateX( ' + ( -(state.sliderWidth * id) + state.holderWidth) + 'px) translateZ(0)'
-					});
 
 					DOM.$sliderHolder.one(transitionPrefix, function invisibleSlide (callback) {
 
-						if ( !$(this).hasClass('slider-holder') ) {
-							DOM.$sliderHolder.one(transitionPrefix, invisibleSlide);
-							return false;
-						}
-
-						DOM.$sliderHolders.find('.active').removeClass('active');
+						DOM.$sliderHolder.find('.active').removeClass('active');
 						DOM.$sliderHolder.addClass('touched');
-						DOM.$fakeHolderBefore.addClass('touched');
-						DOM.$fakeHolderAfter.addClass('touched');
 
-						if (direction) {
-
-							plg.toSlide(state.pages - 1);
-
-						} else {
-
-							plg.toSlide(0);
-						}
+						plg.toSlide(id);
 
 						setTimeout(function () {
 
 							DOM.$sliderHolder.removeClass('touched');
-							DOM.$fakeHolderBefore.removeClass('touched');
-							DOM.$fakeHolderAfter.removeClass('touched');
 
 						}, 1);
 
@@ -311,13 +268,18 @@ var animationPrefix = (function () {
 						console.error('id is ' + id);
 						return;
 					}
+
 					state.cur = id;
-					// DOM.$sliderHolder.css({
-					// 	'left': -(state.sliderWidth * id) + 'px'
-					// });
 					if (opt.loop) {
-						DOM.$slidesAll.removeClass('active');
-						DOM.$slides.eq(id).addClass('active');
+						DOM.$slidesAll.removeClass('active fake-active');
+						DOM.$slidesAll.filter('[data-id="' + id + '"]').each(function () {
+							$self = $(this);
+							if ($self.hasClass('cloned')) {
+								$self.addClass('fake-active');
+							} else {
+								$self.addClass('active');
+							}
+						});
 					} else {
 						DOM.$slides.removeClass('active').eq(id).addClass('active');
 					}
@@ -326,15 +288,7 @@ var animationPrefix = (function () {
 					if (opt.loop) {
 
 						DOM.$sliderHolder.css({
-							'transform': 'translateX( ' + -(state.sliderWidth * id) + 'px) translateZ(0)'
-						});
-
-						DOM.$fakeHolderBefore.css({
-							'transform': 'translateX( ' + -(state.sliderWidth * id + state.holderWidth) + 'px) translateZ(0)'
-						});
-
-						DOM.$fakeHolderAfter.css({
-							'transform': 'translateX( ' + ( -(state.sliderWidth * id) + state.holderWidth) + 'px) translateZ(0)'
+							'transform': 'translateX( ' + -( state.sliderWidth * (id + state.slides) ) + 'px) translateZ(0)'
 						});
 
 					} else {
@@ -467,12 +421,8 @@ var animationPrefix = (function () {
 			if (opt.touch) {
 
 				// drag events
-
 				DOM.$slider.on('touchstart', function (e) {
-					// state.touchStart.xPos = e.originalEvent.touches[0].clientX;
-					// state.touchStart.yPos = e.originalEvent.touches[0].clientY;
 					state.touchStart.timeStamp = e.timeStamp;
-					// console.log('-----');
 				}).on('touchmove', function (e) {
 					state.touchEnd.xPos = e.originalEvent.touches[0].clientX;
 					state.touchEnd.yPos = e.originalEvent.touches[0].clientY;
@@ -496,13 +446,6 @@ var animationPrefix = (function () {
 						deltaY = Math.abs(state.touchEnd.yPos - state.touchStart.yPos);
 					state.touchEnd.xPos = 0;
 					state.touchEnd.yPos = 0;
-						// time = e.timeStamp - state.touchStart.timeStamp;
-					// console.log('-----');
-					// console.log(time);
-					// console.log(deltaX);
-					// console.log((deltaY));
-					// console.log(state.touchEnd.originalEvent.touches[0].clientX);
-					// console.log(state.touchStart.originalEvent.touches[0].clientX);
 					if (deltaX > distance || -deltaX > distance) {
 						if (deltaX < 0) {
 							plg.nextSlide();
@@ -517,18 +460,12 @@ var animationPrefix = (function () {
 					state.touchStart.xPos = null;
 					state.touchStart.yPos = null;
 				});
-				// DOM.$slider.on('ondragstart', function (e) {
-				// 	e.preventDefault();
-				// 	return false;
-				// });
 				DOM.$slider.find('img').each(function () {
 					this.ondragstart = function() {
 						return false;
 					};
 				});
 			}
-			// DOM.$slides.on('ondragstart', function (e) {
-			// });
 			if (opt.mouseDrug) {
 
 				DOM.$section.on('mousedown', function (e) {
@@ -545,7 +482,6 @@ var animationPrefix = (function () {
 						console.log(error);
 
 					}
-						// console.log( state.touchStart.trfX );
 
 				}).on('mousemove', function (e) {
 					if (e.buttons < 1) {
@@ -555,10 +491,6 @@ var animationPrefix = (function () {
 						state.shiftD = state.touchStart.xPos - e.pageX;
 						state.shiftX = state.touchStart.trfX + state.shiftD;
 
-						// console.log( state.shiftX );
-						// console.log( state.touchStart.trfX );
-						// console.log( state.touchStart.xPos - e.pageX );
-
 						DOM.$sliderHolder.css({
 							'-webkit-transform': 'translateX( ' + -state.shiftX + 'px) translateZ(0)',
 							'transform': 'translateX( ' + -state.shiftX + 'px) translateZ(0)'
@@ -566,7 +498,6 @@ var animationPrefix = (function () {
 
 					}
 				}).on('mouseup mouseleave', function (e) {
-					// console.log(state.shiftD);
 					if ( Math.abs(state.shiftD) > 40 ) {
 						if (state.shiftD > 0) {
 							plg.nextSlide();

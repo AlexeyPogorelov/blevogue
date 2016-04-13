@@ -318,13 +318,6 @@ $main-slider-deactive-padding-2-mobile-small: 0
 			left: 0
 		.next-slide
 			right: 0
-	.fakeHolderBefore, .fakeHolderAfter
-		position: absolute
-		top: 0
-	.fakeHolderAfter
-		.slide
-			.image-holder
-				transform-origin: 100% 100%
 	.slide
 		position: relative
 		height: $main-slider-height
@@ -338,7 +331,7 @@ $main-slider-deactive-padding-2-mobile-small: 0
 			display: block
 			height: 100%
 			transition: opacity .5s
-			transform-origin: 0 100%
+			transform-origin: 50% 100%
 			transform: scale(0.85)
 			transition: transform .5s, transform-origin .5s
 			.img
@@ -365,38 +358,35 @@ $main-slider-deactive-padding-2-mobile-small: 0
 		.image-holder:hover
 				opacity: .4
 				transition: opacity .1s
-		&.active
+		&.active, &.fake-active
 			.slide-content
 				padding: 0
 				transition: padding .6s
 			.description-holder
 				opacity: 1
 				// transform: translate(0, 0) rotateX(0)
-				transform-origin: 50% 100%
 				transition: opacity .9s, transform .6s
 				// transition-delay: .6s
 			.image-holder
 				// opacity: 1 !important
 				transform: scale(1)
-				transform-origin: 50% 100%
 				opacity: 1
 				transition: transform .5s, transform-origin .5s
-			& ~ .slide
-					.slide-content
-						padding: $main-slider-deactive-padding-2
-						.image-holder
-							transform-origin: 100% 100%
-							transform: scale(0.9)
-			&:hover
-				opacity: 1
-		&.wow
-			.img
-				opacity: 0
-				transition: opacity 0
-		&.animated
-			.img
-				opacity: 1
-				transition: opacity 1.4s 0.3s
+		&.active ~ .slide
+				.slide-content
+					padding: $main-slider-deactive-padding-2
+					.image-holder
+						transform: scale(0.9)
+		&:hover
+			opacity: 1
+	&.wow
+		.img
+			opacity: 0
+			transition: opacity 0
+	&.animated
+		.img
+			opacity: 1
+			transition: opacity 1.4s 0.3s
 
 @media screen and (max-width: $medium)
 	.main-slider
@@ -1280,34 +1270,53 @@ section.articles-gallery-1
 	.container.socials-container
 		width: 800px
 #fixed-socials
-	background: #fff
 	position: absolute
 	left: 0
 	top: 80px
-	outline: 1px solid #f1f1f1
-	outline-offset: -1px
-	// padding-top: 8px
-	&:before
-		content: ''
-		background: url('https://unsplash.it/600/400?image=18') no-repeat
-		position: relative
-		height: 9px
-		display: block
-	li
-		border-top: 1px solid #f1f1f1
-		text-align: center
-		height: 64px
-		width: 64px
-		a
-			color: #636671
+	ul.socials
+		background: #fff
+		outline: 1px solid #f1f1f1
+		outline-offset: -1px
+		&:before
+			content: ''
+			background: url('https://unsplash.it/600/400?image=18') no-repeat
+			position: relative
+			height: 9px
 			display: block
-			height: 100%
-			font-size: 20px
-			line-height: 64px
-			transition: color .2s
-			&:hover
-				color: #000
-				transition: color .1s
+		li
+			border-top: 1px solid #f1f1f1
+			text-align: center
+			height: 64px
+			width: 64px
+			a
+				color: #636671
+				display: block
+				height: 100%
+				font-size: 20px
+				line-height: 64px
+				transition: color .2s
+				text-align: center
+				&:hover
+					color: #000
+					transition: color .1s
+	ul.lang
+		margin-top: 26px
+		&:before
+			display: none
+		li
+			a
+				color: #b4b7c1
+				font-family: 'Futura New'
+				font-size: 18px
+				font-weight: 400
+				transition: color .3s
+			&.active
+				a
+					color: #35363c
+					transition: color .3s
+	&.fixed
+		position: fixed
+		top: 80px
 @media screen and (max-width: $mobile-large)
 	#fixed-socials
 		display: none

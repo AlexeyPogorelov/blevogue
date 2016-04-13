@@ -1,66 +1,93 @@
 
+// parallax and socials
+function parallaxSocials () {
 
-		// parallax and socials
-		function parallaxSocials () {
+	if ($.browser.mobile) return;
 
-			if ($.browser.mobile) return;
+	var windowHeight,
+		$parallaxElemens = $('.parallax-element'),
+		$parallaxArticle = $('.article-holder-3 > article:nth-child(2)'),
+		$socialsElement = $('#fixed-socials'),
+		$articleHeader = $('.article-header'),
+		$articleComments = $('.comments-holder'),
+		socialsStatus = {},
+		socialsElement = $socialsElement.get(0),
+		currentDoc = (document.documentElement || document.body.parentNode || document.body),
+		currentParent = (window.pageYOffset !== undefined) ? window : currentDoc,
+		currentOffset = (window.pageYOffset !== undefined) ? 'pageYOffset' : 'scrollTop',
+		resizeFunction = function () {
 
-			var $parallaxElemens = $('.parallax-element'),
-				$parallaxArticle = $('.article-holder-3 > article:nth-child(2)'),
-				$socialsElement = $('#fixed-socials'),
-				$articleHeader = $('.article-header'),
-				$articleComments = $('.comments-holder'),
-				socialsStatus = {},
-				socialsElement = $socialsElement.get(0),
-				currentDoc = (document.documentElement || document.body.parentNode || document.body),
-				currentParent = (window.pageYOffset !== undefined) ? window : currentDoc,
-				currentOffset = (window.pageYOffset !== undefined) ? 'pageYOffset' : 'scrollTop',
-				resizeFunction = function () {
+			if (socialsElement) {
 
-					if (socialsElement) {
+				windowHeight = $(window).height();
+				socialsStatus.start = $articleHeader.height() + parseInt( $articleHeader.css('margin-top') );
+				socialsStatus.end = $articleComments.offset().top - $socialsElement.height() - 100;
+				socialsStatus.left = $articleHeader.find('.container').offset().left;
+				socialsElement.style.transform = 'translateY(' + socialsStatus.start + 'px)';
+				// console.log( socialsStatus.end );
+				// console.log( socialsStatus.end );
+				if ( socialsStatus.left === 0) {
 
-						socialsStatus.start = $articleHeader.height() + parseInt( $articleHeader.css('margin-top') );
-						socialsStatus.end = $articleComments.offset().top - $socialsElement.height() - 100;
-						socialsElement.style.transform = 'translateY(' + socialsStatus.start + 'px)';
-						// console.log( socialsStatus.end );
-						// console.log( socialsStatus.end );
-
-					}
-
-				};
-				resizeFunction();
-
-			$(window).on('scroll', function () {
-
-				var top = currentParent[currentOffset];
-
-				// console.time('timerName');
-				for (var i = $parallaxElemens.length - 1; i >= 0; i--) {
-					$parallaxElemens[i].style.transform = 'translateY(' + top / 2 + 'px) translateZ(0)';
-				}
-
-				if ( socialsElement && top > socialsStatus.start && top < socialsStatus.end ) {
-
-					socialsElement.style.transform = 'translateY(' + top + 'px) translateZ(0)';
-
-				} else if ( socialsElement && top > socialsStatus.end ) {
-
-						socialsElement.style.transform = 'translateY(' + socialsStatus.end + 'px)';
-
-				} else if ( socialsElement ) {
-
-						socialsElement.style.transform = 'translateY(' + socialsStatus.start + 'px)';
+					socialsStatus.left = $('.article-page').offset().left;
 
 				}
+				$socialsElement.css('left', socialsStatus.left);
 
-				// for (var i = 0; i < $parallaxArticle.length; i++) {
-					// $parallaxArticle[i].style.transform = 'translateY(' + top / -20 + 'px)';
-				// }
-				// console.timeEnd('timerName');
+			}
 
-			}).on('resize', resizeFunction);
+		};
+		resizeFunction();
 
-		}
+		$(window).on('scroll', function () {
+
+			var top = currentParent[currentOffset];
+
+			// console.time('timerName');
+			for (var i = $parallaxElemens.length - 1; i >= 0; i--) {
+				$parallaxElemens[i].style.transform = 'translateY(' + top / 2 + 'px) translateZ(0)';
+			}
+
+			if (socialsElement) {
+
+				if ( top > socialsStatus.end ) {
+
+					$socialsElement.removeClass('fixed');
+					socialsElement.style.transform = 'translateY(' + socialsStatus.end + 'px) translateZ(0)';
+
+				} else if ( top < socialsStatus.start ) {
+
+					$socialsElement.removeClass('fixed');
+					socialsElement.style.transform = 'translateY(' + socialsStatus.start + 'px) translateZ(0)';
+
+				} else {
+
+					$socialsElement.addClass('fixed');
+					socialsElement.style.transform = 'translateY(0px) translateZ(0)';
+					// socialsElement.style.transform = 'translateY(' + top + 'px) translateZ(0)';
+
+				}
+
+			}
+
+			if ( socialsElement && top > socialsStatus.start && top < socialsStatus.end ) {
+
+
+			} else if ( socialsElement && top > socialsStatus.end ) {
+
+
+			} else if ( socialsElement ) {
+
+
+			}
+
+			// for (var i = 0; i < $parallaxArticle.length; i++) {
+				// $parallaxArticle[i].style.transform = 'translateY(' + top / -20 + 'px)';
+			// }
+			// console.timeEnd('timerName');
+
+		}).on('resize', resizeFunction);
+
+}
 
 var loading = {
 		avgTime: 3000,
@@ -116,8 +143,7 @@ var loading = {
 				$('.fadeInUp').addClass('wow fadeInUp');
 				$('.fadeInRight').addClass('wow fadeInRight');
 
-				// $('section.articles-gallery-1 article').addClass('wow').find('> .image-holder, > .description').addClass('wow-disabled');
-				$('#main-slider').find('.slide').addClass('wow');
+				$('#main-slider').addClass('wow');
 				$('section.articles-gallery-1 article').addClass('wow');
 
 				new WOW().init();
