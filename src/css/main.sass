@@ -534,7 +534,7 @@ section.articles-gallery-1
 				opacity: 1
 				// transition: opacity 0.5s 0.5s
 				transition-property: transform, opacity
-				transition-delay: 0s, 0.5s
+				transition-delay: 0s, 0s
 				transition-duration: 0.5s, 0.5s
 				transform: scale(1)
 			.description
@@ -1274,6 +1274,39 @@ section.articles-gallery-1
 		.article-holder-1
 			margin-top: 0
 
+.socials-container
+	position: relative
+@media screen and (max-width: $medium)
+	.container.socials-container
+		width: 800px
+#fixed-socials
+	background: #fff
+	position: absolute
+	left: 0
+	top: 80px
+	outline: 1px solid #f1f1f1
+	outline-offset: -1px
+	// padding-top: 8px
+	&:before
+		content: ''
+		background: url('https://unsplash.it/600/400?image=18') no-repeat
+		position: relative
+		height: 9px
+		display: block
+	li
+		border-top: 1px solid #f1f1f1
+		text-align: center
+		height: 64px
+		width: 64px
+		a
+			color: #636671
+			display: block
+			height: 100%
+			font-size: 20px
+			line-height: 64px
+@media screen and (max-width: $mobile-large)
+	#fixed-socials
+		display: none
 // --------------------------------------------------
 // FOOTER
 // --------------------------------------------------
@@ -1547,12 +1580,19 @@ section.articles-gallery-1
 // --------------------------------------------------
 // MODALS
 // --------------------------------------------------
+.modal-holder a.close-modal, .modal-holder .close-modal
+	background-size: 100%
+	height: 22px
+	width: 22px
 
 #search-modal
 	.modal-container
 		.input-group
+			margin-left: auto
+			margin-right: auto
 			position: relative
 			padding-top: 64px
+			max-width: 1300px
 			.search-icon-1
 				background-position: 50% 50%
 				background: url(../img/icons/search-icon-1.svg) no-repeat
@@ -1870,6 +1910,8 @@ section.articles-gallery-1
 .article-header
 	// margin-top: 80px
 	margin-top: 126px
+	.container
+		position: relative
 	.image-holder
 		img
 			// TODO remove it
@@ -1916,6 +1958,7 @@ section.articles-gallery-1
 @media screen and (max-width: $tablet)
 	.article-video-page,
 	.article-page
+		background: transparent
 		margin: 0 auto
 		width: 700px
 		.article-name
