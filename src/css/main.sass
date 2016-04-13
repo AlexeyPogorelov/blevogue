@@ -1304,6 +1304,10 @@ section.articles-gallery-1
 			height: 100%
 			font-size: 20px
 			line-height: 64px
+			transition: color .2s
+			&:hover
+				color: #000
+				transition: color .1s
 @media screen and (max-width: $mobile-large)
 	#fixed-socials
 		display: none
@@ -2090,7 +2094,7 @@ section.articles-gallery-1
 			color: #35363c
 			font-family: Effra
 			font-size: 26px
-			font-weight: 600
+			font-weight: 500
 			font-style: italic
 			line-height: 36px
 			margin-bottom: 60px
@@ -2125,7 +2129,8 @@ section.articles-gallery-1
 				margin-top: 60px
 			&:after
 				content: ''
-				background: url('../img/icons/quotes-1.png')
+				background: url('../img/icons/quotes-1.svg') no-repeat
+				background-size: 54px
 				position: absolute
 				right: -4px
 				top: 8px
