@@ -12,7 +12,9 @@ html(lang='en')
 		section.article-video-header
 			.container
 				iframe(src="https://player.vimeo.com/video/28161247" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen)
-			ul#fixed-socials.socials.hidden
+
+		#fixed-socials
+			ul.socials
 				li
 					a(href='https://www.facebook.com/sharer.php?src=sp&u=http://makemeat.com/works/lounge_fm&app_id=966242223397117&display=popup&title=Lounge FM&description=Design for iOS Application&picture=http://makemeat.com', target='_blank')
 						i.fa.fa-facebook
@@ -28,8 +30,13 @@ html(lang='en')
 				li
 					a(href='https://www.linkedin.com/shareArticle?mini=true&url=http://makemeat.com/works/lounge_fm&title=Lounge FM&summary=Design for iOS Application', target='_blank')
 						i.fa.fa-linkedin
+			ul.socials.lang
+				li
+					a(href='#') ENG
+				li.active
+					a(href='#') УКР
 
-		section.article-video-page
+		section.article-page.video
 			.article-name
 				h1 Що почитати, щоб мозку прибавилося?
 			.article-date

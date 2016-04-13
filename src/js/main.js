@@ -25,7 +25,6 @@ function parallaxSocials () {
 				socialsStatus.left = $articleHeader.find('.container').offset().left;
 				socialsElement.style.transform = 'translateY(' + socialsStatus.start + 'px)';
 				// console.log( socialsStatus.end );
-				// console.log( socialsStatus.end );
 				if ( socialsStatus.left === 0) {
 
 					socialsStatus.left = $('.article-page').offset().left;
@@ -33,9 +32,18 @@ function parallaxSocials () {
 				}
 				$socialsElement.css('left', socialsStatus.left);
 
+				socialsStatus.disabled = (socialsStatus.end - socialsStatus.start) < $socialsElement.height();
+
 			}
 
 		};
+
+		if (!$articleHeader.length) {
+
+			$articleHeader = $('.article-video-header');
+
+		}
+
 		resizeFunction();
 
 		$(window).on('scroll', function () {
@@ -49,40 +57,36 @@ function parallaxSocials () {
 
 			if (socialsElement) {
 
-				if ( top > socialsStatus.end ) {
+				if ( top < socialsStatus.start || socialsStatus.disabled ) {
 
-					$socialsElement.removeClass('fixed');
-					socialsElement.style.transform = 'translateY(' + socialsStatus.end + 'px) translateZ(0)';
+					if (socialsStatus.state !== 1) {
 
-				} else if ( top < socialsStatus.start ) {
+						$socialsElement.removeClass('fixed');
+						socialsStatus.state = 1;
+						socialsElement.style.transform = 'translateY(' + socialsStatus.start + 'px) translateZ(0)';
 
-					$socialsElement.removeClass('fixed');
-					socialsElement.style.transform = 'translateY(' + socialsStatus.start + 'px) translateZ(0)';
+					}
 
-				} else {
+				} else if ( top > socialsStatus.end ) {
+
+					if ( socialsStatus.state !== 3) {
+
+						$socialsElement.removeClass('fixed');
+						socialsElement.style.transform = 'translateY(' + socialsStatus.end + 'px) translateZ(0)';
+						socialsStatus.state = 3;
+
+					}
+
+				} else if (socialsStatus.state !== 2) {
 
 					$socialsElement.addClass('fixed');
 					socialsElement.style.transform = 'translateY(0px) translateZ(0)';
+					socialsStatus.state = 2;
 					// socialsElement.style.transform = 'translateY(' + top + 'px) translateZ(0)';
 
 				}
 
 			}
-
-			if ( socialsElement && top > socialsStatus.start && top < socialsStatus.end ) {
-
-
-			} else if ( socialsElement && top > socialsStatus.end ) {
-
-
-			} else if ( socialsElement ) {
-
-
-			}
-
-			// for (var i = 0; i < $parallaxArticle.length; i++) {
-				// $parallaxArticle[i].style.transform = 'translateY(' + top / -20 + 'px)';
-			// }
 			// console.timeEnd('timerName');
 
 		}).on('resize', resizeFunction);

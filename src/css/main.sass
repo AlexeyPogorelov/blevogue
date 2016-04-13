@@ -1311,6 +1311,7 @@ section.articles-gallery-1
 				font-weight: 400
 				transition: color .3s
 			&.active
+				pointer-events: none
 				a
 					color: #35363c
 					transition: color .3s
@@ -1946,7 +1947,6 @@ section.articles-gallery-1
 // 	.article-header
 // 		.image-holder img
 // 			max-height: 187px
-.article-video-page,
 .article-page
 	background: #fff
 	margin: -104px auto 0
@@ -1963,21 +1963,21 @@ section.articles-gallery-1
 		margin-top: 200px
 		float: left
 		width: 492px
-.article-video-page
+.article-page.video
 	margin-top: 0
+	background: transparent
 	.article-name
 		h1, h2, h3, h4, h5, h6
 			margin-top: 18px
 @media screen and (max-width: $tablet)
-	.article-video-page,
 	.article-page
-		background: transparent
+		// background: transparent
 		margin: 0 auto
 		width: 700px
 		.article-name
 			h1, h2, h3, h4, h5, h6
 				margin-top: 14px
-	.article-video-page
+	.article-page.video
 		.article-name
 			h1, h2, h3, h4, h5, h6
 				margin-bottom: 31px
@@ -1986,20 +1986,18 @@ section.articles-gallery-1
 			font-weight: 600
 			line-height: 17px
 @media screen and (max-width: $mobile-large)
-	.article-video-page,
 	.article-page
 		width: 520px
 		padding: 0
-	.article-video-page
+	.article-video-page.video
 		.article-name
 			h1, h2, h3, h4, h5, h6
 				letter-spacing: 2.3px
 				margin-bottom: 35px
 @media screen and (max-width: $mobile-medium)
-	.article-video-page,
 	.article-page
 		width: calc(100% - 64px)
-	.article-video-page
+	.article-video-page.video
 		.article-name
 			margin-top: 9px
 			h1, h2, h3, h4, h5, h6
