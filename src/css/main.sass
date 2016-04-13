@@ -121,6 +121,15 @@ body::-webkit-scrollbar
 			left: 0
 			position: absolute
 			top: 20px
+			top: 28px
+			width: 178px
+			a
+				display: block
+				width: 178px
+				margin: auto
+				img
+					display: block
+					width: 178px
 		.navigation-pannel
 			padding: 28px 0 28px
 			text-align: center
@@ -267,30 +276,11 @@ body::-webkit-scrollbar
 // MAIN SLIDER
 // --------------------------------------------------
 
+$main-slider-height-retina: 900px
 $main-slider-height: 600px
 $main-slider-height-medium: 354px
 $main-slider-height-mobile-large: 274px
 $main-slider-height-mobile-small: 247px
-// $main-slider-deactive-padding-1: 126px 70px 0
-// $main-slider-deactive-padding-2: 87px 70px 0
-// $main-slider-deactive-padding-1-medium: 77px 70px 0
-// $main-slider-deactive-padding-2-medium: 54px 70px 0
-// $main-slider-deactive-padding-1-tablet: 77px 30px 0
-// $main-slider-deactive-padding-2-tablet: 54px 30px 0
-// $main-slider-deactive-padding-1-mobile-large: 60px 30px 0
-// $main-slider-deactive-padding-2-mobile-large: 43px 30px 0
-// $main-slider-deactive-padding-1-mobile-small: 33px 16px 0
-// $main-slider-deactive-padding-2-mobile-small: 24px 16px 0
-$main-slider-deactive-padding-1: 0
-$main-slider-deactive-padding-2: 0
-$main-slider-deactive-padding-1-medium: 0
-$main-slider-deactive-padding-2-medium: 0
-$main-slider-deactive-padding-1-tablet: 0
-$main-slider-deactive-padding-2-tablet: 0
-$main-slider-deactive-padding-1-mobile-large: 0
-$main-slider-deactive-padding-2-mobile-large: 0
-$main-slider-deactive-padding-1-mobile-small: 0
-$main-slider-deactive-padding-2-mobile-small: 0
 .main-slider
 	position: relative
 	overflow: hidden
@@ -301,7 +291,7 @@ $main-slider-deactive-padding-2-mobile-small: 0
 		float: left
 		transition: transform .8s cubic-bezier(0.4, 0.0, 0.2, 1), left .8s cubic-bezier(0.4, 0.0, 0.2, 1)
 		&.touched
-			transition: none
+			transition: none !important
 			.image-holder
 				transition: none !important
 	.slider-viewport
@@ -324,7 +314,6 @@ $main-slider-deactive-padding-2-mobile-small: 0
 		position: relative
 		height: $main-slider-height
 		.slide-content
-			padding: $main-slider-deactive-padding-1
 			transition: padding .6s
 			height: 100%
 		img
@@ -334,17 +323,17 @@ $main-slider-deactive-padding-2-mobile-small: 0
 			height: 100%
 			transition: opacity .5s
 			transform-origin: 50% 100%
-			// transform: scale(0.85)
-			transform: scale(0.9) translateY(38px)
-			transition: transform .5s, opacity .5s
+			transform: scale(0.85) translateY(38px)
+			transition: transform .5s
 			.img
 				max-height: $main-slider-height
+				transition: opacity .5s
 		&.pressed
 			.image-holder
-				transform: scale(0.9) translateY(38px) !important
+				transform: scale(0.85) translateY(38px) !important
 		&.unpressed
 			.image-holder
-				transform: scale(0.9) translateY(0) !important
+				transform: scale(0.85) translateY(0) !important
 		.description-holder
 			background: #fff
 			color: #35363c
@@ -364,8 +353,8 @@ $main-slider-deactive-padding-2-mobile-small: 0
 			transform: translate(0, 20px) rotateX(80deg)
 			transition: opacity .9s, transform .6s
 			transform: none
-		.image-holder:hover
-				opacity: .4
+		.image-holder:hover .img
+				opacity: 0
 				transition: opacity .1s
 		&.active, &.fake-active
 			.slide-content
@@ -379,6 +368,9 @@ $main-slider-deactive-padding-2-mobile-small: 0
 				transform: scale(1)
 				opacity: 1
 				transition: transform .5s
+				&:hover .img
+					opacity: 1
+					transition: opacity .3s
 		&.cloned
 			.slide-content
 				.image-holder
@@ -387,9 +379,8 @@ $main-slider-deactive-padding-2-mobile-small: 0
 					// transform: scale(0.9)
 		&.active ~ .slide
 			.slide-content
-				padding: $main-slider-deactive-padding-2
 				.image-holder
-					transform: scale(0.9) translateY(0)
+					transform: scale(0.85) translateY(0)
 			// &.cloned:first-of-type
 			// &.cloned:nth-of-type(1)
 				// .slide-content
@@ -404,16 +395,43 @@ $main-slider-deactive-padding-2-mobile-small: 0
 		// 	.slide-content
 		// 		.image-holder
 		// 			transform: scale(1)
-		&:hover
-			opacity: 1
 	&.wow
 		.img
 			opacity: 0
 			transition: opacity 0
 	&.animated
-		.img
-			opacity: 1
-			transition: opacity 1.4s 0.3s
+		.slide
+			.image-holder
+				.img
+					opacity: 1
+					transition: opacity 0.8s 1.5s
+
+@media screen and (min-width: 1800px)
+	.main-slider
+		.container
+			width: 1400px
+			.slide
+				.slide-content
+					padding: 0 60px
+
+@media screen and (min-width: 2600px)
+	.main-slider
+		.container
+			width: 2000px
+			.slide
+				height: $main-slider-height-retina
+				.slide-content
+					padding: 0 120px
+					.img
+						max-height: $main-slider-height-retina
+
+@media screen and (min-width: 3000px)
+	.main-slider
+		.container
+			width: 2400px
+			.slide
+				.slide-content
+					// padding: 0 180px
 
 @media screen and (max-width: $medium)
 	.main-slider
@@ -429,21 +447,17 @@ $main-slider-deactive-padding-2-mobile-small: 0
 				max-width: 60%
 				padding: 13px 21px
 			.slide-content
-				padding: $main-slider-deactive-padding-1-medium
 			&.active
 				& ~ .slide
 						.slide-content
-							padding: $main-slider-deactive-padding-2-medium
 @media screen and (max-width: $tablet)
 	.main-slider
 		margin-top: 86px
 		.slide
 			.slide-content
-				padding: $main-slider-deactive-padding-1-tablet
 			&.active
 				& ~ .slide
 						.slide-content
-							padding: $main-slider-deactive-padding-2-tablet
 @media screen and (max-width: $mobile-large)
 	.main-slider
 		// height: $main-slider-height-mobile-large
@@ -458,11 +472,9 @@ $main-slider-deactive-padding-2-mobile-small: 0
 				letter-spacing: 1px
 				line-height: 22px
 			.slide-content
-				padding: $main-slider-deactive-padding-1-mobile-large
 			&.active
 				& ~ .slide
 						.slide-content
-							padding: $main-slider-deactive-padding-2-mobile-large
 @media screen and (max-width: $mobile-small)
 	.main-slider
 		// height: $main-slider-height-mobile-small
@@ -480,11 +492,9 @@ $main-slider-deactive-padding-2-mobile-small: 0
 				line-height: 19px
 				width: 166px
 			.slide-content
-				padding: $main-slider-deactive-padding-1-mobile-small
 			&.active
 				& ~ .slide
 						.slide-content
-							padding: $main-slider-deactive-padding-2-mobile-small
 
 // --------------------------------------------------
 // ARTICLES
@@ -534,40 +544,36 @@ section.articles-gallery-1
 			.description
 				opacity: 0
 				transform: translateY(40px)
-		&.animated
-			transform: translateY(40px)
-			opacity: 1
-			transition-property: transform, opacity
-			transition-delay: 0s, 0s
-			transition-duration: 0.8s, 0.8s
-			transform: translateY(0)
-			.image-holder
-				transition-property: transform, opacity
-				transition-delay: 0s, 0.5s
-				transition-timing-function: ease-out, linear
-				transition-duration: 0.5s, 0.5s
-				transform: scale(1)
-			.img
+			&.animated
+				transform: translateY(40px)
 				opacity: 1
-				// transition: opacity 0.5s 0.5s
 				transition-property: transform, opacity
 				transition-delay: 0s, 0s
-				transition-duration: 0.5s, 0.5s
-				transform: scale(1)
-			.description
-				opacity: 1
-				transition-property: transform, opacity
-				transition-delay: 0.4s, 0.4s
 				transition-duration: 0.8s, 0.8s
 				transform: translateY(0)
+				.image-holder
+					transition-property: transform, opacity
+					transition-delay: 0s, 1.5s
+					transition-timing-function: ease-out, linear
+					transition-duration: 0.5s, 0.5s
+					transform: scale(1)
+				.img
+					opacity: 1
+					// transition: opacity 0.5s 0.5s
+					transition-property: transform, opacity
+					transition-delay: 0s, 1.5s
+					transition-duration: 0.5s, 0.8s
+					transform: scale(1)
+				.description
+					opacity: 1
+					transition-property: transform, opacity
+					transition-delay: 0.4s, 0.4s
+					transition-duration: 0.8s, 0.8s
+					transform: translateY(0)
 	.img
 		display: block
 		opacity: 1
 		transition: opacity .3s
-	article.hover
-		.img
-			opacity: 0
-			transition: opacity .3s
 	.description
 		background: #fff
 		display: block
@@ -590,6 +596,9 @@ section.articles-gallery-1
 		opacity: 0
 		transition: opacity .3s
 	article.hover
+		.image-holder .img
+			opacity: 0
+			transition: opacity .3s
 		.date-holder
 			opacity: 1
 			transition: opacity .3s .3s
@@ -686,9 +695,11 @@ section.articles-gallery-1
 			margin-left: 166px
 			overflow: hidden
 			width: 350px
+			width: 320px
 			.image-holder
 				height: 254px
 				width: 350px
+				width: 320px
 				transform-origin: 100% 0
 			.description
 				// background: transparent

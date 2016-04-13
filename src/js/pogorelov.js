@@ -122,7 +122,7 @@ var animationPrefix = (function () {
 				addHandlersToSlides: function () {
 					DOM.$slides.not('.cloned').each(function (i) {
 						var $self = $(this);
-						$self.on('click', function (e) {
+						$self.find('a').on('click', function (e) {
 							if (!$self.hasClass('active')) {
 								e.preventDefault();
 								if (i > state.cur) {
@@ -133,9 +133,9 @@ var animationPrefix = (function () {
 							}
 						});
 					});
-					DOM.$slidesAll.filter('.cloned').on('click', function (e) {
+					DOM.$slidesAll.filter('.cloned').find('a').on('click', function (e) {
 						e.preventDefault();
-						plg.fakeAnimation( $(this).data('id') );
+						plg.fakeAnimation( $(this).closest('.slide').data('id') );
 					});
 				},
 				resize: function () {
@@ -250,7 +250,7 @@ var animationPrefix = (function () {
 
 						plg.toSlide(id);
 
-					}, 1);
+					}, 2);
 
 				},
 				toSlide: function (id) {

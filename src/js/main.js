@@ -312,12 +312,14 @@ var loading = {
 					});
 				}
 			})();
+			$('.slider-holder').addClass('touched');
 
 			// hide preloader
-			loading.preloader.animate({}).delay(100).animate({
+			loading.preloader.addClass('done').animate({}).delay(400).animate({
 				'opacity': 0
-			}, 600, function () {
+			}, 400, function () {
 
+				$('.slider-holder').removeClass('touched');
 				$(window).trigger('resize');
 				loading.status(0);
 				$(this).detach();
@@ -643,7 +645,7 @@ $(document).on('ready', function () {
 				$gallery.find('article > .image-holder, .description').hover(function () {
 					$(this).closest('article').addClass('hover');
 				}, function () {
-					$(this).closest('article').removeClass('hover');
+					$(this).closest('article').removeClass('hover wow animated');
 				});
 
 			var $videos = $('.video-gallery');
