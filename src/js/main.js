@@ -136,30 +136,31 @@ function parallaxSocials () {
 
 		$(window).on('scroll', function () {
 
-			var top = currentParent[currentOffset],
-				viewArea = windowHeight + top;
+			var top = currentParent[currentOffset];
+				// viewArea = windowHeight + top;
 
 			// console.time('timerName');
 
 			for (var i = parallaxElemens.length - 1; i >= 0; i--) {
 
+				var tp = parallaxElemens[i].el.getBoundingClientRect().top;
 				// console.log( windowHeight );
-				if ( parallaxElemens[i].offset > top - windowHeight && parallaxElemens[i].offset < viewArea + windowHeight ) {
+				// if ( tp > 0 ) {
 
-					if (i == 2) {
+					// if (i == 2) {
 
 						// console.log( parallaxElemens[i].offset - top );
 						// console.log( -( ( viewArea - parallaxElemens[1].offset - windowHeight / 2 ) * 0.1 ) );
-						// console.log( parallaxElemens[i].el.getBoundingClientRect().top );
+						// console.log( parallaxElemens[i].el );
+						// console.log( tp > 0 )
 
-					}
-					// console.log(i)
+					// }
 					// console.log( -( ( viewArea - parallaxElemens[i].offset - windowHeight / 2 ) * parallaxElemens[i].mult ) )
 
 					// parallaxElemens[i].mult
-					parallaxElemens[i].el.style.transform = 'translateY(' + -( ( parallaxElemens[i].el.getBoundingClientRect().top - windowHeight / 2 ) * parallaxElemens[i].mult ) + 'px) translateZ(0)';
+					parallaxElemens[i].el.style.transform = 'translateY(' + -( ( tp - windowHeight / 2 ) * parallaxElemens[i].mult ) + 'px) translateZ(0)';
 
-				}
+				// }
 
 			}
 
@@ -643,9 +644,18 @@ $(document).on('ready', function () {
 
 			var $gallery = $('.articles-gallery-1');
 				$gallery.find('article > .image-holder, .description').hover(function () {
-					$(this).closest('article').addClass('hover');
+					var $self = $(this),
+						$article = $self.closest('article'),
+						bg = $article.find('> .image-holder').css('background-color');
+					$article.closest('article').addClass('hover');
+					$article.find('.description h3').css('color', bg);
+
 				}, function () {
-					$(this).closest('article').removeClass('hover wow animated');
+					var $self = $(this),
+						$article = $self.closest('article');
+					$article.closest('article').removeClass('hover wow animated');
+					$article.find('.description h3').attr('style', '');
+
 				});
 
 			var $videos = $('.video-gallery');

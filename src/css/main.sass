@@ -516,6 +516,7 @@ section.articles-gallery-1
 		line-height: 1em
 		margin-bottom: 8px
 		font-weight: 500
+		font-family: 'Futura New'
 	p
 		color: #636671
 		font-size: 17px
@@ -579,6 +580,8 @@ section.articles-gallery-1
 		display: block
 		padding: 30px 40px
 		position: relative
+		h1, h2, h3, h4, h5, h6
+			transition: color .3s
 	.article-link
 		display: block
 		height: 100%
@@ -691,15 +694,16 @@ section.articles-gallery-1
 				top: -108px
 				width: 390px
 		article:nth-child(2)
+		// TODO review width
 			margin-top: 2px
 			margin-left: 166px
 			overflow: hidden
 			width: 350px
-			width: 320px
+			// width: 320px
 			.image-holder
 				height: 254px
 				width: 350px
-				width: 320px
+				// width: 320px
 				transform-origin: 100% 0
 			.description
 				// background: transparent
@@ -732,7 +736,7 @@ section.articles-gallery-1
 			width: 320px
 			.image-holder
 				height: 464px
-				width: 350px
+				width: 320px
 				transform-origin: 100% 0
 			.description
 				// background: transparent
@@ -1406,7 +1410,7 @@ section.articles-gallery-1
 				font-family: 'Futura New'
 				font-weight: 300
 				width: 100%
-				&::-moz-placeholder, &::-webkit-input-placeholder, &:-ms-input-placeholder , 
+				&::-moz-placeholder, &::-webkit-input-placeholder, &:-ms-input-placeholder
 					color: #b2b6c2
 					font-family: 'Futura New'
 					font-size: 18px
@@ -2121,7 +2125,8 @@ section.articles-gallery-1
 		h1, h2, h3, h4, h5, h6
 			margin-bottom: 20px
 			color: #35363c
-			font-weight: 600
+			font-weight: 500
+			font-family: 'Futura New'
 		h3
 			font-size: 28px
 			line-height: 36px
@@ -2756,7 +2761,6 @@ section.articles-gallery-1
 				width: 280px
 				max-height: 210px
 				h1, h2, h3, h4, h5, h6
-					font-size: 28px
 					line-height: 26px
 					margin-bottom: 6px
 					font-family: 'Futura New'
@@ -2788,7 +2792,6 @@ section.articles-gallery-1
 					line-height: 24px
 					letter-spacing: -1px
 				p
-					line-height: 21px
 					line-height: 18px
 					margin-top: 10px
 		&.module
