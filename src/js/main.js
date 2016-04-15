@@ -725,6 +725,97 @@ $(document).on('ready', function () {
 
 		})();
 
+		// 404 background update
+		(function () {
+
+			var $image = $('.error-404');
+
+			if ($image.length) {
+
+				var i = 0,
+					imagesLinks = [
+						'http://www.whowhatwear.com/img/uploads/current/images/0/172/928/main.original.585x0.jpg',
+						'http://41.media.tumblr.com/5854c1656eb7158ee7f1a5b73c7109db/tumblr_nz0dacz9o11s8rlzuo1_1280.jpg',
+						'http://36.media.tumblr.com/ce291dba4dff54db1fade220e2e52d77/tumblr_nvd4f4c8Ri1s8rlzuo1_1280.jpg',
+						'http://40.media.tumblr.com/f67496f497e3b9b3503bc9dfeab039e0/tumblr_npx5uv9ZAt1tqq2cuo1_1280.jpg',
+						'http://36.media.tumblr.com/2b3d2196968530a3d6354db86b9dd87b/tumblr_o2ppnfpFeF1qajzcfo1_1280.jpg',
+						'http://41.media.tumblr.com/09e6206dd5559a526dce1a34e4f1a027/tumblr_o3ca00zeB21s8rlzuo1_1280.jpg',
+						'http://41.media.tumblr.com/58c507c4433829b71ce579feb9fe25f1/tumblr_ndaxigFeZ41tqlchwo1_1280.jpg',
+						'http://41.media.tumblr.com/1fc4acc5f2b71fcc0c77ded4004336d6/tumblr_n1a7sbnINJ1rckuolo1_1280.jpg',
+						'http://36.media.tumblr.com/d5963b292548566a13d282bc9098d6e3/tumblr_nkg8w58pX01unwfw8o1_500.png',
+						'http://36.media.tumblr.com/0097fc0034aa8ec03cdffd8223aa3de1/tumblr_o3f242HCSY1s51980o1_1280.jpg',
+						'http://40.media.tumblr.com/8b4ee1bdbdeec8c31fc9b921ae7363da/tumblr_na1vshq8zJ1r7eta3o1_500.jpg',
+						'http://40.media.tumblr.com/f67496f497e3b9b3503bc9dfeab039e0/tumblr_npx5uv9ZAt1tqq2cuo1_1280.jpg',
+						'http://manrepeller.wpengine.netdna-cdn.com/wp-content/uploads/2015/01/shoe-lifts-man-repeller-1.jpg'
+					],
+					$imageHelper = $('.background-holder');
+
+				Array.prototype.shuffle = function() {
+
+					for (var i = this.length - 1; i > 0; i--) {
+
+						var num = Math.floor(Math.random() * (i + 1)),
+							d = this[num];
+						this[num] = this[i];
+						this[i] = d;
+
+					}
+
+					return this;
+
+				};
+
+				imagesLinks.shuffle();
+
+				$imageHelper.css({
+								'background-image': 'url(' + imagesLinks[1] + ')'
+							});
+
+				setInterval(function () {
+
+					if (i % 2) {
+
+						$image.css({
+							'background-image': 'url(' + imagesLinks[i] + ')'
+						});
+
+
+						$imageHelper.removeClass('active').one(transitionPrefix, function () {
+
+							$(this).css({
+								'background-image': 'url(' + imagesLinks[i + 1] + ')'
+							});
+
+						});
+
+					} else {
+
+						$imageHelper.addClass('active').one(transitionPrefix, function () {
+
+							$image.css({
+								'background-image': 'url(' + imagesLinks[i + 1] + ')'
+							});
+
+						});
+
+					}
+
+					if (imagesLinks.length - 3 < i) {
+
+						i = 0;
+
+					} else {
+
+						i++;
+
+					}
+
+				}, 3000);
+
+			}
+
+		})();
+
 		//scroll
 		$(document).on('scroll', function () {
 

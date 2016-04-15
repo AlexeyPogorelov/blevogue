@@ -1890,19 +1890,36 @@ section.articles-gallery-1
 // 404
 // --------------------------------------------------
 .error-404
-	background: url('http://manrepeller.wpengine.netdna-cdn.com/wp-content/uploads/2015/01/shoe-lifts-man-repeller-3.jpg') no-repeat
+	background-image: url('http://manrepeller.wpengine.netdna-cdn.com/wp-content/uploads/2015/01/shoe-lifts-man-repeller-3.jpg')
 	background-size: cover
+	background-repeat: no-repeat
 	bottom: 0
 	left: 0
 	right: 0
 	top: 0
 	position: absolute
 	text-align: center
+	.background-holder
+		background-size: cover
+		background-repeat: no-repeat
+		bottom: 0
+		left: 0
+		opacity: 0
+		position: absolute
+		right: 0
+		text-align: center
+		top: 0
+		transition: opacity .6s
+		z-index: 2
+	.background-holder.active
+		opacity: 1
+		transition: opacity .6s
 	.content-holder
 		position: absolute
 		top: 50%
 		left: 50%
 		transform: translate(-50%, -50%)
+		z-index: 3
 		.logo-holder
 			img
 				width: 280px
