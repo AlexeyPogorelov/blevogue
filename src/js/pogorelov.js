@@ -284,7 +284,7 @@ var animationPrefix = (function () {
 
 					state.cur = id;
 
-					if (DOM.$sliderHolder.hasClass('touched')) {
+					if (!DOM.$sliderHolder.hasClass('touched')) {
 
 						state.animated = true;
 
