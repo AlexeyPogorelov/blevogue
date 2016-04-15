@@ -231,10 +231,7 @@ var loading = {
 		},
 		done: function () {
 
-			if (loading.finished) {
-
-				return;
-			}
+			if (loading.finished) return;
 
 			// TODO temp for develop
 			$('section.articles-gallery-1 > article, .article-content, .article-name, .article-date, .video').find('p, h1, h2, h3, h4, h5, h6, blockquote, span').attr('contenteditable', true).on('click', function (e) {
@@ -258,7 +255,10 @@ var loading = {
 				$('.fadeInUp').addClass('wow fadeInUp');
 				$('.fadeInRight').addClass('wow fadeInRight');
 
-				$('#main-slider').addClass('wow');
+
+				$('#main-slider').addClass('wow').on('mouseover', function () {
+					$(this).removeClass('wow animated');
+				});
 				$('section.articles-gallery-1 article').addClass('wow');
 
 				new WOW().init();
@@ -321,6 +321,7 @@ var loading = {
 			}, 400, function () {
 
 				$('.slider-holder').removeClass('touched');
+
 				$(window).trigger('resize');
 				loading.status(0);
 				$(this).detach();

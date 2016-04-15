@@ -462,6 +462,7 @@ var animationPrefix = (function () {
 					};
 				});
 			}
+
 			if (opt.mouseDrug) {
 
 				DOM.$section.on('mousedown', function (e) {
@@ -505,15 +506,16 @@ var animationPrefix = (function () {
 					}
 					touchendCleaner ();
 				});
+
 			}
 
-			function touchendCleaner () {
+			var touchendCleaner = function () {
 				DOM.$sliderHolder.removeClass('touched');
 				state.touchStart.yPos = 0;
 				state.touchStart.xPos = 0;
 				state.shiftX = 0;
 				state.shiftD = 0;
-			}
+			};
 
 			$window.on( 'resize', plg.resize.bind(plg) );
 			plg.init();
