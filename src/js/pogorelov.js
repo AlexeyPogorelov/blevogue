@@ -48,7 +48,14 @@ var animationPrefix = (function () {
 					'touchEnd': {}
 				},
 				self = this,
-				$window = $(window);
+				$window = $(window),
+				touchendCleaner = function () {
+					DOM.$sliderHolder.removeClass('touched');
+					state.touchStart.yPos = 0;
+					state.touchStart.xPos = 0;
+					state.shiftX = 0;
+					state.shiftD = 0;
+				};
 
 			// options
 			if (!opt) {
@@ -205,14 +212,7 @@ var animationPrefix = (function () {
 					var id = state.cur - 1;
 					if (id < 0) {
 
-						DOM.$sliderHolder.addClass('touched');
-
-						setTimeout(function () {
-
-							DOM.$sliderHolder.removeClass('touched');
-							plg.fakeAnimation( state.pages - 1 );
-
-						}, 10);
+						plg.fakeAnimation( state.pages - 1 );
 
 						return;
 
@@ -226,14 +226,7 @@ var animationPrefix = (function () {
 					var id = state.cur + 1;
 					if (id >= state.pages) {
 
-						DOM.$sliderHolder.addClass('touched');
-
-						setTimeout(function () {
-
-							DOM.$sliderHolder.removeClass('touched');
-							plg.fakeAnimation( 0 );
-
-						}, 10);
+						plg.fakeAnimation( 0 );
 
 						return;
 
@@ -245,6 +238,13 @@ var animationPrefix = (function () {
 				fakeAnimation: function (id) {
 
 					var direction = state.cur > id ? true : false;
+
+					if (state.animated) {
+						state.doAfterTransition = function () {
+													plg.fakeAnimation(id);
+												};
+						return;
+					}
 
 					DOM.$sliderHolder.addClass('touched');
 
@@ -282,6 +282,7 @@ var animationPrefix = (function () {
 					}
 
 					state.cur = id;
+					state.animated = true;
 					if (opt.loop) {
 
 						DOM.$slidesAll.removeClass('active fake-active');
@@ -442,7 +443,6 @@ var animationPrefix = (function () {
 					state.touchStart.timeStamp = e.timeStamp;
 				}).on('touchmove', function (e) {
 
-
 					state.touchEnd.xPos = e.originalEvent.touches[0].clientX;
 					state.touchEnd.yPos = e.originalEvent.touches[0].clientY;
 
@@ -532,13 +532,18 @@ var animationPrefix = (function () {
 
 			}
 
-			var touchendCleaner = function () {
-				DOM.$sliderHolder.removeClass('touched');
-				state.touchStart.yPos = 0;
-				state.touchStart.xPos = 0;
-				state.shiftX = 0;
-				state.shiftD = 0;
-			};
+			DOM.$sliderHolder.on(transitionPrefix, function (e) {
+				if (this === e.target) {
+					state.animated = false;
+
+					if (typeof state.doAfterTransition === 'function') {
+						state.doAfterTransition();
+						state.doAfterTransition = null;
+					}
+
+					
+				}
+			});
 
 			$window.on( 'resize', plg.resize.bind(plg) );
 			plg.init();
