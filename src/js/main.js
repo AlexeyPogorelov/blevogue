@@ -733,7 +733,7 @@ $(document).on('ready', function () {
 			if ($image.length) {
 
 				var i = 0,
-					imagesLinks = [
+					imagesLinks = window.imagesArray404 || [
 						'http://www.whowhatwear.com/img/uploads/current/images/0/172/928/main.original.585x0.jpg',
 						'http://41.media.tumblr.com/5854c1656eb7158ee7f1a5b73c7109db/tumblr_nz0dacz9o11s8rlzuo1_1280.jpg',
 						'http://36.media.tumblr.com/ce291dba4dff54db1fade220e2e52d77/tumblr_nvd4f4c8Ri1s8rlzuo1_1280.jpg',

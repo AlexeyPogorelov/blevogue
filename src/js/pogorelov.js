@@ -239,6 +239,7 @@ var animationPrefix = (function () {
 
 					var direction = state.cur > id ? true : false;
 
+					// console.log(state.animated);
 					if (state.animated) {
 						state.doAfterTransition = function () {
 													plg.fakeAnimation(id);
@@ -282,7 +283,13 @@ var animationPrefix = (function () {
 					}
 
 					state.cur = id;
-					state.animated = true;
+
+					if (DOM.$sliderHolder.hasClass('touched')) {
+
+						state.animated = true;
+
+					}
+
 					if (opt.loop) {
 
 						DOM.$slidesAll.removeClass('active fake-active');

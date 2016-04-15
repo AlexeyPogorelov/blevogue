@@ -216,6 +216,13 @@ body::-webkit-scrollbar
 	.login-button
 		.login-icon-1
 			background: url(../img/icons/login-icon-1.svg) no-repeat
+	.profile-button
+		.profile-image
+			background-size: cover
+			background-position: 50% 50%
+			border-radius: 50%
+			height: 34px
+			width: 34px
 
 @media screen and (max-width: $medium)
 	.main-navigation
@@ -907,6 +914,8 @@ section.articles-gallery-1
 		.socials-holder
 			top: 10px
 			left: 10px
+			li
+				margin-bottom: 10px
 		.article-holder-1
 			margin-top: 80px
 			article
@@ -1740,7 +1749,10 @@ section.articles-gallery-1
 		margin-bottom: 10px
 	input[type="text"], input[type="password"]
 		background-color: white
-		border: 2px solid #35363c
+		// border: 1px solid #35363c
+		border: 1px solid #636671
+		outline: 2px solid transparent
+		outline-offset: -1px
 		height: 46px
 		width: 320px
 		color: #35363c
@@ -1748,6 +1760,10 @@ section.articles-gallery-1
 		font-size: 18px
 		font-weight: 300
 		line-height: 22px
+		transition: outline .2s
+		&:hover
+			outline: 2px solid #35363c
+			transition: outline .1s
 		&::-moz-placeholder, &::-webkit-input-placeholder, &:-ms-input-placeholder
 	button
 		background: url('https://unsplash.it/600/400?image=33')
