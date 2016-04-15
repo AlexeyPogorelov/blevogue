@@ -105,7 +105,6 @@ var animationPrefix = (function () {
 								.appendTo( DOM.$sliderHolder );
 						});
 
-						// DOM.$slides = DOM.$sliderHolder.find('.slide');
 						DOM.$slidesAll = DOM.$sliderHolder.find('.slide');
 
 					}
@@ -164,21 +163,28 @@ var animationPrefix = (function () {
 					if (opt.autoHeight) {
 
 						DOM.$slides.height(
+
 								(function ($slides) {
+
 									var max = 1;
+
 									$slides.each(function () {
 										var height = $(this).find('> div').outerHeight();
 										if (height > max) {
 											max = height;
 										}
 									});
+
 									return max;
+
 								})(DOM.$slides)
+
 							);
 
 					}
 
 					state.slideWidth = DOM.$slides.eq(0).outerWidth();
+
 					if (opt.loop) {
 
 						state.holderWidth = 3 * state.slides * state.slideWidth;
@@ -192,13 +198,21 @@ var animationPrefix = (function () {
 					DOM.$sliderHolder.width( state.holderWidth );
 
 					plg.toSlide(state.cur);
+
 				},
 				prevSlide: function () {
 
 					var id = state.cur - 1;
 					if (id < 0) {
 
-						this.loopBack();
+						DOM.$sliderHolder.addClass('touched');
+
+						setTimeout(function () {
+
+							DOM.$sliderHolder.removeClass('touched');
+							plg.fakeAnimation( state.pages - 1 );
+
+						}, 10);
 
 						return;
 
@@ -212,7 +226,14 @@ var animationPrefix = (function () {
 					var id = state.cur + 1;
 					if (id >= state.pages) {
 
-						this.loopForward();
+						DOM.$sliderHolder.addClass('touched');
+
+						setTimeout(function () {
+
+							DOM.$sliderHolder.removeClass('touched');
+							plg.fakeAnimation( 0 );
+
+						}, 10);
 
 						return;
 
@@ -250,7 +271,7 @@ var animationPrefix = (function () {
 
 						plg.toSlide(id);
 
-					}, 2);
+					}, 10);
 
 				},
 				toSlide: function (id) {
@@ -420,6 +441,8 @@ var animationPrefix = (function () {
 				DOM.$slider.on('touchstart', function (e) {
 					state.touchStart.timeStamp = e.timeStamp;
 				}).on('touchmove', function (e) {
+
+
 					state.touchEnd.xPos = e.originalEvent.touches[0].clientX;
 					state.touchEnd.yPos = e.originalEvent.touches[0].clientY;
 
@@ -435,18 +458,23 @@ var animationPrefix = (function () {
 
 					}
 
-				}).on('touchend', function (e) {
+				}).on('touchend touchcancel', function (e) {
 					var distance = 70,
 						speed = 200,
 						deltaX = state.touchEnd.xPos - state.touchStart.xPos,
 						deltaY = Math.abs(state.touchEnd.yPos - state.touchStart.yPos);
+
 					state.touchEnd.xPos = 0;
 					state.touchEnd.yPos = 0;
 					if (deltaX > distance || -deltaX > distance) {
 						if (deltaX < 0) {
+
 							plg.nextSlide();
+
 						} else {
+
 							plg.prevSlide();
+
 						}
 					}
 					deltaX = null;
@@ -455,11 +483,6 @@ var animationPrefix = (function () {
 					state.touchEnd.yPos = null;
 					state.touchStart.xPos = null;
 					state.touchStart.yPos = null;
-				});
-				DOM.$slider.find('img').each(function () {
-					this.ondragstart = function() {
-						return false;
-					};
 				});
 			}
 

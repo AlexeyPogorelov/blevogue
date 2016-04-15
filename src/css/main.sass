@@ -451,10 +451,7 @@ $main-slider-height-mobile-small: 247px
 				font-weight: 500
 				letter-spacing: 1px
 				line-height: 22px
-			.slide-content
-			&.active
-				& ~ .slide
-						.slide-content
+
 @media screen and (max-width: $mobile-small)
 	.main-slider
 		margin-top: 75px
@@ -473,7 +470,11 @@ $main-slider-height-mobile-small: 247px
 			.image-holder
 				transform: scale(0.85) translateY(0)
 			&.pressed
+				.image-holder
 					transform: scale(0.85) translateY(0) !important
+			&.active, &.fake-active
+				.image-holder
+					transform: scale(1)
 
 // --------------------------------------------------
 // ARTICLES
