@@ -8,7 +8,7 @@ function parallaxSocials () {
 		// parallaxElemens = document.querySelectorAll('.parallax-element'),
 		$parallaxElemens = $('.parallax-element'),
 		parallaxElemens = [],
-		$parallaxArticle = $('.article-holder-3 > article:nth-child(2)'),
+		$parallaxArticle = $('section.articles-gallery-1 .article-holder-3 > article:nth-child(2), section.articles-gallery-1 .article-holder-4 > article:nth-child(2), section.articles-gallery-1 .article-holder-5 > article:nth-child(2), section.articles-gallery-1 .article-holder-6 > article:nth-child(2), section.articles-gallery-1 .article-holder-8 > article'),
 		$socialsElement = $('#fixed-socials'),
 		$articleHeader = $('.article-header'),
 		$articleComments = $('.comments-holder'),
@@ -28,12 +28,13 @@ function parallaxSocials () {
 				socialsStatus.end = $articleComments.offset().top - $socialsElement.height() - 100;
 				socialsStatus.left = $articleHeader.find('.container').offset().left;
 				socialsElement.style.transform = 'translateY(' + socialsStatus.start + 'px)';
-				// console.log( socialsStatus.end );
+
 				if ( socialsStatus.left === 0) {
 
 					socialsStatus.left = $('.article-page').offset().left;
 
 				}
+
 				$socialsElement.css('left', socialsStatus.left);
 
 				socialsStatus.disabled = (socialsStatus.end - socialsStatus.start) < $socialsElement.height();
@@ -60,7 +61,7 @@ function parallaxSocials () {
 					transformBackup = 0;
 
 				}
-				// this.style.transform = 'translateY(0px) translateZ(0)';
+
 				switch (i) {
 					case 0: {
 						mult = -0.2;
@@ -140,30 +141,26 @@ function parallaxSocials () {
 				// viewArea = windowHeight + top;
 
 			// console.time('timerName');
+			requestAnimFrame(function () {
 
-			for (var i = parallaxElemens.length - 1; i >= 0; i--) {
+				for (var i = parallaxElemens.length - 1; i >= 0; i--) {
 
-				var tp = parallaxElemens[i].el.getBoundingClientRect().top;
-				// console.log( windowHeight );
-				// if ( tp > 0 ) {
+					var tp = parallaxElemens[i].el.getBoundingClientRect().top;
 
-					// if (i == 2) {
-
-						// console.log( parallaxElemens[i].offset - top );
-						// console.log( -( ( viewArea - parallaxElemens[1].offset - windowHeight / 2 ) * 0.1 ) );
-						// console.log( parallaxElemens[i].el );
-						// console.log( tp > 0 )
-
-					// }
-					// console.log( -( ( viewArea - parallaxElemens[i].offset - windowHeight / 2 ) * parallaxElemens[i].mult ) )
-
-					// parallaxElemens[i].mult
 					parallaxElemens[i].el.style.transform = 'translateY(' + -( ( tp - windowHeight / 2 ) * parallaxElemens[i].mult ) + 'px) translateZ(0)';
 
-				// }
+				}
 
-			}
+				for (var i = $parallaxArticle.length - 1; i >= 0; i--) {
 
+					var tp = $parallaxArticle[i].getBoundingClientRect().top;
+
+					// $parallaxArticle[i].style.transform = 'translateY(' + -( ( tp - windowHeight / 2 ) * 0.04 ) + 'px) translateZ(0)';
+					$parallaxArticle[i].style.top = ( ( tp - windowHeight / 2 ) * 0.1 ) + 'px';
+
+				}
+
+			});
 			// console.timeEnd('timerName');
 
 			if (socialsElement) {
@@ -205,91 +202,102 @@ function parallaxSocials () {
 }
 
 var loading = {
-		avgTime: 3000,
-		trg: 1,
-		state: 0,
-		preloader: $('body > .preloader'),
-		loaded: function () {
+	avgTime: 3000,
+	trg: 1,
+	state: 0,
+	preloader: $('body > .preloader'),
+	loaded: function () {
 
-			if(++loading.state == loading.trg) {
+		if(++loading.state == loading.trg) {
 
-				loading.status(1);
-				setTimeout(loading.done, 500);
+			loading.status(1);
+			setTimeout(loading.done, 500);
 
-			} else {
+		} else {
 
-				loading.status(loading.state / loading.trg / 1.1);
+			loading.status(loading.state / loading.trg / 1.1);
 
-			}
-		},
-		status: function (mult) {
+		}
+	},
+	status: function (mult) {
 
-			loading.preloader.find('> .after').css({
-				'width': mult * 100 + '%'
+		loading.preloader.find('> .after').css({
+			'width': mult * 100 + '%'
+		});
+
+	},
+	done: function () {
+
+		if (loading.finished) return;
+
+		// TODO temp for develop
+		$('section.articles-gallery-1 > article, .article-content, .article-name, .article-date, .video').find('p, h1, h2, h3, h4, h5, h6, blockquote, span').attr('contenteditable', true).on('click', function (e) {
+			e.preventDefault();
+		});
+		$('.article-holder-1 a').on('click', function (e) {
+			e.preventDefault();
+		});
+		// end todo
+
+		// initialize plugins
+		$('#main-slider').simpleSlider();
+		$('body').trigger('scroll');
+
+		// parallax and socials
+		parallaxSocials ();
+
+		// WOW init
+		if ($.browser.desktop) {
+
+			$('.fadeInUp').addClass('wow fadeInUp');
+			$('.fadeInRight').addClass('wow fadeInRight');
+
+
+			$('#main-slider').addClass('wow').on('mouseover', function () {
+				$(this).removeClass('wow animated');
 			});
+			$('section.articles-gallery-1 article').addClass('wow');
 
-		},
-		done: function () {
+			new WOW().init();
 
-			if (loading.finished) return;
+		}
 
-			// TODO temp for develop
-			$('section.articles-gallery-1 > article, .article-content, .article-name, .article-date, .video').find('p, h1, h2, h3, h4, h5, h6, blockquote, span').attr('contenteditable', true).on('click', function (e) {
-				e.preventDefault();
-			});
-			$('.article-holder-1 a').on('click', function (e) {
-				e.preventDefault();
-			});
-			// end todo
+		// blockquote capital letter
+		(function () {
+			var $blockquote = $('blockquote');
+			if ($blockquote.length) {
+				$blockquote.each(function () {
+					var $self = $(this),
+						letter = $self.text().substring(0,1).toUpperCase(),
+						text = $self.text().substring(1),
+						$capital = $('<span>').addClass('capital'),
+						$original = $('<span>').addClass('original').text( letter ),
+						$fake = $('<svg><text x="0" y="1em">' + letter + '</text></svg>'),
+						$content = $('<span>').addClass('content').text( text ),
+						timeout;
+					$self.text('');
+					$self.prepend([
 
-			// initialize plugins
-			$('#main-slider').simpleSlider();
-			$('body').trigger('scroll');
+						$capital.prepend([
 
-			// parallax and socials
-			parallaxSocials ();
+							$original,
+							$fake
 
-			// WOW init
-			if ($.browser.desktop) {
+						])
 
-				$('.fadeInUp').addClass('wow fadeInUp');
-				$('.fadeInRight').addClass('wow fadeInRight');
+					]).append( $content );
 
+					timeout = setTimeout(function () {
 
-				$('#main-slider').addClass('wow').on('mouseover', function () {
-					$(this).removeClass('wow animated');
-				});
-				$('section.articles-gallery-1 article').addClass('wow');
+						$self.css({
+							'padding-left': $original.innerWidth()
+						});
 
-				new WOW().init();
+					}, 300);
 
-			}
+					$(window).on('resize', function () {
 
-			// blockquote capital letter
-			(function () {
-				var $blockquote = $('blockquote');
-				if ($blockquote.length) {
-					$blockquote.each(function () {
-						var $self = $(this),
-							letter = $self.text().substring(0,1).toUpperCase(),
-							text = $self.text().substring(1),
-							$capital = $('<span>').addClass('capital'),
-							$original = $('<span>').addClass('original').text( letter ),
-							$fake = $('<svg><text x="0" y="1em">' + letter + '</text></svg>'),
-							$content = $('<span>').addClass('content').text( text ),
-							timeout;
-						$self.text('');
-						$self.prepend([
-
-							$capital.prepend([
-
-								$original,
-								$fake
-
-							])
-
-						]).append( $content );
-
+						clearTimeout( timeout );
 						timeout = setTimeout(function () {
 
 							$self.css({
@@ -298,53 +306,42 @@ var loading = {
 
 						}, 300);
 
-						$(window).on('resize', function () {
-
-							clearTimeout( timeout );
-							timeout = setTimeout(function () {
-
-								$self.css({
-									'padding-left': $original.innerWidth()
-								});
-
-							}, 300);
-
-						});
 					});
-				}
-			})();
+				});
+			}
+		})();
 
-			$('.slider-holder').addClass('touched');
+		$('.slider-holder').addClass('touched');
 
-			// hide preloader
-			loading.preloader.addClass('done').animate({}).delay(400).animate({
-				'opacity': 0
-			}, 400, function () {
+		// hide preloader
+		loading.preloader.addClass('done').animate({}).delay(400).animate({
+			'opacity': 0
+		}, 400, function () {
 
-				$(window).trigger('resize');
+			$(window).trigger('resize');
 
-				$('.slider-holder').removeClass('touched');
+			$('.slider-holder').removeClass('touched');
 
-				loading.status(0);
-				$(this).detach();
-				loading.finished = true;
+			loading.status(0);
+			$(this).detach();
+			loading.finished = true;
 
-			});
+		});
 
-		}
-	};
+	}
+};
 
-	// TODO test it
-	$('img').each(function () {
+// TODO test it
+$('img').each(function () {
 
-		if (!this.naturalWidth || true) {
+	if (!this.naturalWidth || true) {
 
-			loading.trg ++;
-			$(this).one('load', loading.loaded);
+		loading.trg ++;
+		$(this).one('load', loading.loaded);
 
-		}
+	}
 
-	});
+});
 
 setTimeout(function () {
 
