@@ -313,6 +313,7 @@ var loading = {
 					});
 				}
 			})();
+
 			$('.slider-holder').addClass('touched');
 
 			// hide preloader
@@ -320,9 +321,10 @@ var loading = {
 				'opacity': 0
 			}, 400, function () {
 
+				$(window).trigger('resize');
+
 				$('.slider-holder').removeClass('touched');
 
-				$(window).trigger('resize');
 				loading.status(0);
 				$(this).detach();
 				loading.finished = true;

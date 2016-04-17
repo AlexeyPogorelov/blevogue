@@ -204,7 +204,7 @@ var animationPrefix = (function () {
 
 					DOM.$sliderHolder.width( state.holderWidth );
 
-					plg.toSlide(state.cur);
+					plg.toSlide(state.cur, true);
 
 				},
 				prevSlide: function () {
@@ -218,7 +218,7 @@ var animationPrefix = (function () {
 
 					}
 
-					this.toSlide(id);
+					plg.toSlide(id);
 
 				},
 				nextSlide: function () {
@@ -232,7 +232,7 @@ var animationPrefix = (function () {
 
 					}
 
-					this.toSlide(id);
+					plg.toSlide(id);
 
 				},
 				fakeAnimation: function (id) {
@@ -275,7 +275,7 @@ var animationPrefix = (function () {
 					}, 10);
 
 				},
-				toSlide: function (id) {
+				toSlide: function (id, resize) {
 
 					if ( id < 0 || id >= state.pages ) {
 						console.error('id is ' + id);
@@ -284,7 +284,11 @@ var animationPrefix = (function () {
 
 					state.cur = id;
 
-					if (!DOM.$sliderHolder.hasClass('touched')) {
+					if ( DOM.$sliderHolder.hasClass('touched') || resize ) {
+
+						state.animated = false;
+
+					} else {
 
 						state.animated = true;
 
@@ -476,11 +480,27 @@ var animationPrefix = (function () {
 					if (deltaX > distance || -deltaX > distance) {
 						if (deltaX < 0) {
 
-							plg.nextSlide();
+							if (state.animated) {
+
+								state.doAfterTransition = plg.nextSlide;
+
+							} else {
+
+								plg.nextSlide();
+
+							}
 
 						} else {
 
-							plg.prevSlide();
+							if (state.animated) {
+
+								state.doAfterTransition = plg.prevSlide;
+
+							} else {
+
+								plg.prevSlide();
+
+							}
 
 						}
 					}
