@@ -1,4 +1,7 @@
 
+	if ($.browser.mobile) $('body').addClass('mobile');
+	if ($.browser.safari) $('body').addClass('client-ios');
+
 // parallax and socials
 function parallaxSocials () {
 
@@ -68,11 +71,11 @@ function parallaxSocials () {
 						break;
 					}
 					case 1: {
-						mult = -0.4;
+						mult = -0.1;
 						break;
 					}
 					case 2: {
-						mult = 0.3;
+						mult = -0.25;
 						break;
 					}
 					case 3: {
@@ -84,15 +87,15 @@ function parallaxSocials () {
 						break;
 					}
 					case 5: {
-						mult = 0.7;
+						mult = -0.1;
 						break;
 					}
 					case 6: {
-						mult = -0.5;
+						mult = 0.3;
 						break;
 					}
 					case 7: {
-						mult = 0.7;
+						mult = 0.1;
 						break;
 					}
 					case 8: {
@@ -108,7 +111,7 @@ function parallaxSocials () {
 						break;
 					}
 					case 11: {
-						mult = 0.9;
+						mult = 0.2;
 						break;
 					}
 					default: {
@@ -143,58 +146,57 @@ function parallaxSocials () {
 			// console.time('timerName');
 			requestAnimFrame(function () {
 
-				for (var i = parallaxElemens.length - 1; i >= 0; i--) {
+				if (parallaxElemens.length) {
 
-					var tp = parallaxElemens[i].el.getBoundingClientRect().top;
+					for (var i = parallaxElemens.length - 1; i >= 0; i--) {
 
-					parallaxElemens[i].el.style.transform = 'translateY(' + -( ( tp - windowHeight / 2 ) * parallaxElemens[i].mult ) + 'px) translateZ(0)';
+						parallaxElemens[i].el.style.transform = 'translateY(' + -( ( parallaxElemens[i].el.getBoundingClientRect().top - windowHeight / 2 ) * parallaxElemens[i].mult ) + 'px) translateZ(0)';
+
+					}
+
+					for (var y = $parallaxArticle.length - 1; y >= 0; y--) {
+
+						$parallaxArticle[y].style.top = ( ( $parallaxArticle[y].getBoundingClientRect().top - windowHeight / 2 ) * 0.15 ) + 'px';
+						// $parallaxArticle[y].style.transform = 'translateY(' + ( ( $parallaxArticle[y].getBoundingClientRect().top - windowHeight / 2 ) * 0.15 ) + 'px) translateZ(0)';
+
+					}
 
 				}
 
-				for (var i = $parallaxArticle.length - 1; i >= 0; i--) {
+				if (socialsElement) {
 
-					var tp = $parallaxArticle[i].getBoundingClientRect().top;
+					if ( top < socialsStatus.start || socialsStatus.disabled ) {
 
-					// $parallaxArticle[i].style.transform = 'translateY(' + -( ( tp - windowHeight / 2 ) * 0.04 ) + 'px) translateZ(0)';
-					$parallaxArticle[i].style.top = ( ( tp - windowHeight / 2 ) * 0.1 ) + 'px';
+						if (socialsStatus.state !== 1) {
+
+							$socialsElement.removeClass('fixed');
+							socialsStatus.state = 1;
+							socialsElement.style.transform = 'translateY(' + socialsStatus.start + 'px) translateZ(0)';
+
+						}
+
+					} else if ( top > socialsStatus.end ) {
+
+						if ( socialsStatus.state !== 3) {
+
+							$socialsElement.removeClass('fixed');
+							socialsElement.style.transform = 'translateY(' + socialsStatus.end + 'px) translateZ(0)';
+							socialsStatus.state = 3;
+
+						}
+
+					} else if (socialsStatus.state !== 2) {
+
+						$socialsElement.addClass('fixed');
+						socialsElement.style.transform = 'translateY(0px) translateZ(0)';
+						socialsStatus.state = 2;
+						// socialsElement.style.transform = 'translateY(' + top + 'px) translateZ(0)';
+
+					}
 
 				}
 
 			});
-			// console.timeEnd('timerName');
-
-			if (socialsElement) {
-
-				if ( top < socialsStatus.start || socialsStatus.disabled ) {
-
-					if (socialsStatus.state !== 1) {
-
-						$socialsElement.removeClass('fixed');
-						socialsStatus.state = 1;
-						socialsElement.style.transform = 'translateY(' + socialsStatus.start + 'px) translateZ(0)';
-
-					}
-
-				} else if ( top > socialsStatus.end ) {
-
-					if ( socialsStatus.state !== 3) {
-
-						$socialsElement.removeClass('fixed');
-						socialsElement.style.transform = 'translateY(' + socialsStatus.end + 'px) translateZ(0)';
-						socialsStatus.state = 3;
-
-					}
-
-				} else if (socialsStatus.state !== 2) {
-
-					$socialsElement.addClass('fixed');
-					socialsElement.style.transform = 'translateY(0px) translateZ(0)';
-					socialsStatus.state = 2;
-					// socialsElement.style.transform = 'translateY(' + top + 'px) translateZ(0)';
-
-				}
-
-			}
 			// console.timeEnd('timerName');
 
 		}).on('resize', resizeFunction);
@@ -454,9 +456,7 @@ $(document).on('ready', function () {
 					modals.closeModal();
 				}
 				this.opened.push($modal);
-				$modal.addClass('opened');
-
-				bodyOverflow.fixBody();
+				$modal.addClass('opened').one(transitionPrefix, bodyOverflow.fixBody);
 
 			},
 			closeModal: function ($modal) {
@@ -642,6 +642,8 @@ $(document).on('ready', function () {
 		// articles and videos hover
 		(function () {
 
+			if ($.browser.mobile) return;
+
 			var $gallery = $('.articles-gallery-1');
 				$gallery.find('article > .image-holder, .description').hover(function () {
 					var $self = $(this),
@@ -674,11 +676,17 @@ $(document).on('ready', function () {
 
 				var $self = $(this),
 					$cross = $self.find('.close-modal');
+
 				$self.on('scroll', function (e) {
+
 					e.stopPropagation();
 
-					$cross.css({
-						'bottom': -$self.scrollTop()
+					requestAnimFrame(function () {
+
+						$cross.css({
+							'bottom': -$self.scrollTop()
+						});
+
 					});
 
 				});
@@ -689,11 +697,17 @@ $(document).on('ready', function () {
 
 				var $self = $(this),
 					$cross = $self.find('.close-modal');
+
 				$self.on('scroll', function (e) {
+
 					e.stopPropagation();
 
-					$cross.css({
-						'top': $self.scrollTop()
+					requestAnimFrame(function () {
+
+						$cross.css({
+							'top': $self.scrollTop()
+						});
+
 					});
 
 				});

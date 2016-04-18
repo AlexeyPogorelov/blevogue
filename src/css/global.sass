@@ -15,8 +15,9 @@ body
 		overflow: hidden
 		&.client-ios
 			position: fixed
-			// transition: position .3s
-			// transition-delay: .3s
+			height: 100%
+			width: 100%
+			// -webkit-overflow-scrolling: touch
 
 // webkit scroll
 .lightbox-cell::-webkit-scrollbar-corner, .dropdown::-webkit-scrollbar-corner
@@ -590,14 +591,17 @@ button:active, .btn:active, button:focus, .btn:focus
 	background: url('../img/icons/cross-button-2.svg') no-repeat 50% 50%
 	cursor: pointer
 	display: block
-	height: 35px
 	opacity: .7
 	position: absolute
-	right: 0
 	bottom: auto
-	top: 0
-	width: 35px
+	left: auto
 	transition: opacity .1s, background .1s
+
+	background-size: 100%
+	top: 30px
+	right: 30px
+	height: 24px
+	width: 24px
 	&:after
 		display: none
 	&:hover
@@ -606,19 +610,19 @@ button:active, .btn:active, button:focus, .btn:focus
 
 .modal-holder
 	background: #fff
-	overflow: auto
 	opacity: 0
 	position: fixed
 	top: 0
 	left: 0
-	height: 100%
+	right: 0
+	bottom: 0
 	visibility: hidden
-	width: 100%
+	// height: 100%
+	// width: 100%
 	z-index: 11
-	transform-style: preserve-3d
-	perspective: 1000px
-	// -webkit-overflow-scrolling: touch
-	overflow-y: scroll
+	overflow: hidden
+	overflow-x: hidden
+	overflow-y: auto
 	transition: opacity .3s ease-out, transform .2s, visibility .4s
 	.close-modal
 		z-index: 3
@@ -629,21 +633,21 @@ button:active, .btn:active, button:focus, .btn:focus
 			transition: opacity .3s
 	.modal-content
 		background: #fff
-		position: absolute
-		top: 32px
-		bottom: 32px
-		left: 32px
-		right: 32px
-		transform: translateZ(400px)
-		transition: opacity .3s ease-out, transform .2s, visibility .4s
+		position: relative
+		// top: 32px
+		// bottom: 32px
+		// left: 32px
+		// right: 32px
+		padding: 32px
+		transform: translateY(100vh)
+		transition: opacity .3s ease-out, transform .5s, visibility .4s
 	&.opened
-		left: 0
-		top: 0
 		opacity: 1
 		visibility: visible
+		-webkit-overflow-scrolling: touch
 		.modal-content
-			transform: scale(1, 1)
-			transition: transform .3s
+			transform: translateY(0)
+			transition: transform .5s
 	&::-webkit-scrollbar
 		height: 0
 		width: 0

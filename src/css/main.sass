@@ -19,6 +19,9 @@ body::-webkit-scrollbar
 	height: 0
 	width: 0
 
+label
+	border-radius: 0
+
 // --------------------------------------------------
 // INPUT
 // --------------------------------------------------
@@ -33,17 +36,18 @@ body::-webkit-scrollbar
 		line-height: 19px
 		margin-bottom: 12px
 	input[type="text"], input[type="password"]
+		border-radius: 0
 		border: 1px solid #636671
-		display: block
-		height: 46px
-		width: 320px
 		color: #35363c
+		display: block
 		font-family: 'Futura New'
 		font-size: 18px
 		font-weight: 300
+		height: 46px
 		line-height: 22px
 		padding-left: 19px
 		padding-right: 19px
+		width: 320px
 		&::-moz-placeholder, &::-webkit-input-placeholder, &:-ms-input-placeholder
 
 // --------------------------------------------------
@@ -87,6 +91,7 @@ body::-webkit-scrollbar
 @media screen and (max-width: $mobile-large)
 	#to-top-container
 		bottom: 64px
+		display: none
 		.container
 			width: calc(100% - 80px)
 
@@ -148,6 +153,7 @@ body::-webkit-scrollbar
 						color: transparent
 						svg
 							display: block
+							transform: translateZ(0)
 				&.active:after
 					background: url('http://img-fotki.yandex.ru/get/5607/5091629.6b/0_612e6_b9039c0d_M.jpg')
 					background: #35363c
@@ -1323,7 +1329,8 @@ section.articles-gallery-1
 @media screen and (max-width: $medium)
 	.container.socials-container
 		width: 800px
-#fixed-socials
+.static-socials,
+.fixed-socials
 	position: absolute
 	left: 0
 	top: 80px
@@ -1372,9 +1379,68 @@ section.articles-gallery-1
 	&.fixed
 		position: fixed
 		top: 80px
+.static-socials
+	display: none
 @media screen and (max-width: $mobile-large)
+	.fixed-socials,
 	#fixed-socials
 		display: none
+	ul.socials,
+	.static-socials
+		display: block
+		position: static
+		outline: none
+		border: none
+		.container
+			width: 520px
+		ul, ul.socials, ul.lang
+			outline: none
+			border: none
+			position: relative
+		ul.socials
+			padding-left: 6px
+			&:before
+				display: inline-block
+				position: absolute
+				top: 0
+				left: 0
+				height: 64px
+				height: 100%
+				width: 6px
+			li
+				float: left
+				font-size: 0
+				margin-left: -1px
+				display: block
+				border: none
+				outline: 1px solid #f1f1f1
+				outline-offset: -1px
+		ul.lang
+			padding-left: 0px
+			&:before
+				display: none
+@media screen and (max-width: $mobile-large)
+	ul.socials,
+	.static-socials
+		width: 100%
+		.container
+			// padding-left: 29px
+			// padding-right: 29px
+			// width: 100%
+	ul.socials
+		margin-top: 0
+		margin-bottom: 26px
+	ul.lang
+		margin-bottom: 50px
+@media screen and (max-width: $mobile-medium)
+	ul.socials,
+	.static-socials
+		width: 100%
+		.container
+			padding-left: 29px
+			padding-right: 29px
+			width: 100%
+
 // --------------------------------------------------
 // FOOTER
 // --------------------------------------------------
@@ -1639,6 +1705,7 @@ section.articles-gallery-1
 @media screen and (max-height: 500px)
 	#mobile-menu
 		.modal-content
+			outline: none
 			border: none
 			.popup-navigation
 				ul
@@ -1651,8 +1718,10 @@ section.articles-gallery-1
 .modal-holder
 	a.close-modal, .close-modal
 		background-size: 100%
-		height: 22px
-		width: 22px
+		top: 30px
+		right: 30px
+		height: 24px
+		width: 24px
 	&.cross-bottom
 		a.close-modal, .close-modal
 			top: auto
@@ -1832,13 +1901,15 @@ section.articles-gallery-1
 	.modal-content
 		background: #fff
 		bottom: auto
+		position: absolute
+		padding: 0
 		// border: 1px solid #cdd1dc
 		outline: 1px solid #cdd1dc
 		outline-offset: -1px
 		left: 50%
 		right: auto
 		top: 50%
-		transform: translate(-50%, -50%) scale(2)
+		transform: translate(-50%, 100vh)
 		width: 560px
 		.socials-login-container
 			background-color: #39579a
@@ -1860,7 +1931,7 @@ section.articles-gallery-1
 			padding: 50px 120px 40px
 	&.opened
 		.modal-content
-			transform: translate(-50%, -50%) scale(1)
+			transform: translate(-50%, -50%)
 
 @media screen and (max-width: 600px), screen and (max-height: 450px)
 	#signup-modal,
@@ -1874,8 +1945,10 @@ section.articles-gallery-1
 		input[type="text"], input[type="password"]
 			width: 100%
 		.modal-content
+			outline: none
+			border: none
 			position: static
-			transform: scale(2)
+			transform: translateY(100vh)
 			height: 100%
 			width: 100%
 			.socials-login-container
@@ -1894,7 +1967,9 @@ section.articles-gallery-1
 				padding: 120px 32px 40px
 		&.opened
 			.modal-content
-				transform: scale(1)
+				border: none
+				outline: none
+				transform: translateY(0)
 
 #signup-modal
 	input[type="text"], input[type="password"]
@@ -1978,6 +2053,10 @@ section.articles-gallery-1
 				letter-spacing: 1px
 				padding: 23px 37px
 				margin-top: 11px
+				transition: background .3s, color .3s
+				&:hover
+					background: black
+					color: white
 @media screen and (max-width: 500px), screen and (max-height: 430px)
 	.error-404
 		.content-holder
@@ -2039,7 +2118,7 @@ section.articles-gallery-1
 	padding: 0 50px
 	width: 800px
 	z-index: 1
-	#fixed-socials
+	.fixed-socials
 		background: #fff
 		position: absolute
 		left: -60px
@@ -2055,7 +2134,7 @@ section.articles-gallery-1
 			margin-top: 18px
 @media screen and (max-width: $tablet)
 	.article-page
-		// background: transparent
+		background: transparent
 		margin: 0 auto
 		width: 700px
 		.article-name
@@ -2341,6 +2420,8 @@ section.articles-gallery-1
 				margin-top: 36px
 @media screen and (max-width: $medium)
 	.article-content
+		.comments-holder
+			overflow: hidden
 		.article-wysiwyg
 			*, img
 				width: 520px
@@ -2375,6 +2456,8 @@ section.articles-gallery-1
 // @media screen and (max-width: $tablet)
 @media screen and (max-width: $mobile-large)
 	.article-content
+		.article-wysiwyg
+			overflow: hidden
 		.article-description
 			padding-left: 10px
 			*
