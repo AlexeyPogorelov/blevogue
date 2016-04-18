@@ -8,36 +8,26 @@ html(lang='en')
 	body
 
 		include ./partials/navigation.jade
-			ul#fixed-socials.socials.hidden
-				li
-					a(href='https://www.facebook.com/sharer.php?src=sp&u=http://makemeat.com/works/lounge_fm&app_id=966242223397117&display=popup&title=Lounge FM&description=Design for iOS Application&picture=http://makemeat.com', target='_blank')
-						i.fa.fa-facebook
-				li
-					a(href='https://twitter.com/intent/tweet?text=Perfect project "Lounge FM" by Meat Agency http://makemeat.com/works/lounge_fm', target='_blank')
-						i.fa.fa-twitter
-				li
-					a(href='https://www.tumblr.com/widgets/share/tool?shareSource=legacy&canonicalUrl=&url=http://makemeat.com/works/lounge_fm&title=Lounge FM&content=http://makemeat.com&caption=Design for iOS Application&posttype=link', target='_blank')
-						i.fa.fa-tumblr
-				li
-					a(data-pin-do='buttonBookmark', data-pin-title='Lounge FM', data-pin-media='http://makemeat.com', data-pin-custom='true', target='_blank', data-pin-log='button_pinit_bookmarklet', data-pin-href='https://www.pinterest.com/pin/create/button/')
-						i.fa.fa-pinterest
-				li
-					a(href='https://www.linkedin.com/shareArticle?mini=true&url=http://makemeat.com/works/lounge_fm&title=Lounge FM&summary=Design for iOS Application', target='_blank')
-						i.fa.fa-linkedin
-		section.article-page
 
-			.article-header.vertical
+		section.article-header.vertical
+			.container
 				.image-holder
-					img.fake-img(src="http://41.media.tumblr.com/27d5b62368cf54d79a9446f2bbb33bc7/tumblr_o44rnyAM7l1slisbmo4_1280.jpg", alt="article")
+					img.fake-img(src="http://40.media.tumblr.com/b1781f47ffcee0702d2a74970fa2cfc9/tumblr_o5nzib0QQW1slisbmo2_1280.jpg", alt="article")
 					.img(style="background-image:url(http://41.media.tumblr.com/27d5b62368cf54d79a9446f2bbb33bc7/tumblr_o44rnyAM7l1slisbmo4_1280.jpg)")
-			.article-name
-				h1 Що почитати, щоб мозку прибавилося?
-			.article-date
-				span 15 Dec 2016
+				.article-page.vertical
+					.article-name
+						h1 Що почитати, щоб мозку прибавилося?
+					.article-date
+						span 15 Dec 2016
+					//- only in vertical article include here first paragraph
+					p «Мої плаття – ефемерні предмети архітектури, призначені для того, щоб прославляти пропорції жіночого тіла,» – одного разу поспіхом прокоментував Крістіан Діор. Так само швидко ми зуміли забути ці слова. Сьогодні приймаємо як належне речі, які вчора були революційною історію, стержнем, принципом і сенсом життя. Мабуть, не голосно буде сказано, що наш час загубив сутність роботи Крістіана Діора довкола свого модного дому. Про що це я?«Мої плаття – ефемерні предмети архітектури, призначені для того, щоб прославляти пропорції жіночого тіла,» – одного разу поспіхом прокоментував Крістіан Діор. Так само швидко ми зуміли забути ці слова. Сьогодні приймаємо як належне речі, які вчора були революційною історію, стержнем, принципом і сенсом життя. Мабуть, не голосно буде сказано, що наш час загубив сутність роботи Крістіана Діора довкола свого модного дому. Про що це я?
 		.article-content
 			.article-wysiwyg
 				p «Мої плаття – ефемерні предмети архітектури, призначені для того, щоб прославляти пропорції жіночого тіла,» – одного разу поспіхом прокоментував Крістіан Діор. Так само швидко ми зуміли забути ці слова. Сьогодні приймаємо як належне речі, які вчора були революційною історію, стержнем, принципом і сенсом життя. Мабуть, не голосно буде сказано, що наш час загубив сутність роботи Крістіана Діора довкола свого модного дому. Про що це я?
 				blockquote Мої плаття – ефемерні предмети архітектури, призначені для того, щоб прославляти пропорції жіночого тіла
+				blockquote Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa illum rerum excepturi praesentium non totam ratione eius quae alias esse ad assumenda aspernatur explicabo accusantium dolores similique, deleniti voluptatem reprehenderit.
+				blockquote ipsum dolor sit amet, consectetur adipisicing elit. Ipsa illum rerum excepturi praesentium non totam ratione eius quae alias esse ad assumenda aspernatur
+				blockquote elit
 				//- blockquote Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ut placeat consequuntur pariatur iure eum ducimus quasi perferendis, laborum obcaecati iusto ullam expedita excepturi debitis nisi deserunt fugiat velit assumenda.
 				//- blockquote ullam expedita excepturi debitis nisi deserunt fugiat velit assumenda.
 				//- blockquote ipsum expedita excepturi debitis nisi deserunt fugiat velit assumenda.
@@ -68,7 +58,7 @@ html(lang='en')
 							.input-file
 								input( type="file" name="file" id="file-1" required )
 								label(for="file-1")
-									img(src="../img/icons/add-file-icon-1.svg")
+									img(src="img/icons/add-file-icon-1.svg")
 							button(type="submit") Publish
 
 				.comment
@@ -77,7 +67,7 @@ html(lang='en')
 							img.fake-img(src="http://40.media.tumblr.com/932e99ef5eec3857fb0270ccc0b44645/tumblr_o28if3Wo2w1uov59ao1_1280.jpg", alt="avatar")
 							.img(style="background-image:url(http://40.media.tumblr.com/932e99ef5eec3857fb0270ccc0b44645/tumblr_o28if3Wo2w1uov59ao1_1280.jpg)")
 					.comment-container
-						.comment-remove
+						a(href="#").comment-remove
 						.comment-name Duane Manning
 						.comment-wysiwyg How Great Is The Strength Of Your Belief
 
@@ -112,6 +102,30 @@ html(lang='en')
 
 
 
+
+		.static-socials
+			.container
+				ul.socials.clearfix
+					li
+						a(href='https://www.facebook.com/sharer.php?src=sp&u=http://makemeat.com/works/lounge_fm&app_id=966242223397117&display=popup&title=Lounge FM&description=Design for iOS Application&picture=http://makemeat.com', target='_blank')
+							i.fa.fa-facebook
+					li
+						a(href='https://twitter.com/intent/tweet?text=Perfect project "Lounge FM" by Meat Agency http://makemeat.com/works/lounge_fm', target='_blank')
+							i.fa.fa-twitter
+					li
+						a(href='https://www.tumblr.com/widgets/share/tool?shareSource=legacy&canonicalUrl=&url=http://makemeat.com/works/lounge_fm&title=Lounge FM&content=http://makemeat.com&caption=Design for iOS Application&posttype=link', target='_blank')
+							i.fa.fa-tumblr
+					li
+						a(data-pin-do='buttonBookmark', data-pin-title='Lounge FM', data-pin-media='http://makemeat.com', data-pin-custom='true', target='_blank', data-pin-log='button_pinit_bookmarklet', data-pin-href='https://www.pinterest.com/pin/create/button/')
+							i.fa.fa-pinterest
+					li
+						a(href='https://www.linkedin.com/shareArticle?mini=true&url=http://makemeat.com/works/lounge_fm&title=Lounge FM&summary=Design for iOS Application', target='_blank')
+							i.fa.fa-linkedin
+				ul.socials.lang.clearfix
+					li
+						a(href='#') ENG
+					li.active
+						a(href='#') УКР
 
 		section.articles-gallery-1
 			.container
@@ -535,6 +549,29 @@ html(lang='en')
 				.load-more-holder
 					.btn.load-more
 						span Більше
+
+		#fixed-socials.fixed-socials
+			ul.socials
+				li
+					a(href='https://www.facebook.com/sharer.php?src=sp&u=http://makemeat.com/works/lounge_fm&app_id=966242223397117&display=popup&title=Lounge FM&description=Design for iOS Application&picture=http://makemeat.com', target='_blank')
+						i.fa.fa-facebook
+				li
+					a(href='https://twitter.com/intent/tweet?text=Perfect project "Lounge FM" by Meat Agency http://makemeat.com/works/lounge_fm', target='_blank')
+						i.fa.fa-twitter
+				li
+					a(href='https://www.tumblr.com/widgets/share/tool?shareSource=legacy&canonicalUrl=&url=http://makemeat.com/works/lounge_fm&title=Lounge FM&content=http://makemeat.com&caption=Design for iOS Application&posttype=link', target='_blank')
+						i.fa.fa-tumblr
+				li
+					a(data-pin-do='buttonBookmark', data-pin-title='Lounge FM', data-pin-media='http://makemeat.com', data-pin-custom='true', target='_blank', data-pin-log='button_pinit_bookmarklet', data-pin-href='https://www.pinterest.com/pin/create/button/')
+						i.fa.fa-pinterest
+				li
+					a(href='https://www.linkedin.com/shareArticle?mini=true&url=http://makemeat.com/works/lounge_fm&title=Lounge FM&summary=Design for iOS Application', target='_blank')
+						i.fa.fa-linkedin
+			ul.socials.lang
+				li
+					a(href='#') ENG
+				li.active
+					a(href='#') УКР
 
 		include ./partials/footer.jade
 

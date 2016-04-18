@@ -24,23 +24,31 @@ function parallaxSocials () {
 
 			windowHeight = $(window).height();
 
-			if (socialsElement) {
+			try {
+
+				if (socialsElement) {
 
 
-				socialsStatus.start = $articleHeader.height() + parseInt( $articleHeader.css('margin-top') );
-				socialsStatus.end = $articleComments.offset().top - $socialsElement.height() - 100;
-				socialsStatus.left = $articleHeader.find('.container').offset().left;
-				socialsElement.style.transform = 'translateY(' + socialsStatus.start + 'px)';
+					socialsStatus.start = $articleHeader.height() + parseInt( $articleHeader.css('margin-top') );
+					socialsStatus.end = $articleComments.offset().top - $socialsElement.height() - 100;
+					socialsStatus.left = $articleHeader.find('.container').offset().left;
+					socialsElement.style.transform = 'translateY(' + socialsStatus.start + 'px)';
 
-				if ( socialsStatus.left === 0) {
+					if ( socialsStatus.left === 0) {
 
-					socialsStatus.left = $('.article-page').offset().left;
+						socialsStatus.left = $('.article-page').offset().left;
+
+					}
+
+					$socialsElement.css('left', socialsStatus.left);
+
+					socialsStatus.disabled = (socialsStatus.end - socialsStatus.start) < $socialsElement.height();
 
 				}
 
-				$socialsElement.css('left', socialsStatus.left);
+			} catch (e) {
 
-				socialsStatus.disabled = (socialsStatus.end - socialsStatus.start) < $socialsElement.height();
+				console.error(e);
 
 			}
 

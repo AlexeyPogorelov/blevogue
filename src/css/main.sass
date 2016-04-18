@@ -25,6 +25,13 @@ label
 // --------------------------------------------------
 // INPUT
 // --------------------------------------------------
+input[type="text"], input[type="password"]
+	-webkit-border-radius: 0
+	border-radius: 0
+	-webkit-box-shadow: none
+	-webkit-appearance: none
+	box-shadow: none
+
 .input-group-1
 	margin-bottom: 30px
 	label, .label
@@ -48,6 +55,7 @@ label
 		padding-left: 19px
 		padding-right: 19px
 		width: 320px
+		-webkit-appearance: none
 		&::-moz-placeholder, &::-webkit-input-placeholder, &:-ms-input-placeholder
 
 // --------------------------------------------------
@@ -233,6 +241,12 @@ label
 @media screen and (max-width: $medium)
 	.main-navigation
 		.block-holder
+			.logotype-holder
+				width: 126px
+				a
+					width: 126px
+					img
+						width: 126px
 			.navigation-pannel
 				// padding: 23px 0 28px
 				padding: 23px 0 19px
@@ -244,6 +258,7 @@ label
 							left: 15px
 
 	.controls-holder
+		// top: 15px
 		a
 			font-size: 15px
 @media screen and (max-width: $tablet)
@@ -271,7 +286,7 @@ label
 			img
 				width: 124px
 	.controls-holder
-		top: 15px
+		top: 12px
 		a
 			margin-left: 19px
 
@@ -1641,6 +1656,9 @@ section.articles-gallery-1
 	.login-button
 		.login-icon-1
 			background: url(../img/icons/login-icon-1.svg) no-repeat
+@media screen and (max-width: $medium)
+	.controls-holder
+		top: 15px
 
 // --------------------------------------------------
 // MOBILE MENU
@@ -1650,6 +1668,13 @@ section.articles-gallery-1
 	.modal-content
 		border: 1px solid #cdd1dc
 		text-align: center
+		position: fixed
+		left: 32px
+		right: 32px
+		top: 32px
+		bottom: 32px
+		height: auto
+		width: auto
 		.popup-navigation
 			ul
 				position: absolute
@@ -1705,6 +1730,7 @@ section.articles-gallery-1
 @media screen and (max-height: 500px)
 	#mobile-menu
 		.modal-content
+			position: static
 			outline: none
 			border: none
 			.popup-navigation
@@ -1718,10 +1744,13 @@ section.articles-gallery-1
 .modal-holder
 	a.close-modal, .close-modal
 		background-size: 100%
-		top: 30px
-		right: 30px
+		right: 0
+		top: 0
+		margin-top: 30px
+		margin-right: 30px
 		height: 24px
 		width: 24px
+		transition: top .3s
 	&.cross-bottom
 		a.close-modal, .close-modal
 			top: auto
@@ -2087,6 +2116,15 @@ section.articles-gallery-1
 .article-header
 	// margin-top: 80px
 	margin-top: 126px
+	&.vertical
+		float: left
+		.container
+			.image-holder
+				float: left
+				height: 680px
+				width: 492px
+				margin-bottom: 39px
+
 	.container
 		position: relative
 	.image-holder
@@ -2096,6 +2134,15 @@ section.articles-gallery-1
 @media screen and (max-width: $medium)
 	.article-header
 		margin-top: 66px
+		&.vertical
+			float: none
+			.container
+				text-align: center
+				.image-holder
+					display: inline-block
+					float: none
+					width: 360px
+					height: 498px
 		.container
 			width: 100%
 @media screen and (max-width: $tablet)
@@ -2104,8 +2151,21 @@ section.articles-gallery-1
 @media screen and (max-width: $mobile-large)
 	.article-header
 		margin-top: 56px
-		.image-holder img
-			max-height: 374px
+		.image-holder
+			img
+				max-height: 374px
+		&.vertical
+			.container
+				.image-holder
+					height: 442px
+					width: 320px
+@media screen and (max-width: $mobile-medium)
+	.article-header
+		&.vertical
+			.container
+				.image-holder
+					height: 442px
+					width: 100%
 // @media screen and (max-width: $mobile-medium)
 // 	.article-header
 // 		.image-holder img
@@ -2122,24 +2182,69 @@ section.articles-gallery-1
 		background: #fff
 		position: absolute
 		left: -60px
-	.vertical
-		margin-top: 200px
-		float: left
-		width: 492px
+	&.vertical
+		margin-top: 0
+		float: right
+		padding: 80px 0 0 70px
+		text-align: left
+		width: 526px
+		.article-name
+			background: #fff
+			padding: 22px 30px
+			text-align: left
+			margin-left: -168px
+			width: 620px
+		.article-date
+			text-align: left
+			margin-bottom: 20px
+			margin-top: 20px
+		p
+			color: #35363c
+			font-family: Effra
+			font-size: 20px
+			font-weight: 400
+			line-height: 30px
+			letter-spacing: 0.1px
+			margin-bottom: 60px
 .article-page.video
 	margin-top: 0
 	background: transparent
 	.article-name
 		h1, h2, h3, h4, h5, h6
 			margin-top: 18px
-@media screen and (max-width: $tablet)
+@media screen and (max-width: $medium)
 	.article-page
+		&.vertical
+			float: none
+			padding: 0
+			width: auto
+			.article-name
+				text-align: center
+				margin: 0 auto
+				padding: 0
+				width: 700px
+			.article-date
+				text-align: center
+			p
+				padding-left: 0
+				padding-right: 0
+				margin: 0 auto 50px
+				width: 520px
+				font-family: Effra
+				font-size: 18px
+				font-weight: 400
+				line-height: 28px
+@media screen and (max-width: $tablet)
+	.article-page,
+	.article-page.vertical
 		background: transparent
 		margin: 0 auto
 		width: 700px
 		.article-name
+			width: auto
 			h1, h2, h3, h4, h5, h6
 				margin-top: 14px
+				// width: auto
 	.article-page.video
 		.article-name
 			h1, h2, h3, h4, h5, h6
@@ -2149,8 +2254,10 @@ section.articles-gallery-1
 			font-weight: 600
 			line-height: 17px
 @media screen and (max-width: $mobile-large)
-	.article-page
+	.article-page,
+	.article-page.vertical
 		width: 520px
+		width: auto
 		padding: 0
 	.article-video-page.video
 		.article-name
@@ -2158,8 +2265,11 @@ section.articles-gallery-1
 				letter-spacing: 2.3px
 				margin-bottom: 35px
 @media screen and (max-width: $mobile-medium)
-	.article-page
+	.article-page,
+	.article-page.vertical
 		width: calc(100% - 64px)
+		p
+			width: auto
 	.article-video-page.video
 		.article-name
 			margin-top: 9px
@@ -2939,7 +3049,7 @@ section.articles-gallery-1
 			.image-container
 				position: relative
 				padding-right: 140px
-				height: auto
+				height: 200px
 				img
 					height: 200px
 				&:before, &:after
@@ -2970,7 +3080,7 @@ section.articles-gallery-1
 			.image-container
 				height: auto
 				position: relative
-				width: 100%
+				height: 287px
 				img
 					height: 287px
 				&:after, &:before
@@ -2992,13 +3102,13 @@ section.articles-gallery-1
 		margin-top: 76px
 		.video, .video.first
 			margin-top: -16px
-			margin-bottom: 0
+			margin-bottom: 10px
 			position: relative
 			height: auto
 			.image-container
 				position: relative
 				padding-right: 0
-				height: auto
+				height: 172px
 				img
 					height: 172px
 				&:before, &:after
@@ -3059,11 +3169,9 @@ section.articles-gallery-1
 			height: 448px
 @media screen and (max-width: $mobile-large)
 	.article-video-header
-		// margin-top: 56px
 		iframe
 			height: 358px
 @media screen and (max-width: $mobile-medium)
 	.article-video-header
-		// margin-top: 56px
 		iframe
 			height: 179px
