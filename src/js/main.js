@@ -2,6 +2,28 @@
 	if ($.browser.mobile) $('body').addClass('mobile');
 	if ($.browser.safari) $('body').addClass('client-ios');
 
+// article add comment fake textarea
+(function () {
+
+	$('[contenteditable="true"]').each(function () {
+
+		var $self = $(this),
+			$textarea;
+
+		if ($self.hasClass('comment-wysiwyg')) {
+
+			$textarea = $self.siblings('textarea');
+
+			$self.on('keyup', function () {
+				$textarea.html( $self.html() );
+			});
+
+		}
+
+	});
+
+})();
+
 // parallax and socials
 function parallaxSocials () {
 

@@ -49,12 +49,13 @@ html(lang='en')
 						.image-holder
 							img.fake-img(src="http://40.media.tumblr.com/8352aba84f0f544a2a14b127936bc0fb/tumblr_o1dt16zCYu1uov59ao1_1280.jpg", alt="avatar")
 							.img(style="background-image:url(http://40.media.tumblr.com/8352aba84f0f544a2a14b127936bc0fb/tumblr_o1dt16zCYu1uov59ao1_1280.jpg)")
-					.comment-container
+					form.comment-container(action="#")
 						.comment-name Duane Manning
 						.comment-wysiwyg(contenteditable="true") Write Something…
+						textarea.hidden
 						.comment-addons
 							.input-file
-								input( type="file" name="file" id="file-1" required )
+								input( type="file" name="file" id="file-1" )
 								label(for="file-1")
 									img(src="img/icons/add-file-icon-1.svg")
 							button(type="submit") Publish

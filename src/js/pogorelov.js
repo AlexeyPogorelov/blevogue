@@ -280,7 +280,7 @@ var animationPrefix = (function () {
 
 						plg.toSlide(id);
 
-					}, 10);
+					}, $.browser.mobile ? 100 : 40);
 
 				},
 				toSlide: function (id, resize) {
@@ -572,8 +572,14 @@ var animationPrefix = (function () {
 					state.animated = false;
 
 					if (typeof state.doAfterTransition === 'function') {
-						state.doAfterTransition();
-						state.doAfterTransition = null;
+
+						setTimeout(function () {
+
+							state.doAfterTransition();
+							state.doAfterTransition = null;
+
+						}, 10);
+
 					}
 
 					
