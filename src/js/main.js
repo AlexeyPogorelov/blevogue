@@ -711,6 +711,8 @@ $(document).on('ready', function () {
 
 		// cross overflow fix
 		(function () {
+			// TODO return on test 
+			return;
 
 			$('.modal-holder.cross-bottom').each(function () {
 

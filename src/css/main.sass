@@ -334,6 +334,7 @@ $main-slider-height-mobile-small: 247px
 	position: relative
 	overflow: hidden
 	margin-top: 126px
+	transition: transform 0.8s 0.5s
 	.slider-holder
 		position: relative
 		float: left
@@ -425,10 +426,13 @@ $main-slider-height-mobile-small: 247px
 					.image-holder
 						transform: scale(1)
 	&.wow
+		transform: translateY(40px)
 		.img
 			opacity: 0
 			transition: opacity 0
 	&.animated
+		transform: translateY(0)
+		transition: transform 0.8s 1.5s
 		.slide
 			.image-holder
 				.img
