@@ -42,6 +42,68 @@ function parallaxSocials () {
 		currentDoc = (document.documentElement || document.body.parentNode || document.body),
 		currentParent = (window.pageYOffset !== undefined) ? window : currentDoc,
 		currentOffset = (window.pageYOffset !== undefined) ? 'pageYOffset' : 'scrollTop',
+		scrollFunction = function () {
+
+			var top = currentParent[currentOffset];
+				// viewArea = windowHeight + top;
+
+			// console.time('timerName');
+			requestAnimFrame(function () {
+
+				if (parallaxElemens.length) {
+
+					for (var i = parallaxElemens.length - 1; i >= 0; i--) {
+
+						parallaxElemens[i].el.style.transform = 'translateY(' + -( ( parallaxElemens[i].el.getBoundingClientRect().top - windowHeight / 2 ) * parallaxElemens[i].mult ) + 'px) translateZ(0)';
+
+					}
+
+					for (var y = $parallaxArticle.length - 1; y >= 0; y--) {
+
+						$parallaxArticle[y].style.top = ( ( $parallaxArticle[y].getBoundingClientRect().top - windowHeight / 2 ) * 0.15 ) + 'px';
+						// $parallaxArticle[y].style.transform = 'translateY(' + ( ( $parallaxArticle[y].getBoundingClientRect().top - windowHeight / 2 ) * 0.15 ) + 'px) translateZ(0)';
+
+					}
+
+				}
+
+				if (socialsElement) {
+
+					if ( top < socialsStatus.start || socialsStatus.disabled ) {
+
+						if (socialsStatus.state !== 1) {
+
+							$socialsElement.removeClass('fixed');
+							socialsStatus.state = 1;
+							socialsElement.style.transform = 'translateY(' + socialsStatus.start + 'px) translateZ(0)';
+
+						}
+
+					} else if ( top > socialsStatus.end ) {
+
+						if ( socialsStatus.state !== 3) {
+
+							$socialsElement.removeClass('fixed');
+							socialsElement.style.transform = 'translateY(' + socialsStatus.end + 'px) translateZ(0)';
+							socialsStatus.state = 3;
+
+						}
+
+					} else if (socialsStatus.state !== 2) {
+
+						$socialsElement.addClass('fixed');
+						socialsElement.style.transform = 'translateY(0px) translateZ(0)';
+						socialsStatus.state = 2;
+						// socialsElement.style.transform = 'translateY(' + top + 'px) translateZ(0)';
+
+					}
+
+				}
+
+			});
+			// console.timeEnd('timerName');
+
+		},
 		resizeFunction = function () {
 
 			windowHeight = $(window).height();
@@ -49,7 +111,6 @@ function parallaxSocials () {
 			try {
 
 				if (socialsElement) {
-
 
 					socialsStatus.start = $articleHeader.height() + parseInt( $articleHeader.css('margin-top') );
 					socialsStatus.end = $articleComments.offset().top - $socialsElement.height() - 100;
@@ -62,9 +123,17 @@ function parallaxSocials () {
 
 					}
 
+					if ($articleHeader.hasClass('vertical')) {
+
+						socialsStatus.start = $articleHeader.find('.image-holder').height() + parseInt( $articleHeader.css('margin-top') );
+
+					}
+
 					$socialsElement.css('left', socialsStatus.left);
 
 					socialsStatus.disabled = (socialsStatus.end - socialsStatus.start) < $socialsElement.height();
+
+					socialsStatus.state = 0;
 
 				}
 
@@ -156,6 +225,8 @@ function parallaxSocials () {
 					offset: $self.offset().top - transformBackup
 				});
 
+				scrollFunction();
+
 			});
 
 		};
@@ -168,68 +239,7 @@ function parallaxSocials () {
 
 		resizeFunction();
 
-		$(window).on('scroll', function () {
-
-			var top = currentParent[currentOffset];
-				// viewArea = windowHeight + top;
-
-			// console.time('timerName');
-			requestAnimFrame(function () {
-
-				if (parallaxElemens.length) {
-
-					for (var i = parallaxElemens.length - 1; i >= 0; i--) {
-
-						parallaxElemens[i].el.style.transform = 'translateY(' + -( ( parallaxElemens[i].el.getBoundingClientRect().top - windowHeight / 2 ) * parallaxElemens[i].mult ) + 'px) translateZ(0)';
-
-					}
-
-					for (var y = $parallaxArticle.length - 1; y >= 0; y--) {
-
-						$parallaxArticle[y].style.top = ( ( $parallaxArticle[y].getBoundingClientRect().top - windowHeight / 2 ) * 0.15 ) + 'px';
-						// $parallaxArticle[y].style.transform = 'translateY(' + ( ( $parallaxArticle[y].getBoundingClientRect().top - windowHeight / 2 ) * 0.15 ) + 'px) translateZ(0)';
-
-					}
-
-				}
-
-				if (socialsElement) {
-
-					if ( top < socialsStatus.start || socialsStatus.disabled ) {
-
-						if (socialsStatus.state !== 1) {
-
-							$socialsElement.removeClass('fixed');
-							socialsStatus.state = 1;
-							socialsElement.style.transform = 'translateY(' + socialsStatus.start + 'px) translateZ(0)';
-
-						}
-
-					} else if ( top > socialsStatus.end ) {
-
-						if ( socialsStatus.state !== 3) {
-
-							$socialsElement.removeClass('fixed');
-							socialsElement.style.transform = 'translateY(' + socialsStatus.end + 'px) translateZ(0)';
-							socialsStatus.state = 3;
-
-						}
-
-					} else if (socialsStatus.state !== 2) {
-
-						$socialsElement.addClass('fixed');
-						socialsElement.style.transform = 'translateY(0px) translateZ(0)';
-						socialsStatus.state = 2;
-						// socialsElement.style.transform = 'translateY(' + top + 'px) translateZ(0)';
-
-					}
-
-				}
-
-			});
-			// console.timeEnd('timerName');
-
-		}).on('resize', resizeFunction);
+		$(window).on('scroll', scrollFunction).on('resize', resizeFunction);
 
 }
 
@@ -263,7 +273,7 @@ var loading = {
 		if (loading.finished) return;
 
 		// TODO temp for develop
-		$('section.articles-gallery-1 > article, .article-content, .article-name, .article-date, .video').find('p, h1, h2, h3, h4, h5, h6, blockquote, span').attr('contenteditable', true).on('click', function (e) {
+		$('section.articles-gallery-1 > article, .article-content, .article-name, .article-date, .video, .article-page').find('p, h1, h2, h3, h4, h5, h6, blockquote, span').attr('contenteditable', true).on('click', function (e) {
 			e.preventDefault();
 		});
 		$('.article-holder-1 a').on('click', function (e) {
@@ -350,7 +360,7 @@ var loading = {
 			'opacity': 0
 		}, 400, function () {
 
-			$(window).trigger('resize');
+			$(window).trigger('scroll').trigger('resize');
 
 			$('.slider-holder').removeClass('touched');
 
