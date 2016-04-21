@@ -16,26 +16,31 @@ html(lang='en')
 						img(src="img/content/head-image.svg", alt="avatar")
 				form
 					.input-file
-						input( type="file" name="file" id="file-1" required )
+						input( type="file" name="file" id="file-1" )
 						label(for="file-1") Change profile picture
 					.form-group.input-group-1
 							.label Name
-							input(type="text" value="Myra Walton")
+							input(type="text" value="Myra Walton" data-validate="name")
+							.error-label Your name was entered incorrectly
 					.form-group.input-group-1
 							.label Email
-							input(type="text" value="trinity.johnston@yahoo.com")
+							input(type="email" value="trinity.johnston@yahoo.com" data-validate="email")
+							.error-label Your old email was entered incorrectly
 					.button-holder.change-password-visible
 						//- a(href="password-change.html" data-modal="#password-change").forgot-password Change password
 						a(href="password-change.html" data-toggle="change-password").forgot-password Change password
 					.form-group.input-group-1.change-password-hidden
 							.label Old Password
-							input(type="text")
+							input(type="text" data-validate="name").skip
+							.error-label Your old password was entered incorrectly
 					.form-group.input-group-1.change-password-hidden
 							.label New Password
-							input(type="password")
+							input(type="password" data-validate="name").skip
+							.error-label Enter correct password
 					.form-group.input-group-1.change-password-hidden
 							.label New Password Confirmation
-							input(type="password")
+							input(type="password" data-validate="name").skip
+							.error-label Enter correct password
 					.button-holder.change-password-hidden
 						//- a(href="password-change.html" data-modal="#password-change").forgot-password Change password
 						a(href="password-change.html" data-toggle="change-password").forgot-password Cancel Changing Password

@@ -43,15 +43,24 @@ label
 // --------------------------------------------------
 // INPUT
 // --------------------------------------------------
-input[type="text"], input[type="password"]
+input[type="text"], input[type="password"], input[type="email"]
 	-webkit-border-radius: 0
 	border-radius: 0
 	-webkit-box-shadow: none
 	-webkit-appearance: none
 	box-shadow: none
+	&.error
+		border-color: #ff8080 !important
+		&:hover
+			outline-color: #ff8080 !important
+		&:focus
+			outline-color: #35363c !important
+			& ~ .error
+				color: #35363c !important
 
 .input-group-1
 	margin-bottom: 30px
+	position: relative
 	label, .label
 		color: #35363c
 		display: block
@@ -60,7 +69,7 @@ input[type="text"], input[type="password"]
 		font-weight: 300
 		line-height: 19px
 		margin-bottom: 12px
-	input[type="text"], input[type="password"]
+	input[type="text"], input[type="password"], input[type="email"]
 		border-radius: 0
 		border: 1px solid #636671
 		outline: 2px solid transparent
@@ -78,7 +87,31 @@ input[type="text"], input[type="password"]
 		&:hover
 			outline: 2px solid #35363c
 			transition: outline .1s
-		&::-moz-placeholder, &::-webkit-input-placeholder, &:-ms-input-placeholder
+	.error,
+	.error-label
+		pointer-events: none
+		color: #ff8080
+		font-family: 'Futura New'
+		font-size: 12px
+		font-weight: 200
+		line-height: 14px
+		height: 0
+		position: relative
+		top: 4px
+		opacity: 0
+		transform: translateY(10px)
+		transition: transform .3s, opacity .3s
+	&.error
+		input
+			border-color: #ff8080 !important
+			outline-color: #ff8080 !important
+		.error,
+		.error-label
+			display: block
+			opacity: 1
+			pointer-events: all
+			transform: translateY(0)
+			transition: transform .3s, opacity .3s
 
 // --------------------------------------------------
 // TO-TOP
@@ -148,7 +181,7 @@ input[type="text"], input[type="password"]
 	transform: translateZ(0)
 	z-index: 11
 	.block-holder
-		max-width: 1440px
+		// max-width: 1440px
 		margin-left: auto
 		margin-right: auto
 		position: relative
@@ -1477,10 +1510,11 @@ section.articles-gallery-1
 // --------------------------------------------------
 
 .footer
+	padding: 0 40px
 	.container
 		padding: 32px 0 29px
 		position: relative
-		width: 1220px
+		width: 100%
 		&:before
 			content: ''
 			display: block
@@ -1513,7 +1547,7 @@ section.articles-gallery-1
 			input
 				height: 46px
 				line-height: 46px
-			input[type="text"], input[type="password"]
+			input[type="text"], input[type="password"], input[type="email"]
 				color: #35363c
 				font-size: 18px
 				font-family: 'Futura New'
@@ -1586,7 +1620,7 @@ section.articles-gallery-1
 @media screen and (max-width: $medium)
 	.footer
 		.container
-			width: 880px
+			// width: 880px
 			.footer-logo
 				display: none
 			.search-bar
@@ -1594,7 +1628,7 @@ section.articles-gallery-1
 @media screen and (max-width: $tablet)
 	.footer
 		.container
-			width: calc(100% - 60px)
+			// width: calc(100% - 60px)
 			.footer-logo
 				display: none
 			.search-bar
@@ -1605,7 +1639,7 @@ section.articles-gallery-1
 	.footer
 		text-align: center
 		.container
-			width: calc(100% - 80px)
+			// width: calc(100% - 80px)
 			.label
 				display: none
 			.search-bar
@@ -1634,7 +1668,7 @@ section.articles-gallery-1
 @media screen and (max-width: $mobile-medium)
 	.footer
 		.container
-			width: calc(100% - 64px)
+			// width: calc(100% - 64px)
 			.search-bar
 				margin-top: 0
 				input[type="button"]
@@ -1791,7 +1825,7 @@ section.articles-gallery-1
 				top: 80px
 				width: 52px
 				float: left
-			input[type="text"], input[type="password"]
+			input[type="text"], input[type="password"], input[type="email"]
 				border: none
 				outline: none
 				padding-left: 90px
@@ -1826,7 +1860,7 @@ section.articles-gallery-1
 					left: 17px
 					height: 38px
 					width: 38px
-				input[type="text"], input[type="password"]
+				input[type="text"], input[type="password"], input[type="email"]
 					// line-height: 10px
 					height: 68px
 					padding-left: 62px
@@ -1849,7 +1883,7 @@ section.articles-gallery-1
 					top: 26px
 					height: 20px
 					width: 20px
-				input[type="text"], input[type="password"]
+				input[type="text"], input[type="password"], input[type="email"]
 					padding-left: 39px
 					font-size: 46px
 					font-weight: 500
@@ -1880,7 +1914,7 @@ section.articles-gallery-1
 		font-weight: 300
 		line-height: 19px
 		margin-bottom: 10px
-	input[type="text"], input[type="password"]
+	input[type="text"], input[type="password"], input[type="email"]
 		background-color: white
 		// border: 1px solid #35363c
 		border: 1px solid #636671
@@ -1987,7 +2021,7 @@ section.articles-gallery-1
 		.close-modal
 			display: block
 			bottom: auto
-		input[type="text"], input[type="password"]
+		input[type="text"], input[type="password"], input[type="email"]
 			width: 100%
 		.modal-content
 			outline: none
@@ -2017,7 +2051,7 @@ section.articles-gallery-1
 				transform: translateY(0)
 
 #signup-modal
-	input[type="text"], input[type="password"]
+	input[type="text"], input[type="password"], input[type="email"]
 		border: 1px solid #35363c
 	button
 		background: url('https://unsplash.it/600/400?image=40')

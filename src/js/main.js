@@ -488,6 +488,9 @@ $(document).on('ready', function () {
 				$visibleElements.removeClass(classes[0]).addClass(classes[1]);
 				$hiddenElements.removeClass(classes[1]).addClass(classes[0]);
 
+				$visibleElements.find('input').addClass('skip');
+				$hiddenElements.find('input').removeClass('skip');
+
 				// console.log( $(classes[0]) );
 				// console.log( $(classes[1]) );
 
@@ -900,6 +903,15 @@ $(document).on('ready', function () {
 			}
 
 		})();
+
+		// validation
+		(function () {
+
+			var $profileForms = $('.profile-holder').find('form');
+			$profileForms.validate();
+
+		})();
+
 
 		//scroll
 		$(document).on('scroll', function () {
