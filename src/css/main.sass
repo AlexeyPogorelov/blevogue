@@ -22,6 +22,25 @@ body::-webkit-scrollbar
 label
 	border-radius: 0
 
+.cross-top-fixed, .cross-bottom-fixed
+	background: url("../img/icons/cross-button-2.svg") no-repeat 50% 50%
+	cursor: pointer
+	display: block
+	opacity: .7
+	position: fixed
+	bottom: auto
+	left: auto
+	background-size: 100%
+	right: 0
+	top: 0
+	margin-top: 30px
+	margin-right: 30px
+	height: 24px
+	width: 24px
+	z-index: 20
+	&.animated
+		animation: fadeIn .6s
+
 // --------------------------------------------------
 // LOGIC
 // --------------------------------------------------
@@ -2264,8 +2283,8 @@ section.articles-gallery-1
 			margin-top: 18px
 @media screen and (max-width: $medium)
 	.article-page
-		background: transparent
 		&.vertical
+			background: transparent
 			float: none
 			padding: 0
 			width: 800px

@@ -32,13 +32,25 @@ function parallaxSocials () {
 
 					for (var i = parallaxElemens.length - 1; i >= 0; i--) {
 
-						parallaxElemens[i].el.style.transform = 'translateY(' + -( ( parallaxElemens[i].el.getBoundingClientRect().top - windowHeight / 2 ) * parallaxElemens[i].mult ) + 'px) translateZ(0)';
+						var parallaxElementTempoTop = parallaxElemens[i].el.getBoundingClientRect().top;
+
+						if (i === 0) console.log( parallaxElementTempoTop );
+
+						if ( parallaxElementTempoTop < -200 || parallaxElementTempoTop > windowHeight + 200 ) continue;
+
+						parallaxElemens[i].el.style.transform = 'translateY(' + -( ( parallaxElementTempoTop - windowHeight / 2 ) * parallaxElemens[i].mult ) + 'px) translateZ(0)';
 
 					}
 
 					for (var y = $parallaxArticle.length - 1; y >= 0; y--) {
 
-						$parallaxArticle[y].style.top = ( ( $parallaxArticle[y].getBoundingClientRect().top - windowHeight / 2 ) * 0.15 ) + 'px';
+						var parallaxArticleTempoTop = $parallaxArticle[y].getBoundingClientRect().top;
+
+						if (y === 0) console.log( parallaxArticleTempoTop );
+
+						if ( parallaxArticleTempoTop < -windowHeight || parallaxArticleTempoTop > windowHeight * 2 ) continue;
+
+						$parallaxArticle[y].style.top = ( ( parallaxArticleTempoTop - windowHeight / 2 ) * 0.15 ) + 'px';
 						// $parallaxArticle[y].style.transform = 'translateY(' + ( ( $parallaxArticle[y].getBoundingClientRect().top - windowHeight / 2 ) * 0.15 ) + 'px) translateZ(0)';
 
 					}
@@ -410,8 +422,8 @@ $(document).on('ready', function () {
 			var $el = $('#to-top'),
 				state = false,
 				speed = 900,
-				paused = false;
-			var plg = {
+				paused = false,
+				plg = {
 				up: function () {
 
 					paused = true;
@@ -531,6 +543,20 @@ $(document).on('ready', function () {
 				this.opened.push($modal);
 				$modal.addClass('opened').one(transitionPrefix, bodyOverflow.fixBody);
 
+				if ( $modal.hasClass('cross-top') ) {
+
+					$('<div>').addClass('cross-top-fixed animated').one('click', function () {
+
+						modals.closeModal( $modal );
+
+					}).one(animationPrefix, function () {
+
+						$(this).removeClass( 'animated' );
+
+					}).appendTo('body');
+
+				}
+
 			},
 			closeModal: function ($modal) {
 
@@ -544,8 +570,6 @@ $(document).on('ready', function () {
 
 					this.closeModal( $( $modal ) );
 
-					return;
-
 				} else if (this.opened.length > 0) {
 
 					for (var y = 0; y < this.opened.length; y++) {
@@ -554,20 +578,24 @@ $(document).on('ready', function () {
 
 					}
 
-					return;
-
 				}
-				
+
+				$('.cross-top-fixed, .cross-bottom-fixed').addClass('fadeOut').one(animationPrefix, function () {
+
+					$(this).remove();
+
+				});
+
 				if (this.opened.length > 1) {
 
 					var modal = $modal.get(0);
 
 					// TODO test it
-					for (var i = 0; i < this.opened.length; i++) {
+					for (var z = 0; z < this.opened.length; z++) {
 
-						if (modal == this.opened[i].get(0)) {
+						if (modal == this.opened[z].get(0)) {
 
-							this.opened.splice(i, 1);
+							this.opened.splice(z, 1);
 
 							break;
 
