@@ -1,28 +1,6 @@
 
-	if ($.browser.mobile) $('body').addClass('mobile');
-	if ($.browser.safari) $('body').addClass('client-ios');
-
-// article add comment fake textarea
-(function () {
-
-	$('[contenteditable="true"]').each(function () {
-
-		var $self = $(this),
-			$textarea;
-
-		if ($self.hasClass('comment-wysiwyg')) {
-
-			$textarea = $self.siblings('textarea');
-
-			$self.on('keyup', function () {
-				$textarea.html( $self.html() );
-			});
-
-		}
-
-	});
-
-})();
+if ($.browser.mobile) $('body').addClass('mobile');
+if ($.browser.safari) $('body').addClass('client-ios');
 
 // parallax and socials
 function parallaxSocials () {
@@ -484,6 +462,58 @@ $(document).on('ready', function () {
 			});
 
 			return plg;
+
+		})();
+
+
+		// #changepassword
+		(function () {
+
+			$('[data-toggle]').on('click', function (e) {
+
+				e.preventDefault();
+
+				var $self = $(this),
+					$form = $self.closest('form'),
+					classes = [],
+					$visibleElements,
+					$hiddenElements;
+
+				classes.push( $self.attr('data-toggle') + '-visible' );
+				classes.push( $self.attr('data-toggle') + '-hidden' );
+
+				$visibleElements = $('.' + classes[0]);
+				$hiddenElements = $('.' + classes[1]);
+
+				$visibleElements.removeClass(classes[0]).addClass(classes[1]);
+				$hiddenElements.removeClass(classes[1]).addClass(classes[0]);
+
+				// console.log( $(classes[0]) );
+				// console.log( $(classes[1]) );
+
+			});
+
+		})();
+
+		// article add comment fake textarea
+		(function () {
+
+			$('[contenteditable="true"]').each(function () {
+
+				var $self = $(this),
+					$textarea;
+
+				if ($self.hasClass('comment-wysiwyg')) {
+
+					$textarea = $self.siblings('textarea');
+
+					$self.on('keyup', function () {
+						$textarea.html( $self.html() );
+					});
+
+				}
+
+			});
 
 		})();
 

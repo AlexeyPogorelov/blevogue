@@ -23,6 +23,24 @@ label
 	border-radius: 0
 
 // --------------------------------------------------
+// LOGIC
+// --------------------------------------------------
+
+.change-password-hidden
+	// display: none
+	overflow: hidden
+	max-height: 0
+	margin-top: 0 !important
+	margin-bottom: 0 !important
+	height: 0
+	margin: 0
+	transition: max-height .3s, margin .3s, height .3s
+.change-password-visible
+	overflow: visible
+	margin-bottom: 0
+	transition: max-height .6s, margin .3s, height .3s
+
+// --------------------------------------------------
 // INPUT
 // --------------------------------------------------
 input[type="text"], input[type="password"]
@@ -45,6 +63,7 @@ input[type="text"], input[type="password"]
 	input[type="text"], input[type="password"]
 		border-radius: 0
 		border: 1px solid #636671
+		outline: 2px solid transparent
 		color: #35363c
 		display: block
 		font-family: 'Futura New'
@@ -56,6 +75,9 @@ input[type="text"], input[type="password"]
 		padding-right: 19px
 		width: 320px
 		-webkit-appearance: none
+		&:hover
+			outline: 2px solid #35363c
+			transition: outline .1s
 		&::-moz-placeholder, &::-webkit-input-placeholder, &:-ms-input-placeholder
 
 // --------------------------------------------------
@@ -439,32 +461,22 @@ $main-slider-height-mobile-small: 247px
 					opacity: 1
 					transition: opacity 0.8s 1.5s
 
-// @media screen and (min-width: 1800px)
+// TODO discuss it and make right des. 
+// @media screen and (min-width: 2600px)
 // 	.main-slider
 // 		.container
-// 			width: 1400px
+// 			width: 2000px
 // 			.slide
+// 				height: $main-slider-height-retina
 // 				.slide-content
-// 					padding: 0 60px
+// 					padding: 0 120px
+// 					.img
+// 						max-height: $main-slider-height-retina
 
-@media screen and (min-width: 2600px)
-	.main-slider
-		.container
-			width: 2000px
-			.slide
-				height: $main-slider-height-retina
-				.slide-content
-					padding: 0 120px
-					.img
-						max-height: $main-slider-height-retina
-
-@media screen and (min-width: 3000px)
-	.main-slider
-		.container
-			width: 2400px
-			.slide
-				.slide-content
-					// padding: 0 180px
+// @media screen and (min-width: 3000px)
+// 	.main-slider
+// 		.container
+// 			width: 2400px
 
 @media screen and (max-width: $medium)
 	.main-slider
