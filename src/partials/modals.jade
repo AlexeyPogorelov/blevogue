@@ -1,4 +1,4 @@
-.modal-holder#mobile-menu.cross-top
+.modal-holder#mobile-menu(data-cross="cross-navigation")
 	.modal-content
 		.modal-container
 			.popup-navigation
@@ -35,7 +35,7 @@
 								text(x="0" y="1em") Вiдео
 		//- .close-modal(data-close="#mobile-menu")
 
-.modal-holder#search-modal.cross-top
+.modal-holder#search-modal(data-cross="cross-top")
 	.modal-content
 		.modal-container
 			form(action="#").input-group
@@ -154,7 +154,7 @@
 									h3 Поради: що почитати, щоб мозку прибавилося? почитати, щоб
 				//- .close-modal(data-close="#search-modal")
 
-.modal-holder#login-modal.cross-top
+.modal-holder#login-modal(data-cross="mobile-visible")
 	.modal-content
 		.modal-container
 			//- .close-modal(data-close="#login-modal")
@@ -175,7 +175,7 @@
 				.button-group
 					a(href="signup.html" data-modal="#signup-modal") Sign Up
 
-.modal-holder#signup-modal.cross-top
+.modal-holder#signup-modal(data-cross="mobile-visible")
 	.modal-content
 		.modal-container
 			//- .close-modal(data-close="#signup-modal")
@@ -197,7 +197,7 @@
 				.button-group
 					button(type="submit") Sign Up
 
-.modal-holder#password-recovery.cross-top
+.modal-holder#password-recovery(data-cross="mobile-visible")
 	.modal-content
 		.modal-container
 			//- .close-modal(data-close="#password-recovery")
@@ -210,7 +210,7 @@
 				.button-group
 					button(type="submit") Reset
 
-.modal-holder#password-change.cross-top
+.modal-holder#password-change(data-cross="mobile-visible")
 	.modal-content
 		.modal-container
 			//- .close-modal(data-close="#password-change")

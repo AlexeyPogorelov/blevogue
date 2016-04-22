@@ -43,7 +43,30 @@ var animationPrefix = (function () {
 								window.msRequestAnimationFrame     ||
 								function( callback ){
 									window.setTimeout(callback, 1000 / 60);
-								};
+								},
+	bodyOverflow = {
+		fixBody: function () {
+
+			$('body').width($('body').width())
+				.addClass('fixed');
+
+		},
+		unfixBody: function () {
+
+			$('body')
+				.css({
+					'width': 'auto'
+				})
+				.removeClass('fixed');
+
+		},
+		resize: function () {
+
+			this.unfixBody();
+
+		}.bind(this)
+
+	};
 (function ($) {
 
 	$.fn.simpleSlider = function (opt) {

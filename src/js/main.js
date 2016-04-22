@@ -1,6 +1,19 @@
 
 if ($.browser.mobile) $('body').addClass('mobile');
 if ($.browser.safari) $('body').addClass('client-ios');
+bodyOverflow.fixBody();
+
+// WOW add classes
+if ($.browser.desktop) {
+
+	$('.fadeInUp').addClass('wow fadeInUp');
+	$('.fadeInRight').addClass('wow fadeInRight');
+
+	$('#main-slider').addClass('wow');
+
+	$('section.articles-gallery-1 article').addClass('wow');
+
+}
 
 // parallax and socials
 function parallaxSocials () {
@@ -34,7 +47,7 @@ function parallaxSocials () {
 
 						var parallaxElementTempoTop = parallaxElemens[i].el.getBoundingClientRect().top;
 
-						if (i === 0) console.log( parallaxElementTempoTop );
+						// if (i === 0) console.log( parallaxElementTempoTop );
 
 						if ( parallaxElementTempoTop < -200 || parallaxElementTempoTop > windowHeight + 200 ) continue;
 
@@ -46,7 +59,7 @@ function parallaxSocials () {
 
 						var parallaxArticleTempoTop = $parallaxArticle[y].getBoundingClientRect().top;
 
-						if (y === 0) console.log( parallaxArticleTempoTop );
+						// if (y === 0) console.log( parallaxArticleTempoTop );
 
 						if ( parallaxArticleTempoTop < -windowHeight || parallaxArticleTempoTop > windowHeight * 2 ) continue;
 
@@ -204,7 +217,7 @@ function parallaxSocials () {
 						break;
 					}
 					default: {
-						mult = -0.4;
+						mult = 0.3;
 						break;
 					}
 				}
@@ -215,9 +228,9 @@ function parallaxSocials () {
 					offset: $self.offset().top - transformBackup
 				});
 
-				scrollFunction();
-
 			});
+
+			scrollFunction();
 
 		};
 
@@ -278,27 +291,12 @@ var loading = {
 		// parallax and socials
 		parallaxSocials ();
 
-		// WOW init
-		if ($.browser.desktop) {
-
-			$('.fadeInUp').addClass('wow fadeInUp');
-			$('.fadeInRight').addClass('wow fadeInRight');
-
-
-			$('#main-slider').addClass('wow').on('mouseover', function () {
-				$(this).removeClass('wow animated');
-			});
-			$('section.articles-gallery-1 article').addClass('wow');
-
-			new WOW().init();
-
-		}
-
 		// blockquote capital letter
 		(function () {
 			var $blockquote = $('blockquote');
 			if ($blockquote.length) {
 				$blockquote.each(function () {
+
 					var $self = $(this),
 						letter = $self.text().substring(0,1).toUpperCase(),
 						text = $self.text().substring(1),
@@ -307,6 +305,7 @@ var loading = {
 						$fake = $('<svg><text x="0" y="1em">' + letter + '</text></svg>'),
 						$content = $('<span>').addClass('content').text( text ),
 						timeout;
+
 					$self.text('');
 					$self.prepend([
 
@@ -345,14 +344,37 @@ var loading = {
 
 		$('.slider-holder').addClass('touched');
 
+		setTimeout(function () {
+
+			// WOW init
+			if ($.browser.desktop) {
+
+				new WOW().init();
+
+			}
+
+		}, 390);
+
 		// hide preloader
 		loading.preloader.addClass('done').animate({}).delay(400).animate({
 			'opacity': 0
 		}, 400, function () {
 
+			bodyOverflow.unfixBody();
+
 			$(window).trigger('scroll').trigger('resize');
 
 			$('.slider-holder').removeClass('touched');
+
+			$('#main-slider').addClass('wow').on(transitionPrefix, function (e) {
+
+				if ( e.target === this ) {
+
+					$(this).removeClass('wow animated').off(transitionPrefix);
+
+				}
+
+			});
 
 			loading.status(0);
 			$(this).detach();
@@ -394,29 +416,6 @@ $(document).on('ready', function () {
 		winWidth = $window.width(),
 		winHeight = $window.height(),
 		bodyHeight = $('body').height(),
-		bodyOverflow = {
-			fixBody: function () {
-
-				$('body').width($('body').width())
-					.addClass('fixed');
-
-			},
-			unfixBody: function () {
-
-				$('body')
-					.css({
-						'width': 'auto'
-					})
-					.removeClass('fixed');
-
-			},
-			resize: function () {
-
-				this.unfixBody();
-
-			}.bind(this)
-
-		},
 		goUp = (function () {
 
 			var $el = $('#to-top'),
@@ -535,17 +534,17 @@ $(document).on('ready', function () {
 		// modals
 		var modals = {
 			opened: [],
-			openModal: function ($modal) {
+			openModal: function ( $modal ) {
 
 				if (!$modal.data('modal-ununique')) {
 					modals.closeModal();
 				}
-				this.opened.push($modal);
-				$modal.addClass('opened').one(transitionPrefix, bodyOverflow.fixBody);
+				this.opened.push( $modal );
+				$modal.addClass('opened').one( transitionPrefix, bodyOverflow.fixBody );
 
-				if ( $modal.hasClass('cross-top') ) {
+				if ( $modal.is('[data-cross]') ) {
 
-					$('<div>').addClass('cross-top-fixed animated').one('click', function () {
+					$('<div>').addClass('cross-top-fixed animated ' + $modal.attr('data-cross') ).one('click', function () {
 
 						modals.closeModal( $modal );
 

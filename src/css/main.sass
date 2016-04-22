@@ -39,7 +39,12 @@ label
 	width: 24px
 	z-index: 20
 	&.animated
-		animation: fadeIn .6s
+		animation: crossIn 1s ease-in-out 1 forwards
+
+@media screen and (max-width: $mobile-large)
+	.cross-top-fixed, .cross-bottom-fixed
+		height: 16px
+		width: 16px
 
 // --------------------------------------------------
 // LOGIC
@@ -395,6 +400,10 @@ input[type="text"], input[type="password"], input[type="email"]
 					img
 						width: 126px
 
+.cross-top-fixed.cross-navigation
+	margin-top: 55px
+	margin-right: 55px
+
 // --------------------------------------------------
 // MAIN SLIDER
 // --------------------------------------------------
@@ -506,7 +515,7 @@ $main-slider-height-mobile-small: 247px
 			transition: opacity 0
 	&.animated
 		transform: translateY(0)
-		transition: transform 0.8s 1.5s
+		transition: transform 0.8s 0s !important
 		.slide
 			.image-holder
 				.img
@@ -2292,7 +2301,7 @@ section.articles-gallery-1
 				background: transparent
 				text-align: center
 				margin: 0 auto
-				padding: 0
+				padding: 0 40px
 				width: 700px
 			.article-date
 				text-align: center
@@ -2313,6 +2322,7 @@ section.articles-gallery-1
 	.article-page.vertical
 		background: transparent
 		margin: 0 auto
+		// padding: 0 40px
 		width: 700px
 		.article-name
 			width: auto
@@ -2344,6 +2354,8 @@ section.articles-gallery-1
 		width: calc(100% - 64px)
 		p
 			width: auto
+		.article-name
+			padding: 0
 	.article-video-page.video
 		.article-name
 			margin-top: 9px
@@ -3252,3 +3264,11 @@ section.articles-gallery-1
 	.article-video-header
 		iframe
 			height: 179px
+
+
+// --------------------------------------------------
+// GLOBAL-MEDIA
+// -------------------------------------------------- 
+@media screen and (max-width: $mobile-medium)
+	.mobile-visible
+		display: block !important
