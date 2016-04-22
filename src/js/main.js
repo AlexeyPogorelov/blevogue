@@ -24,6 +24,7 @@ function parallaxSocials () {
 		// parallaxElemens = document.querySelectorAll('.parallax-element'),
 		$parallaxElemens = $('.parallax-element'),
 		parallaxElemens = [],
+		// parallaxElemens = $parallaxElemens.append('<div class="illustration">'),
 		$parallaxArticle = $('section.articles-gallery-1 .article-holder-3 > article:nth-child(2), section.articles-gallery-1 .article-holder-4 > article:nth-child(2), section.articles-gallery-1 .article-holder-5 > article:nth-child(2), section.articles-gallery-1 .article-holder-6 > article:nth-child(2), section.articles-gallery-1 .article-holder-8 > article'),
 		$socialsElement = $('#fixed-socials'),
 		$articleHeader = $('.article-header'),
@@ -63,7 +64,7 @@ function parallaxSocials () {
 
 						if ( parallaxArticleTempoTop < -windowHeight || parallaxArticleTempoTop > windowHeight * 2 ) continue;
 
-						$parallaxArticle[y].style.top = ( ( parallaxArticleTempoTop - windowHeight / 2 ) * 0.15 ) + 'px';
+						$parallaxArticle[y].style.top = ( parallaxArticleTempoTop - windowHeight / 2 ) * 0.15 + 'px';
 						// $parallaxArticle[y].style.transform = 'translateY(' + ( ( $parallaxArticle[y].getBoundingClientRect().top - windowHeight / 2 ) * 0.15 ) + 'px) translateZ(0)';
 
 					}
@@ -97,7 +98,6 @@ function parallaxSocials () {
 						$socialsElement.addClass('fixed');
 						socialsElement.style.transform = 'translateY(0px) translateZ(0)';
 						socialsStatus.state = 2;
-						// socialsElement.style.transform = 'translateY(' + top + 'px) translateZ(0)';
 
 					}
 
@@ -209,15 +209,15 @@ function parallaxSocials () {
 						break;
 					}
 					case 10: {
-						mult = 0.1;
+						mult = 0.6;
 						break;
 					}
 					case 11: {
-						mult = 0.2;
+						mult = 0.3;
 						break;
 					}
 					default: {
-						mult = 0.3;
+						mult = 0.5;
 						break;
 					}
 				}
