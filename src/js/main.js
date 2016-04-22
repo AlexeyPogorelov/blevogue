@@ -50,9 +50,9 @@ function parallaxSocials () {
 
 						// if (i === 0) console.log( parallaxElementTempoTop );
 
-						if ( parallaxElementTempoTop < -200 || parallaxElementTempoTop > windowHeight + 200 ) continue;
+						if ( parallaxElementTempoTop < -windowHeight || parallaxElementTempoTop > windowHeight * 2 ) continue;
 
-						parallaxElemens[i].el.style.transform = 'translateY(' + -( ( parallaxElementTempoTop - windowHeight / 2 ) * parallaxElemens[i].mult ) + 'px) translateZ(0)';
+						parallaxElemens[i].el.style.transform = 'translateY(' + Math.round( -( parallaxElementTempoTop - windowHeight / 2 ) * parallaxElemens[i].mult ) + 'px) translateZ(0)';
 
 					}
 
@@ -205,7 +205,7 @@ function parallaxSocials () {
 						break;
 					}
 					case 9: {
-						mult = 0.8;
+						mult = 0.6;
 						break;
 					}
 					case 10: {
