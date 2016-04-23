@@ -366,15 +366,19 @@ var loading = {
 
 			$('.slider-holder').removeClass('touched');
 
-			$('#main-slider').addClass('wow').on(transitionPrefix, function (e) {
+			if ($.browser.desktop) {
 
-				if ( e.target === this ) {
+				$('#main-slider').addClass('wow').on(transitionPrefix, function (e) {
 
-					$(this).removeClass('wow animated').off(transitionPrefix);
+					if ( e.target === this ) {
 
-				}
+						$(this).removeClass('wow animated').off(transitionPrefix);
 
-			});
+					}
+
+				});
+
+			}
 
 			loading.status(0);
 			$(this).detach();

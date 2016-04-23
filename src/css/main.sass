@@ -15,36 +15,45 @@ $mobile-x-small: 320px
 	display: none !important
 	opacity: 0 !important
 
-body::-webkit-scrollbar
-	height: 0
-	width: 0
+// body::-webkit-scrollbar
+	// height: 0
+	// width: 0
 
 label
 	border-radius: 0
 
 .cross-top-fixed, .cross-bottom-fixed
-	background: url("../img/icons/cross-button-2.svg") no-repeat 50% 50%
 	cursor: pointer
 	display: block
 	opacity: .7
 	position: fixed
 	bottom: auto
 	left: auto
-	background-size: 100%
 	right: 0
 	top: 0
 	margin-top: 30px
 	margin-right: 30px
+	padding: 0
 	height: 24px
 	width: 24px
 	z-index: 20
+	&:after
+		background: url("../img/icons/cross-button-2.svg") no-repeat 50% 50%
+		background-size: 100%
+		content: ''
+		display: block
+		height: 100%
+		width: 100%
 	&.animated
 		animation: crossIn 1s ease-in-out 1 forwards
 
 @media screen and (max-width: $mobile-large)
 	.cross-top-fixed, .cross-bottom-fixed
-		height: 16px
-		width: 16px
+		margin-top: 20px
+		margin-right: 20px
+		padding: 10px
+		height: 36px
+		width: 36px
 
 // --------------------------------------------------
 // LOGIC
@@ -1760,14 +1769,14 @@ section.articles-gallery-1
 				left: 50%
 				transform: translate(-50%, -50%)
 				li
-					margin: 0 20px
+					padding: 0 20px
 					position: relative
 					&.active
 						a
+							color: transparent
 							cursor: auto
 							// pointer-events: none
 							font-weight: 600
-							color: transparent
 							svg
 								display: block
 					&.active:after
@@ -1786,7 +1795,7 @@ section.articles-gallery-1
 						color: #35363c
 						font-family: 'Futura New'
 						line-height: 1em
-						// Text style for "Особисте"
+						// padding: 0 20px
 						width: 73px
 						height: 22px
 						color: #35363c
@@ -1863,7 +1872,7 @@ section.articles-gallery-1
 				color: #35363c
 				font-family: 'Futura New'
 				font-size: 66px
-				font-weight: 500
+				font-weight: 300
 				line-height: 80px
 				&::-moz-placeholder, &::-webkit-input-placeholder, &:-ms-input-placeholder
 					font-weight: 300
@@ -2330,6 +2339,7 @@ section.articles-gallery-1
 			width: auto
 			h1, h2, h3, h4, h5, h6
 				margin-top: 14px
+				padding: 0 20px
 				// width: auto
 	.article-page.video
 		.article-name
@@ -2358,6 +2368,8 @@ section.articles-gallery-1
 			width: auto
 		.article-name
 			padding: 0
+			h1, h2, h3, h4, h5, h6
+				padding: 0
 	.article-video-page.video
 		.article-name
 			margin-top: 9px
