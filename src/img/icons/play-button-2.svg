@@ -1,38 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   viewBox="0 0 133.33333 133.33333"
-   height="133.33333"
-   width="133.33333"
-   xml:space="preserve"
-   id="svg2"
-   version="1.1"><metadata
-     id="metadata8"><rdf:RDF><cc:Work
-         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
-     id="defs6"><clipPath
-       id="clipPath20"
-       clipPathUnits="userSpaceOnUse"><path
-         style="clip-rule:evenodd"
-         id="path18"
-         d="m 500,0 c 276.141,0 500,223.859 500,500 0,276.141 -223.859,500 -500,500 C 223.859,1000 0,776.141 0,500 0,223.859 223.859,0 500,0 Z M 375,716.668 V 283.332 L 725,500 Z" /></clipPath><clipPath
-       id="clipPath26"
-       clipPathUnits="userSpaceOnUse"><path
-         id="path24"
-         d="M 0,0 H 1000 V 1000 H 0 Z" /></clipPath></defs><g
-     transform="matrix(1.3333333,0,0,-1.3333333,0,133.33333)"
-     id="g10"><g
-       transform="scale(0.1)"
-       id="g12"><g
-         id="g14"><g
-           clip-path="url(#clipPath20)"
-           id="g16"><g
-             clip-path="url(#clipPath26)"
-             id="g22"><path
-               id="path28"
-               style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
-               d="M 0,0 H 1050 V 1050 H 0 Z" /></g></g></g></g></g></svg>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.7 (28169) - http://www.bohemiancoding.com/sketch -->
+    <title>Combined Shape Copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="objects-1440" transform="translate(-880.000000, -3238.000000)" fill="#FFFFFF">
+            <g id="blocks" transform="translate(210.000000, 831.997452)">
+                <g id="Group-3-Copy-8" transform="translate(420.000000, 2256.000000)">
+                    <path d="M300,250 C272.385763,250 250,227.614237 250,200 C250,172.385763 272.385763,150 300,150 C327.614237,150 350,172.385763 350,200 C350,227.614237 327.614237,250 300,250 Z M289.234255,220.554306 L319.062304,201.253803 L321,200 L319.062304,198.746197 L289.234255,179.445694 L287,178 L287,180.699497 L287,219.300503 L287,222 L289.234255,220.554306 Z" id="Combined-Shape-Copy"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

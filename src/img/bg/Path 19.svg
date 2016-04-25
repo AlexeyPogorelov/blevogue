@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="122px" height="117px" viewBox="0 0 122 117" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.7 (28169) - http://www.bohemiancoding.com/sketch -->
+    <title>Path 19</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FF6363" offset="0%"></stop>
+            <stop stop-color="#FF00F3" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="objects-1440" transform="translate(-394.000000, -6782.000000)" fill="url(#linearGradient-1)">
+            <g id="objects" transform="translate(87.000000, 842.000000)">
+                <path d="M329.33423,6055.11133 C352.412203,6066.3064 343.320312,6020.43359 398.746094,5998.84819 C454.171875,5977.2628 422.137819,5950.57291 387.375,5943.95703 C352.612181,5937.34115 316.747461,5933.61944 310.131579,5978.91093 C303.515698,6024.20243 306.256257,6043.91625 329.33423,6055.11133 Z" id="Path-19"></path>
+            </g>
+        </g>
+    </g>
+</svg>

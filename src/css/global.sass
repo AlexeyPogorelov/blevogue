@@ -20,18 +20,19 @@ body
 			// -webkit-overflow-scrolling: touch
 
 // webkit scroll
-.lightbox-cell::-webkit-scrollbar-corner, .dropdown::-webkit-scrollbar-corner
-	// background-color: #e5e5e5
+// .modal-holder::-webkit-scrollbar-corner
+	// background-color: #ffffff
 
-.lightbox-cell::-webkit-scrollbar, .dropdown::-webkit-scrollbar
+// .modal-holder::-webkit-scrollbar
 	// width: 6px
 	// height: 0
-	// background-color: #fff
+	// background-color: transparent
 	// border: none
+	// border: 1px solid #000000
 
-.lightbox-cell::-webkit-scrollbar-thumb, .dropdown::-webkit-scrollbar-thumb
-	// background-color: $main-color
-	// border: 1px solid #e5e5e5
+// .modal-holder::-webkit-scrollbar-thumb
+	// background-color: #ffffff
+	// border: 1px solid #000000
 // end webkit scroll
 button, input, optgroup, select, textarea, input[type="button"]
 	font: $font-stack
@@ -641,7 +642,7 @@ button:active, .btn:active, button:focus, .btn:focus
 		// left: 32px
 		// right: 32px
 		padding: 32px
-		transform: translateY(50px)
+		transform: translateY(40px)
 		transition: opacity .3s ease-out, transform .5s, visibility .4s
 	&.opened
 		opacity: 1

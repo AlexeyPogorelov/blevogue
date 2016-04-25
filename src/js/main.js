@@ -540,20 +540,20 @@ $(document).on('ready', function () {
 			opened: [],
 			openModal: function ( $modal ) {
 
-				if (!$modal.data('modal-ununique')) {
-					modals.closeModal();
+				if (!$modal.data('modal-ununique') && this.opened.length > 0) {
+					modals.closeModal( this.opened[this.opened.length - 1], true );
 				}
 				this.opened.push( $modal );
 				// $modal.addClass('opened').one( transitionPrefix, bodyOverflow.fixBody );
 
-				$modal.addClass('opened');
+				$modal.off( transitionPrefix ).addClass('opened');
 				bodyOverflow.fixBody();
 
 				if ( $modal.is('[data-cross]') ) {
 
-					$('<div>').addClass('cross-top-fixed animated ' + $modal.attr('data-cross') ).one('click', function () {
+					this.$cross = $('<div>').addClass('cross-top-fixed animated ' + $modal.attr('data-cross') ).one('click', function () {
 
-						modals.closeModal( $modal );
+						modals.closeModal();
 
 					}).one(animationPrefix, function () {
 
@@ -564,59 +564,70 @@ $(document).on('ready', function () {
 				}
 
 			},
-			closeModal: function ($modal) {
+			closeModal: function ($modal, alt) {
 
-				if ($modal && $modal instanceof jQuery) {
+				if ( this.opened.length > 0 && !$modal ) {
 
-					// $modal.removeClass('opened');
-					// bodyOverflow.unfixBody();
-
-					$modal.removeClass('opened').one( transitionPrefix, bodyOverflow.unfixBody );
-
-				} else if ($modal) {
-
-					this.closeModal( $( $modal ) );
-
-				} else if (this.opened.length > 0) {
-
-					for (var y = 0; y < this.opened.length; y++) {
+					for ( var y = 0; y < this.opened.length; y++ ) {
 
 						this.closeModal( this.opened[y] );
 
 					}
 
+					return;
+
+				} else if ( $modal && !($modal instanceof jQuery) ) {
+
+					$modal = $( $modal );
+
+				} else if ( $modal === undefined ) {
+
+					throw 'something went wrong';
+
 				}
 
-				$('.cross-top-fixed, .cross-bottom-fixed').addClass('fadeOut').one(animationPrefix, function () {
+				try {
 
-					$(this).remove();
+					$modal.removeClass('opened');
 
-				});
+				} catch (e) {
 
-				if (this.opened.length > 1) {
+					console.error(e);
 
-					var modal = $modal.get(0);
+					this.closeModal();
 
-					// TODO test it
-					for (var z = 0; z < this.opened.length; z++) {
+					return;
 
-						if (modal == this.opened[z].get(0)) {
+				}
 
-							this.opened.splice(z, 1);
+				this.opened.pop();
 
-							break;
+				if (!alt) {
 
-						}
+					$modal.one( transitionPrefix, bodyOverflow.unfixBody );
+
+					try {
+
+						this.$cross.addClass('fadeOut').one(animationPrefix, function () {
+
+							$(this).remove();
+
+						});
+
+					} catch (e) {
+
+						console.error(e);
 
 					}
 
 				} else {
 
-					this.opened = [];
+					this.$cross.remove();
 
 				}
 
 			}
+
 		};
 
 		$('[data-modal]').on('click', function (e) {

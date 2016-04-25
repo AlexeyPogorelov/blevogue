@@ -33,7 +33,11 @@
 							span Вiдео
 							svg
 								text(x="0" y="1em") Вiдео
-		//- .close-modal(data-close="#mobile-menu")
+					li
+						a(href="#")
+							span Стиліст
+							svg
+								text(x="0" y="1em") Стиліст
 
 .modal-holder#search-modal(data-cross="cross-top")
 	.modal-content
@@ -154,11 +158,27 @@
 									h3 Поради: що почитати, щоб мозку прибавилося? почитати, щоб
 				//- .close-modal(data-close="#search-modal")
 
-.modal-holder#login-modal(data-cross="mobile-visible")
+.modal-holder#login-modal(data-cross="cross-top")
+	.modal-content
+		.modal-container
+			.login-methoods-container
+				.logotype-holder.button-group
+					img(src="img/icons/blevogue-footer.png", alt="BLEVOGUE")
+				.button-group.facebook-login-button
+					a(href="index.html") Login with
+						b  Facebook
+				.button-group.email-login-button
+					a(href="signup.html" data-modal="#login-modal-email") Login with
+						b  Email
+				.button-group
+					a(href="signup.html" data-modal="#signup-modal") Sign Up
+
+
+.modal-holder#login-modal-email(data-cross="cross-top")
 	.modal-content
 		.modal-container
 			//- .close-modal(data-close="#login-modal")
-			a(href="https://www.facebook.com/").socials-login-container Login with
+			a(href="https://www.facebook.com/").socials-login-container.hidden Login with
 				b  facebook
 			form(action="#")
 				.form-group
@@ -175,7 +195,7 @@
 				.button-group
 					a(href="signup.html" data-modal="#signup-modal") Sign Up
 
-.modal-holder#signup-modal(data-cross="mobile-visible")
+.modal-holder#signup-modal(data-cross="cross-top")
 	.modal-content
 		.modal-container
 			//- .close-modal(data-close="#signup-modal")
@@ -197,7 +217,7 @@
 				.button-group
 					button(type="submit") Sign Up
 
-.modal-holder#password-recovery(data-cross="mobile-visible")
+.modal-holder#password-recovery(data-cross="cross-top")
 	.modal-content
 		.modal-container
 			//- .close-modal(data-close="#password-recovery")
@@ -210,7 +230,7 @@
 				.button-group
 					button(type="submit") Reset
 
-.modal-holder#password-change(data-cross="mobile-visible")
+.modal-holder#password-change(data-cross="cross-top")
 	.modal-content
 		.modal-container
 			//- .close-modal(data-close="#password-change")

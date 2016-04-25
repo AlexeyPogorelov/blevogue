@@ -103,9 +103,9 @@ input[type="text"], input[type="password"], input[type="email"]
 		line-height: 19px
 		margin-bottom: 12px
 	input[type="text"], input[type="password"], input[type="email"]
+		-webkit-appearance: none
 		border-radius: 0
 		border: 1px solid #636671
-		outline: 2px solid transparent
 		color: #35363c
 		display: block
 		font-family: 'Futura New'
@@ -113,11 +113,11 @@ input[type="text"], input[type="password"], input[type="email"]
 		font-weight: 300
 		height: 46px
 		line-height: 22px
+		outline: 2px solid transparent
 		padding-left: 19px
 		padding-right: 19px
 		width: 320px
-		-webkit-appearance: none
-		&:hover
+		&:focus
 			outline: 2px solid #35363c
 			transition: outline .1s
 	.error,
@@ -221,22 +221,24 @@ input[type="text"], input[type="password"], input[type="email"]
 		.logotype-holder
 			left: 0
 			position: absolute
-			top: 20px
-			top: 28px
-			width: 178px
+			// top: 20px
+			top: 24px
+			width: 124px
 			a
 				display: block
-				width: 178px
+				width: 124px
 				margin: auto
 				img
 					display: block
-					width: 178px
+					width: 124px
 		.navigation-pannel
-			padding: 28px 0 28px
+			// padding: 28px 0 28px
+			padding: 23px 0 19px
 			text-align: center
 			li
 				display: inline-block
-				margin: 0 20px
+				// margin: 0 20px
+				margin: 0 10px
 				position: relative
 				&.active
 					span
@@ -247,26 +249,29 @@ input[type="text"], input[type="password"], input[type="email"]
 						// pointer-events: none
 						font-weight: 600
 						color: transparent
+						// font-size: 18px
 						svg
+							pointer-events: none
 							display: block
+							// left: 15px
 							transform: translateZ(0)
 				&.active:after
-					background: url('http://img-fotki.yandex.ru/get/5607/5091629.6b/0_612e6_b9039c0d_M.jpg')
+					// background: url('http://img-fotki.yandex.ru/get/5607/5091629.6b/0_612e6_b9039c0d_M.jpg')
 					background: #35363c
 					background-position: 50%
 					border-radius: 50%
-					bottom: -12px
+					bottom: -9px
 					content: ''
-					height: 6px
+					height: 5px
 					left: 50%
-					margin-left: -3px
+					margin-left: -1px
 					position: absolute
-					width: 6px
+					width: 5px
 				a
 					padding: 4px 10px
 					color: #35363c
 					font-family: 'Futura New'
-					font-size: 22px
+					font-size: 18px
 					font-weight: 500
 					// line-height: 27px
 					line-height: 1em
@@ -276,7 +281,8 @@ input[type="text"], input[type="password"], input[type="email"]
 						display: none
 						position: absolute
 						pointer-events: none
-						left: 10px
+						// left: 10px
+						left: 15px
 						top: -4px
 						text
 							fill: url(#pattern)
@@ -289,7 +295,7 @@ input[type="text"], input[type="password"], input[type="email"]
 
 .controls-holder
 	position: absolute
-	top: 25px
+	top: 14px
 	right: 0
 	a
 		margin-left: 21px
@@ -335,15 +341,14 @@ input[type="text"], input[type="password"], input[type="email"]
 					width: 126px
 					img
 						width: 126px
-			.navigation-pannel
-				// padding: 23px 0 28px
-				padding: 23px 0 19px
-				li
-					margin: 0 10px
-					a
-						font-size: 18px
-						svg
-							left: 15px
+			// .navigation-pannel
+				// padding: 23px 0 19px
+				// li
+					// margin: 0 10px
+					// a
+						// font-size: 18px
+						// svg
+							// left: 15px
 
 	.controls-holder
 		// top: 15px
@@ -1551,6 +1556,7 @@ section.articles-gallery-1
 	.container
 		padding: 32px 0 29px
 		position: relative
+		text-align: center
 		width: 100%
 		&:before
 			content: ''
@@ -1571,13 +1577,13 @@ section.articles-gallery-1
 			font-weight: 300
 			line-height: 19px
 		& > *
-			display: inline-block
+			// display: inline-block
 			vertical-align: top
 		.footer-logo
 			margin-top: 36px
 			width: 207px
 		.search-bar
-			margin-left: 70px
+			margin: 0px auto
 			max-width: 450px
 			.input-group
 				position: relative
@@ -1590,17 +1596,22 @@ section.articles-gallery-1
 				font-family: 'Futura New'
 				font-weight: 300
 				width: 100%
+				border: 1px solid #636671
+				outline: 2px solid transparent
+				&:focus
+					outline: 2px solid #35363c
+					transition: outline .1s
 				&::-moz-placeholder, &::-webkit-input-placeholder, &:-ms-input-placeholder
 					color: #b2b6c2
 					font-family: 'Futura New'
 					font-size: 18px
 					font-weight: 300
 			input[type="button"]
-				background: url('https://unsplash.it/600/400?image=33')
+				background-color: transparent
 				background-size: cover
 				background-repeat: no-repeat
 				background-position: 50% 100%
-				color: white
+				// color: white
 				font-family: 'Futura New'
 				font-size: 20px
 				font-weight: 700
@@ -1609,6 +1620,10 @@ section.articles-gallery-1
 				position: absolute
 				right: 0
 				top: 0
+				background-image: url('../img/icons/subscribe-mobile.png')
+				background-size: 91px
+				background-position: 50% 50%
+				color: transparent
 			.copyright
 				color: #636671
 				font-family: 'Futura New'
@@ -1617,7 +1632,6 @@ section.articles-gallery-1
 				line-height: 18px
 				margin-top: 14px
 		.socials-holder
-			margin-left: 76px
 			.email-holder
 				a
 					color: #636671
@@ -1631,14 +1645,14 @@ section.articles-gallery-1
 				a
 					font-size: 22px
 					line-height: 1em
-					margin-right: 25px
+					margin: 0 12px
 					opacity: 0.8
 					transition: opacity .3s
 					&:hover
 						opacity: 1
 						transition: opacity .1s
 		.about-bar
-			display: none
+			// display: none
 			ul
 				margin-top: 22px
 				li
@@ -1655,17 +1669,15 @@ section.articles-gallery-1
 				margin-right: 0
 
 @media screen and (max-width: $medium)
-	.footer
-		.container
-			// width: 880px
-			.footer-logo
-				display: none
-			.search-bar
-				margin-left: 0
+	// .footer
+		// .container
+			// .footer-logo
+				// display: none
+			// .search-bar
+				// margin-left: 0
 @media screen and (max-width: $tablet)
 	.footer
 		.container
-			// width: calc(100% - 60px)
 			.footer-logo
 				display: none
 			.search-bar
@@ -1715,7 +1727,7 @@ section.articles-gallery-1
 
 .controls-holder
 	position: absolute
-	top: 25px
+	top: 14px
 	right: 0
 	a
 		margin-left: 21px
@@ -1943,9 +1955,13 @@ section.articles-gallery-1
 #signup-modal,
 #password-recovery,
 #password-change,
+#login-modal-email,
 #login-modal
 	background: rgba(255, 255, 255, .95)
 	overflow: hidden
+	&.opened
+		.modal-content
+			transform: translate(-50%, -50%)
 	label
 		display: block
 		color: #35363c
@@ -1968,7 +1984,7 @@ section.articles-gallery-1
 		font-weight: 300
 		line-height: 22px
 		transition: outline .2s
-		&:hover
+		&:focus
 			outline: 2px solid #35363c
 			transition: outline .1s
 		&::-moz-placeholder, &::-webkit-input-placeholder, &:-ms-input-placeholder
@@ -2028,7 +2044,7 @@ section.articles-gallery-1
 		left: 50%
 		right: auto
 		top: 50%
-		transform: translate(-50%, 50px)
+		transform: translate(-50%, 0)
 		width: 560px
 		.socials-login-container
 			background-color: #39579a
@@ -2048,17 +2064,67 @@ section.articles-gallery-1
 				line-height: 53px
 		form
 			padding: 50px 120px 40px
-	&.opened
-		.modal-content
-			transform: translate(-50%, -50%)
+	.login-methoods-container
+		padding: 68px 0 70px
+		.logotype-holder
+			margin-bottom: 45px
+			img
+				width: 124px
+		.facebook-login-button, .email-login-button
+			background-position: 50% 50%
+			margin: 20px auto 20px
+			width: 320px
+			a
+				color: white
+				display: block
+				font-family: 'Futura New'
+				font-size: 20px
+				font-weight: 300
+				line-height: 24px
+				padding: 14px 73px 18px
+				position: relative
+				z-index: 1
+				b
+					font-weight: 700
+					line-height: 25px
+			&:hover
+				a
+					color: white
+		.facebook-login-button
+			background-color: #39579a
+			transition: background .3s
+			&:hover
+				background-color: #274a98
+		.email-login-button
+			background-image: url('https://unsplash.it/360/120?image=62')
+			position: relative
+			margin-bottom: 14px
+			&:after
+				background: rgba(0,0,0,0)
+				content: ''
+				position: absolute
+				left: 0
+				right: 0
+				top: 0
+				bottom: 0
+				z-index: 0
+				transition: background .3s
+			&:hover:after
+				background: rgba(0,0,0,0.3)
 
 @media screen and (max-width: 600px), screen and (max-height: 450px)
 	#signup-modal,
 	#password-recovery,
 	#password-change,
+	#login-modal-email,
 	#login-modal
 		background: #fff
 		overflow: auto
+		&.opened
+			.modal-content
+				border: none
+				outline: none
+				transform: translateY(0)
 		.close-modal
 			display: block
 			bottom: auto
@@ -2068,7 +2134,7 @@ section.articles-gallery-1
 			outline: none
 			border: none
 			position: static
-			transform: translateY(50px)
+			transform: translateY(40px)
 			height: 100%
 			width: 100%
 			.socials-login-container
@@ -2085,11 +2151,6 @@ section.articles-gallery-1
 					font-weight: 700
 			form
 				padding: 120px 32px 40px
-		&.opened
-			.modal-content
-				border: none
-				outline: none
-				transform: translateY(0)
 
 #signup-modal
 	input[type="text"], input[type="password"], input[type="email"]

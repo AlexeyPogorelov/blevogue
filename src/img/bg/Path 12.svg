@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.7 (28169) - http://www.bohemiancoding.com/sketch -->
+    <title>Path 12</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#91FFCE" offset="0%"></stop>
+            <stop stop-color="#006FF2" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="objects-1440" transform="translate(-1311.000000, -4331.000000)" fill="url(#linearGradient-1)">
+            <g id="objects" transform="translate(87.000000, 842.000000)">
+                <path d="M1249.61021,3499 C1261.02543,3499 1267.53352,3506.04235 1267.31731,3515.54842 C1267.10145,3525.03975 1260.25916,3532.32422 1249.61021,3532.32422 C1239.19437,3532.32422 1234.27837,3527.64313 1234.01027,3520.48189 C1233.78041,3514.34187 1237.27605,3509.01367 1240.38756,3509.01367 L1240.38756,3499.01367 C1230.60803,3499.01367 1223.59949,3509.69639 1224.01728,3520.856 C1224.4875,3533.41635 1233.84238,3542.32422 1249.61021,3542.32422 C1265.89168,3542.32422 1276.97939,3530.51996 1277.31473,3515.7758 C1277.65574,3500.78192 1266.76766,3489 1249.61021,3489 L1249.61021,3499 L1249.61021,3499 Z" id="Path-12"></path>
+            </g>
+        </g>
+    </g>
+</svg>
