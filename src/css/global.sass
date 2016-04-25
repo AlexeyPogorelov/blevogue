@@ -21,17 +21,17 @@ body
 
 // webkit scroll
 .lightbox-cell::-webkit-scrollbar-corner, .dropdown::-webkit-scrollbar-corner
-	background-color: #e5e5e5
+	// background-color: #e5e5e5
 
 .lightbox-cell::-webkit-scrollbar, .dropdown::-webkit-scrollbar
-	width: 6px
-	height: 0
-	background-color: #fff
-	border: none
+	// width: 6px
+	// height: 0
+	// background-color: #fff
+	// border: none
 
 .lightbox-cell::-webkit-scrollbar-thumb, .dropdown::-webkit-scrollbar-thumb
-	background-color: $main-color
-	border: 1px solid #e5e5e5
+	// background-color: $main-color
+	// border: 1px solid #e5e5e5
 // end webkit scroll
 button, input, optgroup, select, textarea, input[type="button"]
 	font: $font-stack
@@ -369,9 +369,9 @@ input
 
 //	LIGHTBOX
 .lightbox-holder
-	&::-webkit-scrollbar
-		width: 0
-		height: 0
+	// &::-webkit-scrollbar
+		// width: 0
+		// height: 0
 	//opacity: 0
 	background-color: rgba(0, 0, 0, 0.33)
 	overflow: auto
@@ -394,8 +394,8 @@ input
 	transform: translate(-50%, -50%)
 	z-index: 10
 	&::-webkit-scrollbar
-		height: 0
-		width: 0
+		// height: 0
+		// width: 0
 	img
 		max-width: 100%
 
@@ -641,7 +641,7 @@ button:active, .btn:active, button:focus, .btn:focus
 		// left: 32px
 		// right: 32px
 		padding: 32px
-		transform: translateY(100vh)
+		transform: translateY(50px)
 		transition: opacity .3s ease-out, transform .5s, visibility .4s
 	&.opened
 		opacity: 1
@@ -651,6 +651,6 @@ button:active, .btn:active, button:focus, .btn:focus
 			transform: translateY(0)
 			transition: transform .5s
 	&::-webkit-scrollbar
-		height: 0
-		width: 0
+		// height: 0
+		// width: 0
 

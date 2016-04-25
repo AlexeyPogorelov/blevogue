@@ -544,7 +544,10 @@ $(document).on('ready', function () {
 					modals.closeModal();
 				}
 				this.opened.push( $modal );
-				$modal.addClass('opened').one( transitionPrefix, bodyOverflow.fixBody );
+				// $modal.addClass('opened').one( transitionPrefix, bodyOverflow.fixBody );
+
+				$modal.addClass('opened');
+				bodyOverflow.fixBody();
 
 				if ( $modal.is('[data-cross]') ) {
 
@@ -565,9 +568,10 @@ $(document).on('ready', function () {
 
 				if ($modal && $modal instanceof jQuery) {
 
-					$modal.removeClass('opened');
+					// $modal.removeClass('opened');
+					// bodyOverflow.unfixBody();
 
-					bodyOverflow.unfixBody();
+					$modal.removeClass('opened').one( transitionPrefix, bodyOverflow.unfixBody );
 
 				} else if ($modal) {
 

@@ -50,6 +50,8 @@ var animationPrefix = (function () {
 			$('body').width($('body').width())
 				.addClass('fixed');
 
+			$('.main-navigation').width($('body').width() - 80);
+
 		},
 		unfixBody: function () {
 
@@ -58,6 +60,8 @@ var animationPrefix = (function () {
 					'width': 'auto'
 				})
 				.removeClass('fixed');
+
+			$('.main-navigation').width('');
 
 		},
 		resize: function () {
