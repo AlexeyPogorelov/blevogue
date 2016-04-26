@@ -770,12 +770,17 @@ $(document).on('ready', function () {
 						bg = $article.find('> .image-holder').css('background-color');
 					$article.closest('article').addClass('hover');
 					$article.find('.description h3').css('color', bg);
+					$article.find('.description').css({
+						'border-color': bg,
+						'outline-color': bg
+					});
 
 				}, function () {
 					var $self = $(this),
 						$article = $self.closest('article');
 					$article.closest('article').removeClass('hover wow animated');
 					$article.find('.description h3').attr('style', '');
+					$article.find('.description').attr('style', '');
 
 				});
 
