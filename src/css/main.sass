@@ -163,7 +163,7 @@ input[type="text"], input[type="password"], input[type="email"]
 	cursor: pointer
 	opacity: 0
 	position: fixed
-	pointer-events: all
+	pointer-events: none
 	// position: absolute
 	right: 40px
 	bottom: 276px
@@ -172,6 +172,7 @@ input[type="text"], input[type="password"], input[type="email"]
 	height: 30px
 	width: 32px
 	&.opened
+		pointer-events: all
 		opacity: 0.8
 		transition: transform .3s, opacity .3s, bottom .3s
 		transform: translateY(0)
