@@ -434,7 +434,7 @@ $main-slider-height-mobile-small: 247px
 .main-slider
 	position: relative
 	overflow: hidden
-	margin-top: 126px
+	margin-top: 117px
 	transition: transform 0.8s 0.5s
 	.slider-holder
 		position: relative
@@ -648,6 +648,9 @@ section.articles-gallery-1
 		font-weight: 400
 		letter-spacing: 0.4px
 		line-height: 24px
+	hr
+		position: relative
+		z-index: 1
 	article
 		display: inline-block
 		position: relative
@@ -852,7 +855,8 @@ section.articles-gallery-1
 				padding-right: 0
 				left: 0
 				top: 0
-				width: 320px
+				// width: 320px
+				width: 350px
 		&.first
 			margin-top: 120px
 
@@ -1165,6 +1169,7 @@ section.articles-gallery-1
 
 		.article-holder-6
 			margin-top: 0
+			// margin-bottom: -10px
 			article:nth-child(1)
 				margin-top: 69px
 				margin-left: 0
@@ -1186,7 +1191,7 @@ section.articles-gallery-1
 					width: 210px
 				.description
 					padding-top: 13px
-					padding-bottom: 0
+					// padding-bottom: 0
 					width: 210px
 
 		.article-holder-7
@@ -1708,6 +1713,10 @@ section.articles-gallery-1
 						font-size: 18px
 						font-weight: 500
 						line-height: 22px
+						transition: color .3s
+						&:hover
+							color: #000
+							transition: color .1s
 					&:first-child
 						margin-left: 0
 					&:last-child
@@ -1751,23 +1760,25 @@ section.articles-gallery-1
 						color: #636671
 		.production-holder
 			right: 0
+			bottom: 18px
 			a
-				// Base text style
-				width: 101px
-				height: 20px
-				color: #636671
-				line-height: 20px
-
-				// Text style for "make in"
-				font-family: 'Gotham Pro', 'Futura New', sans-serif
-				font-size: 14px
-				font-weight: 300
-				letter-spacing: 0.6px
-				b
-					// font-family: Gotham
-					font-size: 15px
-					font-weight: 700
-					letter-spacing: 0.6px
+				opacity: .5
+				transition: opacity .3s
+				&:hover
+					opacity: 1
+					transition: opacity .1s
+				// width: 101px
+				// height: 20px
+				// color: #636671
+				// line-height: 20px
+				// font-family: 'Gotham Pro', 'Futura New', sans-serif
+				// font-size: 14px
+				// font-weight: 300
+				// letter-spacing: 0.6px
+				// b
+				// 	font-size: 15px
+				// 	font-weight: 700
+				// 	letter-spacing: 0.6px
 
 // @media screen and (max-width: $medium)
 	// .footer
@@ -1835,6 +1846,7 @@ section.articles-gallery-1
 			.production-holder
 				float: right
 				margin-right: 27px
+				margin-top: 9px
 @media screen and (max-width: $mobile-medium)
 	.footer
 		.container
@@ -2444,41 +2456,41 @@ section.articles-gallery-1
 	background: #fff
 	margin: -104px auto 0
 	min-height: 104px
-	position: relative
 	padding: 0 50px
+	position: relative
 	width: 800px
 	z-index: 1
 	.fixed-socials
 		background: #fff
-		position: absolute
 		left: -60px
+		position: absolute
 	&.vertical
-		margin-top: 0
 		float: right
+		margin-top: 0
 		padding: 80px 0 0 70px
 		text-align: left
 		width: 526px
 		.article-name
 			background: #fff
+			margin-left: -168px
 			padding: 22px 30px
 			text-align: left
-			margin-left: -168px
 			width: 620px
 		.article-date
-			text-align: left
 			margin-bottom: 20px
 			margin-top: 20px
+			text-align: left
 		p
 			color: #35363c
 			font-family: Effra
 			font-size: 20px
 			font-weight: 400
-			line-height: 30px
 			letter-spacing: 0.1px
+			line-height: 30px
 			margin-bottom: 60px
 .article-page.video
-	margin-top: 0
 	background: transparent
+	margin-top: 0
 	.article-name
 		h1, h2, h3, h4, h5, h6
 			margin-top: 18px
@@ -2491,9 +2503,9 @@ section.articles-gallery-1
 			width: 800px
 			.article-name
 				background: transparent
-				text-align: center
 				margin: 0 auto
 				padding: 0 40px
+				text-align: center
 				width: 700px
 			.article-date
 				text-align: center
@@ -2501,14 +2513,14 @@ section.articles-gallery-1
 				background: transparent
 
 			p
-				padding-left: 0
-				padding-right: 0
-				margin: 0 auto 50px
-				width: 520px
 				font-family: Effra
 				font-size: 18px
 				font-weight: 400
 				line-height: 28px
+				margin: 0 auto 50px
+				padding-left: 0
+				padding-right: 0
+				width: 520px
 @media screen and (max-width: $tablet)
 	.article-page,
 	.article-page.vertical
@@ -2533,9 +2545,9 @@ section.articles-gallery-1
 @media screen and (max-width: $mobile-large)
 	.article-page,
 	.article-page.vertical
-		width: 520px
-		width: auto
 		padding: 0
+		// width: 520px
+		width: auto
 	.article-video-page.video
 		.article-name
 			h1, h2, h3, h4, h5, h6
@@ -2555,9 +2567,9 @@ section.articles-gallery-1
 		.article-name
 			margin-top: 9px
 			h1, h2, h3, h4, h5, h6
-				margin-top: 2px
 				letter-spacing: 0.9px
 				margin-bottom: 24px
+				margin-top: 2px
 		.article-date
 			// margin-top: 2px
 			font-size: 12px
@@ -2566,14 +2578,14 @@ section.articles-gallery-1
 .article-name
 	text-align: center
 	h1, h2, h3, h4, h5, h6
-		margin-top: 24px
-		margin-bottom: 33px
 		color: #35363c
 		font-family: 'Futura New'
 		font-size: 44px
 		font-weight: 500
 		letter-spacing: 1.5px
 		line-height: 48px
+		margin-bottom: 33px
+		margin-top: 24px
 @media screen and (max-width: $medium)
 	.article-name
 		h1, h2, h3, h4, h5, h6
@@ -2590,8 +2602,8 @@ section.articles-gallery-1
 			font-weight: 500
 			letter-spacing: 1.3px
 			line-height: 42px
-			margin-top: 21px
 			margin-bottom: 33px
+			margin-top: 21px
 @media screen and (max-width: $mobile-medium)
 	.article-name
 		h1, h2, h3, h4, h5, h6
@@ -2601,19 +2613,19 @@ section.articles-gallery-1
 			line-height: 32px
 @media screen and (max-width: $mobile-medium)
 	.article-name
-		margin-top: 16px
 		margin-bottom: 0
+		margin-top: 16px
 		h1, h2, h3, h4, h5, h6
 			margin-top: 0
 			margin-bottom: 24px
 .article-date
-	text-align: center
 	color: #a2a3aa
 	font-family: Effra
 	font-size: 16px
 	font-weight: 500
 	line-height: 19px
 	margin-bottom: 20px
+	text-align: center
 @media screen and (max-width: $mobile-large)
 	.article-date
 		font-size: 14px
@@ -2621,10 +2633,10 @@ section.articles-gallery-1
 		line-height: 17px
 @media screen and (max-width: $mobile-medium)
 	.article-date
-		margin-bottom: 15px
 		font-size: 12px
 		font-weight: 500
 		line-height: 14px
+		margin-bottom: 15px
 .article-content
 	.article-wysiwyg
 		*, img
@@ -2643,21 +2655,21 @@ section.articles-gallery-1
 			font-size: 28px
 			line-height: 36px
 		p
-			margin-bottom: 60px
 			color: #35363c
 			font-family: Effra
 			font-size: 20px
 			font-weight: 400
-			line-height: 30px
 			letter-spacing: 0.1px
-		img
+			line-height: 30px
+			margin-bottom: 60px
+		img, hr
 			margin-bottom: 60px
 		blockquote
 			color: #35363c
 			font-family: Effra
 			font-size: 26px
-			font-weight: 500
 			font-style: italic
+			font-weight: 500
 			line-height: 36px
 			margin-bottom: 60px
 			min-height: 106px
@@ -2825,7 +2837,7 @@ section.articles-gallery-1
 				font-weight: 400
 				line-height: 28px
 				margin-bottom: 50px
-			img
+			img, hr
 				margin-bottom: 50px
 			blockquote
 				font-size: 22px
@@ -2870,6 +2882,9 @@ section.articles-gallery-1
 				font-weight: 400
 				line-height: 26px
 				margin-bottom: 30px
+			hr
+				margin-bottom: 30px
+				width: 100%
 			img
 				margin-bottom: 30px
 				width: 100%

@@ -13,6 +13,47 @@ if ($.browser.desktop) {
 
 	$('section.articles-gallery-1 article').addClass('wow');
 
+	// add parallax elements
+	(function () {
+
+		var $articlesGallery = $('section.articles-gallery-1');
+
+		if ( $articlesGallery.length === 0 ) return;
+
+		$articlesGallery.find('.article-holder-1').each(function (i) {
+
+			if (i % 2) {
+
+				$(this).append('<div class="parallax-element type-16"></div><div class="parallax-element type-15"></div>');
+
+			} else {
+
+				$(this).append('<div class="parallax-element type-1"></div><div class="parallax-element type-2"></div>');
+
+			}
+
+		});
+		$articlesGallery.find('.article-holder-2').append('<div class="parallax-element type-5"></div><div class="parallax-element type-6"></div><div class="parallax-element type-3"></div><div class="parallax-element type-4"></div>');
+		$articlesGallery.find('.article-holder-3').append('<div class="parallax-element type-7"></div>');
+		$articlesGallery.find('.article-holder-4').append('<div class="parallax-element type-11"></div><div class="parallax-element type-12"></div>');
+		$articlesGallery.find('.article-holder-5').append('<div class="parallax-element type-13"></div><div class="parallax-element type-14"></div>');
+
+		$articlesGallery.find('.article-holder-7').each(function (i) {
+
+			if (i % 2) {
+
+				$(this).append('<div class="parallax-element type-17"></div><div class="parallax-element type-18"></div></div><div class="parallax-element type-19"></div>');
+
+			} else {
+
+				$(this).append('<div class="parallax-element type-8"></div><div class="parallax-element type-10"></div><div class="parallax-element type-9"></div>');
+
+			}
+
+		});
+
+	})();
+
 }
 
 // parallax and socials
@@ -151,6 +192,7 @@ function parallaxSocials () {
 
 				var $self = $(this),
 					offset,
+					type,
 					transformBackup = $self.css('transform');
 
 				if (transformBackup !== 'none') {
@@ -167,45 +209,47 @@ function parallaxSocials () {
 
 				}
 
-				switch (i) {
+				type = parseInt(this.className.replace('parallax-element type-', ''));
+
+				switch (type) {
 					case 0: {
-						mult = -0.2;
+						mult = -0.12;
 						break;
 					}
 					case 1: {
-						mult = -0.1;
+						mult = -0.12;
 						break;
 					}
 					case 2: {
-						mult = -0.25;
+						mult = -0.2;
 						break;
 					}
 					case 3: {
-						mult = 0.1;
+						mult = -0.25;
 						break;
 					}
 					case 4: {
-						mult = 0.2;
+						mult = -0.25;
 						break;
 					}
 					case 5: {
-						mult = -0.1;
+						mult = -0.2;
 						break;
 					}
 					case 6: {
-						mult = 0.3;
+						mult = -0.2;
 						break;
 					}
 					case 7: {
-						mult = 0.1;
-						break;
-					}
-					case 8: {
 						mult = 0.3;
 						break;
 					}
+					case 8: {
+						mult = 0.1;
+						break;
+					}
 					case 9: {
-						mult = 0.6;
+						mult = 0.3;
 						break;
 					}
 					case 10: {
@@ -213,6 +257,46 @@ function parallaxSocials () {
 						break;
 					}
 					case 11: {
+						mult = 0.6;
+						break;
+					}
+					case 12: {
+						mult = 0.3;
+						break;
+					}
+					case 13: {
+						mult = 0.2;
+						break;
+					}
+					case 14: {
+						mult = 0.3;
+						break;
+					}
+					case 15: {
+						mult = 0.2;
+						break;
+					}
+					case 16: {
+						mult = 0.3;
+						break;
+					}
+					case 17: {
+						mult = 0.3;
+						break;
+					}
+					case 18: {
+						mult = 0.1;
+						break;
+					}
+					case 19: {
+						mult = 0.25;
+						break;
+					}
+					case 20: {
+						mult = 0.3;
+						break;
+					}
+					case 21: {
 						mult = 0.3;
 						break;
 					}
