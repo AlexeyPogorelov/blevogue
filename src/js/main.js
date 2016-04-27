@@ -34,7 +34,21 @@ if ($.browser.desktop) {
 
 		});
 		$articlesGallery.find('.article-holder-2').append('<div class="parallax-element type-5"></div><div class="parallax-element type-6"></div><div class="parallax-element type-3"></div><div class="parallax-element type-4"></div>');
-		$articlesGallery.find('.article-holder-3').append('<div class="parallax-element type-7"></div>');
+
+		$articlesGallery.find('.article-holder-3').each(function (i) {
+
+			if (i % 2) {
+
+				$(this).append('<div class="parallax-element type-20"></div><div class="parallax-element type-21"></div>');
+
+			} else {
+
+				$(this).append('<div class="parallax-element type-7"></div>');
+
+			}
+
+		});
+
 		$articlesGallery.find('.article-holder-4').append('<div class="parallax-element type-11"></div><div class="parallax-element type-12"></div>');
 		$articlesGallery.find('.article-holder-5').append('<div class="parallax-element type-13"></div><div class="parallax-element type-14"></div>');
 
@@ -42,7 +56,7 @@ if ($.browser.desktop) {
 
 			if (i % 2) {
 
-				$(this).append('<div class="parallax-element type-17"></div><div class="parallax-element type-18"></div></div><div class="parallax-element type-19"></div>');
+				$(this).append('<div class="parallax-element type-17"></div><div class="parallax-element type-18"></div><div class="parallax-element type-19"></div>');
 
 			} else {
 
@@ -51,6 +65,8 @@ if ($.browser.desktop) {
 			}
 
 		});
+
+		$articlesGallery.find('.article-holder-8').append('<div class="parallax-element type-17"></div><div class="parallax-element type-18"></div></div><div class="parallax-element type-19"></div>');
 
 	})();
 
@@ -297,7 +313,7 @@ function parallaxSocials () {
 						break;
 					}
 					case 21: {
-						mult = 0.3;
+						mult = 0.2;
 						break;
 					}
 					default: {
@@ -870,7 +886,11 @@ $(document).on('ready', function () {
 
 			var $videos = $('.video-gallery');
 				$videos.find('.image-container > .image-holder, .description-container').hover(function () {
-					$(this).closest('.video').addClass('hover');
+					var $self = $(this),
+						$video = $self.closest('.video'),
+						bg = $video.find('> .image-container > .image-holder').css('background-color');
+						$video.addClass('hover');
+
 				}, function () {
 					$(this).closest('.video').removeClass('hover');
 				});

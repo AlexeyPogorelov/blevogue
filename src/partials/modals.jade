@@ -156,7 +156,6 @@
 
 								a(href="article.html").description
 									h3 Поради: що почитати, щоб мозку прибавилося? почитати, щоб
-				//- .close-modal(data-close="#search-modal")
 
 .modal-holder#login-modal(data-cross="cross-top")
 	.modal-content
@@ -176,8 +175,8 @@
 
 .modal-holder#login-modal-email(data-cross="cross-top")
 	.modal-content
+		.modal-back(data-modal="#login-modal")
 		.modal-container
-			//- .close-modal(data-close="#login-modal")
 			a(href="https://www.facebook.com/").socials-login-container.hidden Login with
 				b  facebook
 			form(action="#")
@@ -198,7 +197,6 @@
 .modal-holder#signup-modal(data-cross="cross-top")
 	.modal-content
 		.modal-container
-			//- .close-modal(data-close="#signup-modal")
 			a(href="https://www.facebook.com/").socials-login-container Login with
 				b  facebook
 			form(action="#")
@@ -219,8 +217,8 @@
 
 .modal-holder#password-recovery(data-cross="cross-top")
 	.modal-content
+		.modal-back(data-modal="#login-modal")
 		.modal-container
-			//- .close-modal(data-close="#password-recovery")
 			form(action="#")
 				.form-group
 					.input-group
@@ -233,7 +231,6 @@
 .modal-holder#password-change(data-cross="cross-top")
 	.modal-content
 		.modal-container
-			//- .close-modal(data-close="#password-change")
 			form(action="#")
 				.form-group
 					.input-group.input-group-1
