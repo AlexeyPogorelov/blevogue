@@ -863,7 +863,7 @@ $(document).on('ready', function () {
 
 			if ($.browser.mobile) return;
 
-			var $gallery = $('.articles-gallery-1');
+			var $gallery = $('.articles-gallery-1, .articles-gallery-2');
 				$gallery.find('article > .image-holder, .description').hover(function () {
 					var $self = $(this),
 						$article = $self.closest('article'),
