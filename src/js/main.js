@@ -3,8 +3,11 @@ if ($.browser.mobile) $('body').addClass('mobile');
 if ($.browser.safari) $('body').addClass('client-ios');
 bodyOverflow.fixBody();
 
-// WOW add classes
-if ($.browser.desktop) {
+// WOW classes and additional elements
+(function () {
+	if (!$.browser.desktop) return;
+
+	var $articlesGallery = $('section.articles-gallery-1');
 
 	$('.fadeInUp').addClass('wow fadeInUp');
 	$('.fadeInRight').addClass('wow fadeInRight');
@@ -14,63 +17,57 @@ if ($.browser.desktop) {
 	$('section.articles-gallery-1 article').addClass('wow');
 
 	// add parallax elements
-	(function () {
+	if ( $articlesGallery.length === 0 ) return;
 
-		var $articlesGallery = $('section.articles-gallery-1');
+	$articlesGallery.find('.article-holder-1').each(function (i) {
 
-		if ( $articlesGallery.length === 0 ) return;
+		if (i % 2) {
 
-		$articlesGallery.find('.article-holder-1').each(function (i) {
+			$(this).append('<div class="parallax-element type-16"></div><div class="parallax-element type-15"></div>');
 
-			if (i % 2) {
+		} else {
 
-				$(this).append('<div class="parallax-element type-16"></div><div class="parallax-element type-15"></div>');
+			$(this).append('<div class="parallax-element type-1"></div><div class="parallax-element type-2"></div>');
 
-			} else {
+		}
 
-				$(this).append('<div class="parallax-element type-1"></div><div class="parallax-element type-2"></div>');
+	});
+	$articlesGallery.find('.article-holder-2').append('<div class="parallax-element type-5"></div><div class="parallax-element type-6"></div><div class="parallax-element type-3"></div><div class="parallax-element type-4"></div>');
 
-			}
+	$articlesGallery.find('.article-holder-3').each(function (i) {
 
-		});
-		$articlesGallery.find('.article-holder-2').append('<div class="parallax-element type-5"></div><div class="parallax-element type-6"></div><div class="parallax-element type-3"></div><div class="parallax-element type-4"></div>');
+		if (i % 2) {
 
-		$articlesGallery.find('.article-holder-3').each(function (i) {
+			$(this).append('<div class="parallax-element type-20"></div><div class="parallax-element type-21"></div>');
 
-			if (i % 2) {
+		} else {
 
-				$(this).append('<div class="parallax-element type-20"></div><div class="parallax-element type-21"></div>');
+			$(this).append('<div class="parallax-element type-7"></div>');
 
-			} else {
+		}
 
-				$(this).append('<div class="parallax-element type-7"></div>');
+	});
 
-			}
+	$articlesGallery.find('.article-holder-4').append('<div class="parallax-element type-11"></div><div class="parallax-element type-12"></div>');
+	$articlesGallery.find('.article-holder-5').append('<div class="parallax-element type-13"></div><div class="parallax-element type-14"></div>');
 
-		});
+	$articlesGallery.find('.article-holder-7').each(function (i) {
 
-		$articlesGallery.find('.article-holder-4').append('<div class="parallax-element type-11"></div><div class="parallax-element type-12"></div>');
-		$articlesGallery.find('.article-holder-5').append('<div class="parallax-element type-13"></div><div class="parallax-element type-14"></div>');
+		if (i % 2) {
 
-		$articlesGallery.find('.article-holder-7').each(function (i) {
+			$(this).append('<div class="parallax-element type-17"></div><div class="parallax-element type-18"></div><div class="parallax-element type-19"></div>');
 
-			if (i % 2) {
+		} else {
 
-				$(this).append('<div class="parallax-element type-17"></div><div class="parallax-element type-18"></div><div class="parallax-element type-19"></div>');
+			$(this).append('<div class="parallax-element type-8"></div><div class="parallax-element type-10"></div><div class="parallax-element type-9"></div>');
 
-			} else {
+		}
 
-				$(this).append('<div class="parallax-element type-8"></div><div class="parallax-element type-10"></div><div class="parallax-element type-9"></div>');
+	});
 
-			}
+	$articlesGallery.find('.article-holder-8').append('<div class="parallax-element type-17"></div><div class="parallax-element type-18"></div></div><div class="parallax-element type-19"></div>');
 
-		});
-
-		$articlesGallery.find('.article-holder-8').append('<div class="parallax-element type-17"></div><div class="parallax-element type-18"></div></div><div class="parallax-element type-19"></div>');
-
-	})();
-
-}
+})();
 
 // parallax and socials
 function parallaxSocials () {
@@ -78,10 +75,8 @@ function parallaxSocials () {
 	if ($.browser.mobile) return;
 
 	var windowHeight,
-		// parallaxElemens = document.querySelectorAll('.parallax-element'),
 		$parallaxElemens = $('.parallax-element'),
 		parallaxElemens = [],
-		// parallaxElemens = $parallaxElemens.append('<div class="illustration">'),
 		$parallaxArticle = $('section.articles-gallery-1 .article-holder-3 > article:nth-child(2), section.articles-gallery-1 .article-holder-4 > article:nth-child(2), section.articles-gallery-1 .article-holder-5 > article:nth-child(2), section.articles-gallery-1 .article-holder-6 > article:nth-child(2), section.articles-gallery-1 .article-holder-8 > article'),
 		$socialsElement = $('#fixed-socials'),
 		$articleHeader = $('.article-header'),
@@ -117,12 +112,9 @@ function parallaxSocials () {
 
 						var parallaxArticleTempoTop = $parallaxArticle[y].getBoundingClientRect().top;
 
-						// if (y === 0) console.log( parallaxArticleTempoTop );
-
 						if ( parallaxArticleTempoTop < -windowHeight || parallaxArticleTempoTop > windowHeight * 2 ) continue;
 
 						$parallaxArticle[y].style.top = ( parallaxArticleTempoTop - windowHeight / 2 ) * 0.15 + 'px';
-						// $parallaxArticle[y].style.transform = 'translateY(' + ( ( $parallaxArticle[y].getBoundingClientRect().top - windowHeight / 2 ) * 0.15 ) + 'px) translateZ(0)';
 
 					}
 
@@ -375,7 +367,7 @@ var loading = {
 
 		if (loading.finished) return;
 
-		// TODO temp for develop
+		// TODO temp for developing
 		$('section.articles-gallery-1 > article, .article-content, .article-name, .article-date, .video, .article-page').find('p, h1, h2, h3, h4, h5, h6, blockquote, span').attr('contenteditable', true).on('click', function (e) {
 			e.preventDefault();
 		});
@@ -504,14 +496,14 @@ $('img').each(function () {
 setTimeout(function () {
 
 	loading.status(1);
-	setTimeout(loading.done, 500);
+	setTimeout(loading.done, 100);
 
 }, 10000);
 
 $(window).on('load', function () {
 
 	loading.status(1);
-	setTimeout(loading.done, 500);
+	setTimeout(loading.done, 200);
 
 });
 
@@ -527,48 +519,49 @@ $(document).on('ready', function () {
 				speed = 900,
 				paused = false,
 				plg = {
-				up: function () {
+					up: function () {
 
-					paused = true;
-
-					$("html, body").stop().animate({scrollTop:0}, speed, 'swing', function () {
-
-						paused = false;
-
-					}).one('touchstart mousewheel DOMMouseScroll wheel', function () {
-
-						$(this).stop(false, false).off('touchstart mousewheel DOMMouseScroll wheel');
-						paused = false;
-
-					});
-
-					plg.hide();
-
-				},
-				show: function () {
-
-					if (!state && !paused) {
-
-						$el.addClass('opened');
-
+						paused = true;
 						state = true;
 
-					}
+						$("html, body").stop().animate({scrollTop:0}, speed, 'swing', function () {
 
-				},
-				hide: function () {
+							paused = false;
 
-					if (state) {
+						}).one('touchstart mousewheel DOMMouseScroll wheel', function () {
 
-						$el.removeClass('opened');
+							$(this).stop(false, false).off('touchstart mousewheel DOMMouseScroll wheel');
+							paused = false;
 
-						state = false;
+						});
 
-					}
+						plg.hide();
 
-				},
-				$el: $el
-			};
+					},
+					show: function () {
+
+						if (!state && !paused) {
+
+							$el.addClass('opened');
+
+							state = true;
+
+						}
+
+					},
+					hide: function () {
+
+						if (state) {
+
+							$el.removeClass('opened');
+
+							state = false;
+
+						}
+
+					},
+					$el: $el
+				};
 
 			$el.on('click', function () {
 
@@ -605,9 +598,6 @@ $(document).on('ready', function () {
 
 				$visibleElements.find('input').addClass('skip');
 				$hiddenElements.find('input').removeClass('skip');
-
-				// console.log( $(classes[0]) );
-				// console.log( $(classes[1]) );
 
 			});
 
@@ -826,10 +816,7 @@ $(document).on('ready', function () {
 					'class': 'controls'
 				}).insertBefore($field);
 
-			// controls
 			controlsGroups.basic($controls, $field);
-
-			// console.log('text');
 
 			return $content;
 
@@ -840,7 +827,6 @@ $(document).on('ready', function () {
 			var $content = $('<div>')
 				.addClass('editor')
 				.attr('contenteditable', true);
-			// console.log('table');
 
 			return $content;
 
@@ -894,55 +880,6 @@ $(document).on('ready', function () {
 				}, function () {
 					$(this).closest('.video').removeClass('hover');
 				});
-
-		})();
-
-		// cross overflow fix
-		(function () {
-			// TODO return on test 
-			return;
-
-			$('.modal-holder.cross-bottom').each(function () {
-
-				var $self = $(this),
-					$cross = $self.find('.close-modal');
-
-				$self.on('scroll', function (e) {
-
-					e.stopPropagation();
-
-					requestAnimFrame(function () {
-
-						$cross.css({
-							'bottom': -$self.scrollTop()
-						});
-
-					});
-
-				});
-
-			});
-
-			$('.modal-holder.cross-top').each(function () {
-
-				var $self = $(this),
-					$cross = $self.find('.close-modal');
-
-				$self.on('scroll', function (e) {
-
-					e.stopPropagation();
-
-					requestAnimFrame(function () {
-
-						$cross.css({
-							'top': $self.scrollTop()
-						});
-
-					});
-
-				});
-
-			});
 
 		})();
 
