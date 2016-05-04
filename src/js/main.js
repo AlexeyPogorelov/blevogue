@@ -145,7 +145,7 @@ function parallaxSocials () {
 					} else if (socialsStatus.state !== 2) {
 
 						$socialsElement.addClass('fixed');
-						socialsElement.style.transform = 'translateY(0px) translateZ(0)';
+						socialsElement.style.transform = 'translateY(-50%) translateZ(0)';
 						socialsStatus.state = 2;
 
 					}
