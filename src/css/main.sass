@@ -667,6 +667,8 @@ section.articles-gallery-1
 		// transform: translateZ(0)
 		// a.image-holder
 		// 	display: block
+		& > .image-holder
+			overflow: visible
 		&.wow
 			transform: translateY(40px)
 			opacity: 0
@@ -743,8 +745,8 @@ section.articles-gallery-1
 	.description
 		background: #fff
 		display: block
-		outline: 6px solid transparent
-		outline-offset: -6px
+		// outline: 6px solid transparent
+		// outline-offset: -6px
 		padding: 30px 40px
 		position: relative
 		transition: outline .3s
@@ -756,16 +758,31 @@ section.articles-gallery-1
 		width: 100%
 	.date-holder
 		position: absolute
-		text-align: right
-		top: 30px
-		right: 30px
+		// text-align: right
+		bottom: 0
+		right: -30px
 		color: white
+		white-space: nowrap
+		// width: 0
 		font-family: 'Futura New'
-		font-size: 16px
-		font-weight: 500
-		line-height: 19px
+		// font-size: 16px
+		// font-weight: 500
+		// line-height: 19px
 		opacity: 0
-		transition: opacity .3s
+		transition: opacity .3s, transform .3s
+
+		// opacity: 1
+		// color: #000
+		font-size: 17px
+		font-weight: 300
+		line-height: 1em
+		letter-spacing: 13px
+		span
+			display: inline-block
+			transform: rotate(-90deg) translateX(100%)
+			transform-origin: right bottom 0
+			transition: transform .3s .3s, color .3s .3s
+			// height: 0
 	.socials-holder
 		top: 30px
 		left: 30px
@@ -776,10 +793,23 @@ section.articles-gallery-1
 		li
 			display: block
 			margin-bottom: 21px
+			text-align: left
 			a
 				color: #fff
 				display: block
 				font-size: 18px
+				&:before
+					background: #ffffff
+					content: ''
+					display: inline-block
+					height: 1px
+					margin-right: 0
+					vertical-align: middle
+					width: 0px
+					transition: margin .3s ease-out, width .3s ease-out
+				&:hover:before
+					margin-right: 8px
+					width: 34px
 	article.hover
 		.socials-holder
 			opacity: 1
@@ -790,6 +820,9 @@ section.articles-gallery-1
 		.date-holder
 			opacity: 1
 			transition: opacity .3s .3s
+			span
+				transform: rotate(-90deg) translateX(108%)
+				transition: transform .3s .3s, color .3s .3s
 		.description
 			transition: outline .1s
 
@@ -798,16 +831,16 @@ section.articles-gallery-1
 		& article:nth-child(2)
 			.description
 				outline: none
-				border-bottom: 6px solid transparent
 				transition: border .3s
 	.article-holder-5, .article-holder-6
 		article:nth-child(1)
 			.description
 				outline: none
-				border-bottom: 6px solid transparent
 				transition: border .3s
 	.article-holder-1
 		margin-top: 114px
+		.date-holder
+			bottom: 107px
 		article
 			.image-holder
 				height: 400px
@@ -819,6 +852,8 @@ section.articles-gallery-1
 
 	.article-holder-2
 		margin-top: 4px
+		.date-holder
+			bottom: 107px
 		article
 			margin-left: 390px
 			.image-holder
@@ -836,6 +871,8 @@ section.articles-gallery-1
 		margin-top: 30px
 		article:nth-child(1)
 			width: 500px
+			.date-holder
+				bottom: 107px
 			.image-holder
 				height: 464px
 				width: 320px
@@ -846,7 +883,7 @@ section.articles-gallery-1
 		article:nth-child(2)
 			margin-top: 100px
 			margin-left: 196px
-			overflow: hidden
+			// overflow: hidden
 			width: 320px
 			.image-holder
 				height: 464px
@@ -866,6 +903,8 @@ section.articles-gallery-1
 		article:nth-child(1)
 			margin-top: 82px
 			width: 500px
+			.date-holder
+				bottom: 107px
 			.image-holder
 				height: 464px
 				width: 320px
@@ -877,7 +916,7 @@ section.articles-gallery-1
 			// TODO review width
 			margin-top: 2px
 			margin-left: 166px
-			overflow: hidden
+			// overflow: hidden
 			width: 350px
 			// width: 320px
 			.image-holder
@@ -915,7 +954,7 @@ section.articles-gallery-1
 		article:nth-child(2)
 			margin-top: 46px
 			margin-left: 206px
-			overflow: hidden
+			// overflow: hidden
 			width: 320px
 			.image-holder
 				height: 464px
@@ -951,7 +990,7 @@ section.articles-gallery-1
 		article:nth-child(2)
 			margin-top: 186px
 			margin-left: 316px
-			overflow: hidden
+			// overflow: hidden
 			width: 350px
 			.image-holder
 				height: 254px
@@ -1100,8 +1139,8 @@ section.articles-gallery-1
 		.description
 			padding: 22px 24px
 		.date-holder
-			top: 10px
-			right: 10px
+			// top: 10px
+			// right: 10px
 		.socials-holder
 			top: 10px
 			left: 10px
@@ -1121,6 +1160,8 @@ section.articles-gallery-1
 		.article-holder-1
 			margin-top: 80px
 			article
+				.date-holder
+					bottom: 56px
 				.image-holder
 					height: 214px
 					width: 320px
@@ -1132,6 +1173,8 @@ section.articles-gallery-1
 			margin-top: 16px
 			article
 				margin-left: 180px
+				.date-holder
+					bottom: 56px
 				.image-holder
 					height: 260px
 					width: 180px
@@ -1177,7 +1220,7 @@ section.articles-gallery-1
 			article:nth-child(2)
 				margin-top: 18px
 				margin-left: 36px
-				overflow: hidden
+				// overflow: hidden
 				width: 210px
 				.image-holder
 					height: 152px
@@ -1231,7 +1274,7 @@ section.articles-gallery-1
 			article:nth-child(2)
 				margin-top: 139px
 				margin-left: 176px
-				overflow: hidden
+				// overflow: hidden
 				width: 210px
 				.image-holder
 					height: 152px
@@ -1746,8 +1789,8 @@ section.articles-gallery-1
 	.description
 		background: #fff
 		display: block
-		outline: 6px solid transparent
-		outline-offset: -6px
+		// outline: 6px solid transparent
+		// outline-offset: -6px
 		padding: 30px 40px
 		position: relative
 		transition: outline .3s
@@ -1779,6 +1822,7 @@ section.articles-gallery-1
 		li
 			display: block
 			margin-bottom: 21px
+			text-align: left
 			a
 				color: #fff
 				display: block
@@ -1802,13 +1846,11 @@ section.articles-gallery-1
 		& article:nth-child(2)
 			.description
 				outline: none
-				border-bottom: 6px solid transparent
 				transition: border .3s
 	.article-holder-1, .article-holder-4, .article-holder-6
 		article:nth-child(1)
 			.description
 				outline: none
-				border-bottom: 6px solid transparent
 				transition: border .3s
 	.article-holder-1
 		margin-top: 4px
@@ -1856,7 +1898,7 @@ section.articles-gallery-1
 		article:nth-child(2)
 			margin-top: 0
 			margin-left: 196px
-			overflow: hidden
+			// overflow: hidden
 			width: 320px
 			.image-holder
 				height: 464px
@@ -1888,7 +1930,7 @@ section.articles-gallery-1
 			// TODO review width
 			margin-top: 2px
 			margin-left: 166px
-			overflow: hidden
+			// overflow: hidden
 			width: 350px
 			// width: 320px
 			.image-holder
@@ -1926,7 +1968,7 @@ section.articles-gallery-1
 		article:nth-child(2)
 			margin-top: 126px
 			margin-left: 66px
-			overflow: hidden
+			// overflow: hidden
 			width: 596px
 			.image-holder
 				height: 464px
@@ -1957,7 +1999,7 @@ section.articles-gallery-1
 		article:nth-child(2)
 			margin-top: 80px
 			margin-left: 64px
-			overflow: hidden
+			// overflow: hidden
 			width: 350px
 			.image-holder
 				height: 254px
@@ -2147,7 +2189,7 @@ section.articles-gallery-1
 			article:nth-child(2)
 				margin-top: 18px
 				margin-left: 36px
-				overflow: hidden
+				// overflow: hidden
 				width: 210px
 				.image-holder
 					height: 152px
@@ -2249,7 +2291,6 @@ section.articles-gallery-1
 				margin-top: 0px
 				width: 180px
 				.description
-					border-bottom: 6px solid transparent
 					outline: none
 					padding-left: 0
 					padding-right: 0
@@ -2264,7 +2305,6 @@ section.articles-gallery-1
 				margin-top: 0
 				width: 180px
 				.description
-					border-bottom: 6px solid transparent
 					outline: none
 					padding-left: 0
 					padding-right: 0
@@ -2284,7 +2324,6 @@ section.articles-gallery-1
 				width: 178px
 				.description
 					outline: none
-					border-bottom: 6px solid transparent
 					padding-left: 0
 					padding-right: 0
 					position: static
