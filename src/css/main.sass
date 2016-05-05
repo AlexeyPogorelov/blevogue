@@ -481,6 +481,49 @@ $main-slider-height-mobile-small: 247px
 			.img
 				max-height: $main-slider-height
 				transition: opacity .5s
+		.slide-prev, .slide-next
+			top: 0
+			position: absolute
+			opacity: 1
+			transition: opacity .6s
+			width: 75px
+			span
+				display: block
+				text-transform: uppercase
+				color: #35363c
+				font-family: "Futura New"
+				font-size: 17px
+				font-weight: 300
+				font-style: italic
+				line-height: 1em
+				letter-spacing: 13px
+				position: relative
+				width: 210px
+				z-index: 1
+			&:before
+				content: ''
+				// display: inline-block
+				display: block
+				width: 75px
+				height: 10px
+				transition: transform .3s
+				// background-color: #35363c
+		.slide-prev
+			right: 96px
+			top: 65px
+			&:before
+				background: url('../img/icons/slide-arrow-left.svg')
+			span
+				transform: rotate(-90deg) translateX(-100%)
+				transform-origin: 2px 3px 0
+		.slide-next
+			left: 95px
+			top: 16px
+			&:before
+				background: url('../img/icons/slide-arrow-right.svg')
+			span
+				transform: rotate(90deg)
+				transform-origin: 29px 50px 0
 		&.pressed
 			.image-holder
 				transform: scale(0.85) translateY(38px) !important
@@ -488,28 +531,36 @@ $main-slider-height-mobile-small: 247px
 			.image-holder
 				transform: scale(0.85) translateY(0) !important
 		.description-holder
-			background: #fff
-			color: #35363c
-			font-family: 'Futura New'
-			font-size: 30px
-			font-weight: 500
-			left: 31%
-			letter-spacing: 1.5px
-			line-height: 38px
-			max-width: 67%
+			// color: #35363c
+			// background: #fff
+			// font-family: 'Futura New'
+			// font-size: 30px
+			// letter-spacing: 1.5px
+			// line-height: 38px
+			// padding: 15px 30px
+			color: #e7f0f2
+			font-family: "Playfair Display"
+			font-size: 54px
+			font-weight: 700
+			left: -18px
+			letter-spacing: 11px
+			line-height: 60px
+			max-width: 80%
 			opacity: 0
-			padding: 15px 30px
 			pointer-events: none
 			position: absolute
-			top: 57%
-			transform-origin: 50% 100%
+			top: 33%
 			transform: translate(0, 20px) rotateX(80deg)
+			transform-origin: 50% 100%
 			transition: opacity .9s, transform .6s
 			transform: none
 		.image-holder:hover .img
 				opacity: 0
 				transition: opacity .1s
 		&.active, &.fake-active
+			.slide-prev, .slide-next
+				transition: opacity .6s
+				opacity: 0
 			.slide-content
 				padding: 0
 				transition: padding .6s
@@ -759,7 +810,7 @@ section.articles-gallery-1
 	.date-holder
 		position: absolute
 		// text-align: right
-		bottom: 0
+		bottom: -16px
 		right: -30px
 		color: white
 		white-space: nowrap
@@ -840,7 +891,7 @@ section.articles-gallery-1
 	.article-holder-1
 		margin-top: 114px
 		.date-holder
-			bottom: 107px
+			bottom: 93px
 		article
 			.image-holder
 				height: 400px
@@ -853,7 +904,7 @@ section.articles-gallery-1
 	.article-holder-2
 		margin-top: 4px
 		.date-holder
-			bottom: 107px
+			bottom: 93px
 		article
 			margin-left: 390px
 			.image-holder
@@ -872,7 +923,7 @@ section.articles-gallery-1
 		article:nth-child(1)
 			width: 500px
 			.date-holder
-				bottom: 107px
+				bottom: 93px
 			.image-holder
 				height: 464px
 				width: 320px
@@ -904,7 +955,7 @@ section.articles-gallery-1
 			margin-top: 82px
 			width: 500px
 			.date-holder
-				bottom: 107px
+				bottom: 93px
 			.image-holder
 				height: 464px
 				width: 320px
