@@ -486,6 +486,7 @@ $main-slider-height-mobile-small: 247px
 			position: absolute
 			opacity: 1
 			transition: opacity .6s
+			pointer-events: none
 			width: 75px
 			span
 				display: block
@@ -502,19 +503,19 @@ $main-slider-height-mobile-small: 247px
 				z-index: 1
 			&:before
 				content: ''
-				// display: inline-block
 				display: block
-				width: 75px
 				height: 10px
-				transition: transform .3s
-				// background-color: #35363c
+				opacity: 0
+				transform: translateY(10px)
+				transition: transform .3s, opacity .3s
+				width: 75px
 		.slide-prev
 			right: 96px
 			top: 65px
 			&:before
 				background: url('../img/icons/slide-arrow-left.svg')
 			span
-				transform: rotate(-90deg) translateX(-100%)
+				transform: rotate(-90deg) translateX(-100%) translateZ(1px)
 				transform-origin: 2px 3px 0
 		.slide-next
 			left: 95px
@@ -522,7 +523,7 @@ $main-slider-height-mobile-small: 247px
 			&:before
 				background: url('../img/icons/slide-arrow-right.svg')
 			span
-				transform: rotate(90deg)
+				transform: rotate(90deg) translateZ(1px)
 				transform-origin: 29px 50px 0
 		&.pressed
 			.image-holder
@@ -583,6 +584,12 @@ $main-slider-height-mobile-small: 247px
 				.slide-content
 					.image-holder
 						transform: scale(1)
+		&.hover
+			.slide-prev, .slide-next
+				&:before
+					opacity: 1
+					transform: translateY(0px)
+					transition: transform .3s, opacity .3s
 	&.wow
 		transform: translateY(40px)
 		.img

@@ -883,17 +883,10 @@ $(document).on('ready', function () {
 					$(this).closest('.video').removeClass('hover');
 				});
 
-			var $slider = $('#main-slider')
-			.find();
-			$slider.on('mouseenter', '.image-holder', function () {
-
+			$('#main-slider').on('mouseenter', '.image-holder', function () {
 				$(this).closest('.slide').addClass('hover');
-
-			});
-			$slider.on('mouseleave', '.image-holder', function () {
-
+			}).on('mouseleave', '.image-holder', function () {
 				$(this).closest('.slide').removeClass('hover');
-
 			});
 
 		})();
