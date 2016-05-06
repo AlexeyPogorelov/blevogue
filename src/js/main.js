@@ -884,9 +884,14 @@ $(document).on('ready', function () {
 				});
 
 			$('#main-slider').on('mouseenter', '.image-holder', function () {
-				$(this).closest('.slide').addClass('hover');
+				var $self = $(this),
+					id = $self.closest('.slide').attr('data-id');
+				$self.closest('#main-slider').find('[data-id=' + id + ']').addClass('hover');
+
 			}).on('mouseleave', '.image-holder', function () {
-				$(this).closest('.slide').removeClass('hover');
+				var $self = $(this),
+					id = $self.closest('.slide').attr('data-id');
+				$self.closest('#main-slider').find('[data-id=' + id + ']').removeClass('hover');
 			});
 
 		})();

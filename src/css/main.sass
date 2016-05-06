@@ -438,13 +438,13 @@ $main-slider-height-medium: 354px
 $main-slider-height-mobile-large: 274px
 $main-slider-height-mobile-small: 247px
 .main-slider
-	position: relative
-	overflow: hidden
 	margin-top: 117px
+	overflow: hidden
+	position: relative
 	transition: transform 0.8s 0.5s
 	.slider-holder
-		position: relative
 		float: left
+		position: relative
 		transition: transform .8s cubic-bezier(0.4, 0.0, 0.2, 1), left .8s cubic-bezier(0.4, 0.0, 0.2, 1)
 		&.touched
 			transition: none !important
@@ -488,6 +488,7 @@ $main-slider-height-mobile-small: 247px
 			transition: opacity .6s
 			pointer-events: none
 			width: 75px
+			z-index: 1
 			span
 				display: block
 				text-transform: uppercase
