@@ -2,10 +2,10 @@ var animationPrefix = (function () {
 	var t,
 	el = document.createElement("fakeelement");
 	var transitions = {
-		"transition": "animationend",
+		"WebkitTransition": "webkitAnimationEnd",
 		"OTransition": "oAnimationEnd",
 		"MozTransition": "animationend",
-		"WebkitTransition": "webkitAnimationEnd"
+		"transition": "animationend"
 	};
 	for (t in transitions) {
 
@@ -21,10 +21,10 @@ transitionPrefix = (function () {
 	var t,
 	el = document.createElement("fakeelement");
 	var transitions = {
+		"WebkitTransition": "webkitTransitionEnd",
 		"transition": "transitionend",
 		"OTransition": "oTransitionEnd",
-		"MozTransition": "transitionend",
-		"WebkitTransition": "webkitTransitionEnd"
+		"MozTransition": "transitionend"
 	};
 	for (t in transitions) {
 

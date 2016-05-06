@@ -850,25 +850,30 @@ $(document).on('ready', function () {
 			if ($.browser.mobile) return;
 
 			var $gallery = $('.articles-gallery-1, .articles-gallery-2');
+				$gallery.find('article').each(function (i) {
+					var count = i + 1;
+					if (i < 10) count = '0' + count;
+					$(this).append('<div class="counter">' + count + '</div>');
+				});
+				$gallery.find('.description').append('<div class="line"></div>');
 				$gallery.find('article > .image-holder, .description').hover(function () {
 					var $self = $(this),
 						$article = $self.closest('article'),
 						bg = $article.find('> .image-holder').css('background-color');
 					$article.closest('article').addClass('hover');
-					$article.find('.description h3').css('color', bg);
-					$article.find('.date-holder').css('color', bg);
+					$article.find('.date-holder, .description h3, .counter').css('color', bg);
 					$article.find('.description').css({
 						'border-color': bg,
 						'outline-color': bg
-					});
+					})
+						.find('.line')
+						.css('background-color', bg);
 
 				}, function () {
 					var $self = $(this),
 						$article = $self.closest('article');
 					$article.closest('article').removeClass('hover wow animated');
-					$article.find('.description h3').attr('style', '');
-					$article.find('.date-holder').attr('style', '');
-					$article.find('.description').attr('style', '');
+					$article.find('.date-holder, .description, .line, .description h3, .counter').attr('style', '');
 
 				});
 
