@@ -1,7 +1,10 @@
 
 if ($.browser.mobile) $('body').addClass('mobile');
-if ($.browser.safari) $('body').addClass('client-ios');
+if ($.browser.safari) $('body').addClass('safari');
+if ($.browser.safari && $.browser.mobile) $('body').addClass('safari-mobile');
 bodyOverflow.fixBody();
+
+var blevogue = {};
 
 // WOW classes and additional elements
 (function () {
@@ -374,6 +377,9 @@ var loading = {
 		$('.article-holder-1 a').on('click', function (e) {
 			e.preventDefault();
 		});
+		var loct = location.href.split('/');
+		loct = loct[loct.length - 1];
+		$('[href="' + loct + '"]').closest('li').addClass('active');
 		// end todo
 
 		// initialize plugins
@@ -424,10 +430,10 @@ var loading = {
 						timeout = setTimeout(function () {
 
 							$self.css({
-								'padding-left': $original.innerWidth()
+								'padding-left': $original.innerWidth() - 10
 							});
 
-						}, 300);
+						}, 100);
 
 					});
 				});
@@ -851,29 +857,39 @@ $(document).on('ready', function () {
 
 			var $gallery = $('.articles-gallery-1, .articles-gallery-2');
 				$gallery.find('article').each(function (i) {
-					var count = i + 1;
-					if (i < 10) count = '0' + count;
-					$(this).append('<div class="counter">' + count + '</div>');
+					var $self = $(this);
+						count = i + 1,
+						$count = $('<div>').addClass('counter'),
+						$line = $('<div>').addClass('line'),
+						bg = $self.find('> .image-holder').css('background-color');
+					if (count < 10) count = '0' + count;
+					$count.html(count);
+					$count.css({
+						'color': bg
+					});
+					$line.css({
+						'background-color': bg
+					});
+					$self.find('.description').append($line);
+					$count.appendTo($self);
+
 				});
-				$gallery.find('.description').append('<div class="line"></div>');
 				$gallery.find('article > .image-holder, .description').hover(function () {
 					var $self = $(this),
 						$article = $self.closest('article'),
 						bg = $article.find('> .image-holder').css('background-color');
 					$article.closest('article').addClass('hover');
-					$article.find('.date-holder, .description h3, .counter').css('color', bg);
+					$article.find('.date-holder, .description h3').css('color', bg);
 					$article.find('.description').css({
 						'border-color': bg,
 						'outline-color': bg
-					})
-						.find('.line')
-						.css('background-color', bg);
+					});
 
 				}, function () {
 					var $self = $(this),
 						$article = $self.closest('article');
 					$article.closest('article').removeClass('hover wow animated');
-					$article.find('.date-holder, .description, .line, .description h3, .counter').attr('style', '');
+					$article.find('.date-holder, .description, .description h3').attr('style', '');
 
 				});
 

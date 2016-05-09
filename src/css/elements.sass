@@ -178,3 +178,57 @@ $mobile-x-small: 320px
 @media screen and (max-width: $tablet)
 	.parallax-element
 		display: none
+
+.lang-switcher-holder
+	position: fixed
+	left: 40px
+	bottom: 40px
+	z-index: 1
+	transform: translateZ(0)
+	li
+		display: inline-block
+		position: relative
+		// padding: 0 7px
+		padding: 0 5px
+		&:after
+			background: #b2b6c2
+			content: ''
+			display: block
+			position: absolute
+			right: -2px
+			top: 2px
+			height: 22px
+			width: 1px
+		&:first-child
+			padding-left: 0
+		&:last-child
+			padding-right: 0
+		&:last-child:after
+			display: none
+		a
+			text-transform: uppercase
+			font-size: 15px
+			color: #b2b6c2
+			line-height: 1em
+			&:hover
+				color: #636671
+		&.active
+			pointer-events: none
+			a
+				color: #636671
+
+.write-message-button
+	position: fixed
+	top: 50%
+	right: 45px
+	z-index: 2
+	a
+		display: block
+		text-transform: uppercase
+		color: #636671
+		font-family: 'Futura New'
+		font-size: 14px
+		font-weight: 500
+		letter-spacing: 2.63px
+		line-height: 17px
+		transform: rotate(-90deg) translateZ(0)

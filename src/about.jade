@@ -1,0 +1,48 @@
+doctype html
+html(lang='en')
+	head
+		title BLEVOGUE
+
+		include ./partials/head.jade
+
+	body
+		.modal-holder#about-modal(data-cross="cross-top").opened
+			.write-message-button
+				a(href="index.html") написати лист
+			#fixed-socials-2.fixed-socials-2
+				ul.socials
+					li
+						a(href='https://www.facebook.com/sharer.php?src=sp&u=http://makemeat.com/works/lounge_fm&app_id=966242223397117&display=popup&title=Lounge FM&description=Design for iOS Application&picture=http://makemeat.com', target='_blank') Facebook
+					li
+						a(href='https://twitter.com/intent/tweet?text=Perfect project "Lounge FM" by Meat Agency http://makemeat.com/works/lounge_fm', target='_blank') Twitter
+					li
+						a(href='https://www.tumblr.com/widgets/share/tool?shareSource=legacy&canonicalUrl=&url=http://makemeat.com/works/lounge_fm&title=Lounge FM&content=http://makemeat.com&caption=Design for iOS Application&posttype=link', target='_blank') Tumblr
+					li
+						a(href="#" data-pin-do='buttonBookmark', data-pin-title='Lounge FM', data-pin-media='http://makemeat.com', data-pin-custom='true', target='_blank', data-pin-log='button_pinit_bookmarklet', data-pin-href='https://www.pinterest.com/pin/create/button/') Pinterest
+					li
+						a(href='https://www.linkedin.com/shareArticle?mini=true&url=http://makemeat.com/works/lounge_fm&title=Lounge FM&summary=Design for iOS Application', target='_blank') Linkedin
+			.modal-content
+				a(href="index.html").close-about
+				.modal-container
+					.container
+						.left-side
+							img(src="http://pogorelov.cc.ua/blevogue/img/content/rectangle-95.jpg", alt="article")
+							//- .image-holder
+								img.fake-img(src="http://41.media.tumblr.com/dc0eb9a4abc1e019417bf1550f7d86b0/tumblr_nw7eb8lzqI1slisbmo2_1280.jpg", alt="article")
+								.img(style="background-image:url(http://41.media.tumblr.com/dc0eb9a4abc1e019417bf1550f7d86b0/tumblr_nw7eb8lzqI1slisbmo2_1280.jpg)")
+						.right-side
+							.content-holder
+								h2 About
+								p «Мої плаття – ефемерні предмети архітектури, призначені для того, щоб прославляти пропорції жіночого тіла,» – одного разу поспіхом прокоментував Крістіан Діор. Так само швидко ми зуміли забути ці слова. Сьогодні приймаємо як належне речі, які вчора були революційною історію, стержнем, принципом і сенсом життя. Мабуть, не голосно буде сказано, що наш час загубив сутність роботи Крістіана Діора довкола свого модного дому. Про що це я?«Мої плаття – ефемерні предмети архітектури, призначені для того, щоб прославляти пропорції жіночого тіла,» – одного разу поспіхом прокоментував Крістіан Діор. Так само швидко ми зуміли забути ці слова. Сьогодні приймаємо як належне речі, які вчора були революційною історію, стержнем, принципом і сенсом життя. Мабуть, не голосно буде сказано, що наш час загубив сутність роботи Крістіана Діора довкола свого модного дому. Про що це я?
+							a(href="blog.html").to-blog ПЕРЕЙТИ В
+								b  БЛОГ
+
+			.lang-switcher-holder
+				ul
+					li.active
+						a(href="#") Укр
+					li
+						a(href="#") Eng
+
+
+	include ./partials/scripts.jade

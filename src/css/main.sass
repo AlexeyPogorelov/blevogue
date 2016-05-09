@@ -151,6 +151,12 @@ input[type="text"], input[type="password"], input[type="email"]
 			transform: translateY(0)
 			transition: transform .3s, opacity .3s
 
+.safari
+	.input-group-1
+		input[type="password"]
+			padding-right: 30px
+
+
 // --------------------------------------------------
 // TO-TOP
 // --------------------------------------------------
@@ -502,6 +508,7 @@ $main-slider-height-mobile-small: 247px
 				position: relative
 				width: 210px
 				z-index: 1
+				transition: transform .3s
 			&:before
 				content: ''
 				display: block
@@ -515,6 +522,7 @@ $main-slider-height-mobile-small: 247px
 			top: 65px
 			&:before
 				background: url('../img/icons/slide-arrow-left.svg')
+				transform: translateX(20px)
 			span
 				transform: rotate(-90deg) translateX(-100%) translateZ(1px)
 				transform-origin: 2px 3px 0
@@ -523,6 +531,7 @@ $main-slider-height-mobile-small: 247px
 			top: 16px
 			&:before
 				background: url('../img/icons/slide-arrow-right.svg')
+				transform: translateX(-20px)
 			span
 				transform: rotate(90deg) translateZ(1px)
 				transform-origin: 29px 50px 0
@@ -589,8 +598,16 @@ $main-slider-height-mobile-small: 247px
 			.slide-prev, .slide-next
 				&:before
 					opacity: 1
-					transform: translateY(0px)
+					transform: translateX(0px)
 					transition: transform .3s, opacity .3s
+				span
+					transition: transform .3s
+			.slide-prev
+				span
+					transform: rotate(-90deg) translateX(-100%) translateY(26px) translateZ(1px)
+			.slide-next
+				span
+					transform: rotate(90deg) translateY(26px) translateZ(1px)
 	&.wow
 		transform: translateY(40px)
 		.img
@@ -1666,6 +1683,10 @@ section.articles-gallery-1
 @media screen and (max-width: $medium)
 	.container.socials-container
 		width: 800px
+
+// --------------------------------------------------
+// FIXED SOCIALS
+// --------------------------------------------------
 .static-socials,
 .fixed-socials
 	position: absolute
@@ -1779,6 +1800,30 @@ section.articles-gallery-1
 			padding-left: 29px
 			padding-right: 29px
 			width: 100%
+
+
+.fixed-socials-2
+	position: fixed
+	top: 50%
+	left: 40px
+	z-index: 2
+	.socials
+		transform: rotate(-90deg) translateX(-50%) translateZ(0)
+		transform-origin: 0 100% 0
+		white-space: nowrap
+		li
+			display: inline-block
+			margin-right: 20px
+			&:last-child
+				margin-right: 0
+			a
+				color: #636671
+				font-family: 'Futura New'
+				font-size: 14px
+				font-weight: 500
+				line-height: 21px
+				letter-spacing: 1px
+
 
 // --------------------------------------------------
 // BLOG
@@ -2710,13 +2755,17 @@ section.articles-gallery-1
 					margin: 0 16px
 					opacity: 0.6
 					transition: opacity .3s
+					color: #636671
+					font-family: 'Futura New'
+					font-size: 17px
+					font-weight: 500
 					&:hover
 						opacity: 1
 						transition: opacity .1s
 		.about-bar
 			// display: none
 			ul
-				margin-top: 22px
+				margin-bottom: 22px
 				li
 					display: inline-block
 					margin: 0 17px
@@ -2741,13 +2790,11 @@ section.articles-gallery-1
 			position: absolute
 			bottom: 16px
 		.lang-switcher-holder
-			background: rgba(255,255,255,0.9)
-			border-radius: 2px
 			position: fixed
-			left: 32px
+			left: 40px
 			bottom: 40px
-			padding: 0 8px
 			z-index: 1
+			transform: translateZ(0)
 			li
 				display: inline-block
 				position: relative
@@ -2772,6 +2819,7 @@ section.articles-gallery-1
 					text-transform: uppercase
 					font-size: 15px
 					color: #b2b6c2
+					line-height: 1em
 					&:hover
 						color: #636671
 				&.active
@@ -3277,6 +3325,15 @@ section.articles-gallery-1
 			&:hover:after
 				background: rgba(0,0,0,0.3)
 
+.safari
+	#signup-modal,
+	#password-recovery,
+	#password-change,
+	#login-modal-email,
+	#login-modal
+		.forgot-password
+			right: 70px
+
 @media screen and (max-width: 600px), screen and (max-height: 450px)
 	#signup-modal,
 	#password-recovery,
@@ -3341,6 +3398,76 @@ section.articles-gallery-1
 	#password-change,
 	#password-recovery
 		background: #fff
+
+#about-modal
+	background-color: #fbe67e
+	a.close-about
+		background: url('../img/icons/cross-button-3.svg')
+		background-size: cover
+		position: fixed
+		top: 30px
+		right: 30px
+		height: 24px
+		width: 24px
+	.modal-content
+		background-color: transparent
+		padding-top: 180px
+		.left-side, .right-side
+			display: inline-block
+			vertical-align: top
+		.left-side
+			width: 378px
+			img
+				width: 100%
+			// .image-holder
+			// 	height: 524px
+		.right-side
+			width: calc(100% - 382px)
+			a.to-blog
+				background: url("https://unsplash.it/600/400?image=33")
+				background-position: 50% 50%
+				margin-top: 60px
+				color: white
+				font-family: 'Futura New'
+				font-size: 18px
+				float: right
+				letter-spacing: 1px
+				font-weight: 500
+				line-height: 1em
+				padding: 20px 32px
+				b
+					font-weight: 700
+			.content-holder
+				padding-left: 55px
+				position: relative
+				*
+					position: relative
+				h1, h2, h3, h4, h5, h6
+					color: #35363c
+					font-family: 'Playfair Display'
+					font-size: 66px
+					font-weight: 600
+					font-style: italic
+					line-height: 88px
+					letter-spacing: 22px
+				p
+					color: #35363c
+					font-family: 'Futura New'
+					font-size: 24px
+					font-weight: 300
+					line-height: 34px
+					padding-right: 180px
+				&:before
+					content: ''
+					display: block
+					background: #fff
+					position: absolute
+					left: 130px
+					top: 60px
+					height: 100%
+					width: 100%
+					height: calc(100% - 32px)
+					width: calc(100% - 134px)
 
 // --------------------------------------------------
 // 404
@@ -3517,7 +3644,7 @@ section.articles-gallery-1
 			text-align: left
 		p
 			color: #35363c
-			font-family: Effra
+			font-family: 'Futura New'
 			font-size: 20px
 			font-weight: 400
 			letter-spacing: 0.1px
@@ -3548,7 +3675,7 @@ section.articles-gallery-1
 				background: transparent
 
 			p
-				font-family: Effra
+				font-family: 'Futura New'
 				font-size: 18px
 				font-weight: 400
 				line-height: 28px
@@ -3655,7 +3782,7 @@ section.articles-gallery-1
 			margin-bottom: 24px
 .article-date
 	color: #a2a3aa
-	font-family: Effra
+	font-family: 'Futura New'
 	font-size: 16px
 	font-weight: 500
 	line-height: 19px
@@ -3686,22 +3813,24 @@ section.articles-gallery-1
 			color: #35363c
 			font-weight: 500
 			font-family: 'Futura New'
+			transform: translateZ(0)
 		h3
 			font-size: 28px
 			line-height: 36px
 		p
 			color: #35363c
-			font-family: Effra
+			font-family: 'Futura New'
 			font-size: 20px
 			font-weight: 400
 			letter-spacing: 0.1px
 			line-height: 30px
 			margin-bottom: 60px
+			transform: translateZ(0)
 		img, hr
 			margin-bottom: 60px
 		blockquote
 			color: #35363c
-			font-family: Effra
+			font-family: 'Futura New'
 			font-size: 26px
 			font-style: italic
 			font-weight: 500
@@ -3721,7 +3850,8 @@ section.articles-gallery-1
 				left: -4px
 				position: absolute
 				font-size: 146px
-				font-weight: 500
+				font-weight: 600
+				font-family: 'Playfair Display'
 				span
 					display: inline-block
 					width: auto
@@ -3733,18 +3863,18 @@ section.articles-gallery-1
 					position: absolute
 					z-index: -1
 					text
-						fill: url(#pattern)
+						fill: #c86af2
 			img
 				margin-top: 60px
 			&:after
 				content: ''
-				background: url('../img/icons/quotes-1.svg') no-repeat
-				background-size: 54px
+				background: url('../img/icons/quotes-2.svg') no-repeat
+				background-size: 38px
 				position: absolute
 				right: -4px
 				top: 8px
-				height: 31px
-				width: 54px
+				height: 38px
+				width: 50px
 				z-index: -1
 	.article-description, .comments-holder
 		margin: 0 auto
@@ -3753,7 +3883,7 @@ section.articles-gallery-1
 	.article-description
 		margin-top: 70px
 		*
-			font-family: Effra
+			font-family: 'Futura New'
 			font-size: 16px
 			line-height: 28px
 		.label
@@ -3817,7 +3947,7 @@ section.articles-gallery-1
 				line-height: 22px
 			.comment-wysiwyg
 				color: #35363c
-				font-family: Effra
+				font-family: 'Futura New'
 				font-size: 20px
 				font-weight: 400
 				line-height: 30px
@@ -3867,7 +3997,7 @@ section.articles-gallery-1
 			*, img
 				width: 520px
 			p
-				font-family: Effra
+				font-family: 'Futura New'
 				font-size: 18px
 				font-weight: 400
 				line-height: 28px
@@ -4170,7 +4300,7 @@ section.articles-gallery-1
 				margin-bottom: 10px
 			p
 				color: #636671
-				font-family: Effra
+				font-family: 'Futura New'
 				font-weight: 400
 				font-size: 17px
 				letter-spacing: 0.4px
