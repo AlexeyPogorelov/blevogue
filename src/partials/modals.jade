@@ -185,7 +185,8 @@
 						input(type="password" placeholder="Password")#popup-login-password
 						a(href="password-recovery.html" data-modal="#password-recovery").forgot-password Forgot?
 				.button-group
-					button(type="submit") Log In
+					button(type="submit")
+						span Log In
 				.button-group
 					a(href="signup.html" data-modal="#signup-modal") Sign Up
 
@@ -208,7 +209,8 @@
 						label(for="popup-login-password") Password
 						input(type="password" placeholder="Password")#popup-login-password
 				.button-group
-					button(type="submit") Sign Up
+					button(type="submit")
+						span Sign Up
 
 .modal-holder#password-recovery(data-cross="cross-top")
 	.modal-content
@@ -221,7 +223,8 @@
 						input(type="text" placeholder="Name")#popup-forgot-email
 						.additional We’ll get you back
 				.button-group
-					button(type="submit") Reset
+					button(type="submit")
+						span Reset
 
 .modal-holder#password-change(data-cross="cross-top")
 	.modal-content
@@ -235,7 +238,8 @@
 						label(for="popup-forgot-new-password-2") New password (replay)
 						input(type="text" placeholder="Name")#popup-forgot-new-password-2
 				.button-group
-					button(type="submit") Change
+					button(type="submit")
+						span Change
 
 //- .modal-holder(data-modal-ununique="true")
 	//- .modal-content
