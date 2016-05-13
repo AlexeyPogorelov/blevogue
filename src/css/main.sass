@@ -707,20 +707,11 @@ $main-slider-height-mobile-small: 247px
 // ARTICLES
 // --------------------------------------------------
 
-section.articles-gallery-1
-	article
-		visibility: visible !important
-		position: relative
-
-.articles-gallery-1
+.articles-gallery-1, .articles-gallery-2
 	overflow: hidden
-	.container
-	// margin: 0 -24px
-		// perspective: 1px
 	h3
 		color: #35363c
 		font-size: 34px
-		// letter-spacing: -1px
 		line-height: 1em
 		margin-bottom: 8px
 		font-family: 'Playfair Display'
@@ -731,18 +722,56 @@ section.articles-gallery-1
 	p
 		color: #636671
 		font-size: 17px
-		font-weight: 400
 		letter-spacing: 0.4px
-		line-height: 24px
-
 		font-family: 'Futura New'
-		font-size: 17px
 		font-weight: 300
 		letter-spacing: 1px
 		line-height: 24px
 	hr
 		position: relative
 		z-index: 1
+	.img
+		display: block
+		opacity: 1
+		transition: opacity .3s
+	.description
+		background: #fff
+		display: block
+		padding: 30px 40px
+		position: relative
+		transition: outline .3s
+		.line
+			background: rgba(255,255,255,0)
+			position: absolute
+			height: 6px
+			width: 0
+			bottom: -6px
+			left: 40px
+			transition: width .3s, background .3s
+		h1, h2, h3, h4, h5, h6
+			transition: color .3s
+	.article-link
+		display: block
+		height: 100%
+		width: 100%
+	.date-holder
+		position: absolute
+		bottom: -16px
+		right: -30px
+		color: white
+		white-space: nowrap
+		font-family: 'Futura New'
+		opacity: 0
+		transition: opacity .3s, transform .3s
+		font-size: 17px
+		font-weight: 300
+		line-height: 1em
+		letter-spacing: 13px
+		span
+			display: inline-block
+			transform: rotate(-90deg) translateX(100%)
+			transform-origin: right bottom 0
+			transition: transform .3s .3s, color .3s .3s
 	article
 		display: inline-block
 		position: relative
@@ -750,15 +779,10 @@ section.articles-gallery-1
 		transition: opacity .3s
 		vertical-align: top
 		z-index: 1
-		// transform: translateZ(0)
-		// a.image-holder
-		// 	display: block
 		.counter
 			position: absolute
 			left: -13px
 			top: 50px
-			// Base text style
-			// color: #35363c
 			color: #333
 			font-family: 'Playfair Display'
 			font-size: 42px
@@ -769,6 +793,26 @@ section.articles-gallery-1
 			transition: all .3s
 		& > .image-holder
 			overflow: visible
+		&.hover
+			.socials-holder
+				opacity: 1
+				transition: opacity .3s .3s
+			.image-holder .img
+				opacity: 0
+				transition: opacity .3s
+			.date-holder
+				opacity: 1
+				transition: opacity .3s .3s
+				span
+					transform: rotate(-90deg) translateX(108%)
+					transition: transform .3s .3s, color .3s .3s
+			.description
+				transition: outline .1s
+				.line
+					transition: width .3s, background .3s
+					width: 96px
+			.counter
+				left: -70px
 		&.wow
 			transform: translateY(40px)
 			opacity: 0
@@ -835,60 +879,6 @@ section.articles-gallery-1
 				.image-holder
 					&:after
 						opacity: 1
-
-	.img
-		display: block
-		opacity: 1
-		transition: opacity .3s
-	.description
-		background: #fff
-		display: block
-		// outline: 6px solid transparent
-		// outline-offset: -6px
-		padding: 30px 40px
-		position: relative
-		transition: outline .3s
-		.line
-			background: rgba(255,255,255,0)
-			position: absolute
-			height: 6px
-			width: 0
-			bottom: -6px
-			left: 40px
-			transition: width .3s, background .3s
-		h1, h2, h3, h4, h5, h6
-			transition: color .3s
-	.article-link
-		display: block
-		height: 100%
-		width: 100%
-	.date-holder
-		position: absolute
-		// text-align: right
-		bottom: -16px
-		right: -30px
-		color: white
-		white-space: nowrap
-		// width: 0
-		font-family: 'Futura New'
-		// font-size: 16px
-		// font-weight: 500
-		// line-height: 19px
-		opacity: 0
-		transition: opacity .3s, transform .3s
-
-		// opacity: 1
-		// color: #000
-		font-size: 17px
-		font-weight: 300
-		line-height: 1em
-		letter-spacing: 13px
-		span
-			display: inline-block
-			transform: rotate(-90deg) translateX(100%)
-			transform-origin: right bottom 0
-			transition: transform .3s .3s, color .3s .3s
-			// height: 0
 	.socials-holder
 		top: 30px
 		left: 30px
@@ -916,27 +906,13 @@ section.articles-gallery-1
 				&:hover:before
 					margin-right: 8px
 					width: 34px
-	article.hover
-		.socials-holder
-			opacity: 1
-			transition: opacity .3s .3s
-		.image-holder .img
-			opacity: 0
-			transition: opacity .3s
-		.date-holder
-			opacity: 1
-			transition: opacity .3s .3s
-			span
-				transform: rotate(-90deg) translateX(108%)
-				transition: transform .3s .3s, color .3s .3s
-		.description
-			transition: outline .1s
-			.line
-				transition: width .3s, background .3s
-				width: 96px
-		.counter
-			left: -70px
 
+section.articles-gallery-1
+	article
+		visibility: visible !important
+		position: relative
+
+.articles-gallery-1
 	.article-holder-1, .article-holder-2, .article-holder-3, .article-holder-4, .article-holder-5, .article-holder-6, .article-holder-7, .article-holder-8
 		position: relative
 		& article:nth-child(2)
@@ -1833,161 +1809,6 @@ section.articles-gallery-1
 // --------------------------------------------------
 
 .articles-gallery-2
-	overflow: hidden
-	.container
-	// margin: 0 -24px
-		// perspective: 1px
-	h3
-		color: #35363c
-		font-size: 34px
-		letter-spacing: -1px
-		line-height: 1em
-		margin-bottom: 8px
-		font-weight: 500
-		font-family: 'Futura New'
-	p
-		color: #636671
-		font-size: 17px
-		font-weight: 400
-		letter-spacing: 0.4px
-		line-height: 24px
-	hr
-		position: relative
-		z-index: 1
-	article
-		display: inline-block
-		position: relative
-		font-size: 0
-		transition: opacity .3s
-		vertical-align: top
-		z-index: 1
-		&.wow
-			transform: translateY(40px)
-			opacity: 0
-			.image-holder
-				transform: scale(1)
-				transform-origin: 0 0
-			.img
-				opacity: 0
-				// transform: translateY(20px)
-			.description
-				opacity: 0
-				transform: translateY(40px)
-			&.animated
-				transform: translateY(40px)
-				opacity: 1
-				transition-property: transform, opacity
-				transition-delay: 0s, 0s
-				transition-duration: 0.8s, 0.8s
-				transform: translateY(0)
-				.image-holder
-					transition-property: transform, opacity
-					transition-delay: 0s, 1.5s
-					transition-timing-function: ease-out, linear
-					transition-duration: 0.5s, 0.5s
-					transform: scale(1)
-				.img
-					opacity: 1
-					// transition: opacity 0.5s 0.5s
-					transition-property: transform, opacity
-					transition-delay: 0s, 1.5s
-					transition-duration: 0.5s, 0.8s
-					transform: scale(1)
-				.description
-					opacity: 1
-					transition-property: transform, opacity
-					transition-delay: 0.4s, 0.4s
-					transition-duration: 0.8s, 0.8s
-					transform: translateY(0)
-		&.video
-			.image-holder
-				&:before, &:after
-					background-size: contain
-					border-radius: 50%
-					content: ''
-					position: absolute
-					pointer-events: none
-					left: 50%
-					top: 50%
-					margin-top: -50px
-					margin-left: -50px
-					height: 100px
-					width: 100px
-					z-index: 1
-				&:before
-					background: url('../img/icons/play-button-1.svg') no-repeat
-					background-size: contain
-					transition: opacity 0.2s linear
-				&:after
-					background: url('../img/icons/play-button-2.svg') no-repeat
-					background-size: contain
-					opacity: 0
-					transition: opacity 0.2s linear
-			.socials-holder, .date-holder
-				display: none
-			&.hover
-				.image-holder
-					&:after
-						opacity: 1
-
-	.img
-		display: block
-		opacity: 1
-		transition: opacity .3s
-	.description
-		background: #fff
-		display: block
-		// outline: 6px solid transparent
-		// outline-offset: -6px
-		padding: 30px 40px
-		position: relative
-		transition: outline .3s
-		h1, h2, h3, h4, h5, h6
-			transition: color .3s
-	.article-link
-		display: block
-		height: 100%
-		width: 100%
-	.date-holder
-		position: absolute
-		text-align: right
-		top: 30px
-		right: 30px
-		color: white
-		font-family: 'Futura New'
-		font-size: 16px
-		font-weight: 500
-		line-height: 19px
-		opacity: 0
-		transition: opacity .3s
-	.socials-holder
-		top: 30px
-		left: 30px
-		position: absolute
-		opacity: 0
-		transition: opacity .3s
-		z-index: 1
-		li
-			display: block
-			margin-bottom: 21px
-			text-align: left
-			a
-				color: #fff
-				display: block
-				font-size: 18px
-	article.hover
-		.socials-holder
-			opacity: 1
-			transition: opacity .3s .3s
-		.image-holder .img
-			opacity: 0
-			transition: opacity .3s
-		.date-holder
-			opacity: 1
-			transition: opacity .3s .3s
-		.description
-			transition: outline .1s
-
 	.article-holder-1, .article-holder-2, .article-holder-3, .article-holder-4, .article-holder-5
 		position: relative
 	.article-holder-2, .article-holder-3, .article-holder-5
