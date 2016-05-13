@@ -171,24 +171,37 @@ input[type="text"], input[type="password"], input[type="email"]
 		// position: relative
 		// width: 1220px
 #to-top
-	cursor: pointer
-	opacity: 0
-	position: fixed
-	pointer-events: none
-	// position: absolute
-	right: 40px
 	bottom: 276px
+	height: 70px
+	opacity: 0
+	pointer-events: none
+	position: fixed
+	right: 40px
 	transform: translateY(70px)
 	transition: transform .3s, opacity .3s, bottom .3s
-	height: 30px
-	width: 32px
+	white-space: nowrap
+	width: 97px
 	&.opened
-		pointer-events: all
+		// pointer-events: all
 		opacity: 0.8
 		transition: transform .3s, opacity .3s, bottom .3s
 		transform: translateY(0)
 		&:hover
 			opacity: 1
+		img, span
+			pointer-events: all
+	img, span
+		cursor: pointer
+		display: inline-block
+		vertical-align: bottom
+	span
+		margin-right: 18px
+		color: #b2b6c2
+		font-family: 'Futura New'
+		font-size: 12px
+		font-weight: 300
+		letter-spacing: 1.05px
+		line-height: 1em
 // @media screen and (max-width: $medium)
 	// #to-top-container
 	// 	.container
@@ -791,6 +804,8 @@ $main-slider-height-mobile-small: 247px
 			letter-spacing: 3px
 			z-index: 1
 			transition: all .3s
+			color: #35363c
+			transform: translateZ(0)
 		& > .image-holder
 			overflow: visible
 		&.hover
@@ -3159,7 +3174,7 @@ section.articles-gallery-1
 		left: 50%
 		right: auto
 		top: 50%
-		transform: translate(-50%, 0)
+		transform: translate3d(-50%, calc(-50% + 40px), 0)
 		width: 560px
 		.socials-login-container
 			background-color: #39579a

@@ -864,9 +864,9 @@ $(document).on('ready', function () {
 						bg = $self.find('> .image-holder').css('background-color');
 					if (count < 10) count = '0' + count;
 					$count.html(count);
-					$count.css({
-						'color': bg
-					});
+					// $count.css({
+					// 	'color': bg
+					// });
 					$line.css({
 						'background-color': bg
 					});
@@ -879,7 +879,7 @@ $(document).on('ready', function () {
 						$article = $self.closest('article'),
 						bg = $article.find('> .image-holder').css('background-color');
 					$article.closest('article').addClass('hover');
-					$article.find('.date-holder, .description h3').css('color', bg);
+					$article.find('.date-holder, .description h3, .counter').css('color', bg);
 					$article.find('.description').css({
 						'border-color': bg,
 						'outline-color': bg
@@ -889,7 +889,7 @@ $(document).on('ready', function () {
 					var $self = $(this),
 						$article = $self.closest('article');
 					$article.closest('article').removeClass('hover wow animated');
-					$article.find('.date-holder, .description, .description h3').attr('style', '');
+					$article.find('.date-holder, .description, .description h3, .counter').attr('style', '');
 
 				});
 
