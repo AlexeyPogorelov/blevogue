@@ -171,18 +171,19 @@ input[type="text"], input[type="password"], input[type="email"]
 		// position: relative
 		// width: 1220px
 #to-top
-	bottom: 276px
+	// bottom: 276px
 	height: 70px
-	opacity: 0
+	// opacity: 0
+	top: -100px
 	pointer-events: none
-	position: fixed
-	right: 40px
+	position: absolute
+	right: 0
 	transform: translateY(70px)
 	transition: transform .3s, opacity .3s, bottom .3s
 	white-space: nowrap
 	width: 97px
-	&.opened
-		// pointer-events: all
+	// &.opened
+	&
 		opacity: 0.8
 		transition: transform .3s, opacity .3s, bottom .3s
 		transform: translateY(0)
@@ -202,22 +203,12 @@ input[type="text"], input[type="password"], input[type="email"]
 		font-weight: 300
 		letter-spacing: 1.05px
 		line-height: 1em
-// @media screen and (max-width: $medium)
-	// #to-top-container
-	// 	.container
-	// 		width: 880px
-@media screen and (max-width: $mobile-large)
-	#to-top
-		bottom: 311px
-@media screen and (max-width: $mobile-medium)
-	#to-top
-		bottom: 367px
 // @media screen and (max-width: $mobile-large)
-	// #to-top-container
-		// bottom: 64px
-		// display: none
-		// .container
-		// 	width: calc(100% - 80px)
+// 	#to-top
+// 		bottom: 311px
+// @media screen and (max-width: $mobile-medium)
+// 	#to-top
+// 		bottom: 367px
 
 // --------------------------------------------------
 // MAIN-NAVIGATION

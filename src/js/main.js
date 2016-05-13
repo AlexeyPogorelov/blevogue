@@ -1040,21 +1040,21 @@ $(document).on('ready', function () {
 
 
 		//scroll
-		$(document).on('scroll', function () {
+		// $(document).on('scroll', function () {
 
-			var top = $(this).scrollTop();
+		// 	var top = $(this).scrollTop();
 
-			if (top > bodyHeight - winHeight) {
+		// 	if (top > bodyHeight - winHeight) {
 
-				goUp.show();
+		// 		goUp.show();
 
-			} else {
+		// 	} else {
 
-				goUp.hide();
+		// 		goUp.hide();
 
-			}
+		// 	}
 
-		});
+		// });
 
 		// resize
 		$window.on('resize', function () {
