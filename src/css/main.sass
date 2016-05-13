@@ -198,7 +198,7 @@ input[type="text"], input[type="password"], input[type="email"]
 		bottom: 311px
 @media screen and (max-width: $mobile-medium)
 	#to-top
-		bottom: 347px
+		bottom: 367px
 // @media screen and (max-width: $mobile-large)
 	// #to-top-container
 		// bottom: 64px
@@ -451,7 +451,8 @@ $main-slider-height-mobile-small: 247px
 	.slider-holder
 		float: left
 		position: relative
-		transition: transform .8s cubic-bezier(0.4, 0.0, 0.2, 1), left .8s cubic-bezier(0.4, 0.0, 0.2, 1)
+		// transition: transform .8s cubic-bezier(0.4, 0.0, 0.2, 1), left .8s cubic-bezier(0.4, 0.0, 0.2, 1)
+		transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1), left 1s cubic-bezier(0.77, 0, 0.175, 1)
 		&.touched
 			transition: none !important
 			.image-holder
@@ -473,17 +474,17 @@ $main-slider-height-mobile-small: 247px
 		position: relative
 		height: $main-slider-height
 		.slide-content
-			transition: padding .6s
+			transition: padding 1s cubic-bezier(0.77, 0, 0.175, 1)
 			height: 100%
 		img
-			transition: max-height .9s
+			transition: max-height 1s cubic-bezier(0.77, 0, 0.175, 1)
 		.image-holder
 			display: block
 			height: 100%
 			transition: opacity .5s
 			transform-origin: 50% 100%
 			transform: scale(0.85) translateY(38px)
-			transition: transform .5s
+			transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1)
 			.img
 				max-height: $main-slider-height
 				transition: opacity .5s
@@ -574,15 +575,15 @@ $main-slider-height-mobile-small: 247px
 				opacity: 0
 			.slide-content
 				padding: 0
-				transition: padding .6s
+				transition: padding 1s cubic-bezier(0.77, 0, 0.175, 1)
 			.description-holder
 				opacity: 1
-				transition: opacity .9s, transform .6s
+				transition: opacity .9s, transform 1s cubic-bezier(0.77, 0, 0.175, 1)
 			.image-holder
 				bottom: 0
 				transform: scale(1)
 				opacity: 1
-				transition: transform .5s
+				transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1)
 				&:hover .img
 					opacity: 1
 					transition: opacity .3s
@@ -641,7 +642,7 @@ $main-slider-height-mobile-small: 247px
 
 @media screen and (max-width: $medium)
 	.main-slider
-		margin-top: 106px
+		margin-top: 100px
 		// height: $main-slider-height-medium
 		.slide
 			height: $main-slider-height-medium
@@ -725,7 +726,7 @@ section.articles-gallery-1
 		font-family: 'Playfair Display'
 		font-size: 32px
 		font-weight: 700
-		letter-spacing: 5px
+		letter-spacing: 4px
 		line-height: 36px
 	p
 		color: #636671
@@ -757,7 +758,8 @@ section.articles-gallery-1
 			left: -13px
 			top: 50px
 			// Base text style
-			color: #35363c
+			// color: #35363c
+			color: #333
 			font-family: 'Playfair Display'
 			font-size: 42px
 			font-weight: 700
@@ -813,10 +815,10 @@ section.articles-gallery-1
 					pointer-events: none
 					left: 50%
 					top: 50%
-					margin-top: -50px
-					margin-left: -50px
-					height: 100px
-					width: 100px
+					margin-top: -36px
+					margin-left: -36px
+					height: 72px
+					width: 72px
 					z-index: 1
 				&:before
 					background: url('../img/icons/play-button-1.svg') no-repeat
@@ -1240,8 +1242,8 @@ section.articles-gallery-1
 @media screen and (max-width: $medium)
 	.articles-gallery-1
 		h3
-			font-size: 28px
-			line-height: 26px
+			font-size: 26px
+			line-height: 30px
 			margin-bottom: 3px
 			letter-spacing: 0
 		p
@@ -1254,6 +1256,7 @@ section.articles-gallery-1
 		.date-holder
 			// top: 10px
 			// right: 10px
+			font-size: 12px
 		.socials-holder
 			top: 10px
 			left: 10px
@@ -2644,7 +2647,8 @@ section.articles-gallery-1
 	padding: 0 40px
 	.container
 		// padding-top: 32px
-		padding-top: 52px
+		// padding-top: 52px
+		padding-top: 34px
 		margin-bottom: 29px
 		position: relative
 		text-align: center
@@ -2656,17 +2660,17 @@ section.articles-gallery-1
 			background-size: cover
 			position: absolute
 			left: 0
-			top: -4px
-			height: 4px
+			top: 0px
+			height: 2px
 			width: 100%
-		.label
-			display: block
-			margin-bottom: 11px
-			color: #636671
-			font-family: 'Futura New'
-			font-size: 16px
-			font-weight: 300
-			line-height: 19px
+		// .label
+		// 	display: block
+		// 	margin-bottom: 11px
+		// 	color: #636671
+		// 	font-family: 'Futura New'
+		// 	font-size: 16px
+		// 	font-weight: 300
+		// 	line-height: 19px
 		& > *
 			// display: inline-block
 			vertical-align: top
@@ -2674,16 +2678,15 @@ section.articles-gallery-1
 			margin-top: 36px
 			width: 207px
 		.search-bar
+			$search-bar-input-height: 54px
 			margin: 0px auto
 			// max-width: 450px
 			max-width: 436px
 			.input-group
 				position: relative
 			input
-				// height: 46px
-				// line-height: 46px
-				height: 54px
-				line-height: 54px
+				height: $search-bar-input-height
+				line-height: $search-bar-input-height
 			input[type="text"], input[type="password"], input[type="email"]
 				color: #35363c
 				font-size: 18px
@@ -2702,35 +2705,76 @@ section.articles-gallery-1
 					color: #636671
 					font-family: 'Futura New'
 					font-size: 18px
-					font-weight: 200
-				&::-webkit-input-placeholder
+					font-weight: 400
+				&::-webkit-input-placeholde400r
 					color: #636671
 					font-family: 'Futura New'
 					font-size: 18px
-					font-weight: 200
+					font-weight: 400
 				&:-ms-input-placeholder
 					color: #636671
 					font-family: 'Futura New'
 					font-size: 18px
-					font-weight: 200
+					font-weight: 400
 			input[type="button"]
 				background-color: transparent
 				background-size: cover
 				background-repeat: no-repeat
 				background-position: 50% 100%
-				// color: white
 				font-family: 'Futura New'
 				font-size: 20px
 				font-weight: 700
 				line-height: 25px
-				padding: 0 27px
+				padding: 0 36px
 				position: absolute
 				right: 0
 				top: 0
-				background-image: url('../img/icons/subscribe-mobile.png')
-				background-size: 91px
-				background-position: 50% 50%
+				// background-size: 91px
+				// background-position: 50% 50%
 				color: transparent
+				// background-image: url('../img/icons/subscribe-mobile.png')
+				&:hover ~ .label-holder
+					.label
+						opacity: 0
+					.label-hover
+						opacity: 1
+
+			.label-holder
+				right: 25px
+				top: 0
+				position: absolute
+				height: $search-bar-input-height
+				width: 50%
+				pointer-events: none
+				& > *
+					// background: transparent 50% 50% no-repeat
+					// background-size: auto 20px
+					// background-position: 100% 50%
+					position: absolute
+					transition: opacity 0.1s linear
+					top: 0
+					right: 0
+					left: 0
+					bottom: 0
+					& > *
+						position: absolute
+						background: transparent 50% 50% no-repeat
+						background-size: auto 20px
+						background-position: 100% 50%
+						top: 0
+						right: 0
+						left: 0
+						bottom: 0
+			.label-hover
+				opacity: 0
+			.subscribe-en
+				background-image: url('../img/icons/subscribe-en.svg')
+			.subscribe-ua
+				background-image: url('../img/icons/subscribe-ua.svg')
+			.subscribe-en-hover
+				background-image: url('../img/icons/subscribe-en-hover.svg')
+			.subscribe-ua-hover
+				background-image: url('../img/icons/subscribe-ua-hover.svg')
 			.copyright
 				color: #636671
 				font-family: 'Futura New'
@@ -2749,33 +2793,43 @@ section.articles-gallery-1
 					line-height: 23px
 			ul
 				// margin-top: 23px
-				margin-top: 28px
+				margin-top: 40px
 				margin-bottom: 17px
 				a
-					font-size: 22px
+					// font-size: 22px
 					line-height: 1em
 					margin: 0 16px
-					opacity: 0.6
-					transition: opacity .3s
+					opacity: 1
+					transition: opacity .3s, color .3s
 					color: #636671
 					font-family: 'Futura New'
 					font-size: 17px
 					font-weight: 500
 					&:hover
-						opacity: 1
-						transition: opacity .1s
+						color: #36465d
+						transition: opacity .1s, color .1s
+					&.facebook:hover
+						color: #43619c
+					&.pinterest:hover
+						color: #bd081c
+					&.twitter:hover
+						color: #24a9e6
+					&.tumblr:hover
+						color: #36465d
 		.about-bar
 			// display: none
 			ul
-				margin-bottom: 22px
+				// margin-bottom: 22px
+				margin-bottom: 33px
 				li
 					display: inline-block
-					margin: 0 17px
+					margin: 0 21px
 					a
 						color: #636671
-						font-size: 18px
+						font-size: 17px
 						font-weight: 500
 						line-height: 22px
+						line-height: 1em
 						transition: color .3s
 						&:hover
 							color: #000
@@ -2800,7 +2854,6 @@ section.articles-gallery-1
 			li
 				display: inline-block
 				position: relative
-				// padding: 0 7px
 				padding: 0 5px
 				&:after
 					background: #b2b6c2
@@ -2832,23 +2885,17 @@ section.articles-gallery-1
 			right: 0
 			bottom: 18px
 			a
-				opacity: .5
 				transition: opacity .3s
+				svg
+					width: 97px
+					g #ui-kit
+						transition: fill .3s
 				&:hover
-					opacity: 1
-					transition: opacity .1s
-				// width: 101px
-				// height: 20px
-				// color: #636671
-				// line-height: 20px
-				// font-family: 'Gotham Pro', 'Futura New', sans-serif
-				// font-size: 14px
-				// font-weight: 300
-				// letter-spacing: 0.6px
-				// b
-				// 	font-size: 15px
-				// 	font-weight: 700
-				// 	letter-spacing: 0.6px
+					svg
+						g #ui-kit
+							fill: #E81657 !important
+							transition: fill .1s
+
 
 // @media screen and (max-width: $medium)
 	// .footer
@@ -2872,8 +2919,8 @@ section.articles-gallery-1
 		padding: 0 32px
 		.container
 			padding-top: 32px
-			.label
-				display: none
+			// .label
+			// 	display: none
 			.search-bar
 				margin-top: 19px
 				width: 437px
@@ -2884,11 +2931,11 @@ section.articles-gallery-1
 					padding-left: 24px
 					padding-right: 24px
 				input[type="button"]
-					background-image: url('../img/icons/subscribe-mobile.png')
-					background-size: 91px
-					background-position: 50% 50%
+					// background-image: url('../img/icons/subscribe-mobile.png')
+					// background-size: 91px
+					// background-position: 50% 50%
 					color: transparent
-					height: 56px
+					// height: 56px
 				.copyright
 					display: none
 			.socials-holder
@@ -2921,9 +2968,24 @@ section.articles-gallery-1
 	.footer
 		.container
 			.search-bar
+				$search-bar-input-height: 54px
 				margin-top: 0
 				input[type="button"]
 					position: static
+				.label-holder
+					left: 0
+					right: 0
+					top: $search-bar-input-height
+					height: $search-bar-input-height
+					width: 100%
+					& > * > *
+						background-position: 50% 50%
+						background-size: auto 20px
+			.socials-holder
+				ul
+					a
+						margin: 0 8px;
+						font-size: 14px
 
 .controls-holder
 	position: absolute
@@ -3453,9 +3515,26 @@ section.articles-gallery-1
 				letter-spacing: 1px
 				font-weight: 500
 				line-height: 1em
+				position: relative
 				padding: 20px 32px
 				b
 					font-weight: 700
+				span
+					position: relative
+				&:before
+					background: rgba(0,0,0,0.3)
+					content: ''
+					display: block
+					left: 0
+					top: 0
+					height: 100%
+					width: 100%
+					opacity: 0
+					position: absolute
+					z-index: 0
+					transition: opacity .3s
+				&:hover:before
+					opacity: 1
 			.content-holder
 				padding-left: 55px
 				position: relative
@@ -4162,10 +4241,21 @@ section.articles-gallery-1
 // PROFILE
 // --------------------------------------------------
 .profile-holder
-	background: url('../img/bg/profile-bg.jpg')
+	// background: url('../img/bg/profile-bg.jpg')
 	background-size: cover
 	min-height: calc(100vh - 187px)
 	text-align: center
+	position: relative
+	&:before
+		content: ''
+		background: #e1a292
+		position: absolute
+		left: 0
+		top: 0
+		bottom: 0
+		z-index: -1
+		right: 0
+		animation: hue-rotation 4s linear 0ms infinite
 	.profile-content
 		border: 1px solid #cdd1dc
 		text-align: left
@@ -4629,3 +4719,26 @@ section.articles-gallery-1
 @media screen and (max-width: $mobile-medium)
 	.mobile-visible
 		display: block !important
+
+
+
+@keyframes hue-rotation
+	0%
+		filter: hue-rotate(0deg)
+
+	100%
+		filter: hue-rotate(360deg)
+
+.hue-color-active
+	animation: hue-rotation 1s linear 0ms infinite!important
+	color:#e1a292!important
+.hue-color-active-slow
+	animation: hue-rotation 2s linear 0ms infinite!important
+	color:#e1a292!important
+
+
+body:not(.mobile)
+.hue-color:hover
+	animation: hue-rotation 1s linear 0ms infinite!important
+	color:#e1a292!important
+
