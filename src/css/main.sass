@@ -173,21 +173,26 @@ input[type="text"], input[type="password"], input[type="email"]
 #to-top
 	height: 70px
 	top: -100px
-	pointer-events: none
 	position: absolute
 	right: 0
-	transform: translateY(70px)
+	cursor: pointer
+	// transform: translateY(70px)
 	transition: transform .3s, opacity .3s, bottom .3s
 	white-space: nowrap
 	width: 97px
 	// &.opened
-	opacity: 0.8
+	// opacity: 0.8
 	transition: transform .3s, opacity .3s, bottom .3s
-	transform: translateY(0)
+	// transform: translateY(0)
 	&:hover
 		opacity: 1
-	img, span, svg
-		pointer-events: all
+		span
+			transform: translate3d(0,-28px,0)
+			color: #333
+			transition: color .1s, transform .3s
+		svg *
+			fill: #333333 !important
+			transition: fill .1s
 	img, span, svg
 		cursor: pointer
 		display: inline-block
@@ -195,10 +200,8 @@ input[type="text"], input[type="password"], input[type="email"]
 	svg
 		height: 70px
 		width: 12px
-		transition: fill .3s
-		&:hover *
-			fill: #333333 !important
-			transition: fill .1s
+		& *
+			transition: fill .3s
 	span
 		margin-right: 18px
 		color: #b2b6c2
@@ -207,10 +210,7 @@ input[type="text"], input[type="password"], input[type="email"]
 		font-weight: 300
 		letter-spacing: 1.05px
 		line-height: 1em
-		transition: color .3s
-		&:hover
-			color: #333
-			transition: color .1s
+		transition: color .3s, transform .3s
 // @media screen and (max-width: $mobile-large)
 // 	#to-top
 // 		bottom: 311px
@@ -779,9 +779,10 @@ $main-slider-height-mobile-small: 247px
 		font-weight: 300
 		line-height: 1em
 		letter-spacing: 13px
+		transform: translateZ(0)
 		span
 			display: inline-block
-			transform: rotate(-90deg) translateX(100%)
+			transform: rotate(-90deg) translateX(100%) translateZ(0)
 			transform-origin: right bottom 0
 			transition: transform .3s .3s, color .3s .3s
 	article
@@ -818,7 +819,7 @@ $main-slider-height-mobile-small: 247px
 				opacity: 1
 				transition: opacity .3s .3s
 				span
-					transform: rotate(-90deg) translateX(108%)
+					transform: rotate(-90deg) translateX(108%) translateZ(0)
 					transition: transform .3s .3s, color .3s .3s
 			.description
 				transition: outline .1s
@@ -908,6 +909,7 @@ $main-slider-height-mobile-small: 247px
 				color: #fff
 				display: block
 				font-size: 18px
+				font-weight: 300
 				&:before
 					background: #ffffff
 					content: ''
@@ -1837,13 +1839,13 @@ section.articles-gallery-1
 				top: 60px
 				width: 390px
 				.line
-					left: 80px
+					left: 80px + 20px
 			.date-holder
 				right: auto
 				left: 0
 				bottom: -26px
 				span
-					transform: translate3d(0, 20px, 0)
+					transform: translate3d(-20px, 0, 0)
 			&.hover
 				.date-holder
 					span
@@ -1882,13 +1884,13 @@ section.articles-gallery-1
 				top: 60px
 				width: 390px
 				.line
-					left: 110px
+					left: 110px + 20px
 			.date-holder
 				right: auto
 				left: 0
 				bottom: -26px
 				span
-					transform: translate3d(0, 20px, 0)
+					transform: translate3d(-20px, 0, 0)
 			&.hover
 				.date-holder
 					span
@@ -1946,13 +1948,13 @@ section.articles-gallery-1
 				top: 60px
 				width: 390px
 				.line
-					left: 114px
+					left: 114px + 20px
 			.date-holder
 				right: auto
 				left: 0
 				bottom: -26px
 				span
-					transform: translate3d(0, 20px, 0)
+					transform: translate3d(-20px, 0, 0)
 			&.hover
 				.date-holder
 					span
