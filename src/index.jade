@@ -10,14 +10,15 @@ html(lang='en')
 		include ./partials/navigation.jade
 
 		section.main-slider#main-slider
+			#main-slider-controls
+				.slide-prev
+					span попередня
+				.slide-next
+					span наступна
 			.slider-viewport.container
 				.slider-holder
 
 					.slide
-						.slide-prev
-							span попередня
-						.slide-next
-							span наступна
 						.slide-content
 							a.image-holder(href="article.html" style="background-color:#5c45c4")
 								img.fake-img(src="http://40.media.tumblr.com/355c4c5196bf6c05e1a37093a7682d09/tumblr_o3h2h81gst1slisbmo1_1280.jpg")
@@ -25,10 +26,6 @@ html(lang='en')
 							.description-holder Що почитати, щоб мозку прибавилося?
 
 					.slide
-						.slide-prev
-							span попередня
-						.slide-next
-							span наступна
 						.slide-content
 							a.image-holder(href="article.html" style="background-color:#bccdd5")
 								img.fake-img(src="http://36.media.tumblr.com/ddf94802d5d6e873136f33673ec3d1c7/tumblr_njmc69HgQG1slisbmo1_1280.jpg")
@@ -36,10 +33,6 @@ html(lang='en')
 							.description-holder Lorem ipsum dolor sit.
 
 					.slide
-						.slide-prev
-							span попередня
-						.slide-next
-							span наступна
 						.slide-content
 							a.image-holder(href="article.html" style="background-color:#ff6ebf")
 								img.fake-img(src="http://41.media.tumblr.com/86eefdb7b668b51729339b3cadfb8e67/tumblr_inline_nxxea5aFGP1spa7ad_1280.jpg")

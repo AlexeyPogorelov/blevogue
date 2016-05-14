@@ -421,7 +421,7 @@ var loading = {
 		// end todo
 
 		// initialize plugins
-		$('#main-slider').simpleSlider();
+		_pogorelov.mainSlider =  $('#main-slider').simpleSlider();
 		$('body').trigger('scroll');
 
 		// parallax and socials
@@ -893,6 +893,8 @@ $(document).on('ready', function () {
 
 			if ($.browser.mobile) return;
 
+			var $mainSliderControls = $('#main-slider-controls');
+
 			window._pogorelov.addHoverOnVideo = function ($el) {
 
 				if ( !($el instanceof jQuery) ) return;
@@ -981,13 +983,34 @@ $(document).on('ready', function () {
 
 			$('#main-slider').on('mouseenter', '.image-holder', function () {
 				var $self = $(this),
-					id = $self.closest('.slide').attr('data-id');
-				$self.closest('#main-slider').find('[data-id=' + id + ']').addClass('hover');
+					$slide = $self.closest('.slide'),
+					id = $slide.attr('data-id');
+				$slide.closest('#main-slider').find('[data-id=' + id + ']').addClass('hover');
+
+				// TODO mod hover
+				if ($slide.hasClass('cloned')) {
+					if ( id > _pogorelov.mainSlider.getCurrent() ) {
+						$mainSliderControls.find('.slide-prev').addClass('hover');
+					} else if ( id < _pogorelov.mainSlider.getCurrent() ) {
+						$mainSliderControls.find('.slide-next').addClass('hover');
+					}
+				} else {
+					if ( id < _pogorelov.mainSlider.getCurrent() ) {
+						$mainSliderControls.find('.slide-prev').addClass('hover');
+					} else if ( id > _pogorelov.mainSlider.getCurrent() ) {
+						$mainSliderControls.find('.slide-next').addClass('hover');
+					}
+				}
 
 			}).on('mouseleave', '.image-holder', function () {
 				var $self = $(this),
 					id = $self.closest('.slide').attr('data-id');
 				$self.closest('#main-slider').find('[data-id=' + id + ']').removeClass('hover');
+
+				if ($mainSliderControls.length) {
+					$mainSliderControls.find('.slide-prev, .slide-next').removeClass('hover');
+				}
+
 			});
 
 		})();

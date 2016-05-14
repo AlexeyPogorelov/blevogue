@@ -80,7 +80,31 @@ bodyOverflow = (function () {
 
 $.fn.simpleSlider = function (opt) {
 
-	this.each(function (i) {
+	// options
+	if (!opt) {
+		opt = {};
+	}
+	opt = $.extend({
+		'loop': true,
+		'interval': false,
+		'easing': 'swing',
+		'prevClass': 'arrow-left-1',
+		'nextClass': 'arrow-right-1',
+		'holderClass': '.slides-holder',
+		'slideClass': '.slide',
+		'nameClass': '.slide-name',
+		'imageClass': '.slide-image',
+		'pagination': false,
+		'clickToNext': false,
+		'startSlide': 0,
+		'autoHeight': false,
+		'mouseWheel': false,
+		'mouseDrug': false,
+		'touch': true,
+		'slidesOnPage': 1
+	}, opt);
+
+	var plugin = function (i) {
 
 		var DOM = {},
 			state = {
@@ -96,30 +120,6 @@ $.fn.simpleSlider = function (opt) {
 				state.shiftX = 0;
 				state.shiftD = 0;
 			};
-
-		// options
-		if (!opt) {
-			opt = {};
-		}
-		opt = $.extend({
-			'loop': true,
-			'interval': false,
-			'easing': 'swing',
-			'prevClass': 'arrow-left-1',
-			'nextClass': 'arrow-right-1',
-			'holderClass': '.slides-holder',
-			'slideClass': '.slide',
-			'nameClass': '.slide-name',
-			'imageClass': '.slide-image',
-			'pagination': false,
-			'clickToNext': false,
-			'startSlide': 0,
-			'autoHeight': false,
-			'mouseWheel': false,
-			'mouseDrug': false,
-			'touch': true,
-			'slidesOnPage': 1
-		}, opt);
 
 		// methods
 		var plg = {
@@ -318,7 +318,7 @@ $.fn.simpleSlider = function (opt) {
 			toSlide: function (id, resize) {
 
 				if ( id < 0 || id >= state.pages ) {
-					console.error('id is ' + id);
+					console.warn('id is ' + id);
 					return;
 				}
 
@@ -407,6 +407,9 @@ $.fn.simpleSlider = function (opt) {
 					.addClass('next-slide')
 					.appendTo(DOM.$pagination);
 
+			},
+			getCurrent: function () {
+				return state.cur;
 			}
 		};
 
@@ -622,7 +625,18 @@ $.fn.simpleSlider = function (opt) {
 		plg.init();
 
 		return plg;
-	});
+	};
+
+	if (this.length > 1) {
+
+		return this.each(plugin);
+
+	} else if (this.length === 1) {
+
+		return plugin.call(this[0]);
+
+	}
+
 };
 
 $.fn.validate = function (opt) {
