@@ -380,6 +380,27 @@ var loading = {
 		var loct = location.href.split('/');
 		loct = loct[loct.length - 1];
 		$('[href="' + loct + '"]').closest('li').addClass('active');
+		$('.btn.load-more').on('click', function () {
+			var $this = $(this),
+				$container = $this.closest('.container'),
+				$button = $this.closest('.load-more-holder'),
+				$articles = $container.find('article'),
+				$clonedArticles;
+
+			$button.remove();
+
+			$clonedArticles = $( $container.html() );
+
+			$clonedArticles.find('.counter').remove();
+
+			pogorelov.countArticlas($clonedArticles.find('article'), $articles.length);
+			pogorelov.addHoverOnArticle( $clonedArticles.find('article') );
+			$clonedArticles.find('article').css('top', '');
+
+
+			$container.append( $clonedArticles );
+				// $articles.eq($articles.length - 1);
+		});
 		// end todo
 
 		// initialize plugins
@@ -855,29 +876,35 @@ $(document).on('ready', function () {
 
 			if ($.browser.mobile) return;
 
-			var $gallery = $('.articles-gallery-1, .articles-gallery-2');
-				$gallery.find('article').each(function (i) {
-					var $self = $(this);
-						count = i + 1,
-						$count = $('<div>').addClass('counter'),
-						$line = $('<div>').addClass('line'),
-						bg = $self.find('> .image-holder').css('background-color');
-					if (count < 10) count = '0' + count;
-					$count.html(count);
-					// $count.css({
-					// 	'color': bg
-					// });
-					$line.css({
-						'background-color': bg
-					});
-					$self.find('.description').append($line);
-					$count.appendTo($self);
+			window.pogorelov.addHoverOnVideo = function ($el) {
 
-				});
-				$gallery.find('article > .image-holder, .description').hover(function () {
+				if ( !($el instanceof jQuery) ) return;
+
+				$el.hover(function () {
+
+						var $self = $(this),
+							$video = $self.closest('.video'),
+							bg = $video.find('> .image-container > .image-holder').css('background-color');
+							$video.addClass('hover');
+
+					}, function () {
+
+						$(this).closest('.video').removeClass('hover');
+
+					});
+
+			};
+
+			window.pogorelov.addHoverOnArticle = function ($el) {
+
+				if ( !($el instanceof jQuery) ) return;
+
+				$el.hover(function () {
+
 					var $self = $(this),
 						$article = $self.closest('article'),
 						bg = $article.find('> .image-holder').css('background-color');
+
 					$article.closest('article').addClass('hover');
 					$article.find('.date-holder, .description h3, .counter').css('color', bg);
 					$article.find('.description').css({
@@ -886,23 +913,54 @@ $(document).on('ready', function () {
 					});
 
 				}, function () {
+
 					var $self = $(this),
 						$article = $self.closest('article');
+
 					$article.closest('article').removeClass('hover wow animated');
 					$article.find('.date-holder, .description, .description h3, .counter').attr('style', '');
 
 				});
 
-			var $videos = $('.video-gallery');
-				$videos.find('.image-container > .image-holder, .description-container').hover(function () {
-					var $self = $(this),
-						$video = $self.closest('.video'),
-						bg = $video.find('> .image-container > .image-holder').css('background-color');
-						$video.addClass('hover');
+			};
 
-				}, function () {
-					$(this).closest('.video').removeClass('hover');
-				});
+			window.pogorelov.countArticlas = function ($el, start) {
+
+				if ( !($el instanceof jQuery) ) return;
+
+				if (typeof start !== 'number') start = 0;
+
+				$el.each(function (i) {
+
+						var $self = $(this);
+							count = i + 1 + start,
+							$count = $('<div>').addClass('counter');
+
+						if (count < 10) count = '0' + count;
+
+						$count.html(count).appendTo($self);
+
+					});
+
+			};
+
+			var $gallery = $('.articles-gallery-1, .articles-gallery-2');
+				$gallery.find('article').each(function (i) {
+
+						var $self = $(this);
+							$line = $('<div>').addClass('line'),
+							bg = $self.find('> .image-holder').css('background-color');
+
+						$line.css({
+							'background-color': bg
+						});
+						$self.find('.description').append($line);
+
+					});
+				pogorelov.countArticlas( $gallery.find('article') );
+				pogorelov.addHoverOnArticle( $gallery.find('article > .image-holder, .description') );
+
+			pogorelov.addHoverOnVideo( $('.video-gallery').find('.image-container > .image-holder, .description-container') );
 
 			$('#main-slider').on('mouseenter', '.image-holder', function () {
 				var $self = $(this),
@@ -1040,21 +1098,19 @@ $(document).on('ready', function () {
 
 
 		//scroll
-		// $(document).on('scroll', function () {
+		$(document).on('scroll', function () {
 
-		// 	var top = $(this).scrollTop();
+			var top = $(this).scrollTop();
+
+			//
 
 		// 	if (top > bodyHeight - winHeight) {
-
 		// 		goUp.show();
-
 		// 	} else {
-
 		// 		goUp.hide();
-
 		// 	}
 
-		// });
+		});
 
 		// resize
 		$window.on('resize', function () {
