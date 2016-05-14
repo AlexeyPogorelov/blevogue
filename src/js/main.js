@@ -84,6 +84,10 @@ function parallaxSocials () {
 		$socialsElement = $('#fixed-socials'),
 		$articleHeader = $('.article-header'),
 		$articleComments = $('.comments-holder'),
+		$articlesControl = $('#articles-control'),
+		$articlesControlLine = $articlesControl.find('.line'),
+		$articlesGallery = $('.articles-gallery-1'),
+		articlesControlStatus = 0,
 		socialsStatus = {},
 		socialsElement = $socialsElement.get(0),
 		currentDoc = (document.documentElement || document.body.parentNode || document.body),
@@ -97,13 +101,20 @@ function parallaxSocials () {
 			// console.time('timerName');
 			requestAnimFrame(function () {
 
+				if ( top > $articlesGallery.offset().top && top + windowHeight < $articlesGallery.offset().top + $articlesGallery.height() && articlesControlStatus === 0) {
+					$articlesControl.addClass('opened');
+					articlesControlStatus = 1;
+				} else if ( (top < $articlesGallery.offset().top || top + windowHeight > $articlesGallery.offset().top + $articlesGallery.height() ) && articlesControlStatus === 1) {
+					$articlesControl.removeClass('opened');
+					articlesControlStatus = 0;
+				}
+				$articlesControlLine.css('height', ( top - $articlesGallery.offset().top ) / $articlesGallery.height() * 100  + "%" );
+
 				if (parallaxElemens.length) {
 
 					for (var i = parallaxElemens.length - 1; i >= 0; i--) {
 
 						var parallaxElementTempoTop = parallaxElemens[i].el.getBoundingClientRect().top;
-
-						// if (i === 0) console.log( parallaxElementTempoTop );
 
 						if ( parallaxElementTempoTop < -windowHeight || parallaxElementTempoTop > windowHeight * 2 ) continue;
 
@@ -391,12 +402,13 @@ var loading = {
 
 			$clonedArticles = $( $container.html() );
 
-			$clonedArticles.find('.counter').remove();
+			$clonedArticles.addClass('wow').find('.counter').remove();
 
-			pogorelov.countArticlas($clonedArticles.find('article'), $articles.length);
-			pogorelov.addHoverOnArticle( $clonedArticles.find('article') );
-			$clonedArticles.find('article').css('top', '');
+			_pogorelov.countArticlas($clonedArticles.find('article'), $articles.length);
+			_pogorelov.addHoverOnArticle( $clonedArticles.find('article') );
+			$clonedArticles.find('article').css('top', '0');
 
+			$('#articles-control').find('.last-element').html( $articles.length * 2 );
 
 			$container.append( $clonedArticles );
 				// $articles.eq($articles.length - 1);
@@ -876,7 +888,7 @@ $(document).on('ready', function () {
 
 			if ($.browser.mobile) return;
 
-			window.pogorelov.addHoverOnVideo = function ($el) {
+			window._pogorelov.addHoverOnVideo = function ($el) {
 
 				if ( !($el instanceof jQuery) ) return;
 
@@ -895,7 +907,7 @@ $(document).on('ready', function () {
 
 			};
 
-			window.pogorelov.addHoverOnArticle = function ($el) {
+			window._pogorelov.addHoverOnArticle = function ($el) {
 
 				if ( !($el instanceof jQuery) ) return;
 
@@ -924,7 +936,7 @@ $(document).on('ready', function () {
 
 			};
 
-			window.pogorelov.countArticlas = function ($el, start) {
+			window._pogorelov.countArticlas = function ($el, start) {
 
 				if ( !($el instanceof jQuery) ) return;
 
@@ -957,10 +969,10 @@ $(document).on('ready', function () {
 						$self.find('.description').append($line);
 
 					});
-				pogorelov.countArticlas( $gallery.find('article') );
-				pogorelov.addHoverOnArticle( $gallery.find('article > .image-holder, .description') );
+				_pogorelov.countArticlas( $gallery.find('article') );
+				_pogorelov.addHoverOnArticle( $gallery.find('article > .image-holder, .description') );
 
-			pogorelov.addHoverOnVideo( $('.video-gallery').find('.image-container > .image-holder, .description-container') );
+			_pogorelov.addHoverOnVideo( $('.video-gallery').find('.image-container > .image-holder, .description-container') );
 
 			$('#main-slider').on('mouseenter', '.image-holder', function () {
 				var $self = $(this),

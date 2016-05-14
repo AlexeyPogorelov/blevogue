@@ -1,4 +1,4 @@
-var pogorelov = {};
+var _pogorelov = {};
 var animationPrefix = (function () {
 	var t,
 	el = document.createElement("fakeelement");

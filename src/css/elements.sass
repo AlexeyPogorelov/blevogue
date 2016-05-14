@@ -235,3 +235,33 @@ $mobile-x-small: 320px
 		letter-spacing: 2.63px
 		line-height: 17px
 		transform: rotate(-90deg) translateZ(0)
+
+#articles-control
+	position: fixed
+	right: 40px
+	top: calc(50vh - 250px)
+	pointer-events: none
+	opacity: 0
+	transition: opacity .3s
+	&.opened
+		opacity: 1
+	.first-element, .last-element
+		color: #b2b6c2
+		font-family: 'Futura New'
+		font-size: 14px
+		font-weight: 500
+		letter-spacing: 1px
+		line-height: 17px
+		text-align: center
+	.line
+		background-color: #d5d9e3
+		// height: 44vh
+		margin: 0
+		padding: 0
+		width: 1px
+		outline: 1px solid #d5d9e3
+	.progress
+		background-color: #d5d9e3
+		height: 44vh
+		margin: 30px auto
+		width: 1px
