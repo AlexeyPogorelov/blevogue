@@ -171,9 +171,7 @@ input[type="text"], input[type="password"], input[type="email"]
 		// position: relative
 		// width: 1220px
 #to-top
-	// bottom: 276px
 	height: 70px
-	// opacity: 0
 	top: -100px
 	pointer-events: none
 	position: absolute
@@ -183,18 +181,24 @@ input[type="text"], input[type="password"], input[type="email"]
 	white-space: nowrap
 	width: 97px
 	// &.opened
-	&
-		opacity: 0.8
-		transition: transform .3s, opacity .3s, bottom .3s
-		transform: translateY(0)
-		&:hover
-			opacity: 1
-		img, span
-			pointer-events: all
-	img, span
+	opacity: 0.8
+	transition: transform .3s, opacity .3s, bottom .3s
+	transform: translateY(0)
+	&:hover
+		opacity: 1
+	img, span, svg
+		pointer-events: all
+	img, span, svg
 		cursor: pointer
 		display: inline-block
 		vertical-align: bottom
+	svg
+		height: 70px
+		width: 12px
+		transition: fill .3s
+		&:hover *
+			fill: #333333 !important
+			transition: fill .1s
 	span
 		margin-right: 18px
 		color: #b2b6c2
@@ -203,6 +207,10 @@ input[type="text"], input[type="password"], input[type="email"]
 		font-weight: 300
 		letter-spacing: 1.05px
 		line-height: 1em
+		transition: color .3s
+		&:hover
+			color: #333
+			transition: color .1s
 // @media screen and (max-width: $mobile-large)
 // 	#to-top
 // 		bottom: 311px
@@ -2675,7 +2683,7 @@ section.articles-gallery-1
 		.lang-switcher-holder
 			position: fixed
 			left: 40px
-			bottom: 40px
+			bottom: 20px
 			z-index: 1
 			transform: translateZ(0)
 			li
