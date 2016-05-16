@@ -3265,6 +3265,8 @@ section.articles-gallery-1
 
 #about-modal
 	background-color: #fbe67e
+	.container
+		width: 1060px
 	a.close-about
 		background: url('../img/icons/cross-button-3.svg')
 		background-size: cover
@@ -3275,11 +3277,12 @@ section.articles-gallery-1
 		width: 24px
 	.modal-content
 		background-color: transparent
-		padding-top: 180px
+		padding-top: 160px
 		.left-side, .right-side
 			display: inline-block
 			vertical-align: top
 		.left-side
+			padding-top: 20px
 			width: 378px
 			img
 				width: 100%
@@ -3288,18 +3291,18 @@ section.articles-gallery-1
 		.right-side
 			width: calc(100% - 382px)
 			a.to-blog
-				background: url("https://unsplash.it/600/400?image=33")
 				background-position: 50% 50%
-				margin-top: 60px
+				background: url("https://unsplash.it/600/400?image=33")
 				color: white
+				float: right
 				font-family: 'Futura New'
 				font-size: 18px
-				float: right
-				letter-spacing: 1px
 				font-weight: 500
+				letter-spacing: 1px
 				line-height: 1em
-				position: relative
+				margin-top: 96px
 				padding: 20px 32px
+				position: relative
 				b
 					font-weight: 700
 				span
@@ -3331,6 +3334,7 @@ section.articles-gallery-1
 					font-style: italic
 					line-height: 88px
 					letter-spacing: 22px
+					margin-bottom: 10px
 				p
 					color: #35363c
 					font-family: 'Futura New'
@@ -3343,12 +3347,63 @@ section.articles-gallery-1
 					display: block
 					background: #fff
 					position: absolute
-					left: 130px
-					top: 60px
-					height: 100%
-					width: 100%
-					height: calc(100% - 32px)
-					width: calc(100% - 134px)
+					left: 144px
+					top: 52px
+					right: 0
+					bottom: -55px
+					// height: 100%
+					// width: 100%
+					// height: calc(100% + 5px)
+					// width: calc(100% - 143px)
+
+@media screen and (max-width: $medium)
+	#about-modal
+		.container
+			width: 813px
+		.modal-content
+			padding-top: 80px
+			.left-side
+				padding-top: 20px
+				width: 301px
+			.right-side
+				// width: calc(100% - 310px)
+				width: calc(100% - 307px)
+				a.to-blog
+					margin-top: 81px
+				.content-holder
+					padding-left: 50px
+					&:before
+						left: 139px
+						bottom: -42px
+					p
+						padding-right: 50px
+						font-size: 20px
+						font-weight: 300
+						line-height: 30px
+@media screen and (max-width: $tablet)
+	#about-modal
+		.container
+			width: 660px
+		.modal-content
+			padding-top: 70px
+			.left-side
+				padding-top: 20px
+				width: 266px
+			.right-side
+				width: calc(100% - 277px)
+				a.to-blog
+					margin-top: 81px
+				.content-holder
+					padding-left: 40px
+					h1, h2, h3, h4, h5, h6
+						font-size: 50px
+						margin-bottom: 8px
+					&:before
+						left: 108px
+						bottom: -42px
+					p
+						font-size: 18px
+						line-height: 28px
 
 // --------------------------------------------------
 // 404

@@ -382,7 +382,7 @@ var loading = {
 		if (loading.finished) return;
 
 		// TODO temp for developing
-		$('section.articles-gallery-1 > article, .article-content, .article-name, .article-date, .video, .article-page').find('p, h1, h2, h3, h4, h5, h6, blockquote, span').attr('contenteditable', true).on('click', function (e) {
+		$('section.articles-gallery-1 > article, .article-content, .article-name, .article-date, .video, .article-page, #about-modal .right-side').find('p, h1, h2, h3, h4, h5, h6, blockquote, span').attr('contenteditable', true).on('click', function (e) {
 			e.preventDefault();
 		});
 		$('.article-holder-1 a').on('click', function (e) {
