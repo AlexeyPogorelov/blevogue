@@ -507,13 +507,6 @@ $main-slider-height-mobile-small: 247px
 			.image-holder
 				transform: scale(0.85) translateY(0) !important
 		.description-holder
-			// color: #35363c
-			// background: #fff
-			// font-family: 'Futura New'
-			// font-size: 30px
-			// letter-spacing: 1.5px
-			// line-height: 38px
-			// padding: 15px 30px
 			color: #e7f0f2
 			font-family: "Playfair Display"
 			font-size: 54px
@@ -573,23 +566,6 @@ $main-slider-height-mobile-small: 247px
 				.img
 					opacity: 1
 					transition: opacity 0.8s 1.5s
-
-// TODO discuss it and make right des. 
-// @media screen and (min-width: 2600px)
-// 	.main-slider
-// 		.container
-// 			width: 2000px
-// 			.slide
-// 				height: $main-slider-height-retina
-// 				.slide-content
-// 					padding: 0 120px
-// 					.img
-// 						max-height: $main-slider-height-retina
-
-// @media screen and (min-width: 3000px)
-// 	.main-slider
-// 		.container
-// 			width: 2400px
 
 @media screen and (max-width: $medium)
 	.main-slider
@@ -862,6 +838,10 @@ $main-slider-height-mobile-small: 247px
 				&:hover:before
 					margin-right: 8px
 					width: 34px
+@media screen and (max-width: $medium)
+	.articles-gallery-1, .articles-gallery-2
+		.date-holder
+			font-size: 12px
 
 section.articles-gallery-1
 	article
@@ -887,7 +867,7 @@ section.articles-gallery-1
 	.article-holder-1
 		margin-top: 114px
 		.date-holder
-			bottom: 93px
+			bottom: 95px
 		article
 			.image-holder
 				height: 400px
@@ -900,7 +880,7 @@ section.articles-gallery-1
 	.article-holder-2
 		margin-top: 4px
 		.date-holder
-			bottom: 93px
+			bottom: 95px
 		article
 			margin-left: 390px
 			.image-holder
@@ -919,7 +899,7 @@ section.articles-gallery-1
 		article:nth-child(1)
 			width: 500px
 			.date-holder
-				bottom: 93px
+				bottom: 95px
 			.image-holder
 				height: 464px
 				width: 320px
@@ -950,7 +930,7 @@ section.articles-gallery-1
 			margin-top: 82px
 			width: 500px
 			.date-holder
-				bottom: 93px
+				bottom: 95px
 			.image-holder
 				height: 464px
 				width: 320px
@@ -1172,10 +1152,11 @@ section.articles-gallery-1
 			line-height: 19px
 		.description
 			padding: 22px 24px
+			.line
+				left: 25px
 		.date-holder
 			// top: 10px
 			// right: 10px
-			font-size: 12px
 		.socials-holder
 			top: 10px
 			left: 10px
@@ -1254,6 +1235,8 @@ section.articles-gallery-1
 					left: 70px
 					top: -39px
 					width: 280px
+				.date-holder
+					bottom: 24px
 			article:nth-child(2)
 				margin-top: 18px
 				margin-left: 36px
@@ -1266,6 +1249,9 @@ section.articles-gallery-1
 					padding-top: 13px
 					padding-bottom: 13px
 					width: 210px
+				.date-holder
+					// bottom: -54px
+					bottom: -12px
 
 		.article-holder-5
 			margin-top: 0
@@ -1282,6 +1268,9 @@ section.articles-gallery-1
 					left: 0
 					top: 0
 					width: 210px
+				.date-holder
+					// bottom: -54px
+					bottom: -12px
 			article:nth-child(2)
 				margin-top: 46px
 				margin-left: 136px
@@ -1308,6 +1297,9 @@ section.articles-gallery-1
 					padding-top: 13px
 					padding-bottom: 13px
 					width: 210px
+				.date-holder
+					// bottom: -54px
+					bottom: -12px
 			article:nth-child(2)
 				margin-top: 139px
 				margin-left: 176px
@@ -1320,6 +1312,9 @@ section.articles-gallery-1
 					padding-top: 13px
 					// padding-bottom: 0
 					width: 210px
+				.date-holder
+					// bottom: -54px
+					bottom: -12px
 
 		.article-holder-7
 			margin-top: 68px
@@ -1397,6 +1392,8 @@ section.articles-gallery-1
 				.description
 					left: 100px
 					top: -68px
+				.date-holder
+					bottom: 54px
 			article:nth-child(2)
 				margin-top: -6px
 				margin-left: calc(100% - 179px)
@@ -1407,6 +1404,8 @@ section.articles-gallery-1
 				.description
 					top: -69px
 					left: 102px
+				.date-holder
+					bottom: 54px
 			article:nth-child(2)
 				margin-top: -8px
 				margin-left: calc(100% - 210px)
@@ -2145,6 +2144,11 @@ section.articles-gallery-1
 					left: 0
 					top: 0
 					width: 210px
+				.date-holder
+					top: auto
+					left: auto
+					bottom: -12px
+					right: -28px
 			article:nth-child(2)
 				margin-top: 46px
 				margin-left: 66px
@@ -2157,6 +2161,14 @@ section.articles-gallery-1
 					left: 38px
 					position: relative
 					width: 280px
+				.date-holder
+					left: auto
+					top: auto
+					bottom: -12px
+					right: -28px
+					span
+						// todo fix it
+						transform: rotate(-90deg) translateX(100%) translateZ(0)
 			&.first
 				margin-top: 60px
 		.article-holder-5
