@@ -12,12 +12,7 @@ var blevogue = {};
 
 	var $articlesGallery = $('section.articles-gallery-1');
 
-	$('.fadeInUp').addClass('wow fadeInUp');
-	$('.fadeInRight').addClass('wow fadeInRight');
-
-	$('#main-slider').addClass('wow');
-
-	$('section.articles-gallery-1 article').addClass('wow');
+	blevogue.$wowElements = $('.fadeInUp, .fadeInRight, #main-slider, section.articles-gallery-1 article').addClass('wow');
 
 	// add parallax elements
 	if ( $articlesGallery.length === 0 ) return;
@@ -489,7 +484,7 @@ var loading = {
 
 			}
 
-		}, 390);
+		}, 380);
 
 		// hide preloader
 		loading.preloader.addClass('done').animate({}).delay(400).animate({
@@ -499,6 +494,25 @@ var loading = {
 			bodyOverflow.unfixBody();
 
 			$(window).trigger('scroll').trigger('resize');
+
+			blevogue.$wowElements.on(transitionPrefix + ' ' + animationPrefix, function (e, classes) {
+
+					if (e.target !== this) return;
+
+					var $self = $(this);
+					$self.removeClass('wow animated');
+
+					if (typeof classes === 'string') $self.removeClass(classes);
+
+					if (classes instanceof Array) {
+						for (var i = 0; i < classes.length; i++) {
+							$self.removeClass(classes[i]);
+						}
+					}
+
+					$self.off(transitionPrefix + ' ' + animationPrefix)
+
+				});
 
 			$('.slider-holder').removeClass('touched');
 
