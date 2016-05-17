@@ -354,6 +354,8 @@ $.fn.simpleSlider = function (opt) {
 
 				DOM.$pagination.find('.page').eq(id).addClass('active').siblings().removeClass('active');
 
+				DOM.$slider.addClass('animated');
+
 				if (opt.loop) {
 
 					DOM.$sliderHolder.css({
@@ -605,6 +607,7 @@ $.fn.simpleSlider = function (opt) {
 		DOM.$sliderHolder.on(transitionPrefix, function (e) {
 			if (this === e.target) {
 				state.animated = false;
+				DOM.$slider.removeClass('animated');
 
 				if (typeof state.doAfterTransition === 'function') {
 
