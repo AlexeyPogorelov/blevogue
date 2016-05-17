@@ -574,11 +574,12 @@ $main-slider-height-mobile-small: 247px
 		.slide
 			height: $main-slider-height-medium
 			.description-holder
-				font-size: 24px
-				font-weight: 500
-				letter-spacing: 1px
-				line-height: 26px
-				max-width: 60%
+				left: -34px
+				font-size: 32px
+				font-weight: 700
+				letter-spacing: 6px
+				line-height: 38px
+				max-width: 93%
 				padding: 13px 21px
 			.slide-content
 			&.active
@@ -591,7 +592,7 @@ $main-slider-height-mobile-small: 247px
 			.slide-content
 			&.active
 				& ~ .slide
-						.slide-content
+					.slide-content
 @media screen and (max-width: $mobile-large)
 	.main-slider
 		// height: $main-slider-height-mobile-large
@@ -600,11 +601,13 @@ $main-slider-height-mobile-small: 247px
 			height: $main-slider-height-mobile-large
 			.description-holder
 				padding: 10px 15px
-				top: 43%
-				font-size: 20px
-				font-weight: 500
-				letter-spacing: 1px
-				line-height: 22px
+				top: 37%
+				left: -24px
+				max-width: 100%
+				font-size: 24px
+				font-weight: 700
+				letter-spacing: 4px
+				line-height: 30px
 
 @media screen and (max-width: $mobile-small)
 	.main-slider
@@ -613,14 +616,14 @@ $main-slider-height-mobile-small: 247px
 			height: $main-slider-height-mobile-small
 			padding-bottom: 94px
 			.description-holder
-				top: 42%
-				left: 26%
+				top: 18%
+				left: -25px
 				padding: 16px 16px
-				font-size: 17px
-				font-weight: 500
-				letter-spacing: 0.8px
-				line-height: 19px
-				width: 166px
+				font-size: 20px
+				font-weight: 700
+				letter-spacing: 2px
+				line-height: 26px
+				max-width: 120%
 			.image-holder
 				transform: scale(0.85) translateY(0)
 			&.pressed
@@ -842,11 +845,28 @@ $main-slider-height-mobile-small: 247px
 	.articles-gallery-1, .articles-gallery-2
 		.date-holder
 			font-size: 12px
+@media screen and (max-width: $mobile-large)
+	.articles-gallery-1, .articles-gallery-2
+		.date-holder
+			display: none
+		.description
+			.line
+				display: none
+		.img
+			opacity: 1 !important
+		.socials-holder
+			display: none
+		article
+			.counter
+				display: none
 
 section.articles-gallery-1
 	article
 		visibility: visible !important
 		position: relative
+		.image-holder
+			&:before, &:after
+				display: none
 
 .articles-gallery-1
 	.article-holder-1, .article-holder-2, .article-holder-3, .article-holder-4, .article-holder-5, .article-holder-6, .article-holder-7, .article-holder-8
@@ -2524,10 +2544,7 @@ section.articles-gallery-1
 				position: absolute
 				right: 0
 				top: 0
-				// background-size: 91px
-				// background-position: 50% 50%
 				color: transparent
-				// background-image: url('../img/icons/subscribe-mobile.png')
 				&:hover ~ .label-holder
 					.label
 						opacity: 0
@@ -2637,45 +2654,33 @@ section.articles-gallery-1
 				margin-left: 0
 			&:last-of-type
 				margin-right: 0
-		.production-holder, .lang-switcher-holder
-			position: absolute
-			bottom: 16px
-		.lang-switcher-holder
-			position: fixed
-			left: 40px
-			bottom: 20px
-			z-index: 1
-			transform: translateZ(0)
-			li
-				display: inline-block
-				position: relative
-				padding: 0 5px
-				&:after
-					background: #b2b6c2
-					content: ''
-					display: block
-					position: absolute
-					right: -2px
-					top: 2px
-					height: 22px
-					width: 1px
-				&:first-child
-					padding-left: 0
-				&:last-child
-					padding-right: 0
-				&:last-child:after
-					display: none
-				a
-					text-transform: uppercase
-					font-size: 15px
-					color: #b2b6c2
-					line-height: 1em
-					&:hover
-						color: #636671
-				&.active
-					pointer-events: none
-					a
-						color: #636671
+		// .lang-switcher-holder
+		// 	position: fixed
+		// 	left: 40px
+		// 	bottom: 20px
+		// 	z-index: 1
+		// 	transform: translateZ(0)
+		// 	li
+		// 		display: inline-block
+		// 		position: relative
+		// 		padding: 0 5px
+		// 		&:first-child
+		// 			padding-left: 0
+		// 		&:last-child
+		// 			padding-right: 0
+		// 		&:last-child:after
+		// 			display: none
+		// 		a
+		// 			text-transform: uppercase
+		// 			font-size: 15px
+		// 			color: #b2b6c2
+		// 			line-height: 1em
+		// 			&:hover
+		// 				color: #636671
+		// 		&.active
+		// 			pointer-events: none
+		// 			a
+		// 				color: #636671
 		.production-holder
 			right: 0
 			bottom: 18px
@@ -2754,11 +2759,13 @@ section.articles-gallery-1
 				margin-top: 11px
 			.lang-switcher-holder
 				float: left
-				margin-left: 27px
+				// margin-left: 27px
+				li a
+					font-size: 12px
 			.production-holder
 				float: right
-				margin-right: 27px
-				margin-top: 9px
+				// margin-right: 27px
+				margin-top: 14px
 @media screen and (max-width: $mobile-medium)
 	.footer
 		.container
@@ -2781,6 +2788,8 @@ section.articles-gallery-1
 					a
 						margin: 0 8px;
 						font-size: 14px
+		#to-top
+			display: none
 
 .controls-holder
 	position: absolute

@@ -282,6 +282,9 @@ $mobile-x-small: 320px
 		height: 44vh
 		margin: 30px auto
 		width: 1px
+@media screen and (max-width: $mobile-large)
+	#articles-control
+		display: none
 
 .fixed-socials-2
 	position: fixed
@@ -346,7 +349,7 @@ $mobile-x-small: 320px
 			color: #35363c
 			font-family: "Futura New"
 			font-size: 17px
-			font-weight: 300
+			font-weight: 400
 			font-style: italic
 			line-height: 1em
 			letter-spacing: 13px
@@ -371,8 +374,8 @@ $mobile-x-small: 320px
 				transition: transform .3s
 
 	.slide-prev
-		left: 96px
-		top: 65px
+		left: 40px
+		top: 66px
 		&:before
 			background: url('../img/icons/slide-arrow-left.svg')
 			transform: translateX(20px)
@@ -383,7 +386,7 @@ $mobile-x-small: 320px
 			span
 				transform: rotate(-90deg) translateX(-100%) translateY(26px) translateZ(1px)
 	.slide-next
-		right: 95px
+		right: 42px
 		top: 16px
 		&:before
 			background: url('../img/icons/slide-arrow-right.svg')
@@ -394,3 +397,36 @@ $mobile-x-small: 320px
 		&.hover
 			span
 				transform: rotate(90deg) translateY(26px) translateZ(1px)
+@media screen and (max-width: $medium)
+	#main-slider-controls
+		.slide-prev
+			top: 28px
+			left: 40px
+		.slide-next
+			top: 0px
+			right: 45px
+@media screen and (max-width: $tablet)
+	#main-slider-controls
+		.slide-prev, .slide-next
+			span
+				font-size: 13px
+		.slide-prev
+			left: 19px
+			top: 10px
+		.slide-next
+			top: 20px
+			right: 22px
+@media screen and (max-width: $mobile-large)
+	#main-slider-controls
+		.slide-prev, .slide-next
+			span
+				font-size: 13px
+		.slide-prev
+			left: 19px
+			top: 10px
+		.slide-next
+			top: 20px
+			right: 22px
+@media screen and (max-width: $mobile-medium - 60px)
+	#main-slider-controls
+		display: none
