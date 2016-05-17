@@ -3288,6 +3288,10 @@ section.articles-gallery-1
 		height: 24px
 		width: 24px
 	.modal-content
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
 		background-color: transparent
 		padding-top: 160px
 		.left-side, .right-side
@@ -3363,10 +3367,6 @@ section.articles-gallery-1
 					top: 52px
 					right: 0
 					bottom: -55px
-					// height: 100%
-					// width: 100%
-					// height: calc(100% + 5px)
-					// width: calc(100% - 143px)
 
 @media screen and (max-width: $medium)
 	#about-modal
@@ -3378,7 +3378,6 @@ section.articles-gallery-1
 				padding-top: 20px
 				width: 301px
 			.right-side
-				// width: calc(100% - 310px)
 				width: calc(100% - 307px)
 				a.to-blog
 					margin-top: 81px
@@ -3416,6 +3415,45 @@ section.articles-gallery-1
 					p
 						font-size: 18px
 						line-height: 28px
+@media screen and (max-width: $mobile-large)
+	#about-modal
+		.container
+			width: 100%
+		.modal-content
+			.left-side
+				display: none
+			.right-side
+				display: block
+				margin-left: auto
+				margin-right: auto
+				margin: 41px auto
+				width: 67%
+				.content-holder
+					padding-left: 0
+					&:before
+						left: 81px
+@media screen and (max-width: $mobile-medium)
+	#about-modal
+		a.close-about
+			top: 16px
+			right: 16px
+			height: 16px
+			width: 16px
+		.modal-content
+			padding: 25px 32px
+			.right-side
+				margin: 0px auto
+				width: 100%
+				a.to-blog
+					display: block
+					text-align: center
+					width: 100%
+				.content-holder
+					&:before
+						left: 81px
+						right: -32px
+					p
+						padding-right: 0
 
 // --------------------------------------------------
 // 404
@@ -4093,7 +4131,8 @@ section.articles-gallery-1
 .profile-holder
 	// background: url('../img/bg/profile-bg.jpg')
 	background-size: cover
-	min-height: calc(100vh - 187px)
+	// min-height: calc(100vh - 187px)
+	min-height: 100vh
 	text-align: center
 	position: relative
 	&:before

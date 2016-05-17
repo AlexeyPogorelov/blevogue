@@ -217,7 +217,7 @@ $mobile-x-small: 320px
 			a
 				color: #636671
 
-.write-message-button
+.to-blog-button
 	position: fixed
 	top: 50%
 	right: 45px
@@ -235,14 +235,21 @@ $mobile-x-small: 320px
 		letter-spacing: 2.63px
 		line-height: 17px
 		transform: rotate(-90deg) translateZ(0)
-@media screen and (max-width: $medium)
-	.write-message-button
-		// right: 54px
+@media screen and (max-width: $mobile-large + 60px)
+	.to-blog-button
+		right: 24px
+@media screen and (max-width: $mobile-medium)
+	.to-blog-button
+		position: static
+		text-align: center
+		width: 100%
+		a
+			display: inline-block
+			transform: none
 
 #articles-control
 	position: fixed
 	right: 40px
-	// top: calc(50vh - 250px)
 	bottom: 20px
 	pointer-events: none
 	opacity: 0
@@ -304,6 +311,15 @@ $mobile-x-small: 320px
 					color: #24a9e6
 				&.tumblr:hover
 					color: #36465d
+@media screen and (max-width: $mobile-large + 60px)
+	.fixed-socials-2
+		left: 35px
+@media screen and (max-width: $mobile-medium)
+	.fixed-socials-2
+		position: static
+		text-align: center
+		.socials
+			transform: none
 
 // main slider arrows
 #main-slider-controls
