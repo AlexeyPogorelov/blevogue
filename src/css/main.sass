@@ -3306,37 +3306,43 @@ section.articles-gallery-1
 			// 	height: 524px
 		.right-side
 			width: calc(100% - 382px)
-			a.to-blog
+			a.write-message
 				background-position: 50% 50%
-				background: url("https://unsplash.it/600/400?image=33")
-				color: white
+				color: #35363c
 				float: right
 				font-family: 'Futura New'
 				font-size: 18px
 				font-weight: 500
 				letter-spacing: 1px
-				line-height: 1em
-				margin-top: 96px
-				padding: 20px 32px
+				line-height: 2.4em
+				margin-top: 105px
 				position: relative
+				text-align: right
+				transition: color .3s
 				b
 					font-weight: 700
 				span
+					display: inline-block
+					vertical-align: middle
 					position: relative
-				&:before
-					background: rgba(0,0,0,0.3)
-					content: ''
-					display: block
-					left: 0
-					top: 0
-					height: 100%
-					width: 100%
-					opacity: 0
-					position: absolute
-					z-index: 0
-					transition: opacity .3s
-				&:hover:before
-					opacity: 1
+				span.label
+					font-size: 18px
+					letter-spacing: 1px
+					text-transform: uppercase
+				span.email
+					font-size: 20px
+					letter-spacing: 1.11px
+					white-space: nowrap
+					&:before
+						content: ''
+						display: inline-block
+						background: #35363c
+						height: 1px
+						width: 64px
+						vertical-align: middle
+						margin: 0 15px
+				&:hover
+					color: #000
 			.content-holder
 				padding-left: 55px
 				position: relative
@@ -3379,7 +3385,7 @@ section.articles-gallery-1
 				width: 301px
 			.right-side
 				width: calc(100% - 307px)
-				a.to-blog
+				a.write-message
 					margin-top: 81px
 				.content-holder
 					padding-left: 50px
@@ -3402,7 +3408,7 @@ section.articles-gallery-1
 				width: 266px
 			.right-side
 				width: calc(100% - 277px)
-				a.to-blog
+				a.write-message
 					margin-top: 81px
 				.content-holder
 					padding-left: 40px
@@ -3428,6 +3434,8 @@ section.articles-gallery-1
 				margin-right: auto
 				margin: 41px auto
 				width: 67%
+				a.write-message
+					margin-top: 63px
 				.content-holder
 					padding-left: 0
 					&:before
@@ -3444,16 +3452,24 @@ section.articles-gallery-1
 			.right-side
 				margin: 0px auto
 				width: 100%
-				a.to-blog
+				a.write-message
 					display: block
-					text-align: center
 					width: 100%
+					span.email
+						&:before
+							width: 54px
+							width: 36px
 				.content-holder
 					&:before
 						left: 81px
 						right: -32px
 					p
 						padding-right: 0
+		.fixed-socials-2
+			ul.socials
+				margin-top: 24px
+		.lang-switcher-holder
+			display: none
 
 // --------------------------------------------------
 // 404

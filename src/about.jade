@@ -6,7 +6,7 @@ html(lang='en')
 		include ./partials/head.jade
 
 	body
-		.modal-holder#about-modal(data-cross="cross-top").opened
+		.modal-holder#about-modal.fake(data-cross="cross-top").opened
 			.modal-content
 				a(href="index.html").close-about
 				.modal-container
@@ -20,9 +20,9 @@ html(lang='en')
 							.content-holder
 								h2 About
 								p «Мої плаття – ефемерні предмети архітектури, призначені для того, щоб прославляти пропорції жіночого тіла,» – одного разу поспіхом прокоментував Крістіан Діор. Так само швидко ми зуміли забути ці слова. Сьогодні приймаємо як належне речі, які вчора були революційною історію, стержнем, принципом і сенсом життя.
-							a(href="blog.html").to-blog
-								span ПЕРЕЙТИ В
-									b  БЛОГ
+							a(href="mailto:email@blevogue.com").write-message
+								span.label написати лист
+								span.email email@blevogue.com
 
 			#fixed-socials-2.fixed-socials-2
 				ul.socials
@@ -36,7 +36,8 @@ html(lang='en')
 						a(href="#" data-pin-do='buttonBookmark', data-pin-title='Lounge FM', data-pin-media='http://makemeat.com', data-pin-custom='true', target='_blank', data-pin-log='button_pinit_bookmarklet', data-pin-href='https://www.pinterest.com/pin/create/button/').pinterest Pinterest
 
 			.to-blog-button
-				a(href="mailto:hello@makemeat.com") написати лист
+				a(href="blog.html")
+					span перейти в блог
 
 			.lang-switcher-holder
 				ul

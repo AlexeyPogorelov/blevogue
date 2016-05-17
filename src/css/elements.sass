@@ -186,19 +186,24 @@ $mobile-x-small: 320px
 	z-index: 1
 	transform: translateZ(0)
 	li
+		color: #35363c
 		display: inline-block
+		font-size: 18px
+		font-weight: 500
+		letter-spacing: 1px
+		margin-right: 8px
 		position: relative
-		// padding: 0 7px
-		padding: 0 5px
+		vertical-align: middle
 		&:after
 			background: #b2b6c2
 			content: ''
-			display: block
-			position: absolute
+			display: inline-block
+			height: 1px
+			margin-left: 8px
 			right: -2px
 			top: 2px
-			height: 22px
-			width: 1px
+			vertical-align: middle
+			width: 26px
 		&:first-child
 			padding-left: 0
 		&:last-child
@@ -242,6 +247,7 @@ $mobile-x-small: 320px
 	.to-blog-button
 		position: static
 		text-align: center
+		margin-top: 34px;
 		width: 100%
 		a
 			display: inline-block
@@ -320,6 +326,8 @@ $mobile-x-small: 320px
 		text-align: center
 		.socials
 			transform: none
+			li
+				margin: 0 7px
 
 // main slider arrows
 #main-slider-controls
