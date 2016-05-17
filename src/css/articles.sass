@@ -20,7 +20,7 @@ $mobile-x-small: 320px
 		margin-bottom: 8px
 		font-family: 'Playfair Display'
 		font-size: 32px
-		font-weight: 700
+		font-weight: 600
 		letter-spacing: 4px
 		line-height: 36px
 	p
@@ -217,10 +217,32 @@ $mobile-x-small: 320px
 					width: 34px
 @media screen and (max-width: $medium)
 	.articles-gallery-1, .articles-gallery-2
+		h3
+			font-size: 26px
+			line-height: 30px
+			margin-bottom: 8px
+			letter-spacing: 4px
+		p
+			font-size: 14px
+			font-weight: 400
+			letter-spacing: 0.5px
+			line-height: 19px
 		.date-holder
 			font-size: 12px
 @media screen and (max-width: $mobile-large)
 	.articles-gallery-1, .articles-gallery-2
+		h3
+			font-size: 24px
+			font-weight: 600
+			letter-spacing: 0.7px
+			letter-spacing: 3px
+			line-height: 28px
+			margin-bottom: 10px
+		p
+			font-size: 14px
+			font-weight: 400
+			letter-spacing: 0.3px
+			line-height: 18px
 		.date-holder
 			display: none
 		.description
@@ -233,6 +255,17 @@ $mobile-x-small: 320px
 		article
 			.counter
 				display: none
+@media screen and (max-width: $mobile-medium)
+	.articles-gallery-1, .articles-gallery-2
+		h3
+			font-size: 20px
+			letter-spacing: 2px
+			line-height: 24px
+		p
+			font-size: 12px
+			font-weight: 400
+			letter-spacing: 0.26px
+			line-height: 16px
 
 section.articles-gallery-1
 	article
@@ -534,16 +567,6 @@ section.articles-gallery-1
 
 @media screen and (max-width: $medium)
 	.articles-gallery-1
-		h3
-			font-size: 26px
-			line-height: 30px
-			margin-bottom: 3px
-			letter-spacing: 0
-		p
-			font-size: 14px
-			font-weight: 400
-			letter-spacing: 0.3px
-			line-height: 19px
 		.description
 			padding: 22px 24px
 			.line
@@ -738,17 +761,6 @@ section.articles-gallery-1
 
 @media screen and (max-width: $mobile-large)
 	.articles-gallery-1
-		h3
-			font-size: 26px
-			font-weight: 500
-			line-height: 24px
-			letter-spacing: 0.7px
-			margin-bottom: 10px
-		p
-			font-size: 14px
-			font-weight: 400
-			letter-spacing: 0.3px
-			line-height: 19px
 		.description
 			padding: 16px 20px
 		.article-holder-1, .article-holder-2, .article-holder-3, .article-holder-4, .article-holder-5, .article-holder-6, .article-holder-7, .article-holder-8
@@ -832,16 +844,6 @@ section.articles-gallery-1
 					width: 220px
 @media screen and (max-width: $mobile-medium)
 	.articles-gallery-1
-		h3
-			font-size: 20px
-			font-weight: 500
-			letter-spacing: 0.55px
-			line-height: 18px
-		p
-			font-size: 12px
-			font-weight: 400
-			letter-spacing: 0.26px
-			line-height: 16px
 		.description
 			padding: 15px 15px
 		.article-holder-1
@@ -1206,10 +1208,8 @@ section.articles-gallery-1
 				width: 350px
 				transform-origin: 100% 0
 			.description
-				// background: transparent
 				padding-left: 0
 				padding-right: 0
-				// padding-bottom: 0
 				left: 0
 				top: 0
 				width: 320px
@@ -1269,8 +1269,6 @@ section.articles-gallery-1
 				transition: outline .1s, background .1s
 			&:hover span
 				color: white
-				// margin: 0 16px 0 0
-				// position: relative
 				transition: color .1s, margin .1s
 			&:before
 				content: ''
@@ -1288,11 +1286,7 @@ section.articles-gallery-1
 				opacity: .5
 				transition: opacity .1s
 			& svg
-				// background: url('../img/icons/arrow-down-1.svg') no-repeat
-				// content: ''
 				display: inline-block
-				// top: 17px
-				// right: 18px
 				bottom: -2px
 				position: relative
 				height: 16px
@@ -1310,16 +1304,6 @@ section.articles-gallery-1
 
 @media screen and (max-width: $medium)
 	.articles-gallery-2
-		h3
-			font-size: 28px
-			line-height: 26px
-			margin-bottom: 3px
-			letter-spacing: 0
-		p
-			font-size: 14px
-			font-weight: 400
-			letter-spacing: 0.3px
-			line-height: 19px
 		.description
 			padding: 22px 24px
 		.date-holder
@@ -1485,17 +1469,6 @@ section.articles-gallery-1
 
 @media screen and (max-width: $mobile-large)
 	.articles-gallery-2
-		h3
-			font-size: 26px
-			font-weight: 500
-			line-height: 24px
-			letter-spacing: 0.7px
-			margin-bottom: 10px
-		p
-			font-size: 14px
-			font-weight: 400
-			letter-spacing: 0.3px
-			line-height: 19px
 		.description
 			padding: 16px 20px
 		.article-holder-1
@@ -1568,16 +1541,6 @@ section.articles-gallery-1
 					width: 220px
 @media screen and (max-width: $mobile-medium)
 	.articles-gallery-2
-		h3
-			font-size: 20px
-			font-weight: 500
-			letter-spacing: 0.55px
-			line-height: 18px
-		p
-			font-size: 12px
-			font-weight: 400
-			letter-spacing: 0.26px
-			line-height: 16px
 		.description
 			padding: 15px 15px
 		.article-holder-1
