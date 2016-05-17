@@ -1,0 +1,349 @@
+$large: 1300px
+$medium: 1260px
+$tablet: 1000px
+$mobile-large: 760px
+$mobile-medium: 640px
+$mobile-small: 480px
+$mobile-x-small: 320px
+
+// --------------------------------------------------
+// FOOTER
+// --------------------------------------------------
+
+.footer
+	padding: 0 40px
+	.container
+		// padding-top: 32px
+		// padding-top: 52px
+		padding-top: 34px
+		margin-bottom: 29px
+		position: relative
+		text-align: center
+		width: 100%
+		&:before
+			content: ''
+			display: block
+			background: url('../img/bg/bg-line-1.jpg')
+			background-size: cover
+			position: absolute
+			left: 0
+			top: 0px
+			height: 2px
+			width: 100%
+		// .label
+		// 	display: block
+		// 	margin-bottom: 11px
+		// 	color: #636671
+		// 	font-family: 'Futura New'
+		// 	font-size: 16px
+		// 	font-weight: 300
+		// 	line-height: 19px
+		& > *
+			// display: inline-block
+			vertical-align: top
+		.footer-logo
+			margin-top: 36px
+			width: 207px
+		.search-bar
+			$search-bar-input-height: 54px
+			margin: 0px auto
+			// max-width: 450px
+			max-width: 436px
+			.input-group
+				position: relative
+			input
+				height: $search-bar-input-height
+				line-height: $search-bar-input-height
+			input[type="text"], input[type="password"], input[type="email"]
+				color: #35363c
+				font-size: 18px
+				font-family: 'Futura New'
+				font-weight: 300
+				width: 100%
+				border: 1px solid #636671
+				outline: 2px solid transparent
+				outline-offset: -2px
+				padding: 0 23px
+				&:focus
+					outline: 2px solid #35363c
+					outline-offset: -2px
+					transition: outline .1s
+				&::-moz-placeholder
+					color: #636671
+					font-family: 'Futura New'
+					font-size: 18px
+					font-weight: 400
+				&::-webkit-input-placeholde400r
+					color: #636671
+					font-family: 'Futura New'
+					font-size: 18px
+					font-weight: 400
+				&:-ms-input-placeholder
+					color: #636671
+					font-family: 'Futura New'
+					font-size: 18px
+					font-weight: 400
+			input[type="button"]
+				background-color: transparent
+				background-size: cover
+				background-repeat: no-repeat
+				background-position: 50% 100%
+				font-family: 'Futura New'
+				font-size: 20px
+				font-weight: 700
+				line-height: 25px
+				padding: 0 36px
+				position: absolute
+				right: 0
+				top: 0
+				color: transparent
+				&:hover ~ .label-holder
+					.label
+						opacity: 0
+					.label-hover
+						opacity: 1
+
+			.label-holder
+				right: 25px
+				top: 0
+				position: absolute
+				height: $search-bar-input-height
+				width: 50%
+				pointer-events: none
+				& > *
+					// background: transparent 50% 50% no-repeat
+					// background-size: auto 20px
+					// background-position: 100% 50%
+					position: absolute
+					transition: opacity 0.1s linear
+					top: 0
+					right: 0
+					left: 0
+					bottom: 0
+					& > *
+						position: absolute
+						background: transparent 50% 50% no-repeat
+						background-size: auto 20px
+						background-position: 100% 50%
+						top: 0
+						right: 0
+						left: 0
+						bottom: 0
+			.label-hover
+				opacity: 0
+			.subscribe-en
+				background-image: url('../img/icons/subscribe-en.svg')
+			.subscribe-ua
+				background-image: url('../img/icons/subscribe-ua.svg')
+			.subscribe-en-hover
+				background-image: url('../img/icons/subscribe-en-hover.svg')
+			.subscribe-ua-hover
+				background-image: url('../img/icons/subscribe-ua-hover.svg')
+			.copyright
+				color: #636671
+				font-family: 'Futura New'
+				font-size: 14px
+				font-weight: 300
+				line-height: 18px
+				margin-top: 14px
+		.socials-holder
+			.email-holder
+				display: none
+				a
+					color: #636671
+					font-family: 'Futura New'
+					font-size: 19px
+					font-weight: 300
+					line-height: 23px
+			ul
+				// margin-top: 23px
+				margin-top: 40px
+				margin-bottom: 17px
+				a
+					// font-size: 22px
+					line-height: 1em
+					margin: 0 16px
+					opacity: 1
+					transition: opacity .3s, color .3s
+					color: #636671
+					font-family: 'Futura New'
+					font-size: 17px
+					font-weight: 500
+					&:hover
+						color: #36465d
+						transition: opacity .1s, color .1s
+					&.facebook:hover
+						color: #43619c
+					&.pinterest:hover
+						color: #bd081c
+					&.twitter:hover
+						color: #24a9e6
+					&.tumblr:hover
+						color: #36465d
+		.about-bar
+			ul
+				margin-bottom: 33px
+				li
+					display: inline-block
+					margin: 0 21px
+					a
+						color: #636671
+						font-size: 17px
+						font-weight: 500
+						line-height: 22px
+						line-height: 1em
+						transition: color .3s
+						&:hover
+							color: #000
+							transition: color .1s
+					&:first-child
+						margin-left: 0
+					&:last-child
+						margin-right: 0
+			&:first-of-type
+				margin-left: 0
+			&:last-of-type
+				margin-right: 0
+		.production-holder
+			right: 0
+			bottom: 18px
+			a
+				transition: opacity .3s
+				svg
+					width: 97px
+					g #ui-kit
+						transition: fill .3s
+				&:hover
+					svg
+						g #ui-kit
+							fill: #E81657 !important
+							transition: fill .1s
+
+
+// @media screen and (max-width: $medium)
+	// .footer
+		// .container
+			// .footer-logo
+				// display: none
+			// .search-bar
+				// margin-left: 0
+// @media screen and (max-width: $tablet)
+// 	.footer
+// 		.container
+// 			.footer-logo
+// 				display: none
+// 			.search-bar
+// 				margin-left: 0
+// 			.socials-holder
+// 				margin-left: 37px
+@media screen and (max-width: $mobile-large)
+	.footer
+		text-align: center
+		padding: 0 32px
+		.container
+			padding-top: 32px
+			// .label
+			// 	display: none
+			.search-bar
+				margin-top: 19px
+				width: 437px
+				max-width: 100%
+				input
+					height: 54px
+					line-height: 54px
+					padding-left: 24px
+					padding-right: 24px
+				input[type="button"]
+					// background-image: url('../img/icons/subscribe-mobile.png')
+					// background-size: 91px
+					// background-position: 50% 50%
+					color: transparent
+					// height: 56px
+				.copyright
+					display: none
+			.socials-holder
+				margin-top: 33px
+				li
+					margin-left: 0px
+					margin-right: 0px
+				.email-holder
+					margin-bottom: 20px
+					display: none
+			.about-bar
+				display: block
+				margin-top: 18px
+				ul
+					margin-top: 18px
+					li
+						a
+							font-size: 16px
+			.lang-switcher-holder, .production-holder
+				position: static
+				margin-top: 11px
+			.lang-switcher-holder
+				float: left
+				// margin-left: 27px
+				li a
+					font-size: 12px
+			.production-holder
+				float: right
+				// margin-right: 27px
+				margin-top: 14px
+@media screen and (max-width: $mobile-medium)
+	.footer
+		.container
+			.search-bar
+				$search-bar-input-height: 54px
+				margin-top: 0
+				input[type="button"]
+					position: static
+				.label-holder
+					left: 0
+					right: 0
+					top: $search-bar-input-height
+					height: $search-bar-input-height
+					width: 100%
+					& > * > *
+						background-position: 50% 50%
+						background-size: auto 20px
+			.socials-holder
+				ul
+					a
+						margin: 0 8px;
+						font-size: 14px
+		#to-top
+			display: none
+
+.controls-holder
+	position: absolute
+	top: 14px
+	right: 0
+	a
+		margin-left: 21px
+		color: #35363c
+		font-family: 'Futura New'
+		font-size: 18px
+		font-weight: 500
+		line-height: 22px
+	& > *
+		display: inline-block
+		& > *
+			display: inline-block
+			vertical-align: middle
+		& > span
+			margin-left: 7px
+	i
+		background-position: 50% 50%
+		// margin-right: 0px
+		height: 20px
+		width: 20px
+	.search-button
+		.search-icon-1
+			background: url(../img/icons/search-icon-1.svg) no-repeat
+		// span
+	.login-button
+		.login-icon-1
+			background: url(../img/icons/login-icon-1.svg) no-repeat
+@media screen and (max-width: $medium)
+	.controls-holder
+		top: 15px

@@ -332,7 +332,10 @@ $mobile-x-small: 320px
 			li
 				margin: 0 7px
 
-// main slider arrows
+// --------------------------------------------------
+// MAIN SLIDER ARROWS
+// --------------------------------------------------
+
 #main-slider-controls
 	pointer-events: none
 	.slide-prev, .slide-next
@@ -430,3 +433,117 @@ $mobile-x-small: 320px
 @media screen and (max-width: $mobile-medium - 60px)
 	#main-slider-controls
 		display: none
+
+// --------------------------------------------------
+// FIXED SOCIALS
+// --------------------------------------------------
+
+.static-socials,
+.fixed-socials
+	position: absolute
+	left: 0
+	top: 80px
+	ul.socials
+		background: #fff
+		outline: 1px solid #f1f1f1
+		outline-offset: -1px
+		&:before
+			content: ''
+			background: url('https://unsplash.it/600/400?image=18') no-repeat
+			position: relative
+			height: 9px
+			display: block
+		li
+			border-top: 1px solid #f1f1f1
+			text-align: center
+			height: 64px
+			width: 64px
+			a
+				color: #636671
+				display: block
+				height: 100%
+				font-size: 20px
+				line-height: 64px
+				transition: color .2s
+				text-align: center
+				&:hover
+					color: #000
+					transition: color .1s
+	ul.lang
+		margin-top: 26px
+		&:before
+			display: none
+		li
+			a
+				color: #b4b7c1
+				font-family: 'Futura New'
+				font-size: 18px
+				font-weight: 400
+				transition: color .3s
+			&.active
+				pointer-events: none
+				a
+					color: #35363c
+					transition: color .3s
+	&.fixed
+		position: fixed
+		top: 80px
+		top: 50%
+		transform: translateY(-50%)
+.static-socials
+	display: none
+@media screen and (max-width: $mobile-large)
+	.fixed-socials,
+	#fixed-socials
+		display: none
+	ul.socials,
+	.static-socials
+		display: block
+		position: static
+		outline: none
+		border: none
+		.container
+			width: 520px
+		ul, ul.socials, ul.lang
+			outline: none
+			border: none
+			position: relative
+		ul.socials
+			padding-left: 6px
+			&:before
+				display: inline-block
+				position: absolute
+				top: 0
+				left: 0
+				height: 64px
+				height: 100%
+				width: 6px
+			li
+				float: left
+				font-size: 0
+				margin-left: -1px
+				display: block
+				border: none
+				outline: 1px solid #f1f1f1
+				outline-offset: -1px
+		ul.lang
+			padding-left: 0px
+			&:before
+				display: none
+@media screen and (max-width: $mobile-large)
+	ul.socials,
+	.static-socials
+		width: 100%
+	ul.socials
+		margin-top: 0
+		margin-bottom: 26px
+	ul.lang
+		margin-bottom: 50px
+@media screen and (max-width: $mobile-medium)
+	ul.socials,
+	.static-socials
+		width: 100%
+		.container
+			padding-left: 29px
+			padding-right: 29px
+			width: 100%

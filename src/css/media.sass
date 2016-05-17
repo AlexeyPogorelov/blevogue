@@ -1,8 +1,10 @@
-// $mobile:
-// $tablet:
-// $small:
-// $large:
-// $extra:
+$large: 1300px
+$medium: 1260px
+$tablet: 1000px
+$mobile-large: 760px
+$mobile-medium: 630px
+$mobile-small: 480px
+$mobile-x-small: 320px
 
 //	X LARGE
 // @media screen and (min-width: 1664px)
@@ -48,5 +50,13 @@
 		display: inherit
 	.mobile-xs-hidden
 		display: none
+
+
+// --------------------------------------------------
+// GLOBAL-MEDIA
+// -------------------------------------------------- 
+@media screen and (max-width: $mobile-medium)
+	.mobile-visible
+		display: block !important
 
 //	FIXES

@@ -69,3 +69,18 @@
 	animation: fadeOutUpAlt 0.3s
 .crossIn
 	animation: crossIn 0.3s
+
+
+@keyframes hue-rotation
+	0%
+		filter: hue-rotate(0deg)
+
+	100%
+		filter: hue-rotate(360deg)
+
+.hue-color-active
+	animation: hue-rotation 1s linear 0ms infinite!important
+	color:#e1a292!important
+.hue-color-active-slow
+	animation: hue-rotation 2s linear 0ms infinite!important
+	color:#e1a292!important

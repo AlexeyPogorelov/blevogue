@@ -1,0 +1,357 @@
+$large: 1300px
+$medium: 1260px
+$tablet: 1000px
+$mobile-large: 760px
+$mobile-medium: 630px
+$mobile-small: 480px
+$mobile-x-small: 320px
+
+// --------------------------------------------------
+// VIDEO-GALlERY
+// --------------------------------------------------
+.video-gallery
+	margin-top: 126px
+	.video.first
+		margin-bottom: 60px
+		.image-container
+			height: 100%
+			height: 600px
+			padding-right: 0
+			&:after, &:before
+				margin-left: -50px
+	.video
+		margin-bottom: 60px
+		position: relative
+		a
+			display: block
+		.image-holder
+			height: 100%
+		.article-link
+			height: 100%
+		.image-container
+			padding-right: 280px
+			&:before, &:after
+				background-size: contain
+				border-radius: 50%
+				content: ''
+				position: absolute
+				pointer-events: none
+				left: 50%
+				top: 50%
+				margin-top: -50px
+				margin-left: -190px
+				height: 100px
+				width: 100px
+				z-index: 1
+			&:before
+				background: url('../img/icons/play-button-1.svg') no-repeat
+				background-size: contain
+				transition: opacity 0.2s linear
+			&:after
+				background: url('../img/icons/play-button-2.svg') no-repeat
+				background-size: contain
+				opacity: 0
+				transition: opacity 0.2s linear
+			img
+				height: 464px
+			.img
+				opacity: 1
+				transition: opacity 0.2s linear
+		&.hover
+			.image-container:before
+				// opacity: 0
+				transition: opacity 0.2s linear
+			.image-container:after
+				opacity: 1
+				transition: opacity 0.2s linear
+			.img
+				opacity: 0
+				transition: opacity 0.2s linear
+		.description-container
+			background: #fff
+			display: block
+			padding: 32px 40px
+			position: absolute
+			right: 0
+			top: 60px
+			width: 390px
+			z-index: 1
+			h1, h2, h3, h4, h5, h6
+				color: #35363c
+				font-family: 'Playfair Display'
+				// font-weight: 500
+				font-size: 34px
+				letter-spacing: 1px
+				line-height: 32px
+				margin-bottom: 10px
+				font-weight: 700
+			p
+				color: #636671
+				font-family: 'Futura New'
+				font-weight: 400
+				font-size: 17px
+				letter-spacing: 0.4px
+				line-height: 24px
+	.load-more-holder
+		text-align: center
+		margin-top: 20px
+		margin-bottom: 85px
+		.btn.load-more
+			outline: 2px solid #35363c
+			outline-offset: -2px
+			display: inline-block
+			height: 46px
+			padding: 0 26px
+			position: relative
+			transition: outline .3s, background .3s
+			span
+				font-family: 'Futura New'
+				color: #35363c
+				font-size: 20px
+				font-weight: 400
+				height: 24px
+				line-height: 46px
+				letter-spacing: 0.2px
+				margin: 0 8px
+				position: relative
+				vertical-align: middle
+				width: 61px
+				transition: color .3s, margin .3s
+			&:hover
+				background: #000
+				outline-color: transparent
+				transition: outline .1s, background .1s
+			&:hover span
+				color: white
+				transition: color .1s, margin .1s
+			&:before
+				content: ''
+				background: url('https://unsplash.it/600/400?image=18') no-repeat
+				display: block
+				opacity: 0
+				position: absolute
+				left: 0
+				top: 0
+				height: 100%
+				width: 100%
+				z-index: 0
+				transition: opacity .3s
+			&:hover:before
+				opacity: .5
+				transition: opacity .1s
+			& svg
+				display: inline-block
+				bottom: -2px
+				position: relative
+				height: 16px
+				line-height: 46px
+				width: 12px
+				vertical-align: middle
+				path
+					fill: #000000
+					transition: fill .3s
+			&:hover svg
+				path
+					fill: #ffffff
+					transition: fill .1s
+	&.module
+		margin-top: 80px
+
+@media screen and (max-width: $medium)
+	.video-gallery
+		margin-top: 107px
+		.video
+			margin-bottom: 42px
+			height: auto
+			position: relative
+			.image-container
+				height: 244px
+				position: relative
+				padding-right: 210px
+				&:before, &:after
+					background-position: 50% 50%
+					background-size: 60px
+					margin-top: -30px
+					margin-left: -135px
+					height: 60px
+					width: 60px
+			.description-container
+				min-height: 140px
+				overflow: hidden
+				position: absolute
+				padding: 23px 25px 29px
+				top: 30px
+				right: 0
+				left: auto
+				width: 280px
+				max-height: 210px
+				h1, h2, h3, h4, h5, h6
+					line-height: 26px
+					margin-bottom: 6px
+					font-family: 'Futura New'
+					font-size: 26px
+					font-weight: 600
+					line-height: 26px
+					letter-spacing: 0
+				p
+					font-size: 14px
+					line-height: 18px
+		.video.first
+			margin-bottom: 42px
+			height: auto
+			.image-container
+				position: relative
+				height: 376px
+				&:after, &:before
+					margin-top: -30px
+					margin-left: -30px
+			.description-container
+				padding: 17px 20px
+				top: 50px
+				width: 220px
+				h1, h2, h3, h4, h5, h6
+					line-height: 24px
+					letter-spacing: -1px
+				p
+					line-height: 18px
+					margin-top: 10px
+		&.module
+			margin-top: 60px
+			.video
+				margin-bottom: 42px
+
+@media screen and (max-width: $tablet)
+	.video-gallery
+		margin-top: 97px
+
+@media screen and (max-width: $mobile-large)
+	.video-gallery
+		margin-top: 97px
+		.video
+			margin-bottom: 32px
+			// margin-bottom: -209px
+			position: relative
+			height: auto
+			.image-container
+				position: relative
+				padding-right: 140px
+				height: 200px
+				img
+					height: 200px
+				&:before, &:after
+					background-position: 50% 50%
+					background-size: 46px
+					margin-top: -23px
+					margin-left: -23px - 70px
+					height: 46px
+					width: 46px
+			.description-container
+				// position: relative
+				padding: 17px 20px
+				top: 23px
+				// left: 400px
+				// left: 220px
+				width: 220px
+				h1, h2, h3, h4, h5, h6
+					font-size: 26px
+					line-height: 24px
+					letter-spacing: -1px
+					margin-bottom: 9px
+				p
+					font-size: 14px
+					letter-spacing: 0.3px
+					line-height: 20px
+		.video.first
+			margin-bottom: -28px
+			.image-container
+				height: auto
+				position: relative
+				height: 287px
+				img
+					height: 287px
+				&:after, &:before
+					margin-top: -23px
+					margin-left: -23px
+			.description-container
+				position: relative
+				padding: 17px 20px
+				top: -62px
+				left: 70px
+				width: 320px
+				transform: none
+		.load-more-holder
+			margin-top: 29px
+			margin-bottom: 64px
+
+@media screen and (max-width: $mobile-small)
+	.video-gallery
+		margin-top: 76px
+		.video, .video.first
+			margin-top: -16px
+			margin-bottom: 10px
+			position: relative
+			height: auto
+			.image-container
+				position: relative
+				padding-right: 0
+				height: 172px
+				img
+					height: 172px
+				&:before, &:after
+					background-position: 50% 50%
+					background-size: 38px
+					margin-top: -19px
+					margin-left: -19px
+					height: 38px
+					width: 38px
+			.description-container
+				position: relative
+				padding: 15px 15px
+				top: -23px
+				left: 18px
+				min-height: 0
+				width: 100%
+				width: calc(100% - 36px)
+				h1, h2, h3, h4, h5, h6
+					letter-spacing: -1px
+					margin-bottom: 9px
+					font-size: 20px
+					font-weight: 500
+					letter-spacing: 0.55px
+					line-height: 18px
+				p
+					font-size: 12px
+					font-weight: 400
+					letter-spacing: 0.26px
+					line-height: 16px
+		.video.first
+			margin-top: 0
+		.load-more-holder
+			margin-top: 14px
+			margin-bottom: 54px
+
+.article-video-header
+	margin-top: 126px
+	iframe
+		height: 572px
+		width: 100%
+@media screen and (max-width: $medium)
+	.article-video-header
+		margin-top: 66px
+		.container
+			width: 100%
+		iframe
+			height: 574px
+@media screen and (max-width: $tablet)
+	.article-video-header
+		margin-top: 56px
+		iframe
+			height: 448px
+@media screen and (max-width: $mobile-large)
+	.article-video-header
+		iframe
+			height: 358px
+@media screen and (max-width: $mobile-medium)
+	.article-video-header
+		iframe
+			height: 179px
