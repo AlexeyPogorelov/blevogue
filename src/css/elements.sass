@@ -182,13 +182,12 @@ $mobile-x-small: 320px
 .lang-switcher-holder
 	position: fixed
 	left: 40px
-	bottom: 40px
+	bottom: 16px
 	z-index: 1
 	transform: translateZ(0)
 	li
 		color: #35363c
 		display: inline-block
-		font-size: 18px
 		font-weight: 500
 		letter-spacing: 1px
 		margin-right: 8px
@@ -212,7 +211,7 @@ $mobile-x-small: 320px
 			display: none
 		a
 			text-transform: uppercase
-			font-size: 15px
+			font-size: 12px
 			color: #b2b6c2
 			line-height: 1em
 			&:hover
@@ -304,16 +303,15 @@ $mobile-x-small: 320px
 			&:last-child
 				margin-right: 0
 			a
+				display: inline-block
 				color: #636671
 				font-family: 'Futura New'
 				font-size: 14px
 				font-weight: 500
 				line-height: 21px
 				letter-spacing: 1px
-				transition: opacity .3s, color .3s
 				&:hover
 					color: #36465d
-					transition: opacity .1s, color .1s
 				&.facebook:hover
 					color: #43619c
 				&.pinterest:hover
@@ -322,6 +320,18 @@ $mobile-x-small: 320px
 					color: #24a9e6
 				&.tumblr:hover
 					color: #36465d
+// hovers
+body:not(.mobile)
+	.fixed-socials-2
+		.socials
+			li
+				a
+					transition: opacity .3s, color .3s, transform .3s
+				&:hover
+					a
+						transition: opacity .3s, color .3s, transform .3s
+						transform: translateY(-2px)
+
 @media screen and (max-width: $mobile-large + 60px)
 	.fixed-socials-2
 		left: 35px
@@ -354,7 +364,7 @@ $mobile-x-small: 320px
 			color: #35363c
 			font-family: "Futura New"
 			font-size: 17px
-			font-weight: 400
+			font-weight: 300
 			font-style: italic
 			line-height: 1em
 			letter-spacing: 13px
@@ -367,7 +377,7 @@ $mobile-x-small: 320px
 			display: block
 			height: 10px
 			opacity: 0
-			transform: translateY(10px)
+			transform: translateYa(10px)
 			transition: transform .3s, opacity .3s
 			width: 75px
 		&.hover
