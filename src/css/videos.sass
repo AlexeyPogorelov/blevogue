@@ -19,6 +19,8 @@ $mobile-x-small: 320px
 			padding-right: 0
 			&:after, &:before
 				margin-left: -50px
+		.date-holder
+			right: -12px
 	.video
 		margin-bottom: 60px
 		position: relative
@@ -28,6 +30,76 @@ $mobile-x-small: 320px
 			height: 100%
 		.article-link
 			height: 100%
+		.line
+			background: rgba(255,255,255,0)
+			position: absolute
+			height: 6px
+			width: 0
+			bottom: -6px
+			left: 130px
+			transition: width .3s, background .3s
+		.counter
+			position: absolute
+			left: -13px
+			top: 50px
+			color: #333
+			font-family: 'Playfair Display'
+			font-size: 42px
+			font-weight: 700
+			line-height: 22px
+			letter-spacing: 3px
+			z-index: 1
+			transition: all .3s
+			color: #35363c
+			transform: translateZ(0)
+		.date-holder
+			position: absolute
+			bottom: -21px
+			// right: -12px
+			right: 280px - 12px
+			color: white
+			white-space: nowrap
+			font-family: 'Futura New'
+			opacity: 0
+			transition: opacity .3s, transform .3s
+			font-size: 17px
+			font-weight: 300
+			line-height: 1em
+			letter-spacing: 13px
+			transform: translateX(-20px) translateZ(0)
+			span
+				display: inline-block
+				// transform: rotate(-90deg) translateX(100%) translateZ(0)
+				// transform-origin: right bottom 0
+				transition: transform .3s .3s, color .3s .3s
+		.socials-holder
+			top: 30px
+			left: 30px
+			position: absolute
+			opacity: 0
+			transition: opacity .3s
+			z-index: 1
+			li
+				display: block
+				margin-bottom: 21px
+				text-align: left
+				a
+					color: #fff
+					display: block
+					font-size: 18px
+					font-weight: 300
+					&:before
+						background: #ffffff
+						content: ''
+						display: inline-block
+						height: 1px
+						margin-right: 0
+						vertical-align: middle
+						width: 0px
+						transition: margin .3s ease-out, width .3s ease-out
+					&:hover:before
+						margin-right: 8px
+						width: 34px
 		.image-container
 			padding-right: 280px
 			&:before, &:after
@@ -67,7 +139,22 @@ $mobile-x-small: 320px
 			.img
 				opacity: 0
 				transition: opacity 0.2s linear
-		.description-container
+			.line
+				transition: width .3s, background .3s
+				width: 96px
+			.date-holder
+				opacity: 1
+				transition: opacity .3s .3s, transform .3s .3s
+				transform: translateX(0) translateZ(0)
+				span
+					// transform: rotate(-90deg) translateX(108%) translateZ(0)
+					transition: transform .3s .3s, color .3s .3s
+			.socials-holder
+				opacity: 1
+				transition: opacity .3s .3s
+			.counter
+				left: -70px
+		.description
 			background: #fff
 			display: block
 			padding: 32px 40px
@@ -77,21 +164,34 @@ $mobile-x-small: 320px
 			width: 390px
 			z-index: 1
 			h1, h2, h3, h4, h5, h6
+				transition: color .3s
 				color: #35363c
-				font-family: 'Playfair Display'
-				// font-weight: 500
 				font-size: 34px
-				letter-spacing: 1px
-				line-height: 32px
-				margin-bottom: 10px
-				font-weight: 700
+				line-height: 1em
+				margin-bottom: 8px
+				font-family: 'Playfair Display'
+				font-size: 32px
+				font-weight: 600
+				letter-spacing: 4px
+				line-height: 36px
 			p
 				color: #636671
-				font-family: 'Futura New'
-				font-weight: 400
 				font-size: 17px
 				letter-spacing: 0.4px
+				font-family: 'Futura New'
+				font-weight: 300
+				letter-spacing: 1px
 				line-height: 24px
+			&:after
+				content: ''
+				position: absolute
+				left: 0
+				bottom: 0
+				height: 32px
+				width: 100%
+				z-index: 1
+				background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%)
+
 	.load-more-holder
 		text-align: center
 		margin-top: 20px
@@ -161,9 +261,15 @@ $mobile-x-small: 320px
 	.video-gallery
 		margin-top: 107px
 		.video
-			margin-bottom: 42px
+			margin-bottom: 52px
 			height: auto
 			position: relative
+			.socials-holder
+				li
+					margin-bottom: 10px
+			.date-holder
+				right: 210px - 12px
+				font-size: 12px
 			.image-container
 				height: 244px
 				position: relative
@@ -175,7 +281,7 @@ $mobile-x-small: 320px
 					margin-left: -135px
 					height: 60px
 					width: 60px
-			.description-container
+			.description
 				min-height: 140px
 				overflow: hidden
 				position: absolute
@@ -186,18 +292,15 @@ $mobile-x-small: 320px
 				width: 280px
 				max-height: 210px
 				h1, h2, h3, h4, h5, h6
-					line-height: 26px
-					margin-bottom: 6px
-					font-family: 'Futura New'
 					font-size: 26px
-					font-weight: 600
-					line-height: 26px
-					letter-spacing: 0
+					line-height: 30px
+					margin-bottom: 8px
+					letter-spacing: 4px
 				p
 					font-size: 14px
-					line-height: 18px
+					letter-spacing: 0.5px
+					line-height: 19px
 		.video.first
-			margin-bottom: 42px
 			height: auto
 			.image-container
 				position: relative
@@ -205,16 +308,10 @@ $mobile-x-small: 320px
 				&:after, &:before
 					margin-top: -30px
 					margin-left: -30px
-			.description-container
+			.description
 				padding: 17px 20px
 				top: 50px
 				width: 220px
-				h1, h2, h3, h4, h5, h6
-					line-height: 24px
-					letter-spacing: -1px
-				p
-					line-height: 18px
-					margin-top: 10px
 		&.module
 			margin-top: 60px
 			.video
@@ -228,10 +325,12 @@ $mobile-x-small: 320px
 	.video-gallery
 		margin-top: 97px
 		.video
-			margin-bottom: 32px
+			margin-bottom: 42px
 			// margin-bottom: -209px
 			position: relative
 			height: auto
+			.date-holder
+				right: 140px - 12px
 			.image-container
 				position: relative
 				padding-right: 140px
@@ -245,7 +344,7 @@ $mobile-x-small: 320px
 					margin-left: -23px - 70px
 					height: 46px
 					width: 46px
-			.description-container
+			.description
 				// position: relative
 				padding: 17px 20px
 				top: 23px
@@ -253,16 +352,23 @@ $mobile-x-small: 320px
 				// left: 220px
 				width: 220px
 				h1, h2, h3, h4, h5, h6
-					font-size: 26px
-					line-height: 24px
-					letter-spacing: -1px
-					margin-bottom: 9px
+					font-size: 24px
+					letter-spacing: 0.7px
+					letter-spacing: 3px
+					line-height: 28px
+					margin-bottom: 10px
 				p
 					font-size: 14px
 					letter-spacing: 0.3px
-					line-height: 20px
+					line-height: 18px
 		.video.first
 			margin-bottom: -28px
+			.date-holder
+				bottom: 0
+				right: -20px
+				span
+					transform: rotate(-90deg) translateX(100%) translateZ(0)
+					transform-origin: right bottom 0
 			.image-container
 				height: auto
 				position: relative
@@ -272,16 +378,36 @@ $mobile-x-small: 320px
 				&:after, &:before
 					margin-top: -23px
 					margin-left: -23px
-			.description-container
+			.description
 				position: relative
 				padding: 17px 20px
 				top: -62px
 				left: 70px
 				width: 320px
 				transform: none
+				max-height: 100%
+				&:after
+					display: none
 		.load-more-holder
 			margin-top: 29px
 			margin-bottom: 64px
+
+@media screen and (max-width: $mobile-medium)
+	.video-gallery
+		.video
+			.description
+				h1, h2, h3, h4, h5, h6
+					font-size: 20px
+					letter-spacing: 2px
+					line-height: 24px
+				p
+					font-size: 12px
+					letter-spacing: 0.26px
+					line-height: 16px
+				&:after
+					display: none
+			.date-holder
+				display: none
 
 @media screen and (max-width: $mobile-small)
 	.video-gallery
@@ -304,7 +430,9 @@ $mobile-x-small: 320px
 					margin-left: -19px
 					height: 38px
 					width: 38px
-			.description-container
+			.socials-holder
+				display: none
+			.description
 				position: relative
 				padding: 15px 15px
 				top: -23px
@@ -316,12 +444,10 @@ $mobile-x-small: 320px
 					letter-spacing: -1px
 					margin-bottom: 9px
 					font-size: 20px
-					font-weight: 500
 					letter-spacing: 0.55px
 					line-height: 18px
 				p
 					font-size: 12px
-					font-weight: 400
 					letter-spacing: 0.26px
 					line-height: 16px
 		.video.first

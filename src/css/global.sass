@@ -650,14 +650,14 @@ button:active, .btn:active, button:focus, .btn:focus
 		// right: 32px
 		padding: 32px
 		transform: translateY(40px)
-		transition: opacity .3s ease-out, transform .5s, visibility .4s
+		transition: opacity .3s ease-out, transform .5s, visibility .4s, outline .4s
 	&.opened
 		opacity: 1
 		visibility: visible
 		-webkit-overflow-scrolling: touch
 		.modal-content
 			transform: translateY(0)
-			transition: transform .5s
+			transition: opacity .3s ease-out, transform .5s, visibility .4s, outline .4s
 	&::-webkit-scrollbar
 		// height: 0
 		// width: 0

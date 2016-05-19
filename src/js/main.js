@@ -942,7 +942,7 @@ $(document).on('ready', function () {
 
 					var $self = $(this),
 						$article = $self.closest('article'),
-						bg = $article.find('> .image-holder').css('background-color');
+						bg = $article.find('> .image-holder, .image-container > .image-holder').css('background-color');
 
 					$article.closest('article').addClass('hover');
 					$article.find('.date-holder, .description h3, .counter').css('color', bg);
@@ -983,12 +983,13 @@ $(document).on('ready', function () {
 
 			};
 
-			var $gallery = $('.articles-gallery-1, .articles-gallery-2');
+			// add .line
+			var $gallery = $('.articles-gallery-1, .articles-gallery-2, .video-gallery');
 				$gallery.find('article').each(function (i) {
 
 						var $self = $(this);
 							$line = $('<div>').addClass('line'),
-							bg = $self.find('> .image-holder').css('background-color');
+							bg = $self.find('> .image-holder, .image-container .image-holder').css('background-color');
 
 						$line.css({
 							'background-color': bg
@@ -999,7 +1000,9 @@ $(document).on('ready', function () {
 				_pogorelov.countArticlas( $gallery.find('article') );
 				_pogorelov.addHoverOnArticle( $gallery.find('article > .image-holder, .description') );
 
-			_pogorelov.addHoverOnVideo( $('.video-gallery').find('.image-container > .image-holder, .description-container') );
+			// TODO remove rudimental meth.
+			// _pogorelov.addHoverOnVideo( $('.video-gallery').find('.image-container > .image-holder, .description-container') );
+			_pogorelov.addHoverOnArticle( $('.video-gallery').find('.image-container > .image-holder, .description-container') );
 
 			$('#main-slider').on('mouseenter', '.image-holder', function () {
 				var $self = $(this),
