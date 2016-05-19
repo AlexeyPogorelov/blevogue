@@ -321,7 +321,9 @@ $mobile-x-small: 320px
 	#login-modal-email,
 	#login-modal
 		.forgot-password
-			right: 70px
+			// TODO test it
+			// right: 40px
+			right: 46px
 
 @media screen and (max-width: 600px), screen and (max-height: 450px)
 	#signup-modal,
@@ -397,13 +399,18 @@ $mobile-x-small: 320px
 		right: 30px
 		height: 24px
 		width: 24px
+		path
+			transition: all .2s
+		&:hover path
+			fill: #000000 !important
+			transition: all .1s
 	.modal-content
 		top: 0
 		right: 0
 		bottom: 0
 		left: 0
 		background-color: transparent
-		padding-top: 160px
+		padding-top: 80px
 		.left-side, .right-side
 			display: inline-block
 			vertical-align: top
@@ -426,7 +433,7 @@ $mobile-x-small: 320px
 				margin-top: 105px
 				position: relative
 				text-align: right
-				transition: color .3s
+				transition: color .2s
 				b
 					font-weight: 700
 				span
@@ -449,8 +456,14 @@ $mobile-x-small: 320px
 						width: 64px
 						vertical-align: middle
 						margin: 0 15px
+						transition: background .2s
 				&:hover
-					color: #000
+					transition: color .1s
+					color: #fff
+					span.email
+						&:before
+							background: #fff
+							transition: background .1s
 			.content-holder
 				padding-left: 55px
 				position: relative
@@ -488,7 +501,7 @@ $mobile-x-small: 320px
 		.container
 			width: 813px
 		.modal-content
-			padding-top: 80px
+			// padding-top: 80px
 			.left-side
 				padding-top: 20px
 				width: 301px

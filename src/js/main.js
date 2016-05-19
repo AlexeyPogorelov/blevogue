@@ -1,6 +1,10 @@
 
 if ($.browser.mobile) $('body').addClass('mobile');
 if ($.browser.safari) $('body').addClass('safari');
+
+// TODO test touched
+if ($.browser.safari) $('.slider-holder').addClass('touched');
+
 if ($.browser.safari && $.browser.mobile) $('body').addClass('safari-mobile');
 bodyOverflow.fixBody();
 
@@ -495,7 +499,9 @@ var loading = {
 
 			$(window).trigger('scroll').trigger('resize');
 
-			blevogue.$wowElements.on(transitionPrefix + ' ' + animationPrefix, function (e, classes) {
+			if (blevogue.$wowElements) {
+
+				blevogue.$wowElements.on(transitionPrefix + ' ' + animationPrefix, function (e, classes) {
 
 					if (e.target !== this) return;
 
@@ -510,9 +516,11 @@ var loading = {
 						}
 					}
 
-					$self.off(transitionPrefix + ' ' + animationPrefix)
+					$self.off(transitionPrefix + ' ' + animationPrefix);
 
 				});
+
+			}
 
 			$('.slider-holder').removeClass('touched');
 
@@ -543,10 +551,8 @@ var loading = {
 $('img').each(function () {
 
 	if (!this.naturalWidth || true) {
-
 		loading.trg ++;
 		$(this).one('load', loading.loaded);
-
 	}
 
 });
@@ -556,7 +562,7 @@ setTimeout(function () {
 	loading.status(1);
 	setTimeout(loading.done, 100);
 
-}, 10000);
+}, 30000);
 
 $(window).on('load', function () {
 
