@@ -260,9 +260,15 @@ $mobile-x-small: 320px
 			text-align: center
 			position: relative
 			width: 100%
+			transition: background .3s
 			b
 				font-weight: 700
 				line-height: 53px
+			&:hover
+				background-color: #0b2f7e
+				transition: background .3s
+			& ~ .modal-back
+				top: 72px
 		form
 			padding: 50px 120px 40px
 	.login-methoods-container
