@@ -1302,7 +1302,6 @@ section.articles-gallery-1
 					fill: #ffffff
 					transition: fill .1s
 
-
 @media screen and (max-width: $medium)
 	.articles-gallery-2
 		.description
@@ -1426,11 +1425,14 @@ section.articles-gallery-1
 				.date-holder
 					left: auto
 					top: auto
-					bottom: -12px
+					bottom: 46px
 					right: -28px
 					span
-						// todo fix it
-						transform: rotate(-90deg) translateX(100%) translateZ(0)
+						transform: rotate(-90deg) translateX(calc(100% - 20px)) translateZ(0)
+				&.hover
+					.date-holder
+						span
+							transform: rotate(-90deg) translateX(100%) translateZ(0)
 			&.first
 				margin-top: 60px
 		.article-holder-5
@@ -1445,6 +1447,15 @@ section.articles-gallery-1
 					left: 20px
 					top: -70px
 					width: 280px
+				.date-holder
+					bottom: 0
+					right: -28px
+					span
+						transform: rotate(-90deg) translateX(0px) translateZ(0)
+				&.hover
+					.date-holder
+						span
+							transform: rotate(-90deg) translateX(10px) translateZ(0)
 			article:nth-child(2)
 				margin-top: 48px
 				margin-left: 64px
@@ -1458,6 +1469,16 @@ section.articles-gallery-1
 					left: 0
 					top: 0
 					width: 210px
+				.date-holder
+					bottom: 0
+					right: -28px
+					span
+						transform: rotate(-90deg) translateX(100%) translateZ(0)
+						transform-origin: 100% 100%
+				&.hover
+					.date-holder
+						span
+							transform: rotate(-90deg) translateX(10px) translateZ(0)
 		.load-more-holder
 			margin-top: 65px
 			margin-bottom: 65px

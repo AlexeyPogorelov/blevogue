@@ -1044,6 +1044,10 @@ $(document).on('ready', function () {
 				],
 				$imageHelper = $('.background-holder');
 
+			imagesLinks.shuffle();
+
+			$('<img>').attr('src', imagesLinks[0]);
+
 		})();
 
 		// 404 background update

@@ -298,7 +298,7 @@ $mobile-x-small: 320px
 			background-color: #39579a
 			transition: background .3s
 			&:hover
-				background-color: #274a98
+				background-color: #0b2f7e
 		.email-login-button
 			background-image: url('https://unsplash.it/360/120?image=62')
 			position: relative
@@ -364,6 +364,9 @@ $mobile-x-small: 320px
 				font-weight: 100
 				b
 					font-weight: 700
+				& ~ .modal-back
+					top: 30px
+					left: 32px
 			form
 				padding: 120px 32px 40px
 
@@ -388,7 +391,7 @@ $mobile-x-small: 320px
 	#password-change,
 	#password-recovery
 		background: #fff
-
+		.close-modal
 #about-modal
 	background-color: #fbe67e
 	.container
@@ -497,7 +500,6 @@ $mobile-x-small: 320px
 					top: 52px
 					right: 0
 					bottom: -55px
-
 @media screen and (max-width: $medium)
 	#about-modal
 		.container
