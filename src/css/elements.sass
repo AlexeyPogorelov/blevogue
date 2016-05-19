@@ -292,6 +292,10 @@ $mobile-x-small: 320px
 	left: 50px
 	z-index: 2
 	pointer-events: none
+	opacity: 1
+	transition: opacity .3s
+	&.invisible
+		opacity: 0
 	.socials
 		pointer-events: all
 		transform: rotate(-90deg) translateX(-50%) translateZ(0)

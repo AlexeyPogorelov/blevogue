@@ -80,7 +80,7 @@ function parallaxSocials () {
 		$parallaxElemens = $('.parallax-element'),
 		parallaxElemens = [],
 		$parallaxArticle = $('section.articles-gallery-1 .article-holder-3 > article:nth-child(2), section.articles-gallery-1 .article-holder-4 > article:nth-child(2), section.articles-gallery-1 .article-holder-5 > article:nth-child(2), section.articles-gallery-1 .article-holder-6 > article:nth-child(2), section.articles-gallery-1 .article-holder-8 > article'),
-		$socialsElement = $('#fixed-socials'),
+		$socialsElement = $('#fixed-socials-2'),
 		$articleHeader = $('.article-header'),
 		$articleComments = $('.comments-holder'),
 		$articlesControl = $('#articles-control'),
@@ -138,35 +138,13 @@ function parallaxSocials () {
 
 				}
 
-				if (socialsElement) {
+				if ( top > socialsStatus.end ) {
 
-					if ( top < socialsStatus.start || socialsStatus.disabled ) {
+					$socialsElement.addClass('invisible');
 
-						if (socialsStatus.state !== 1) {
+				} else {
 
-							$socialsElement.removeClass('fixed');
-							socialsStatus.state = 1;
-							socialsElement.style.transform = 'translateY(' + socialsStatus.start + 'px) translateZ(0)';
-
-						}
-
-					} else if ( top > socialsStatus.end ) {
-
-						if ( socialsStatus.state !== 3) {
-
-							$socialsElement.removeClass('fixed');
-							socialsElement.style.transform = 'translateY(' + socialsStatus.end + 'px) translateZ(0)';
-							socialsStatus.state = 3;
-
-						}
-
-					} else if (socialsStatus.state !== 2) {
-
-						$socialsElement.addClass('fixed');
-						socialsElement.style.transform = 'translateY(-50%) translateZ(0)';
-						socialsStatus.state = 2;
-
-					}
+					$socialsElement.removeClass('invisible');
 
 				}
 
@@ -182,28 +160,7 @@ function parallaxSocials () {
 
 				if (socialsElement) {
 
-					socialsStatus.start = $articleHeader.height() + parseInt( $articleHeader.css('margin-top') );
-					socialsStatus.end = $articleComments.offset().top - $socialsElement.height() - 100;
-					socialsStatus.left = $articleHeader.find('.container').offset().left;
-					socialsElement.style.transform = 'translateY(' + socialsStatus.start + 'px)';
-
-					if ( socialsStatus.left === 0) {
-
-						socialsStatus.left = $('.article-page').offset().left;
-
-					}
-
-					if ($articleHeader.hasClass('vertical')) {
-
-						socialsStatus.start = $articleHeader.find('.image-holder').height() + parseInt( $articleHeader.css('margin-top') );
-
-					}
-
-					$socialsElement.css('left', socialsStatus.left);
-
-					socialsStatus.disabled = (socialsStatus.end - socialsStatus.start) < $socialsElement.height();
-
-					socialsStatus.state = 0;
+					socialsStatus.end = $articleComments.offset().top - windowHeight / 2;
 
 				}
 
