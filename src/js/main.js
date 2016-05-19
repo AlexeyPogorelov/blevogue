@@ -1017,6 +1017,35 @@ $(document).on('ready', function () {
 
 		})();
 
+		// shuffle array
+		Array.prototype.shuffle = function() {
+
+			for (var i = this.length - 1; i > 0; i--) {
+
+				var num = Math.floor(Math.random() * (i + 1)),
+					d = this[num];
+				this[num] = this[i];
+				this[i] = d;
+
+			}
+
+			return this;
+
+		};
+
+		// main-logo random
+		(function () {
+			var imagesLinks = window.imagesLogo || [
+					'img/icons/blevogue-1.svg',
+					'img/icons/blevogue-2.svg',
+					'img/icons/blevogue-3.svg',
+					'img/icons/blevogue-4.svg',
+					'img/icons/blevogue-5.svg'
+				],
+				$imageHelper = $('.background-holder');
+
+		})();
+
 		// 404 background update
 		(function () {
 
@@ -1048,21 +1077,6 @@ $(document).on('ready', function () {
 					'http://manrepeller.wpengine.netdna-cdn.com/wp-content/uploads/2015/01/shoe-lifts-man-repeller-1.jpg'
 				],
 				$imageHelper = $('.background-holder');
-
-			Array.prototype.shuffle = function() {
-
-				for (var i = this.length - 1; i > 0; i--) {
-
-					var num = Math.floor(Math.random() * (i + 1)),
-						d = this[num];
-					this[num] = this[i];
-					this[i] = d;
-
-				}
-
-				return this;
-
-			};
 
 			imagesLinks.shuffle();
 
