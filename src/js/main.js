@@ -1054,11 +1054,11 @@ $(document).on('ready', function () {
 					'img/icons/blevogue-4.svg',
 					'img/icons/blevogue-5.svg'
 				],
-				$imageHelper = $('.background-holder');
+				$image = $('.logotype-holder').find('img');
 
 			imagesLinks.shuffle();
 
-			$('<img>').attr('src', imagesLinks[0]);
+			$image.attr('src', imagesLinks[0]);
 
 		})();
 
