@@ -1181,9 +1181,8 @@ section.articles-gallery-1
 				.counter
 					left: -13px;
 					top: -50px
-
-		// &.first
-			// margin-top: 80px
+		&.first
+			margin-top: 80px
 
 	.article-holder-5
 		margin-top: 0
@@ -1202,7 +1201,6 @@ section.articles-gallery-1
 		article:nth-child(2)
 			margin-top: 80px
 			margin-left: 64px
-			// overflow: hidden
 			width: 350px
 			.image-holder
 				height: 254px
@@ -1329,6 +1327,17 @@ section.articles-gallery-1
 					left: 0
 					top: 0
 					width: 210px
+				.date-holder
+					left: auto
+					top: auto
+					bottom: 4px
+					right: -28px
+					span
+						transform: rotate(-90deg) translateX(calc(100% - 20px)) translateZ(0)
+				&.hover
+					.date-holder
+						span
+							transform: rotate(-90deg) translateX(100%) translateZ(0)
 			article:nth-child(2)
 				margin-top: 47px
 				margin-left: 65px
@@ -1340,6 +1349,19 @@ section.articles-gallery-1
 					left: 20px
 					top: -70px
 					width: 280px
+					.line
+						left: 24px
+				.date-holder
+					left: auto
+					top: auto
+					bottom: 4px
+					right: -28px
+					span
+						transform: rotate(-90deg) translateX(calc(100% - 20px)) translateZ(0)
+				&.hover
+					.date-holder
+						span
+							transform: rotate(-90deg) translateX(100%) translateZ(0)
 		.article-holder-2
 			margin-top: 37px
 			article:nth-child(1)
@@ -1352,6 +1374,19 @@ section.articles-gallery-1
 					left: 34px
 					top: -38px
 					width: 280px
+					.line
+						left: 24px
+				.date-holder
+					left: auto
+					top: auto
+					bottom: 46px
+					right: -28px
+					span
+						transform: rotate(-90deg) translateX(calc(100% - 20px)) translateZ(0)
+				&.hover
+					.date-holder
+						span
+							transform: rotate(-90deg) translateX(100%) translateZ(0)
 			article:nth-child(2)
 				margin-top: 101px
 				margin-left: 66px
@@ -1363,6 +1398,19 @@ section.articles-gallery-1
 					padding-top: 13px
 					padding-bottom: 13px
 					width: 180px
+					.line
+						left: 0
+				.date-holder
+					left: auto
+					top: auto
+					bottom: 5px
+					right: -28px
+					span
+						transform: rotate(-90deg) translateX(calc(100% - 20px)) translateZ(0)
+				&.hover
+					.date-holder
+						span
+							transform: rotate(-90deg) translateX(100%) translateZ(0)
 
 		.article-holder-3
 			margin-top: 0
@@ -1377,10 +1425,22 @@ section.articles-gallery-1
 					left: 70px
 					top: -39px
 					width: 280px
+					.line
+						left: 24px
+				.date-holder
+					left: auto
+					top: auto
+					bottom: 46px
+					right: -28px
+					span
+						transform: rotate(-90deg) translateX(calc(100% - 20px)) translateZ(0)
+				&.hover
+					.date-holder
+						span
+							transform: rotate(-90deg) translateX(100%) translateZ(0)
 			article:nth-child(2)
 				margin-top: 18px
 				margin-left: 36px
-				// overflow: hidden
 				width: 210px
 				.image-holder
 					height: 152px
@@ -1389,6 +1449,17 @@ section.articles-gallery-1
 					padding-top: 13px
 					padding-bottom: 13px
 					width: 210px
+				.date-holder
+					left: auto
+					top: auto
+					bottom: 4px
+					right: -28px
+					span
+						transform: rotate(-90deg) translateX(calc(100% - 20px)) translateZ(0)
+				&.hover
+					.date-holder
+						span
+							transform: rotate(-90deg) translateX(100%) translateZ(0)
 
 		.article-holder-4
 			margin-top: 0
@@ -1422,6 +1493,8 @@ section.articles-gallery-1
 					left: 38px
 					position: relative
 					width: 280px
+					.line
+						left: 24px
 				.date-holder
 					left: auto
 					top: auto
@@ -1433,8 +1506,6 @@ section.articles-gallery-1
 					.date-holder
 						span
 							transform: rotate(-90deg) translateX(100%) translateZ(0)
-			&.first
-				margin-top: 60px
 		.article-holder-5
 			article:nth-child(1)
 				margin-top: 87px
@@ -1447,6 +1518,8 @@ section.articles-gallery-1
 					left: 20px
 					top: -70px
 					width: 280px
+					.line
+						left: 24px
 				.date-holder
 					bottom: 0
 					right: -28px
@@ -1472,22 +1545,23 @@ section.articles-gallery-1
 				.date-holder
 					bottom: 0
 					right: -28px
+					top: auto
 					span
-						transform: rotate(-90deg) translateX(100%) translateZ(0)
+						transform: rotate(-90deg) translateX(calc(100% - 10px)) translateZ(0)
 						transform-origin: 100% 100%
 				&.hover
 					.date-holder
 						span
-							transform: rotate(-90deg) translateX(10px) translateZ(0)
+							transform: rotate(-90deg) translateX(100%) translateZ(0)
 		.load-more-holder
 			margin-top: 65px
 			margin-bottom: 65px
 
-@media screen and (max-width: $tablet)
-	.articles-gallery-2
-		.article-holder-4
-				&.first
-					margin-top: 50px
+// @media screen and (max-width: $tablet)
+// 	.articles-gallery-2
+// 		.article-holder-4
+// 				&.first
+// 					margin-top: 60px
 
 @media screen and (max-width: $mobile-large)
 	.articles-gallery-2
@@ -1543,6 +1617,8 @@ section.articles-gallery-1
 					padding-right: 0
 					position: static
 					width: 178px
+			&.first
+				margin-top: 60px
 		.article-holder-5
 			margin-bottom: 0px
 			article:nth-child(1)
@@ -1568,21 +1644,19 @@ section.articles-gallery-1
 		.article-holder-1
 			margin-top: -12px
 			article:nth-child(1)
-				margin-top: 33px
-				margin-bottom: 34px
+				margin-top: 43px
+				margin-bottom: 14px
 				margin-left: 0
+				margin-left: calc(50% - 35px)
+				width: 256px
 				.image-holder
-					height: 228px
-					width: 160px
+					height: 172px
+					width: 256px
 				.description
-					left: 37px
-					top: -50px
-				.image-holder
-					height: 134px
-					width: 186px
-				.description
-					position: static
-					width: 186px
+					padding: 15px 15px
+					left: 20px
+					top: -62px
+					width: 216px
 			article:nth-child(2)
 				margin-top: 0px
 				margin-left: 0
@@ -1607,7 +1681,7 @@ section.articles-gallery-1
 					width: 160px
 			article:nth-child(2)
 				margin-left: 20px
-				margin-left: calc(100% - 162px)
+				margin-left: calc(50% - 136px)
 				margin-top: 36px
 				.image-holder
 					height: 228px
@@ -1616,7 +1690,8 @@ section.articles-gallery-1
 			margin-top: -12px
 			article:nth-child(1)
 				// margin-top: 0
-				margin-left: calc(100% - 162px)
+				// margin-left: calc(100% - 162px)
+				margin-left: 0
 				.image-holder
 					height: 228px
 					width: 160px
@@ -1626,7 +1701,8 @@ section.articles-gallery-1
 					width: 160px
 			article:nth-child(2)
 				margin-top: 30px
-				margin-left: 0
+				// margin-left: 0
+				margin-left: calc(50% - 167px)
 				.image-holder
 					height: 134px
 					width: 186px
@@ -1645,7 +1721,8 @@ section.articles-gallery-1
 				// margin-top: 47px
 			article:nth-child(2)
 				margin-top: 32px
-				margin-left: calc(100% - 161px)
+				margin-left: calc(50% - 165px)
+				width: 160px
 				.image-holder
 					height: 228px
 					width: 160px
@@ -1694,5 +1771,24 @@ section.articles-gallery-1
 	.articles-gallery-2
 		.article-holder-1
 			margin-top: 0
+			article:nth-child(1)
+				margin-left: 0
+			article:nth-child(2)
+				margin-left: calc(100% - 258px)
+				width: 256px
+		.article-holder-2, .article-holder-4
+			article:nth-child(2)
+				margin-left: calc(100% - 162px)
+		.article-holder-2
+			article:nth-child(2)
+				width: 256px
+				.description
+					width: 160px
+		.article-holder-3
+			article:nth-child(2)
+				margin-left: calc(100% - 189px)
+				width: 186px
+				// .description
+					// width: 160px
 
 

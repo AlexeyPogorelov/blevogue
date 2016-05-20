@@ -86,6 +86,7 @@ function parallaxSocials () {
 		$articlesControl = $('#articles-control'),
 		$articlesControlLine = $articlesControl.find('.line'),
 		$articlesGallery = $('.articles-gallery-1'),
+		articlesGalleryStatus = {},
 		articlesControlStatus = 0,
 		socialsStatus = {},
 		socialsElement = $socialsElement.get(0),
@@ -102,17 +103,21 @@ function parallaxSocials () {
 
 				try {
 
-					if ( top > $articlesGallery.offset().top && top + windowHeight < $articlesGallery.offset().top + $articlesGallery.height() && articlesControlStatus === 0) {
+					if ( top > articlesGalleryStatus.start && top + windowHeight * 1.3 < articlesGalleryStatus.end && articlesControlStatus === 0) {
+
 						$articlesControl.addClass('opened');
 						articlesControlStatus = 1;
-					} else if ( (top < $articlesGallery.offset().top || top + windowHeight > $articlesGallery.offset().top + $articlesGallery.height() ) && articlesControlStatus === 1) {
+
+					} else if ( (top < articlesGalleryStatus.start || top + windowHeight * 1.3 > articlesGalleryStatus.end ) && articlesControlStatus === 1) {
+
 						$articlesControl.removeClass('opened');
 						articlesControlStatus = 0;
+
 					}
+
 					$articlesControlLine.css('height', ( top - $articlesGallery.offset().top ) / $articlesGallery.height() * 100  + "%" );
 
-				} catch (e) {
-				}
+				} catch (e) {}
 
 				if (parallaxElemens.length) {
 
@@ -168,6 +173,13 @@ function parallaxSocials () {
 
 				console.error(e);
 
+			}
+
+
+			if ($articlesGallery.length) {
+
+				articlesGalleryStatus.start = $articlesGallery.offset().top;
+				articlesGalleryStatus.end = $articlesGallery.offset().top + $articlesGallery.height()
 			}
 
 			parallaxElemens = [];
