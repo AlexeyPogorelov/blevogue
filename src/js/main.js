@@ -165,7 +165,7 @@ function parallaxSocials () {
 
 				if (socialsElement) {
 
-					socialsStatus.end = $articleComments.offset().top - windowHeight / 2;
+					socialsStatus.end = $articleComments.offset().top + $articleComments.height() - windowHeight / 2;
 
 				}
 
@@ -179,7 +179,7 @@ function parallaxSocials () {
 			if ($articlesGallery.length) {
 
 				articlesGalleryStatus.start = $articlesGallery.offset().top;
-				articlesGalleryStatus.end = $articlesGallery.offset().top + $articlesGallery.height()
+				articlesGalleryStatus.end = $articlesGallery.offset().top + $articlesGallery.height();
 			}
 
 			parallaxElemens = [];
@@ -373,9 +373,11 @@ var loading = {
 
 			$button.remove();
 
+			$container.find('.counter, hr').remove();
+
 			$clonedArticles = $( $container.html() );
 
-			$clonedArticles.addClass('wow').find('.counter').remove();
+			$clonedArticles.addClass('wow');
 
 			_pogorelov.countArticlas($clonedArticles.find('article'), $articles.length);
 			_pogorelov.addHoverOnArticle( $clonedArticles.find('article') );
@@ -385,6 +387,10 @@ var loading = {
 
 			$container.append( $clonedArticles );
 				// $articles.eq($articles.length - 1);
+
+			setTimeout(function () {
+				$('body').trigger('resize');
+			}, 100);
 		});
 		// end todo
 
@@ -1048,11 +1054,11 @@ $(document).on('ready', function () {
 		// main-logo random
 		(function () {
 			var imagesLinks = window.imagesLogo || [
-					'img/icons/blevogue-1.svg',
-					'img/icons/blevogue-2.svg',
-					'img/icons/blevogue-3.svg',
-					'img/icons/blevogue-4.svg',
-					'img/icons/blevogue-5.svg'
+					'img/icons/blevogue-1.png',
+					'img/icons/blevogue-2.png',
+					'img/icons/blevogue-3.png',
+					'img/icons/blevogue-4.png',
+					'img/icons/blevogue-5.png'
 				],
 				$image = $('.logotype-holder').find('img');
 

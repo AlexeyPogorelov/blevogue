@@ -417,12 +417,30 @@ $mobile-x-small: 320px
 					width: 26px
 				button[type="submit"]
 					color: white
-					background: url('https://unsplash.it/600/400?image=40')
+					background: url('../img/bg/publish.jpg')
+					background-size: cover
 					font-family: 'Futura New'
 					font-size: 20px
 					font-weight: 700
 					line-height: 1em
 					padding: 14px 31px
+					position: relative
+					&:before
+						background: rgba(0,0,0,0.3)
+						content: ''
+						display: block
+						left: 0
+						top: 0
+						height: 100%
+						width: 100%
+						opacity: 0
+						position: absolute
+						z-index: 0
+						transition: opacity .3s
+					&:hover:before
+						opacity: 1
+					span
+						position: relative
 				.images-holder
 					margin-top: -20px
 					text-align: left
