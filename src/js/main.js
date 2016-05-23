@@ -361,12 +361,12 @@ var loading = {
 		if (loading.finished) return;
 
 		// TODO temp for developing
-		$('section.articles-gallery-1 > article, .article-content, .article-name, .article-date, .video, .article-page, #about-modal .content-holder').find('p, h1, h2, h3, h4, h5, h6, blockquote, span').attr('contenteditable', true).on('click', function (e) {
-			e.preventDefault();
-		});
-		$('.article-holder-1 a').on('click', function (e) {
-			e.preventDefault();
-		});
+		// $('section.articles-gallery-1 > article, .article-content, .article-name, .article-date, .video, .article-page, #about-modal .content-holder').find('p, h1, h2, h3, h4, h5, h6, blockquote, span').attr('contenteditable', true).on('click', function (e) {
+		// 	e.preventDefault();
+		// });
+		// $('.article-holder-1 a').on('click', function (e) {
+		// 	e.preventDefault();
+		// });
 		var loct = location.href.split('/');
 		loct = loct[loct.length - 1];
 		$('[href="' + loct + '"]').closest('li').addClass('active');
