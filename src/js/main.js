@@ -10,13 +10,19 @@ bodyOverflow.fixBody();
 
 var blevogue = {};
 
-// WOW classes and additional elements
+// WOW classes
 (function () {
-	if (!$.browser.desktop) return;
-
-	var $articlesGallery = $('section.articles-gallery-1');
+	if ($.browser.mobile) return;
 
 	blevogue.$wowElements = $('.fadeInUp, .fadeInRight, #main-slider, section.articles-gallery-1 article').addClass('wow');
+
+})();
+
+// additional elements
+(function () {
+	if ($(window).width() < 480) return;
+
+	var $articlesGallery = $('section.articles-gallery-1');
 
 	// add parallax elements
 	if ( $articlesGallery.length === 0 ) return;
