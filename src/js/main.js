@@ -658,7 +658,11 @@ $(document).on('ready', function () {
 					$self.on('keyup', function () {
 						$textarea.html( $self.html() );
 					}).on('focus', function () {
-						if (fakePlaceholder === null) fakePlaceholder = $self.html();
+						if (fakePlaceholder === null) {
+							fakePlaceholder = $self.html();
+							$self.html('');
+						};
+						if (fakePlaceholder === $self.html()) $self.html('');
 					}).on('blur', function () {
 						if (!$self.text().replace(/\n\S/, '')) $self.html( fakePlaceholder );
 					});
