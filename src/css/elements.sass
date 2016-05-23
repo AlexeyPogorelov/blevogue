@@ -175,7 +175,8 @@ $mobile-x-small: 320px
 		&.type-2
 			right: -99px
 
-@media screen and (max-width: $mobile-large)
+// @media screen and (max-width: $mobile-large)
+@media screen and (max-width: $mobile-small)
 	.parallax-element
 		display: none
 
@@ -239,6 +240,14 @@ $mobile-x-small: 320px
 		letter-spacing: 2.63px
 		line-height: 17px
 		transform: rotate(-90deg) translateZ(0)
+		span
+			display: block
+			transition: transform .3s, color .3s
+	&:hover
+		a
+			span
+				color: #000
+				transform: translateY(2px)
 @media screen and (max-width: $mobile-large + 60px)
 	.to-blog-button
 		right: 24px
@@ -381,7 +390,7 @@ body:not(.mobile)
 			display: block
 			height: 10px
 			opacity: 0
-			transform: translateYa(10px)
+			transform: translateY(10px)
 			transition: transform .3s, opacity .3s
 			width: 75px
 		&.hover

@@ -44,7 +44,7 @@ var serverConfig = {
 gulp.task('sass', function () {
 	gulp.src(path.src.style)
 		.pipe(sass().on('error', sass.logError))
-		.pipe(autoprefixer())
+		.pipe(autoprefixer({browsers:['last 4 versions']}))
 		.pipe(gulp.dest(path.dist.css))
 		.pipe(reload({stream:true}));
 });

@@ -125,7 +125,7 @@ $mobile-x-small: 320px
 			p
 				font-family: 'Futura New'
 				font-size: 18px
-				font-weight: 400
+				font-weight: 300
 				line-height: 28px
 				margin: 0 auto 50px
 				padding-left: 0
@@ -165,6 +165,8 @@ $mobile-x-small: 320px
 	.article-page.vertical
 		width: calc(100% - 64px)
 		p
+			font-size: 16px
+			margin-bottom: 30px
 			width: auto
 		.article-name
 			padding: 0
@@ -401,8 +403,14 @@ $mobile-x-small: 320px
 				font-weight: 300
 				line-height: 30px
 				margin: 25px 0 0
+				border-radius: 0
+				outline: 2px solid transparent
+				outline-offset: -2px
+				transition: outline .3s, outline-offset .3s
 				&:focus, &:active
-					outline: none
+					outline: 2px solid #35363c
+					outline-offset: 2px
+					transition: outline .1s, outline-offset .1s
 			.comment-addons
 				margin-top: 40px
 				text-align: right

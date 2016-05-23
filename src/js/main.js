@@ -648,7 +648,8 @@ $(document).on('ready', function () {
 			$('[contenteditable="true"]').each(function () {
 
 				var $self = $(this),
-					$textarea;
+					$textarea,
+					fakePlaceholder = null;
 
 				if ($self.hasClass('comment-wysiwyg')) {
 
@@ -656,6 +657,10 @@ $(document).on('ready', function () {
 
 					$self.on('keyup', function () {
 						$textarea.html( $self.html() );
+					}).on('focus', function () {
+						if (fakePlaceholder === null) fakePlaceholder = $self.html();
+					}).on('blur', function () {
+						if (!$self.text().replace(/\n\S/, '')) $self.html( fakePlaceholder );
 					});
 
 				}
@@ -1165,19 +1170,11 @@ $(document).on('ready', function () {
 
 
 		//scroll
-		$(document).on('scroll', function () {
+		// $(document).on('scroll', function () {
 
-			var top = $(this).scrollTop();
+		// 	var top = $(this).scrollTop();
 
-			//
-
-		// 	if (top > bodyHeight - winHeight) {
-		// 		goUp.show();
-		// 	} else {
-		// 		goUp.hide();
-		// 	}
-
-		});
+		// });
 
 		// resize
 		$window.on('resize', function () {
