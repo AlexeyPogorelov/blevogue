@@ -6,7 +6,6 @@ if ($.browser.safari) $('body').addClass('safari');
 if ($.browser.safari) $('.slider-holder').addClass('touched');
 
 if ($.browser.safari && $.browser.mobile) $('body').addClass('safari-mobile');
-bodyOverflow.fixBody();
 
 var blevogue = {};
 
@@ -359,6 +358,8 @@ var loading = {
 	done: function () {
 
 		if (loading.finished) return;
+
+		$("html, body").scrollTop(0);
 
 		// TODO temp for developing
 		// $('section.articles-gallery-1 > article, .article-content, .article-name, .article-date, .video, .article-page, #about-modal .content-holder').find('p, h1, h2, h3, h4, h5, h6, blockquote, span').attr('contenteditable', true).on('click', function (e) {
