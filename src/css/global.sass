@@ -375,6 +375,29 @@ input
 		clear: both
 		display: table
 
+.pagination-1
+	text-align: center
+	margin-bottom: 53px
+	li
+		display: inline-block
+		color: #b2b6c2
+		font-family: 'Futura New'
+		font-size: 16px
+		font-weight: 400
+		line-height: 1em
+		vertical-align: middle
+		margin: 0 10px
+		&.active
+			font-weight: 700
+			color: #35363c
+		&.gap
+			margin: 0 12px
+			background-color: #b2b6c2
+			height: 1px
+			width: 16px
+.load-more-holder ~ .pagination-1
+	margin-top: -40px
+
 //	LIGHTBOX
 .lightbox-holder
 	// &::-webkit-scrollbar
