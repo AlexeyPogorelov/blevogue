@@ -30,7 +30,7 @@ var blevogue = {};
 
 		if (i % 2) {
 
-			$(this).append('<div class="parallax-element type-16"></div><div class="parallax-element type-15"></div>');
+			// $(this).append('<div class="parallax-element type-16"></div><div class="parallax-element type-15"></div>');
 
 		} else {
 
@@ -371,10 +371,11 @@ var loading = {
 		var loct = location.href.split('/');
 		loct = loct[loct.length - 1];
 		$('[href="' + loct + '"]').closest('li').addClass('active');
+
 		$('.btn.load-more').on('click', function () {
 			var $this = $(this),
 				$container = $this.closest('.container'),
-				$button = $this.closest('.load-more-holder'),
+				$button = $container.find('.load-more-holder, .pagination-1'),
 				$articles = $container.find('article'),
 				$clonedArticles;
 
@@ -383,12 +384,11 @@ var loading = {
 			$container.find('.counter, hr').remove();
 
 			$clonedArticles = $( $container.html() );
-
-			$clonedArticles.addClass('wow');
+			$clonedArticles.addClass('wow').append('<div class="gap"></div>');
 
 			_pogorelov.countArticlas($clonedArticles.find('article'), $articles.length);
 			_pogorelov.addHoverOnArticle( $clonedArticles.find('article') );
-			$clonedArticles.find('article').css('top', '0');
+			$clonedArticles.find('article').css('top', 0);
 
 			$('#articles-control').find('.last-element').html( $articles.length * 2 );
 
